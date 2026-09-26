@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import crypto from 'crypto';
 
 declare global {
   namespace Express {
@@ -10,10 +11,15 @@ declare global {
 
 export function requestIdMiddleware(req: Request, res: Response, next: NextFunction): void {
   const existingId = req.headers['x-request-id'];
-  const requestId =
-    typeof existingId === 'string' && existingId.trim().length > 0
-      ? existingId
-      : `req_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+  let requestId: string;
+
+  if (typeof existingId === 'string' && existingId.trim().length > 0) {
+    // Sanitize incoming request ID: alphanumeric, dash, underscore only, max 128 chars
+    const sanitized = existingId.trim().replace(/[^\w-]/g, '').slice(0, 128);
+    requestId = sanitized.length > 0 ? sanitized : `req_${crypto.randomUUID()}`;
+  } else {
+    requestId = `req_${crypto.randomUUID()}`;
+  }
 
   req.id = requestId;
   res.setHeader('X-Request-Id', requestId);

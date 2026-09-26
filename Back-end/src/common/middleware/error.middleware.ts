@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
-import { AppError } from '../errors/app-error';
-import { ErrorCodes } from '../constants/error-codes';
+import { AppError } from '../errors/AppError';
+import { ErrorCodes } from '../errors/errorCodes';
 import { ApiErrorResponse, ApiFieldError } from '../types/response';
 import { logger } from '../../config/logger';
 
@@ -13,7 +13,12 @@ export function errorHandlerMiddleware(
 ): void {
   const requestId = String(req.id || 'req_unknown');
 
-  // Handled AppError
+  // Ensure X-Request-Id header is always set even when an error occurs early
+  if (!res.getHeader('X-Request-Id')) {
+    res.setHeader('X-Request-Id', requestId);
+  }
+
+  // 1. Handled AppError
   if (err instanceof AppError) {
     logger.warn(
       {
@@ -31,8 +36,9 @@ export function errorHandlerMiddleware(
       error: {
         code: err.code,
         message: err.message,
-        details: err.details,
+        details: err.details ?? null,
       },
+      requestId,
       meta: {
         requestId,
         timestamp: new Date().toISOString(),
@@ -43,7 +49,7 @@ export function errorHandlerMiddleware(
     return;
   }
 
-  // Zod Validation Error
+  // 2. Zod Validation Error
   if (err instanceof ZodError) {
     const fields: ApiFieldError[] = err.issues.map((issue) => ({
       path: issue.path.join('.'),
@@ -67,7 +73,9 @@ export function errorHandlerMiddleware(
         code: ErrorCodes.VALIDATION_ERROR,
         message: 'Some fields need attention.',
         fields,
+        details: null,
       },
+      requestId,
       meta: {
         requestId,
         timestamp: new Date().toISOString(),
@@ -78,10 +86,45 @@ export function errorHandlerMiddleware(
     return;
   }
 
-  // Unhandled / Internal Server Error
+  // 3. Body Parser / Malformed JSON SyntaxError
+  if (err instanceof SyntaxError && 'status' in err && (err as { status: unknown }).status === 400) {
+    logger.warn(
+      {
+        requestId,
+        err: err.message,
+        path: req.originalUrl,
+        method: req.method,
+      },
+      'Malformed JSON payload in request body',
+    );
+
+    const response: ApiErrorResponse = {
+      success: false,
+      error: {
+        code: ErrorCodes.VALIDATION_ERROR,
+        message: 'Malformed JSON payload in request body',
+        details: null,
+      },
+      requestId,
+      meta: {
+        requestId,
+        timestamp: new Date().toISOString(),
+      },
+    };
+
+    res.status(400).json(response);
+    return;
+  }
+
+  // 4. Unhandled / Unexpected Server Error
+  // Log full internal error details server-side; NEVER expose stack traces or internals to client
   logger.error(
     {
-      err,
+      err: {
+        name: err.name,
+        message: err.message,
+        stack: err.stack,
+      },
       requestId,
       path: req.originalUrl,
       method: req.method,
@@ -94,7 +137,9 @@ export function errorHandlerMiddleware(
     error: {
       code: ErrorCodes.INTERNAL_ERROR,
       message: 'An unexpected internal error occurred.',
+      details: null,
     },
+    requestId,
     meta: {
       requestId,
       timestamp: new Date().toISOString(),

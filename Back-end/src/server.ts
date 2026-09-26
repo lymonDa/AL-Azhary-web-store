@@ -6,7 +6,7 @@ import { connectDatabase, disconnectDatabase } from './database';
 
 const server = http.createServer(app);
 
-// Socket.IO Realtime Server Attachment
+// Socket.IO Realtime Server Attachment (Foundation setup)
 const io = new SocketIOServer(server, {
   path: env.SOCKET_PATH,
   cors: corsOptions,
@@ -14,10 +14,7 @@ const io = new SocketIOServer(server, {
 
 async function startServer(): Promise<void> {
   try {
-    // 1. Establish database connection
-    await connectDatabase();
-
-    // 2. Start HTTP & WebSocket server
+    // 1. Start HTTP & WebSocket server so process liveness is immediately active
     server.listen(env.PORT, () => {
       logger.info(
         {
@@ -27,6 +24,19 @@ async function startServer(): Promise<void> {
         },
         'AL-AZHARI LIBRARY Backend server started successfully',
       );
+    });
+
+    // 2. Establish database connection for readiness probe
+    connectDatabase().catch((dbError) => {
+      if (env.NODE_ENV === 'production') {
+        logger.fatal({ err: dbError }, 'Failed to establish database connection on production startup. Terminating.');
+        process.exit(1);
+      } else {
+        logger.warn(
+          { err: dbError },
+          'MongoDB connection could not be established on startup; /health/live will function, but /health/ready will report disconnected.',
+        );
+      }
     });
   } catch (error) {
     logger.fatal({ error }, 'Failed to start backend server');
@@ -73,7 +83,7 @@ process.on('uncaughtException', (error) => {
   process.exit(1);
 });
 
-// Run server
+// Run server when not in test mode
 if (process.env.NODE_ENV !== 'test') {
   void startServer();
 }

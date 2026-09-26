@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { app } from '../src/app';
+import { app } from '../../src/app';
 
 describe('Application Bootstrap & Infrastructure', () => {
   it('GET /health returns 200 with standard envelope', async () => {

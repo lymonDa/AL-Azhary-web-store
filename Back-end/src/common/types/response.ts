@@ -13,6 +13,7 @@ export interface ResponseMeta {
 export interface ApiSuccessResponse<T> {
   success: true;
   data: T;
+  requestId: string;
   meta: ResponseMeta;
 }
 
@@ -32,6 +33,7 @@ export interface ApiErrorPayload {
 export interface ApiErrorResponse {
   success: false;
   error: ApiErrorPayload;
+  requestId: string;
   meta: {
     requestId: string;
     timestamp?: string;
