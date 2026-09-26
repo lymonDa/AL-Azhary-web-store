@@ -8,7 +8,7 @@ import { env, corsOptions, helmetOptions, publicRateLimiter, logger } from './co
 import { requestIdMiddleware, errorHandlerMiddleware } from './common/middleware';
 import { NotFoundError } from './common/errors';
 import { sendSuccess } from './common/utils/response.util';
-import { isDatabaseConnected } from './database/mongoose';
+import { isDatabaseReady, getDatabaseState } from './database';
 
 export type CustomRoutesCallback = (apiRouter: Router, app: Express) => void;
 
@@ -50,17 +50,10 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
     app.use(publicRateLimiter);
   }
 
-  // Liveness Probe (Does NOT require MongoDB)
-  app.get('/health/live', (req: Request, res: Response) => {
-    return sendSuccess(req, res, {
-      status: 'ok',
-    });
-  });
-
-  // Readiness Probe (Verifies dependencies readiness explicitly)
-  app.get('/health/ready', (req: Request, res: Response) => {
-    const dbConnected = isDatabaseConnected();
-    if (dbConnected) {
+  // Shared Readiness Handler
+  const handleReadiness = (req: Request, res: Response) => {
+    const ready = isDatabaseReady();
+    if (ready) {
       return sendSuccess(req, res, {
         status: 'ready',
         database: 'connected',
@@ -72,10 +65,8 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
       success: false,
       error: {
         code: 'DEPENDENCY_UNAVAILABLE',
-        message: 'Database connection is not ready',
-        details: {
-          database: 'disconnected',
-        },
+        message: 'Required dependency is unavailable',
+        details: null,
       },
       requestId,
       meta: {
@@ -83,13 +74,23 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
         timestamp: new Date().toISOString(),
       },
     });
+  };
+
+  // Liveness Probe (Does NOT require MongoDB)
+  app.get('/health/live', (req: Request, res: Response) => {
+    return sendSuccess(req, res, {
+      status: 'ok',
+    });
   });
+
+  // Readiness Probe (Verifies actual Mongoose connection state)
+  app.get('/health/ready', handleReadiness);
 
   // Root /health endpoint (General health summary)
   app.get('/health', (req: Request, res: Response) => {
     return sendSuccess(req, res, {
       status: 'healthy',
-      database: isDatabaseConnected() ? 'connected' : 'disconnected',
+      database: getDatabaseState(),
     });
   });
 
@@ -102,38 +103,13 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
     });
   });
 
-  apiRouter.get('/health/ready', (req: Request, res: Response) => {
-    const dbConnected = isDatabaseConnected();
-    if (dbConnected) {
-      return sendSuccess(req, res, {
-        status: 'ready',
-        database: 'connected',
-      });
-    }
-
-    const requestId = String(req.id || 'req_unknown');
-    return res.status(503).json({
-      success: false,
-      error: {
-        code: 'DEPENDENCY_UNAVAILABLE',
-        message: 'Database connection is not ready',
-        details: {
-          database: 'disconnected',
-        },
-      },
-      requestId,
-      meta: {
-        requestId,
-        timestamp: new Date().toISOString(),
-      },
-    });
-  });
+  apiRouter.get('/health/ready', handleReadiness);
 
   apiRouter.get('/health', (req: Request, res: Response) => {
     return sendSuccess(req, res, {
       status: 'healthy',
       version: '1.0.0',
-      database: isDatabaseConnected() ? 'connected' : 'disconnected',
+      database: getDatabaseState(),
     });
   });
 

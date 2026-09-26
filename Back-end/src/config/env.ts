@@ -12,8 +12,8 @@ export const envSchema = z
     ALLOWED_ORIGINS: z.string().default('http://localhost:4200'),
 
     // Database
-    MONGODB_URI: z.string().default('mongodb://localhost:27017/al_azhari_library'),
-    MONGODB_DB_NAME: z.string().default('al_azhari_library'),
+    MONGODB_URI: z.string().min(1, 'MONGODB_URI is required').default('mongodb://localhost:27017/al_azhari_library'),
+    MONGODB_DB_NAME: z.string().min(1, 'MONGODB_DB_NAME is required').default('al_azhari_library'),
 
     // Auth & JWT
     JWT_ACCESS_SECRET: z

@@ -58,6 +58,8 @@ npm run test:watch
 ## Documentation
 
 * [Architecture Overview](docs/ARCHITECTURE.md)
+* [Database Architecture & Operations](docs/DATABASE.md)
 * [Error Handling & Response Envelopes](docs/ERROR-HANDLING.md)
 * [Environment Configuration & Safety](docs/ENVIRONMENT.md)
 * [Phase 0 Foundation Details](docs/PHASE-0-FOUNDATION.md)
+* [Phase 1 Database Details](docs/PHASE-1-DATABASE.md)

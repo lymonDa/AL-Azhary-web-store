@@ -4,6 +4,7 @@ import { AppError } from '../errors/AppError';
 import { ErrorCodes } from '../errors/errorCodes';
 import { ApiErrorResponse, ApiFieldError } from '../types/response';
 import { logger } from '../../config/logger';
+import { isDatabaseError, normalizeDatabaseError } from '../../database/errors';
 
 export function errorHandlerMiddleware(
   err: Error,
@@ -18,25 +19,28 @@ export function errorHandlerMiddleware(
     res.setHeader('X-Request-Id', requestId);
   }
 
-  // 1. Handled AppError
-  if (err instanceof AppError) {
+  // 1. Intercept and normalize MongoDB/Mongoose errors to safe AppErrors
+  const effectiveError = isDatabaseError(err) ? normalizeDatabaseError(err) : err;
+
+  // 2. Handled AppError
+  if (effectiveError instanceof AppError) {
     logger.warn(
       {
         requestId,
-        code: err.code,
-        status: err.status,
+        code: effectiveError.code,
+        status: effectiveError.status,
         path: req.originalUrl,
         method: req.method,
       },
-      err.message,
+      effectiveError.message,
     );
 
     const response: ApiErrorResponse = {
       success: false,
       error: {
-        code: err.code,
-        message: err.message,
-        details: err.details ?? null,
+        code: effectiveError.code,
+        message: effectiveError.message,
+        details: effectiveError.details ?? null,
       },
       requestId,
       meta: {
@@ -45,11 +49,11 @@ export function errorHandlerMiddleware(
       },
     };
 
-    res.status(err.status).json(response);
+    res.status(effectiveError.status).json(response);
     return;
   }
 
-  // 2. Zod Validation Error
+  // 3. Zod Validation Error
   if (err instanceof ZodError) {
     const fields: ApiFieldError[] = err.issues.map((issue) => ({
       path: issue.path.join('.'),
@@ -86,7 +90,7 @@ export function errorHandlerMiddleware(
     return;
   }
 
-  // 3. Body Parser / Malformed JSON SyntaxError
+  // 4. Body Parser / Malformed JSON SyntaxError
   if (err instanceof SyntaxError && 'status' in err && (err as { status: unknown }).status === 400) {
     logger.warn(
       {
@@ -116,7 +120,7 @@ export function errorHandlerMiddleware(
     return;
   }
 
-  // 4. Unhandled / Unexpected Server Error
+  // 5. Unhandled / Unexpected Server Error
   // Log full internal error details server-side; NEVER expose stack traces or internals to client
   logger.error(
     {

@@ -37,7 +37,7 @@ describe('Health & Probes Integration Tests', () => {
       } else {
         expect(res.body.success).toBe(false);
         expect(res.body.error.code).toBe('DEPENDENCY_UNAVAILABLE');
-        expect(res.body.error.details.database).toBe('disconnected');
+        expect(res.body.error.message).toBe('Required dependency is unavailable');
       }
       expect(res.headers['x-request-id']).toBeDefined();
     });

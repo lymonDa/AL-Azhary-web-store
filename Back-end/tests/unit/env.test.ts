@@ -21,6 +21,7 @@ describe('Environment Configuration Validation', () => {
     expect(result.data).toBeDefined();
     expect(result.data?.PORT).toBe(3000);
     expect(result.data?.NODE_ENV).toBe('development');
+    expect(result.data?.MONGODB_DB_NAME).toBe('al_azhari_library');
   });
 
   it('rejects invalid PORT value', () => {
@@ -32,6 +33,28 @@ describe('Environment Configuration Validation', () => {
     const result = validateEnv(invalidConfig);
     expect(result.success).toBe(false);
     expect(result.error).toBeDefined();
+  });
+
+  it('rejects empty database name MONGODB_DB_NAME', () => {
+    const invalidConfig = {
+      NODE_ENV: 'development',
+      MONGODB_DB_NAME: '',
+    };
+
+    const result = validateEnv(invalidConfig);
+    expect(result.success).toBe(false);
+    expect(result.error?.issues.some((i) => i.path.includes('MONGODB_DB_NAME'))).toBe(true);
+  });
+
+  it('rejects empty database URI MONGODB_URI', () => {
+    const invalidConfig = {
+      NODE_ENV: 'development',
+      MONGODB_URI: '',
+    };
+
+    const result = validateEnv(invalidConfig);
+    expect(result.success).toBe(false);
+    expect(result.error?.issues.some((i) => i.path.includes('MONGODB_URI'))).toBe(true);
   });
 
   it('rejects short JWT secret if custom value is provided under 32 characters', () => {
@@ -50,6 +73,7 @@ describe('Environment Configuration Validation', () => {
       NODE_ENV: 'production',
       PORT: '3000',
       MONGODB_URI: 'mongodb+srv://cluster.mongodb.net/al_azhari_library',
+      MONGODB_DB_NAME: 'al_azhari_library',
       JWT_ACCESS_SECRET: 'development_jwt_access_secret_key_minimum_32_characters_long',
       JWT_REFRESH_SECRET: 'development_jwt_refresh_secret_key_minimum_32_characters_long',
       REFRESH_COOKIE_SECURE: 'true',
@@ -65,6 +89,7 @@ describe('Environment Configuration Validation', () => {
       NODE_ENV: 'production',
       PORT: '3000',
       MONGODB_URI: 'mongodb://localhost:27017/al_azhari_library',
+      MONGODB_DB_NAME: 'al_azhari_library',
       JWT_ACCESS_SECRET: 'production_secure_secret_key_that_is_long_enough_12345678',
       JWT_REFRESH_SECRET: 'production_secure_refresh_key_that_is_long_enough_12345678',
       REFRESH_COOKIE_SECURE: 'true',
@@ -80,6 +105,7 @@ describe('Environment Configuration Validation', () => {
       NODE_ENV: 'production',
       PORT: '3000',
       MONGODB_URI: 'mongodb+srv://cluster.mongodb.net/al_azhari_library',
+      MONGODB_DB_NAME: 'al_azhari_library',
       JWT_ACCESS_SECRET: 'production_secure_secret_key_that_is_long_enough_12345678',
       JWT_REFRESH_SECRET: 'production_secure_refresh_key_that_is_long_enough_12345678',
       REFRESH_COOKIE_SECURE: 'false',
