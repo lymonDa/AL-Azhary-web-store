@@ -10,6 +10,7 @@ import { NotFoundError } from './common/errors';
 import { sendSuccess } from './common/utils/response.util';
 import { isDatabaseReady, getDatabaseState } from './database';
 import { authRouter, meRouter } from './modules/auth';
+import { addressRouter } from './modules/addresses';
 
 export type CustomRoutesCallback = (apiRouter: Router, app: Express) => void;
 
@@ -117,6 +118,9 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   // Phase 3 Authentication, Identity & Session Management
   apiRouter.use('/auth', authRouter);
   apiRouter.use('/me', meRouter);
+
+  // Phase 4 Users & Addresses
+  apiRouter.use('/addresses', addressRouter);
 
   // Hook for custom routes (e.g. testing error conditions or future feature routes)
   if (mountCustomRoutes) {

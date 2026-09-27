@@ -42,6 +42,11 @@ export interface CreateUserInput {
   emailVerifiedAt?: Date | null;
 }
 
+export interface UpdateProfileInput {
+  name?: string;
+  phone?: string;
+}
+
 export interface IRole {
   _id: Types.ObjectId;
   key: string;

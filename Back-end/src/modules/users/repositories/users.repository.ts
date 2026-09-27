@@ -113,6 +113,30 @@ export class UsersRepository {
       { new: true, session: options?.session },
     ).exec();
   }
+
+  async updateProfile(
+    id: string,
+    data: { name?: string; phone?: string },
+    options?: { session?: ClientSession },
+  ): Promise<IUserDocument | null> {
+    const update: Record<string, unknown> = {};
+    if (data.name !== undefined) {
+      update.name = data.name;
+    }
+    if (data.phone !== undefined) {
+      update.phone = data.phone;
+    }
+
+    if (Object.keys(update).length === 0) {
+      return this.findById(id, options);
+    }
+
+    return UserModel.findByIdAndUpdate(
+      id,
+      { $set: update },
+      { new: true, runValidators: true, session: options?.session },
+    ).exec();
+  }
 }
 
 export const usersRepository = new UsersRepository();
