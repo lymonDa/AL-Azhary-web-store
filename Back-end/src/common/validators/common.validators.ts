@@ -125,6 +125,39 @@ export function paginationQuerySchema(options: {
   });
 }
 
+/**
+ * Validates localized text object { ar: string, en?: string }.
+ */
+export function localizedTextSchema(options: {
+  min?: number;
+  max?: number;
+  fieldName?: string;
+} = {}): z.ZodObject<{ ar: z.ZodString; en: z.ZodType<string | undefined> }> {
+  const { min = 1, max = 500, fieldName = 'Name' } = options;
+  return z
+    .object({
+      ar: requiredString(min, max, `${fieldName} (Arabic)`),
+      en: optionalString(max),
+    })
+    .strict();
+}
+
+/**
+ * Validates nullable localized description object { ar?: string, en?: string } | null.
+ */
+export function localizedDescriptionSchema(max: number = 10000): z.ZodType<
+  { ar?: string; en?: string } | null | undefined
+> {
+  return z
+    .object({
+      ar: optionalString(max),
+      en: optionalString(max),
+    })
+    .strict()
+    .nullable()
+    .optional();
+}
+
 export interface RequestValidationSchemas {
   body?: z.ZodTypeAny;
   query?: z.ZodTypeAny;

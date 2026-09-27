@@ -20,6 +20,7 @@ export const SYSTEM_ROLE_DEFINITIONS = [
       'payments.review',
       'products.write',
       'categories.write',
+      'content.write',
       'inventory.write',
       'services.write',
       'quotations.write',

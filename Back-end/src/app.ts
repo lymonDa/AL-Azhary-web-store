@@ -11,6 +11,9 @@ import { sendSuccess } from './common/utils/response.util';
 import { isDatabaseReady, getDatabaseState } from './database';
 import { authRouter, meRouter } from './modules/auth';
 import { addressRouter } from './modules/addresses';
+import { categoryRouter, adminCategoryRouter } from './modules/categories';
+import { productRouter, searchRouter, adminProductRouter } from './modules/products';
+import { contentRouter, adminContentRouter } from './modules/content';
 
 export type CustomRoutesCallback = (apiRouter: Router, app: Express) => void;
 
@@ -121,6 +124,19 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
 
   // Phase 4 Users & Addresses
   apiRouter.use('/addresses', addressRouter);
+
+  // Phase 5 Catalog: Categories, Products, Search & Content
+  apiRouter.use('/categories', categoryRouter);
+  apiRouter.use('/products', productRouter);
+  apiRouter.use('/search', searchRouter);
+  apiRouter.use('/content', contentRouter);
+
+  // Phase 5 Admin Catalog Endpoints
+  const adminRouter = express.Router();
+  adminRouter.use('/categories', adminCategoryRouter);
+  adminRouter.use('/products', adminProductRouter);
+  adminRouter.use('/content', adminContentRouter);
+  apiRouter.use('/admin', adminRouter);
 
   // Hook for custom routes (e.g. testing error conditions or future feature routes)
   if (mountCustomRoutes) {
