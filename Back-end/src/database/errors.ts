@@ -45,8 +45,8 @@ export function normalizeDatabaseError(err: unknown): AppError {
 
   const errorObj = err as Record<string, unknown>;
 
-  // 1. Duplicate key error (code 11000)
-  if (errorObj.code === 11000 || errorObj.name === 'MongoServerError') {
+  // 1. Duplicate key error (code 11000) or WriteConflict (code 112)
+  if (errorObj.code === 11000 || errorObj.code === 112 || errorObj.codeName === 'WriteConflict') {
     let duplicateField = 'resource';
 
     if (errorObj.keyValue && typeof errorObj.keyValue === 'object') {
@@ -61,9 +61,14 @@ export function normalizeDatabaseError(err: unknown): AppError {
       }
     }
 
+    const message =
+      errorObj.code === 112 || errorObj.codeName === 'WriteConflict'
+        ? 'A conflict occurred due to concurrent modification'
+        : `A ${duplicateField} with this value already exists`;
+
     return new ConflictError(
       ErrorCodes.RESOURCE_CONFLICT,
-      `A ${duplicateField} with this value already exists`,
+      message,
       { field: duplicateField },
     );
   }

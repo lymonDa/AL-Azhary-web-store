@@ -64,3 +64,4 @@ npm run test:watch
 * [Phase 0 Foundation Details](docs/PHASE-0-FOUNDATION.md)
 * [Phase 1 Database Details](docs/PHASE-1-DATABASE.md)
 * [Phase 2 HTTP & Security Details](docs/PHASE-2-HTTP-SECURITY.md)
+* [Phase 3 Authentication, Identity & Session Management](docs/PHASE-3-AUTHENTICATION.md)

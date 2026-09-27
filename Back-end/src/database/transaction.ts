@@ -32,13 +32,19 @@ export async function withTransaction<T>(
     const result = await operation(session);
     await session.commitTransaction();
     return result;
-  } catch (error) {
+  } catch (error: unknown) {
     if (session.inTransaction()) {
       try {
         await session.abortTransaction();
       } catch (abortError) {
         logger.error({ err: abortError }, 'Failed to abort transaction cleanly');
       }
+    }
+    const errMessage = (error as { message?: string })?.message || '';
+    if (errMessage.includes('Transaction numbers are only allowed on a replica set member') || errMessage.includes('replica set')) {
+      logger.warn('Transactions not supported on standalone MongoDB instance; executing without transaction session');
+      // Execute without transaction session
+      return operation(session);
     }
     throw error;
   } finally {
