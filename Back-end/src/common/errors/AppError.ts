@@ -67,6 +67,18 @@ export class BusinessRuleViolationError extends AppError {
   }
 }
 
+export class PayloadTooLargeError extends AppError {
+  constructor(message: string = 'Request payload exceeds size limit', details?: unknown) {
+    super(ErrorCodes.PAYLOAD_TOO_LARGE, message, 413, details);
+  }
+}
+
+export class MethodNotAllowedError extends AppError {
+  constructor(message: string = 'HTTP method not allowed for this resource', details?: unknown) {
+    super(ErrorCodes.METHOD_NOT_ALLOWED, message, 405, details);
+  }
+}
+
 export class DependencyUnavailableError extends AppError {
   constructor(message: string = 'External service dependency unavailable', details?: unknown) {
     super(ErrorCodes.DEPENDENCY_UNAVAILABLE, message, 503, details, true);

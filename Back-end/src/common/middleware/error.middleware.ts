@@ -120,6 +120,70 @@ export function errorHandlerMiddleware(
     return;
   }
 
+  // 5. Payload Too Large (413 from body-parser)
+  const isTooLarge =
+    ('type' in err && (err as { type: unknown }).type === 'entity.too.large') ||
+    ('status' in err && (err as { status: unknown }).status === 413) ||
+    ('statusCode' in err && (err as { statusCode: unknown }).statusCode === 413);
+
+  if (isTooLarge) {
+    logger.warn(
+      {
+        requestId,
+        path: req.originalUrl,
+        method: req.method,
+      },
+      'Request payload exceeds size limit',
+    );
+
+    const response: ApiErrorResponse = {
+      success: false,
+      error: {
+        code: ErrorCodes.PAYLOAD_TOO_LARGE,
+        message: 'Request payload exceeds size limit',
+        details: null,
+      },
+      requestId,
+      meta: {
+        requestId,
+        timestamp: new Date().toISOString(),
+      },
+    };
+
+    res.status(413).json(response);
+    return;
+  }
+
+  // 6. Malformed URI Sequence (URIError)
+  if (err instanceof URIError) {
+    logger.warn(
+      {
+        requestId,
+        err: err.message,
+        path: req.originalUrl,
+        method: req.method,
+      },
+      'Malformed URI sequence in request',
+    );
+
+    const response: ApiErrorResponse = {
+      success: false,
+      error: {
+        code: ErrorCodes.BAD_REQUEST,
+        message: 'Malformed URI sequence in request',
+        details: null,
+      },
+      requestId,
+      meta: {
+        requestId,
+        timestamp: new Date().toISOString(),
+      },
+    };
+
+    res.status(400).json(response);
+    return;
+  }
+
   // 5. Unhandled / Unexpected Server Error
   // Log full internal error details server-side; NEVER expose stack traces or internals to client
   logger.error(

@@ -23,6 +23,19 @@ export function sendSuccess<T>(
   return res.status(statusCode).json(response);
 }
 
+export function sendCreated<T>(
+  req: Request,
+  res: Response,
+  data: T,
+  pagination?: PaginationMeta | null,
+): Response {
+  return sendSuccess(req, res, data, 201, pagination);
+}
+
+export function sendNoContent(res: Response): Response {
+  return res.status(204).send();
+}
+
 export function sendError(
   req: Request,
   res: Response,

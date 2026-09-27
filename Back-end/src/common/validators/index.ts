@@ -1,2 +1,1 @@
-// Validators module boundary
-export {};
+export * from './common.validators';

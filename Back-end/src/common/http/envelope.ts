@@ -1,36 +1,24 @@
 import { Request, Response } from 'express';
 import { HttpStatus, HttpStatusCode } from './status-codes';
+import {
+  PaginationMeta,
+  ResponseMeta,
+  ApiFieldError,
+  ApiErrorPayload,
+} from '../types/response';
 
-export interface PaginationMeta {
-  limit: number;
-  nextCursor?: string | null;
-  total?: number;
-}
-
-export interface ResponseMeta {
-  requestId: string;
-  pagination?: PaginationMeta | null;
-  timestamp?: string;
-}
-
-export interface ApiFieldError {
-  path: string;
-  code: string;
-  message?: string;
-}
+export type {
+  PaginationMeta,
+  ResponseMeta,
+  ApiFieldError,
+  ApiErrorPayload,
+};
 
 export interface ApiSuccessEnvelope<T> {
   success: true;
   data: T;
   requestId: string;
   meta: ResponseMeta;
-}
-
-export interface ApiErrorPayload {
-  code: string;
-  message: string;
-  details?: unknown;
-  fields?: ApiFieldError[];
 }
 
 export interface ApiErrorEnvelope {
@@ -91,6 +79,19 @@ export function sendSuccessResponse<T>(
 ): Response {
   const requestId = String(req.id || 'req_unknown');
   return res.status(statusCode).json(formatSuccessResponse(requestId, data, pagination));
+}
+
+export function sendCreatedResponse<T>(
+  req: Request,
+  res: Response,
+  data: T,
+  pagination?: PaginationMeta | null,
+): Response {
+  return sendSuccessResponse(req, res, data, HttpStatus.CREATED, pagination);
+}
+
+export function sendNoContentResponse(res: Response): Response {
+  return res.status(HttpStatus.NO_CONTENT).send();
 }
 
 export function sendErrorResponse(

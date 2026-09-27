@@ -46,6 +46,8 @@ If any required variable is missing or fails validation:
 | `EMAIL_FROM` | `string` | `no-reply@al-azhari.com`| Sender address on outgoing notification emails |
 | `WHATSAPP_PHONE` | `string` | *(optional)* | Store WhatsApp phone number for customer queries |
 | `SOCKET_PATH` | `string` | `/socket.io` | WebSocket path for Socket.IO |
+| `TRUST_PROXY` | `boolean/number/string` | `1` | Reverse proxy trust configuration for Express |
+| `RATE_LIMIT_WINDOW_MS` | `number` | `60000` | Rate limiting calculation window in milliseconds |
 | `RATE_LIMIT_PUBLIC_PER_MINUTE` | `number`| `100` | Maximum requests per minute per IP on public routes |
 | `RATE_LIMIT_AUTH_PER_MINUTE` | `number`| `20` | Maximum requests per minute per IP on auth routes |
 | `OUTBOX_POLL_INTERVAL_MS` | `number`| `5000` | In-process Outbox polling interval in milliseconds |

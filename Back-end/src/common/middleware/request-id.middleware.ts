@@ -9,17 +9,19 @@ declare global {
   }
 }
 
-export function requestIdMiddleware(req: Request, res: Response, next: NextFunction): void {
-  const existingId = req.headers['x-request-id'];
-  let requestId: string;
+const VALID_REQUEST_ID_REGEX = /^[a-zA-Z0-9_-]{1,128}$/;
 
-  if (typeof existingId === 'string' && existingId.trim().length > 0) {
-    // Sanitize incoming request ID: alphanumeric, dash, underscore only, max 128 chars
-    const sanitized = existingId.trim().replace(/[^\w-]/g, '').slice(0, 128);
-    requestId = sanitized.length > 0 ? sanitized : `req_${crypto.randomUUID()}`;
-  } else {
-    requestId = `req_${crypto.randomUUID()}`;
-  }
+export function isValidRequestId(id: unknown): id is string {
+  return typeof id === 'string' && VALID_REQUEST_ID_REGEX.test(id.trim());
+}
+
+export function generateRequestId(): string {
+  return `req_${crypto.randomUUID()}`;
+}
+
+export function requestIdMiddleware(req: Request, res: Response, next: NextFunction): void {
+  const incomingId = req.headers['x-request-id'];
+  const requestId = isValidRequestId(incomingId) ? incomingId.trim() : generateRequestId();
 
   req.id = requestId;
   res.setHeader('X-Request-Id', requestId);

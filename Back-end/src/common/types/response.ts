@@ -1,7 +1,11 @@
 export interface PaginationMeta {
+  page?: number;
   limit: number;
-  nextCursor?: string | null;
   total?: number;
+  totalPages?: number;
+  hasNextPage?: boolean;
+  hasPreviousPage?: boolean;
+  nextCursor?: string | null;
 }
 
 export interface ResponseMeta {

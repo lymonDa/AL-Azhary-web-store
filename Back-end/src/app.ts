@@ -16,7 +16,7 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   const app: Express = express();
 
   // Trust proxy for rate limiting behind reverse proxy (Hostinger/Nginx)
-  app.set('trust proxy', 1);
+  app.set('trust proxy', env.TRUST_PROXY);
 
   // Security headers
   app.use(helmet(helmetOptions));

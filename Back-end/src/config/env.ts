@@ -70,7 +70,18 @@ export const envSchema = z
     // Realtime
     SOCKET_PATH: z.string().default('/socket.io'),
 
+    // Reverse Proxy
+    TRUST_PROXY: z
+      .preprocess((val) => {
+        if (val === 'true' || val === true) return true;
+        if (val === 'false' || val === false) return false;
+        if (typeof val === 'string' && !isNaN(Number(val))) return Number(val);
+        return val;
+      }, z.union([z.boolean(), z.number(), z.string()]))
+      .default(1),
+
     // Rate Limiting
+    RATE_LIMIT_WINDOW_MS: z.coerce.number().default(60000),
     RATE_LIMIT_PUBLIC_PER_MINUTE: z.coerce.number().default(100),
     RATE_LIMIT_AUTH_PER_MINUTE: z.coerce.number().default(20),
 

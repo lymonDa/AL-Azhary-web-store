@@ -22,6 +22,20 @@ describe('Environment Configuration Validation', () => {
     expect(result.data?.PORT).toBe(3000);
     expect(result.data?.NODE_ENV).toBe('development');
     expect(result.data?.MONGODB_DB_NAME).toBe('al_azhari_library');
+    expect(result.data?.TRUST_PROXY).toBe(1);
+    expect(result.data?.RATE_LIMIT_WINDOW_MS).toBe(60000);
+  });
+
+  it('correctly parses custom TRUST_PROXY and RATE_LIMIT_WINDOW_MS', () => {
+    const customConfig = {
+      TRUST_PROXY: 'true',
+      RATE_LIMIT_WINDOW_MS: '30000',
+    };
+
+    const result = validateEnv(customConfig);
+    expect(result.success).toBe(true);
+    expect(result.data?.TRUST_PROXY).toBe(true);
+    expect(result.data?.RATE_LIMIT_WINDOW_MS).toBe(30000);
   });
 
   it('rejects invalid PORT value', () => {

@@ -1,2 +1,1 @@
-// Security common infrastructure boundary
-export {};
+export * from './redact';
