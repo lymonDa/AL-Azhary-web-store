@@ -1,4 +1,11 @@
+import { Request, Response } from 'express';
 import { formatSuccessResponse, formatErrorResponse } from '../../src/common/http';
+import {
+  sendSuccess,
+  sendCreated,
+  sendNoContent,
+  sendError,
+} from '../../src/common/utils/response.util';
 
 describe('Response Envelope Formatting', () => {
   it('formats a success response envelope with requestId, data, and meta', () => {
@@ -31,5 +38,74 @@ describe('Response Envelope Formatting', () => {
     expect(response.requestId).toBe('req_error_456');
     expect(response.meta.requestId).toBe('req_error_456');
     expect(response.meta.timestamp).toBeDefined();
+  });
+
+  describe('Express Response Helpers (sendSuccess, sendCreated, sendNoContent, sendError)', () => {
+    const mockRequest = { id: 'req_helper_123' } as unknown as Request;
+
+    it('sendSuccess sends status 200 with standard envelope', () => {
+      const mockRes: Record<string, unknown> = {};
+      mockRes.status = jest.fn().mockReturnValue(mockRes);
+      mockRes.json = jest.fn().mockReturnValue(mockRes);
+
+      sendSuccess(mockRequest, mockRes as unknown as Response, { message: 'ok' });
+
+      expect(mockRes.status).toHaveBeenCalledWith(200);
+      expect(mockRes.json).toHaveBeenCalledWith(
+        expect.objectContaining({
+          success: true,
+          data: { message: 'ok' },
+          requestId: 'req_helper_123',
+        }),
+      );
+    });
+
+    it('sendCreated sends status 201 with standard envelope', () => {
+      const mockRes: Record<string, unknown> = {};
+      mockRes.status = jest.fn().mockReturnValue(mockRes);
+      mockRes.json = jest.fn().mockReturnValue(mockRes);
+
+      sendCreated(mockRequest, mockRes as unknown as Response, { id: 'item_1' });
+
+      expect(mockRes.status).toHaveBeenCalledWith(201);
+      expect(mockRes.json).toHaveBeenCalledWith(
+        expect.objectContaining({
+          success: true,
+          data: { id: 'item_1' },
+          requestId: 'req_helper_123',
+        }),
+      );
+    });
+
+    it('sendNoContent sends status 204 with empty body', () => {
+      const mockRes: Record<string, unknown> = {};
+      mockRes.status = jest.fn().mockReturnValue(mockRes);
+      mockRes.send = jest.fn().mockReturnValue(mockRes);
+
+      sendNoContent(mockRes as unknown as Response);
+
+      expect(mockRes.status).toHaveBeenCalledWith(204);
+      expect(mockRes.send).toHaveBeenCalled();
+    });
+
+    it('sendError sends formatted error envelope with appropriate status', () => {
+      const mockRes: Record<string, unknown> = {};
+      mockRes.status = jest.fn().mockReturnValue(mockRes);
+      mockRes.json = jest.fn().mockReturnValue(mockRes);
+
+      sendError(mockRequest, mockRes as unknown as Response, { code: 'FORBIDDEN', message: 'Access denied' }, 403);
+
+      expect(mockRes.status).toHaveBeenCalledWith(403);
+      expect(mockRes.json).toHaveBeenCalledWith(
+        expect.objectContaining({
+          success: false,
+          error: expect.objectContaining({
+            code: 'FORBIDDEN',
+            message: 'Access denied',
+          }),
+          requestId: 'req_helper_123',
+        }),
+      );
+    });
   });
 });

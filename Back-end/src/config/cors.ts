@@ -21,7 +21,7 @@ export function getAllowedOrigins(): string[] {
 
 export function isOriginAllowed(origin: string | undefined): boolean {
   if (!origin) {
-    return env.NODE_ENV !== 'production';
+    return true;
   }
 
   const origins = getAllowedOrigins();
@@ -34,11 +34,8 @@ export function isOriginAllowed(origin: string | undefined): boolean {
 
 export const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
-    // Requests with no origin (e.g., mobile apps, curl, server-to-server)
+    // Requests with no origin (e.g., mobile apps, curl, server-to-server, same-origin)
     if (!origin) {
-      if (env.NODE_ENV === 'production') {
-        return callback(new ForbiddenError('CORS origin required'));
-      }
       return callback(null, true);
     }
 

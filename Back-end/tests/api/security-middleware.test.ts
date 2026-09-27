@@ -69,6 +69,13 @@ describe('HTTP Security Middleware & API Hardening Suite', () => {
       expect(res.headers['access-control-allow-credentials']).toBe('true');
     });
 
+    it('accepts requests with no Origin header (same-origin, curl, server-to-server)', async () => {
+      const res = await request(app).get('/health/live');
+
+      expect(res.status).toBe(200);
+      expect(res.headers['access-control-allow-origin']).toBeUndefined();
+    });
+
     it('rejects requests from disallowed origins with 403 Forbidden envelope', async () => {
       const res = await request(app)
         .get('/health/live')
@@ -83,7 +90,7 @@ describe('HTTP Security Middleware & API Hardening Suite', () => {
   });
 
   describe('Body Size & Payload Limit Protection', () => {
-    it('accepts normal payload under the 1MB limit', async () => {
+    it('accepts normal JSON payload under the 1MB limit', async () => {
       const normalData = { data: 'a'.repeat(1024) }; // ~1KB
       const testApp = createApp((apiRouter) => {
         apiRouter.post('/test-body-size', (req: Request, res: Response) => {
@@ -119,6 +126,41 @@ describe('HTTP Security Middleware & API Hardening Suite', () => {
       expect(res.body.error.code).toBe('PAYLOAD_TOO_LARGE');
       expect(res.body.error.message).toMatch(/exceeds size limit/i);
       expect(res.body.requestId).toBeDefined();
+    });
+
+    it('accepts normal URL-encoded payload under 1MB', async () => {
+      const testApp = createApp((apiRouter) => {
+        apiRouter.post('/test-urlencoded', (req: Request, res: Response) => {
+          res.json({ success: true, received: req.body.key });
+        });
+      });
+
+      const res = await request(testApp)
+        .post('/api/v1/test-urlencoded')
+        .type('form')
+        .send({ key: 'normal-value' });
+
+      expect(res.status).toBe(200);
+      expect(res.body.received).toBe('normal-value');
+    });
+
+    it('rejects oversized URL-encoded payload (>1MB) with 413 PAYLOAD_TOO_LARGE', async () => {
+      const oversizedValue = 'v'.repeat(1.2 * 1024 * 1024);
+      const testApp = createApp((apiRouter) => {
+        apiRouter.post('/test-urlencoded-oversized', (_req: Request, res: Response) => {
+          res.json({ success: true });
+        });
+      });
+
+      const res = await request(testApp)
+        .post('/api/v1/test-urlencoded-oversized')
+        .type('form')
+        .send({ key: oversizedValue });
+
+      expect(res.status).toBe(413);
+      expect(res.body.success).toBe(false);
+      expect(res.body.error.code).toBe('PAYLOAD_TOO_LARGE');
+      expect(res.body.error.message).toMatch(/exceeds size limit/i);
     });
   });
 
@@ -209,6 +251,16 @@ describe('HTTP Security Middleware & API Hardening Suite', () => {
       expect(stringified).not.toContain('mongodb+srv');
       expect(stringified).not.toContain('stack');
       expect(stringified).not.toContain('Error:');
+    });
+
+    it('returns controlled 404 error envelope for unsupported HTTP methods on existing routes', async () => {
+      const res = await request(app).post('/health/live');
+
+      expect(res.status).toBe(404);
+      expect(res.body.success).toBe(false);
+      expect(res.body.error.code).toBe('NOT_FOUND');
+      expect(res.body.error.message).toMatch(/not found/i);
+      expect(res.body.requestId).toBeDefined();
     });
   });
 });

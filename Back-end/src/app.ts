@@ -18,14 +18,14 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   // Trust proxy for rate limiting behind reverse proxy (Hostinger/Nginx)
   app.set('trust proxy', env.TRUST_PROXY);
 
+  // Request ID middleware (first in pipeline to ensure request ID correlation on all requests and errors)
+  app.use(requestIdMiddleware);
+
   // Security headers
   app.use(helmet(helmetOptions));
 
   // CORS
   app.use(cors(corsOptions));
-
-  // Request ID middleware (must run before logging and parsers to tag everything)
-  app.use(requestIdMiddleware);
 
   // Body parsers with reasonable size limits
   app.use(express.json({ limit: '1mb' }));

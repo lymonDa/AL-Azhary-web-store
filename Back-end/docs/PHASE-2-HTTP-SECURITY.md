@@ -238,5 +238,5 @@ All quality commands run and verified clean:
 npm run typecheck   # 0 errors
 npm run lint        # 0 errors, 0 warnings
 npm run build       # Successful compilation to dist/
-npm test            # 17 test suites passed, 147 total tests passed (100%)
+npm test            # 17 test suites passed, 155 total tests passed (100%)
 ```
