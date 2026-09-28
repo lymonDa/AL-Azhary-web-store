@@ -15,8 +15,12 @@ export class AppError extends Error {
 }
 
 export class ValidationError extends AppError {
-  constructor(message: string = 'Validation failed', details?: unknown) {
-    super(ErrorCodes.VALIDATION_ERROR, message, 400, details);
+  constructor(
+    message: string = 'Validation failed',
+    details?: unknown,
+    code: string = ErrorCodes.VALIDATION_ERROR,
+  ) {
+    super(code, message, 400, details);
   }
 }
 
@@ -36,14 +40,20 @@ export class UnauthorizedError extends AppError {
 }
 
 export class ForbiddenError extends AppError {
-  constructor(message: string = 'Permission or ownership denied') {
-    super(ErrorCodes.FORBIDDEN, message, 403);
+  constructor(
+    message: string = 'Permission or ownership denied',
+    code: string = ErrorCodes.FORBIDDEN,
+  ) {
+    super(code, message, 403);
   }
 }
 
 export class NotFoundError extends AppError {
-  constructor(message: string = 'Resource not found') {
-    super(ErrorCodes.NOT_FOUND, message, 404);
+  constructor(
+    message: string = 'Resource not found',
+    code: string = ErrorCodes.NOT_FOUND,
+  ) {
+    super(code, message, 404);
   }
 }
 

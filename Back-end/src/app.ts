@@ -14,6 +14,7 @@ import { addressRouter } from './modules/addresses';
 import { categoryRouter, adminCategoryRouter } from './modules/categories';
 import { productRouter, searchRouter, adminProductRouter } from './modules/products';
 import { contentRouter, adminContentRouter } from './modules/content';
+import { cartRouter } from './modules/carts';
 
 export type CustomRoutesCallback = (apiRouter: Router, app: Express) => void;
 
@@ -130,6 +131,9 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   apiRouter.use('/products', productRouter);
   apiRouter.use('/search', searchRouter);
   apiRouter.use('/content', contentRouter);
+
+  // Phase 6 Cart: Guest & Customer Cart, Versioning & Merge
+  apiRouter.use('/cart', cartRouter);
 
   // Phase 5 Admin Catalog Endpoints
   const adminRouter = express.Router();
