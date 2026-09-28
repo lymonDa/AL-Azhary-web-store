@@ -7,3 +7,4 @@ export * from './scripts/20260927_002_addresses.migration';
 export * from './scripts/20260927_003_catalog.migration';
 export * from './scripts/20260928_004_cart.migration';
 export * from './scripts/20260928_005_inventory.migration';
+export * from './scripts/20260928_006_orders.migration';

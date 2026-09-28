@@ -1,26 +1,32 @@
-import { Types, UpdateQuery } from 'mongoose';
+import { Types, UpdateQuery, ClientSession } from 'mongoose';
 import { CartModel } from '../models/cart.model';
 import { ICart, ICartDocument, CartOwnerContext } from '../types/cart.types';
 
 export class CartRepository {
-  async findById(id: string | Types.ObjectId): Promise<ICartDocument | null> {
+  async findById(id: string | Types.ObjectId, session?: ClientSession): Promise<ICartDocument | null> {
     const objectId = typeof id === 'string' ? new Types.ObjectId(id) : id;
-    return CartModel.findById(objectId);
+    const query = CartModel.findById(objectId);
+    if (session) query.session(session);
+    return query;
   }
 
-  async findByUserId(userId: string | Types.ObjectId): Promise<ICartDocument | null> {
+  async findByUserId(userId: string | Types.ObjectId, session?: ClientSession): Promise<ICartDocument | null> {
     const objectId = typeof userId === 'string' ? new Types.ObjectId(userId) : userId;
-    return CartModel.findOne({
+    const query = CartModel.findOne({
       ownerType: 'user',
       userId: objectId,
     });
+    if (session) query.session(session);
+    return query;
   }
 
-  async findBySessionId(sessionId: string): Promise<ICartDocument | null> {
-    const cart = await CartModel.findOne({
+  async findBySessionId(sessionId: string, session?: ClientSession): Promise<ICartDocument | null> {
+    const query = CartModel.findOne({
       ownerType: 'guest',
       sessionId: sessionId.trim(),
     });
+    if (session) query.session(session);
+    const cart = await query;
 
     if (!cart) return null;
 
@@ -32,14 +38,18 @@ export class CartRepository {
     return cart;
   }
 
-  async findActiveByOwner(owner: CartOwnerContext): Promise<ICartDocument | null> {
+  async findActiveByOwner(owner: CartOwnerContext, session?: ClientSession): Promise<ICartDocument | null> {
     if (owner.ownerType === 'user') {
-      return this.findByUserId(owner.userId);
+      return this.findByUserId(owner.userId, session);
     }
-    return this.findBySessionId(owner.sessionId);
+    return this.findBySessionId(owner.sessionId, session);
   }
 
-  async create(data: Partial<ICart>): Promise<ICartDocument> {
+  async create(data: Partial<ICart>, session?: ClientSession): Promise<ICartDocument> {
+    if (session) {
+      const docs = await CartModel.create([data], { session });
+      return docs[0];
+    }
     return CartModel.create(data);
   }
 
@@ -52,6 +62,7 @@ export class CartRepository {
     expectedVersion: number,
     update: UpdateQuery<ICartDocument>,
     ownerFilter?: Partial<{ userId: Types.ObjectId; sessionId: string; ownerType: string }>,
+    session?: ClientSession,
   ): Promise<ICartDocument | null> {
     const objectId = typeof cartId === 'string' ? new Types.ObjectId(cartId) : cartId;
 
@@ -64,10 +75,12 @@ export class CartRepository {
       Object.assign(query, ownerFilter);
     }
 
-    return CartModel.findOneAndUpdate(query, update, {
+    const mQuery = CartModel.findOneAndUpdate(query, update, {
       new: true,
       runValidators: true,
     });
+    if (session) mQuery.session(session);
+    return mQuery;
   }
 
   async deleteById(id: string | Types.ObjectId): Promise<boolean> {

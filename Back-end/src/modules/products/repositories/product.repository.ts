@@ -1,4 +1,4 @@
-import { Types, FilterQuery } from 'mongoose';
+import { Types, FilterQuery, ClientSession } from 'mongoose';
 import { ProductModel } from '../models/product.model';
 import { IProduct, IProductDocument, ProductAvailability } from '../types/product.types';
 import { escapeRegex, normalizeText } from '../utils/search-normalizer';
@@ -21,9 +21,11 @@ export class ProductRepository {
     return ProductModel.create(data);
   }
 
-  async findById(id: string | Types.ObjectId): Promise<IProductDocument | null> {
+  async findById(id: string | Types.ObjectId, session?: ClientSession): Promise<IProductDocument | null> {
     const objectId = typeof id === 'string' ? new Types.ObjectId(id) : id;
-    return ProductModel.findById(objectId);
+    const query = ProductModel.findById(objectId);
+    if (session) query.session(session);
+    return query;
   }
 
   async findBySlug(slug: string): Promise<IProductDocument | null> {
