@@ -8,6 +8,7 @@ import { OrderModel } from '../../src/modules/orders/models/order.model';
 import { PaymentModel } from '../../src/modules/payments/models/payment.model';
 import { PaymentProofModel } from '../../src/modules/payments/models/payment-proof.model';
 import { AuditLogModel } from '../../src/modules/audit/models/audit-log.model';
+import { OutboxEventModel } from '../../src/modules/notifications/models/outbox-event.model';
 import { orderService } from '../../src/modules/orders/services/order.service';
 import { paymentService } from '../../src/modules/payments/services/payment.service';
 import { BusinessRuleViolationError } from '../../src/common/errors';
@@ -150,6 +151,15 @@ describe('Payment Proof Lifecycle Integration Tests (PAY-001 - PAY-008)', () => 
     expect(auditProof1).toBeDefined();
     expect(auditProof1?.metadata?.submissionNumber).toBe(1);
 
+    // Check OutboxEvent
+    const outboxProof1 = await OutboxEventModel.findOne({
+      eventType: 'payment_submitted',
+      aggregateId: initialPayment!._id.toString(),
+      'payload.submissionNumber': 1,
+    });
+    expect(outboxProof1).toBeDefined();
+    expect(outboxProof1?.status).toBe('pending');
+
     // 4. Admin requests new proof
     const { payment: updatedPaymentReq } = await paymentService.adminRequestNewProof(
       submissionResult1.payment._id.toString(),
@@ -172,6 +182,13 @@ describe('Payment Proof Lifecycle Integration Tests (PAY-001 - PAY-008)', () => 
     });
     expect(proof1AfterReq?.status).toBe('new_proof_requested');
     expect(proof1AfterReq?.reviewNote).toContain('re-upload');
+
+    // Check OutboxEvent for new proof request
+    const outboxReq = await OutboxEventModel.findOne({
+      eventType: 'payment_proof_requested',
+      aggregateId: initialPayment!._id.toString(),
+    });
+    expect(outboxReq).toBeDefined();
 
     // 5. Customer submits proof #2
     const proofFiles2 = [
@@ -230,6 +247,13 @@ describe('Payment Proof Lifecycle Integration Tests (PAY-001 - PAY-008)', () => 
     // Verify AuditLog
     const auditConfirm = await AuditLogModel.findOne({ action: 'payment.confirmed' });
     expect(auditConfirm).toBeDefined();
+
+    // Verify OutboxEvent
+    const outboxConfirm = await OutboxEventModel.findOne({
+      eventType: 'payment_verified',
+      aggregateId: initialPayment!._id.toString(),
+    });
+    expect(outboxConfirm).toBeDefined();
 
     // 7. Further proof submissions must be rejected because payment is confirmed
     await expect(
@@ -290,8 +314,12 @@ describe('Payment Proof Lifecycle Integration Tests (PAY-001 - PAY-008)', () => 
         { userId: customerId.toString() },
       );
       fail('Expected error to be thrown');
-    } catch (err: any) {
-      expect(err.code).toBe(ErrorCodes.PAYMENT_PROOF_NOT_REQUIRED);
+    } catch (err: unknown) {
+      if (err instanceof BusinessRuleViolationError) {
+        expect(err.code).toBe(ErrorCodes.PAYMENT_PROOF_NOT_REQUIRED);
+      } else {
+        throw err;
+      }
     }
   });
 
@@ -364,5 +392,12 @@ describe('Payment Proof Lifecycle Integration Tests (PAY-001 - PAY-008)', () => 
     expect(proofInDb).toBeDefined();
     expect(proofInDb?.status).toBe('rejected');
     expect(proofInDb?.reviewNote).toContain('Instapay bank statement');
+
+    // Verify OutboxEvent for rejection
+    const outboxReject = await OutboxEventModel.findOne({
+      eventType: 'payment_rejected',
+      aggregateId: payment._id.toString(),
+    });
+    expect(outboxReject).toBeDefined();
   });
 });

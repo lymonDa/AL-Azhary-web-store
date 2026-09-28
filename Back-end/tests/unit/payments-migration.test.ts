@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { paymentsMigration } from '../../src/database/migrations/scripts/20260928_007_payments.migration';
-import { getRegisteredMigrations } from '../../src/database/migrations';
 
 describe('Payments Database Migration Unit Tests', () => {
   let mongod: MongoMemoryServer;

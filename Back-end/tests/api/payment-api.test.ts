@@ -59,6 +59,7 @@ describe('Customer & Guest Payment API (/api/v1/orders/:reference/payment*)', ()
       refreshTokenVersion: 0,
     });
     customerBId = userB._id.toString();
+    expect(customerBId).toBeDefined();
 
     // Login A
     const loginResA = await request(app)
@@ -260,6 +261,70 @@ describe('Customer & Guest Payment API (/api/v1/orders/:reference/payment*)', ()
         .get(`/api/v1/orders/${order.reference}/payment`)
         .set('x-guest-token', 'wrong-token-value');
       expect(res2.status).toBe(403);
+    });
+
+    it('rejects cross-guest access (Guest A cannot view Guest B payment)', async () => {
+      await CartModel.create({
+        ownerType: 'guest',
+        sessionId: 'guest-session-payment-a',
+        items: [
+          {
+            productId: new Types.ObjectId(productId),
+            variantId: null,
+            quantity: 1,
+            unitPriceMinor: 15000,
+            productNameSnapshot: { ar: 'الرسالة' },
+          },
+        ],
+        version: 1,
+      });
+
+      const { rawGuestToken: guestTokenA } = await orderService.createOrder(
+        {
+          contact: { name: 'Guest Customer A', phone: '+201099998888' },
+          fulfillment: {
+            method: 'delivery',
+            address: { governorate: 'Giza', city: 'Dokki', street: 'Tahrir' },
+          },
+          paymentMethodKey: 'vodafone_cash',
+          idempotencyKey: 'idemp_pay_cross_guest_a',
+        },
+        { owner: { ownerType: 'guest', sessionId: 'guest-session-payment-a' } },
+      );
+
+      await CartModel.create({
+        ownerType: 'guest',
+        sessionId: 'guest-session-payment-b',
+        items: [
+          {
+            productId: new Types.ObjectId(productId),
+            variantId: null,
+            quantity: 1,
+            unitPriceMinor: 15000,
+            productNameSnapshot: { ar: 'الرسالة' },
+          },
+        ],
+        version: 1,
+      });
+
+      const { order: orderB } = await orderService.createOrder(
+        {
+          contact: { name: 'Guest Customer B', phone: '+201077776666' },
+          fulfillment: {
+            method: 'delivery',
+            address: { governorate: 'Alexandria', city: 'Montaza', street: 'Corniche' },
+          },
+          paymentMethodKey: 'vodafone_cash',
+          idempotencyKey: 'idemp_pay_cross_guest_b',
+        },
+        { owner: { ownerType: 'guest', sessionId: 'guest-session-payment-b' } },
+      );
+
+      // Guest A tries to access Order B's payment
+      const res = await request(app)
+        .get(`/api/v1/orders/${orderB.reference}/payment`)
+        .set('x-guest-token', guestTokenA!);
+      expect(res.status).toBe(403);
     });
   });
 
@@ -515,6 +580,56 @@ describe('Customer & Guest Payment API (/api/v1/orders/:reference/payment*)', ()
         });
 
       expect(res.status).toBe(400);
+    });
+
+    it('rejects arbitrary folder (must be in al-azhari/payment-proofs)', async () => {
+      await CartModel.create({
+        ownerType: 'user',
+        userId: new Types.ObjectId(customerAId),
+        items: [
+          {
+            productId: new Types.ObjectId(productId),
+            variantId: null,
+            quantity: 1,
+            unitPriceMinor: 15000,
+            productNameSnapshot: { ar: 'الرسالة' },
+          },
+        ],
+        version: 1,
+      });
+
+      const { order } = await orderService.createOrder(
+        {
+          contact: { name: 'Customer A', phone: '+201011112222' },
+          fulfillment: {
+            method: 'delivery',
+            address: { governorate: 'Cairo', city: 'Nasr City', street: 'Abbas' },
+          },
+          paymentMethodKey: 'instapay',
+          idempotencyKey: 'idemp_pay_arbitrary_folder',
+        },
+        { owner: { ownerType: 'user', userId: customerAId } },
+      );
+
+      await orderService.adminAcceptOrder(order.reference, 1, adminUser);
+
+      // PublicId outside allowed folder
+      const res = await request(app)
+        .post(`/api/v1/orders/${order.reference}/payment-proofs`)
+        .set('Authorization', `Bearer ${customerAToken}`)
+        .send({
+          files: [
+            {
+              cloudinaryPublicId: 'al-azhari/products/evil_inject_1',
+              resourceType: 'image',
+              format: 'png',
+              bytes: 125000,
+            },
+          ],
+        });
+
+      expect(res.status).toBe(422);
+      expect(res.body.error.code).toBe('CLOUDINARY_METADATA_INVALID');
     });
   });
 });

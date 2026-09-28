@@ -6,6 +6,7 @@ import { orderRepository, OrderRepository } from '../../orders/repositories/orde
 import { OrderModel } from '../../orders/models/order.model';
 import { cloudinaryService, CloudinaryService } from '../../../integrations/cloudinary/cloudinary.service';
 import { auditService, AuditService } from '../../audit/services/audit.service';
+import { outboxService, OutboxService } from '../../notifications';
 import { withTransaction } from '../../../database/transaction';
 import { getPaymentMethodSnapshot } from '../utils/payment-methods.config';
 import {
@@ -42,6 +43,7 @@ export class PaymentService {
     private readonly orderRepo: OrderRepository = orderRepository,
     private readonly cloudinary: CloudinaryService = cloudinaryService,
     private readonly audit: AuditService = auditService,
+    private readonly outbox: OutboxService = outboxService,
   ) {}
 
   /**
@@ -285,6 +287,27 @@ export class PaymentService {
         ipHash: access.ipHash,
       });
 
+      // 5. Outbox Event
+      await this.outbox.record(
+        {
+          eventType: 'payment_submitted',
+          aggregateType: 'Payment',
+          aggregateId: payment._id.toString(),
+          payload: {
+            paymentId: payment._id.toString(),
+            orderId: order._id.toString(),
+            orderReference: order.reference,
+            submissionNumber,
+            customerId: order.customerId ? order.customerId.toString() : null,
+            amountDueMinor: payment.amountDueMinor,
+            currency: payment.currency,
+            status: 'under_review',
+          },
+          dedupeKey: `payment_${payment._id}_proof_${submissionNumber}`,
+        },
+        session,
+      );
+
       return { payment: updatedPayment, proof };
     });
   }
@@ -408,6 +431,25 @@ export class PaymentService {
         newState: { status: 'confirmed', version: input.expectedVersion + 1 },
         metadata: { orderReference: order.reference, note: input.note },
       });
+
+      // 5. Outbox Event
+      await this.outbox.record(
+        {
+          eventType: 'payment_verified',
+          aggregateType: 'Payment',
+          aggregateId: payment._id.toString(),
+          payload: {
+            paymentId: payment._id.toString(),
+            orderId: order._id.toString(),
+            orderReference: order.reference,
+            customerId: order.customerId ? order.customerId.toString() : null,
+            confirmedAt: updatedPayment.confirmedAt,
+            status: 'confirmed',
+          },
+          dedupeKey: `payment_${payment._id}_confirmed_${updatedPayment.version}`,
+        },
+        session,
+      );
 
       return { payment: updatedPayment, order: updatedOrder };
     });
@@ -533,6 +575,25 @@ export class PaymentService {
         metadata: { orderReference: order.reference, reason: input.reason },
       });
 
+      // 5. Outbox Event
+      await this.outbox.record(
+        {
+          eventType: 'payment_rejected',
+          aggregateType: 'Payment',
+          aggregateId: payment._id.toString(),
+          payload: {
+            paymentId: payment._id.toString(),
+            orderId: order._id.toString(),
+            orderReference: order.reference,
+            customerId: order.customerId ? order.customerId.toString() : null,
+            reason: input.reason,
+            status: 'rejected',
+          },
+          dedupeKey: `payment_${payment._id}_rejected_${updatedPayment.version}`,
+        },
+        session,
+      );
+
       return { payment: updatedPayment, order: updatedOrder };
     });
   }
@@ -653,6 +714,25 @@ export class PaymentService {
         newState: { status: 'new_proof_requested', version: input.expectedVersion + 1 },
         metadata: { orderReference: order.reference, note: input.note },
       });
+
+      // 5. Outbox Event
+      await this.outbox.record(
+        {
+          eventType: 'payment_proof_requested',
+          aggregateType: 'Payment',
+          aggregateId: payment._id.toString(),
+          payload: {
+            paymentId: payment._id.toString(),
+            orderId: order._id.toString(),
+            orderReference: order.reference,
+            customerId: order.customerId ? order.customerId.toString() : null,
+            note: input.note,
+            status: 'new_proof_requested',
+          },
+          dedupeKey: `payment_${payment._id}_req_new_proof_${updatedPayment.version}`,
+        },
+        session,
+      );
 
       return { payment: updatedPayment, order: updatedOrder };
     });

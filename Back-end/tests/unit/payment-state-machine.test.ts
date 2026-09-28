@@ -37,8 +37,12 @@ describe('Payment State Machine Unit Tests', () => {
       expect(() => validatePaymentTransition('confirmed', target)).toThrow(BusinessRuleViolationError);
       try {
         validatePaymentTransition('confirmed', target);
-      } catch (err: any) {
-        expect(err.code).toBe(ErrorCodes.PAYMENT_REVIEW_STATE_CONFLICT);
+      } catch (err: unknown) {
+        if (err instanceof BusinessRuleViolationError) {
+          expect(err.code).toBe(ErrorCodes.PAYMENT_REVIEW_STATE_CONFLICT);
+        } else {
+          throw err;
+        }
       }
     }
   });

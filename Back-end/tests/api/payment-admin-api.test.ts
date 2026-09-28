@@ -8,8 +8,6 @@ import { ProductModel } from '../../src/modules/products/models/product.model';
 import { CartModel } from '../../src/modules/carts/models/cart.model';
 import { ShippingRuleModel } from '../../src/modules/shipping/models/shipping-rule.model';
 import { OrderModel } from '../../src/modules/orders/models/order.model';
-import { PaymentModel } from '../../src/modules/payments/models/payment.model';
-import { PaymentProofModel } from '../../src/modules/payments/models/payment-proof.model';
 import { passwordService } from '../../src/modules/auth/services/password.service';
 import { rolesService } from '../../src/modules/users/services/roles.service';
 import { orderService } from '../../src/modules/orders/services/order.service';
@@ -118,12 +116,35 @@ describe('Admin Payment API (/api/v1/admin/payments*)', () => {
         .set('Authorization', `Bearer ${customerToken}`);
       expect(res.status).toBe(403);
     });
+
+    it('allows owner role with unrestricted permissions', async () => {
+      const passwordHash = await passwordService.hashPassword('Password123!');
+      await UserModel.create({
+        name: 'Store Owner',
+        email: 'owner@al-azhari.com',
+        phone: '+201000000099',
+        passwordHash,
+        role: 'owner',
+        status: 'active',
+        emailVerifiedAt: new Date(),
+        refreshTokenVersion: 0,
+      });
+
+      const ownerLogin = await request(app)
+        .post('/api/v1/auth/login')
+        .send({ email: 'owner@al-azhari.com', password: 'Password123!' });
+
+      const res = await request(app)
+        .get('/api/v1/admin/payments')
+        .set('Authorization', `Bearer ${ownerLogin.body.data.accessToken}`);
+      expect(res.status).toBe(200);
+    });
   });
 
   describe('GET /api/v1/admin/payments', () => {
     it('allows admin to list payments with pagination', async () => {
       // Create order and payment
-      const cart = await CartModel.create({
+      await CartModel.create({
         ownerType: 'user',
         userId: new Types.ObjectId(customerId),
         items: [
@@ -186,7 +207,7 @@ describe('Admin Payment API (/api/v1/admin/payments*)', () => {
     let paymentVersion: number;
 
     beforeEach(async () => {
-      const cart = await CartModel.create({
+      await CartModel.create({
         ownerType: 'user',
         userId: new Types.ObjectId(customerId),
         items: [

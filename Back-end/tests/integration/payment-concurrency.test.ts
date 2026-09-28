@@ -6,6 +6,8 @@ import { CartModel } from '../../src/modules/carts/models/cart.model';
 import { ShippingRuleModel } from '../../src/modules/shipping/models/shipping-rule.model';
 import { PaymentModel } from '../../src/modules/payments/models/payment.model';
 import { PaymentProofModel } from '../../src/modules/payments/models/payment-proof.model';
+import { AuditLogModel } from '../../src/modules/audit/models/audit-log.model';
+import { OutboxEventModel } from '../../src/modules/notifications/models/outbox-event.model';
 import { orderService } from '../../src/modules/orders/services/order.service';
 import { paymentService } from '../../src/modules/payments/services/payment.service';
 import { withTransaction } from '../../src/database/transaction';
@@ -276,6 +278,34 @@ describe('Payment Concurrency and Transaction Safety Tests (PAY-001 - PAY-008)',
           { session },
         );
 
+        await AuditLogModel.create(
+          [
+            {
+              actorId: customerId,
+              actorRole: 'customer',
+              action: 'payment.proof_submitted',
+              entityType: 'Payment',
+              entityId: payment._id.toString(),
+            },
+          ],
+          { session },
+        );
+
+        await OutboxEventModel.create(
+          [
+            {
+              eventType: 'payment_submitted',
+              aggregateType: 'Payment',
+              aggregateId: payment._id.toString(),
+              payload: { test: true },
+              status: 'pending',
+              attempts: 0,
+              availableAt: new Date(),
+            },
+          ],
+          { session },
+        );
+
         // Force intentional failure
         throw new Error('SIMULATED_DATABASE_FAILURE');
       }),
@@ -290,5 +320,16 @@ describe('Payment Concurrency and Transaction Safety Tests (PAY-001 - PAY-008)',
       submissionNumber: 2,
     });
     expect(proofDoc).toBeNull(); // rolled back
+
+    const auditDoc = await AuditLogModel.findOne({
+      entityId: payment._id.toString(),
+      action: 'payment.proof_submitted',
+    });
+    expect(auditDoc).toBeNull(); // rolled back
+
+    const outboxDoc = await OutboxEventModel.findOne({
+      aggregateId: payment._id.toString(),
+    });
+    expect(outboxDoc).toBeNull(); // rolled back
   });
 });
