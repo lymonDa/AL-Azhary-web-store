@@ -30,6 +30,8 @@ import {
 } from '../../../common/errors';
 import { ErrorCodes } from '../../../common/errors/errorCodes';
 import { RepositoryContext } from '../../../common/types';
+import { paymentRepository, PaymentRepository } from '../../payments/repositories/payment.repository';
+import { getPaymentMethodSnapshot } from '../../payments/utils/payment-methods.config';
 
 export interface CheckoutContext {
   owner: CartOwnerContext;
@@ -45,6 +47,7 @@ export class OrderService {
     private readonly shipService: ShippingService = shippingService,
     private readonly invService: InventoryService = inventoryService,
     private readonly audit: AuditService = auditService,
+    private readonly paymentRepo: PaymentRepository = paymentRepository,
   ) {}
 
   /**
@@ -273,6 +276,14 @@ export class OrderService {
 
       const reference = generateOrderReference();
       const idempotencyFingerprint = calculateIdempotencyFingerprint(input);
+      const paymentId = new Types.ObjectId();
+      const isCod = input.paymentMethodKey.toLowerCase() === 'cod';
+      const methodSnapshot = getPaymentMethodSnapshot(input.paymentMethodKey) ?? {
+        key: input.paymentMethodKey,
+        name: { ar: input.paymentMethodKey, en: input.paymentMethodKey },
+        type: isCod ? 'cash_on_delivery' : 'manual_transfer',
+        proofRequired: !isCod,
+      };
 
       // Create Order document
       const order = await this.orderRepo.create(
@@ -281,6 +292,7 @@ export class OrderService {
           customerId:
             context.owner.ownerType === 'user' ? new Types.ObjectId(context.owner.userId) : null,
           guestAccessTokenHash: guestTokenHash,
+          paymentId,
           customerSnapshot: {
             name: input.contact.name.trim(),
             phone: input.contact.phone.trim(),
@@ -330,6 +342,27 @@ export class OrderService {
           idempotencyKey: input.idempotencyKey,
           idempotencyOwner: incomingOwnerKey,
           idempotencyFingerprint,
+          version: 1,
+        },
+        ctx,
+      );
+
+      // Create linked payment document
+      await this.paymentRepo.create(
+        {
+          _id: paymentId,
+          ownerType: 'order',
+          ownerId: order._id,
+          customerId: order.customerId ?? null,
+          methodKey: input.paymentMethodKey,
+          methodSnapshot,
+          amountDueMinor: totalMinor,
+          currency: 'EGP',
+          status: 'not_submitted',
+          proofRequired: !isCod,
+          proofSubmissionCount: 0,
+          confirmedAt: null,
+          rejectedAt: null,
           version: 1,
         },
         ctx,

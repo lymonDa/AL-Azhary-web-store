@@ -17,6 +17,7 @@ import { contentRouter, adminContentRouter } from './modules/content';
 import { cartRouter } from './modules/carts';
 import { adminInventoryRouter } from './modules/inventory';
 import { orderRouter, checkoutRouter, adminOrderRouter } from './modules/orders';
+import { orderPaymentRouter, adminPaymentRouter } from './modules/payments';
 
 export type CustomRoutesCallback = (apiRouter: Router, app: Express) => void;
 
@@ -140,14 +141,16 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   // Phase 8 Checkout & Orders
   apiRouter.use('/checkout', checkoutRouter);
   apiRouter.use('/orders', orderRouter);
+  apiRouter.use('/orders', orderPaymentRouter);
 
-  // Phase 5, 7, 8 Admin Endpoints
+  // Phase 5, 7, 8, 9 Admin Endpoints
   const adminRouter = express.Router();
   adminRouter.use('/categories', adminCategoryRouter);
   adminRouter.use('/products', adminProductRouter);
   adminRouter.use('/content', adminContentRouter);
   adminRouter.use('/inventory', adminInventoryRouter);
   adminRouter.use('/orders', adminOrderRouter);
+  adminRouter.use('/payments', adminPaymentRouter);
   apiRouter.use('/admin', adminRouter);
 
   // Hook for custom routes (e.g. testing error conditions or future feature routes)
