@@ -25,29 +25,66 @@ export async function withTransaction<T>(
     return operation(options.existingSession);
   }
 
-  const session = await mongoose.startSession();
+  const maxRetries = 5;
+  let attempt = 0;
 
-  try {
-    session.startTransaction(options?.transactionOptions);
-    const result = await operation(session);
-    await session.commitTransaction();
-    return result;
-  } catch (error: unknown) {
-    if (session.inTransaction()) {
-      try {
-        await session.abortTransaction();
-      } catch (abortError) {
-        logger.error({ err: abortError }, 'Failed to abort transaction cleanly');
+  while (attempt < maxRetries) {
+    attempt++;
+    const session = await mongoose.startSession();
+
+    try {
+      session.startTransaction(options?.transactionOptions);
+      const result = await operation(session);
+      await session.commitTransaction();
+      return result;
+    } catch (error: unknown) {
+      if (session.inTransaction()) {
+        try {
+          await session.abortTransaction();
+        } catch (abortError) {
+          logger.error({ err: abortError }, 'Failed to abort transaction cleanly');
+        }
       }
+
+      const mongoErr = error as {
+        hasErrorLabel?: (label: string) => boolean;
+        message?: string;
+        code?: number;
+      };
+
+      const isTransient =
+        (typeof mongoErr.hasErrorLabel === 'function' &&
+          (mongoErr.hasErrorLabel('TransientTransactionError') ||
+            mongoErr.hasErrorLabel('UnknownTransactionCommitResult'))) ||
+        mongoErr.message?.includes('catalog changes') ||
+        mongoErr.message?.includes('Write conflict') ||
+        mongoErr.message?.includes('temporarily unavailable');
+
+      if (isTransient && attempt < maxRetries) {
+        logger.warn(
+          { attempt, err: mongoErr.message },
+          'Transient transaction error encountered; retrying transaction...',
+        );
+        // Exponential backoff with small jitter: 50ms, 100ms, 200ms...
+        await new Promise((res) => setTimeout(res, 50 * Math.pow(2, attempt - 1)));
+        continue;
+      }
+
+      const errMessage = (error as { message?: string })?.message || '';
+      if (
+        errMessage.includes('Transaction numbers are only allowed on a replica set member') ||
+        errMessage.includes('replica set')
+      ) {
+        logger.warn(
+          'Transactions not supported on standalone MongoDB instance; executing without transaction session',
+        );
+        return operation(session);
+      }
+      throw error;
+    } finally {
+      await session.endSession();
     }
-    const errMessage = (error as { message?: string })?.message || '';
-    if (errMessage.includes('Transaction numbers are only allowed on a replica set member') || errMessage.includes('replica set')) {
-      logger.warn('Transactions not supported on standalone MongoDB instance; executing without transaction session');
-      // Execute without transaction session
-      return operation(session);
-    }
-    throw error;
-  } finally {
-    await session.endSession();
   }
+
+  throw new Error('Transaction failed after maximum retry attempts');
 }

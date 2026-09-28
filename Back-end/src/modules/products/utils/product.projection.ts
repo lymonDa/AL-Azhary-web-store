@@ -98,12 +98,14 @@ export function toSafeAdminProduct(
     displayOrder: typeof record.displayOrder === 'number' ? record.displayOrder : 0,
     stockTotal: typeof record.stockTotal === 'number' ? record.stockTotal : 0,
     stockReserved: typeof record.stockReserved === 'number' ? record.stockReserved : 0,
+    inventoryVersion: typeof record.inventoryVersion === 'number' ? record.inventoryVersion : 0,
     ...(record.hasVariants && rawVariants.length > 0
       ? {
           variants: rawVariants.map((v) => ({
             ...toSafePublicVariant(v),
             stockTotal: typeof v.stockTotal === 'number' ? v.stockTotal : 0,
             stockReserved: typeof v.stockReserved === 'number' ? v.stockReserved : 0,
+            inventoryVersion: typeof v.inventoryVersion === 'number' ? v.inventoryVersion : 0,
           })),
         }
       : {}),

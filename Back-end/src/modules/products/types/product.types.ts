@@ -37,6 +37,7 @@ export interface IVariant {
   availability: ProductAvailability;
   stockTotal: number;
   stockReserved: number;
+  inventoryVersion?: number;
   preOrderEligible: boolean;
   sku?: string | null;
   images?: IProductImage[];
@@ -62,6 +63,7 @@ export interface IProduct {
   displayOrder: number;
   stockTotal: number;
   stockReserved: number;
+  inventoryVersion?: number;
   searchText: string;
   createdAt: Date;
   updatedAt: Date;
@@ -107,7 +109,8 @@ export interface SafeAdminProduct extends SafePublicProduct {
   displayOrder: number;
   stockTotal: number;
   stockReserved: number;
-  variants?: (SafePublicVariant & { stockTotal: number; stockReserved: number })[];
+  inventoryVersion?: number;
+  variants?: (SafePublicVariant & { stockTotal: number; stockReserved: number; inventoryVersion?: number })[];
   updatedAt: Date;
 }
 

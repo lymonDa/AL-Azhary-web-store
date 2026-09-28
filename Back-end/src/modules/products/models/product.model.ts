@@ -106,6 +106,12 @@ const variantSchema = new Schema(
       min: [0, 'Variant stockReserved must be non-negative'],
       validate: integerValidator,
     },
+    inventoryVersion: {
+      type: Number,
+      default: 0,
+      min: [0, 'Variant inventoryVersion must be non-negative'],
+      validate: integerValidator,
+    },
     preOrderEligible: {
       type: Boolean,
       default: false,
@@ -240,6 +246,12 @@ const productSchema = new Schema<IProductDocument>(
       type: Number,
       default: 0,
       min: [0, 'stockReserved must be non-negative'],
+      validate: integerValidator,
+    },
+    inventoryVersion: {
+      type: Number,
+      default: 0,
+      min: [0, 'inventoryVersion must be non-negative'],
       validate: integerValidator,
     },
     searchText: {
