@@ -2,6 +2,7 @@ import { Types, ClientSession } from 'mongoose';
 import { orderRepository, OrderRepository } from '../repositories/order.repository';
 import {
   CreateOrderInput,
+  IOrder,
   IOrderDocument,
   IOrderItem,
   OrderStatus,
@@ -32,6 +33,8 @@ import { ErrorCodes } from '../../../common/errors/errorCodes';
 import { RepositoryContext } from '../../../common/types';
 import { paymentRepository, PaymentRepository } from '../../payments/repositories/payment.repository';
 import { getPaymentMethodSnapshot } from '../../payments/utils/payment-methods.config';
+import { couponService, CouponService } from '../../coupons/services/coupon.service';
+import { outboxService, OutboxService } from '../../notifications/services/outbox.service';
 
 export interface CheckoutContext {
   owner: CartOwnerContext;
@@ -48,6 +51,8 @@ export class OrderService {
     private readonly invService: InventoryService = inventoryService,
     private readonly audit: AuditService = auditService,
     private readonly paymentRepo: PaymentRepository = paymentRepository,
+    private readonly couponSvc: CouponService = couponService,
+    private readonly outbox: OutboxService = outboxService,
   ) {}
 
   /**
@@ -261,8 +266,50 @@ export class OrderService {
       }
 
       const shippingCostMinor = shippingEstimate.costMinor;
-      const discountMinor = 0; // Coupon calculation handled when active coupon passed
-      const totalMinor = productSubtotalMinor + shippingCostMinor - discountMinor;
+
+      // 5. Server-side coupon validation and discount calculation (COUP-001 to COUP-005)
+      let discountMinor = 0;
+      let couponSnapshotData: IOrder['couponSnapshot'] = null;
+      let validatedCouponId: Types.ObjectId | null = null;
+
+      if (input.couponCode && input.couponCode.trim().length > 0) {
+        const cartItemsForCoupon = orderItems.map((it) => ({
+          productId: it.productId,
+          categoryId: it.categorySnapshot ?? null,
+          categorySnapshot: it.categorySnapshot ?? null,
+          unitPriceMinor: it.unitPriceMinor,
+          quantity: it.quantity,
+          lineTotalMinor: it.lineTotalMinor,
+        }));
+
+        // Re-validate coupon server-side inside transaction — never trust pre-checked result
+        const couponResult = await this.couponSvc.validateCoupon(
+          {
+            code: input.couponCode,
+            customerId:
+              context.owner.ownerType === 'user' ? context.owner.userId : null,
+            items: cartItemsForCoupon,
+            subtotalMinor: productSubtotalMinor,
+          },
+          session,
+        );
+
+        discountMinor = couponResult.discountMinor;
+        validatedCouponId = new Types.ObjectId(couponResult.couponId);
+        couponSnapshotData = {
+          couponId: couponResult.couponId,
+          code: couponResult.code,
+          discountType: couponResult.discountType,
+          value: couponResult.value,
+          discountMinor: couponResult.discountMinor,
+          scopeType: couponResult.scopeType,
+          scopeIds: couponResult.scopeIds,
+        };
+      }
+
+      // Order total: items subtotal - coupon discount + shipping (Section 16)
+      // Discount never exceeds subtotal; minimum total is 0
+      const totalMinor = Math.max(0, productSubtotalMinor - discountMinor + shippingCostMinor);
 
       // Guest Token Generation
       let guestTokenHash: string | null = null;
@@ -337,7 +384,7 @@ export class OrderService {
               timestamp: new Date(),
             },
           ],
-          couponSnapshot: null,
+          couponSnapshot: couponSnapshotData,
           submittedAt: new Date(),
           idempotencyKey: input.idempotencyKey,
           idempotencyOwner: incomingOwnerKey,
@@ -367,6 +414,49 @@ export class OrderService {
         },
         ctx,
       );
+
+      // Atomic coupon redemption inside the transaction (after order is created)
+      if (validatedCouponId && couponSnapshotData) {
+        const customerId =
+          context.owner.ownerType === 'user'
+            ? new Types.ObjectId(context.owner.userId)
+            : null;
+
+        try {
+          await this.couponSvc.redeemCoupon(
+            validatedCouponId,
+            order._id,
+            customerId,
+            discountMinor,
+            session,
+          );
+        } catch (err) {
+          // Handle duplicate-key (11000) as idempotent — same order already redeemed this coupon
+          const mongoErr = err as { code?: number; keyPattern?: Record<string, number> };
+          if (mongoErr?.code !== 11000) {
+            throw err;
+          }
+        }
+
+        // Persist coupon_used outbox event for downstream processing (Phase 14 worker)
+        await this.outbox.record(
+          {
+            eventType: 'coupon_used',
+            aggregateType: 'Coupon',
+            aggregateId: validatedCouponId.toString(),
+            payload: {
+              couponId: validatedCouponId.toString(),
+              code: couponSnapshotData.code,
+              orderId: order._id.toString(),
+              orderReference: order.reference,
+              discountMinor,
+              customerId: context.owner.ownerType === 'user' ? context.owner.userId : null,
+            },
+            dedupeKey: `coupon_used:${validatedCouponId.toString()}:${order._id.toString()}`,
+          },
+          session,
+        );
+      }
 
       // Clear & version cart after successful order creation
       await this.cartRepo.updateWithVersion(

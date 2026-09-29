@@ -115,8 +115,13 @@ export interface IOrder {
   paymentStatus: PaymentStatus;
   statusHistory: IOrderStatusHistoryEntry[];
   couponSnapshot?: {
+    couponId?: Types.ObjectId | string | null;
     code: string;
+    discountType?: string | null;
+    value?: number | null;
     discountMinor: number;
+    scopeType?: string | null;
+    scopeIds?: string[];
   } | null;
   submittedAt: Date;
   acceptedAt?: Date | null;

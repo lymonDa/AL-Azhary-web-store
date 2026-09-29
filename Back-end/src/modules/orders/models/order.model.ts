@@ -266,8 +266,13 @@ export const orderSchema = new Schema<IOrderDocument>(
     },
     couponSnapshot: {
       type: {
+        couponId: { type: Schema.Types.ObjectId, ref: 'Coupon', default: null },
         code: { type: String, required: true },
+        discountType: { type: String, default: null },
+        value: { type: Number, default: null },
         discountMinor: { type: Number, required: true, min: 0 },
+        scopeType: { type: String, default: null },
+        scopeIds: { type: [String], default: [] },
       },
       default: null,
       _id: false,
