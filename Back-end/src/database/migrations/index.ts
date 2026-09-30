@@ -10,3 +10,4 @@ export * from './scripts/20260928_005_inventory.migration';
 export * from './scripts/20260928_006_orders.migration';
 export * from './scripts/20260928_007_payments.migration';
 export * from './scripts/20260928_008_shipping_coupons.migration';
+export * from './scripts/20260928_009_services_quotations.migration';

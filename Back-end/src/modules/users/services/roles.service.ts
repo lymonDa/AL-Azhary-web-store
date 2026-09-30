@@ -22,7 +22,9 @@ export const SYSTEM_ROLE_DEFINITIONS = [
       'categories.write',
       'content.write',
       'inventory.write',
+      'services.read',
       'services.write',
+      'services.quote',
       'quotations.write',
       'preorders.write',
       'returns.write',
@@ -67,7 +69,17 @@ export class RolesService {
       return true;
     }
 
-    return role.permissionKeys.includes(requiredPermission);
+    if (role.permissionKeys.includes(requiredPermission)) {
+      return true;
+    }
+
+    // Support namespace wildcard matching, e.g. 'services.*' matching 'services.quote'
+    const [namespace] = requiredPermission.split('.');
+    if (role.permissionKeys.includes(`${namespace}.*`)) {
+      return true;
+    }
+
+    return false;
   }
 
   async ensureSystemRoles(): Promise<void> {

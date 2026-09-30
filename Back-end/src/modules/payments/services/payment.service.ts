@@ -96,6 +96,67 @@ export class PaymentService {
   }
 
   /**
+   * Creates or returns existing Payment record for an accepted Service Quotation.
+   * Gated strictly behind quotation acceptance.
+   * Preserves amountMinor and currency from the quotation snapshot.
+   * Validates COD against approved category configuration (OD-14).
+   */
+  async createPaymentForServiceQuotation(
+    params: {
+      quotationId: Types.ObjectId;
+      customerId?: Types.ObjectId | null;
+      amountDueMinor: number;
+      currency: 'EGP';
+      paymentMethodKey?: string;
+      codAllowed?: boolean | null;
+    },
+    ctx?: RepositoryContext,
+  ): Promise<IPaymentDocument> {
+    const existing = await this.paymentRepo.findByOwner('serviceQuotation', params.quotationId, ctx);
+    if (existing) {
+      return existing;
+    }
+
+    const methodKey = params.paymentMethodKey?.trim().toLowerCase() || 'instapay';
+
+    if (methodKey === 'cod') {
+      if (params.codAllowed !== true) {
+        throw new BusinessRuleViolationError(
+          ErrorCodes.UNSUPPORTED_SERVICE_PAYMENT_METHOD,
+          'Cash on delivery is not approved for this service (OD-14)',
+        );
+      }
+    }
+
+    const methodSnapshot = getPaymentMethodSnapshot(methodKey) || {
+      key: methodKey,
+      name: { ar: methodKey },
+      type: methodKey === 'cod' ? 'cash_on_delivery' : 'digital_wallet',
+      proofRequired: methodKey !== 'cod',
+    };
+
+    const isCod = methodKey === 'cod';
+    const payment = await this.paymentRepo.create(
+      {
+        ownerType: 'serviceQuotation',
+        ownerId: params.quotationId,
+        customerId: params.customerId ?? null,
+        methodKey,
+        methodSnapshot,
+        amountDueMinor: params.amountDueMinor,
+        currency: params.currency,
+        status: 'not_submitted',
+        proofRequired: !isCod,
+        proofSubmissionCount: 0,
+        version: 1,
+      },
+      ctx,
+    );
+
+    return payment;
+  }
+
+  /**
    * Customer/Admin retrieves payment details for an order.
    */
   async getPaymentByOrderReference(
