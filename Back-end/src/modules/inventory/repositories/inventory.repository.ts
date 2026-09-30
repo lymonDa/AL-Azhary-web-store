@@ -226,6 +226,61 @@ export class InventoryRepository {
   }
 
   /**
+   * Restores total stock for a non-variant product upon return approval.
+   */
+  async restoreProductStock(
+    productId: string | Types.ObjectId,
+    quantity: number,
+    ctx?: RepositoryContext,
+  ): Promise<boolean> {
+    const objectId = typeof productId === 'string' ? new Types.ObjectId(productId) : productId;
+    const res = await ProductModel.updateOne(
+      {
+        _id: objectId,
+        hasVariants: false,
+      },
+      {
+        $inc: {
+          stockTotal: quantity,
+          inventoryVersion: 1,
+        },
+      },
+      { session: ctx?.session || undefined },
+    );
+
+    return res.modifiedCount === 1;
+  }
+
+  /**
+   * Restores total stock for an embedded variant product upon return approval.
+   */
+  async restoreVariantStock(
+    productId: string | Types.ObjectId,
+    variantId: string,
+    quantity: number,
+    ctx?: RepositoryContext,
+  ): Promise<boolean> {
+    const objectId = typeof productId === 'string' ? new Types.ObjectId(productId) : productId;
+    const res = await ProductModel.updateOne(
+      {
+        _id: objectId,
+        hasVariants: true,
+        'variants.variantId': variantId,
+      },
+      {
+        $inc: {
+          'variants.$.stockTotal': quantity,
+          'variants.$.inventoryVersion': 1,
+          inventoryVersion: 1,
+        },
+      },
+      { session: ctx?.session || undefined },
+    );
+
+    return res.modifiedCount === 1;
+  }
+
+  /**
    * Optimistically adjust stock for a non-variant product with version checking.
    */
   async adjustProductStockWithVersion(

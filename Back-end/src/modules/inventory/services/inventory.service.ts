@@ -745,6 +745,63 @@ export class InventoryService {
       { existingSession: options?.session },
     );
   }
+
+  /**
+   * Restores returned stock to available inventory upon approved return.
+   * Transactional and appends ADJUSTMENT ledger transaction.
+   */
+  async restoreReturnedStock(
+    items: { productId: string | Types.ObjectId; variantId?: string | null; quantity: number }[],
+    sourceId: string,
+    actor: ActorContext,
+    options?: { session?: ClientSession | null; requestId?: string },
+  ): Promise<void> {
+    return withTransaction(
+      async (session) => {
+        const ctx: RepositoryContext = { session, requestId: options?.requestId };
+
+        for (const item of items) {
+          const product = await this.invRepo.findProductById(item.productId, ctx);
+          if (!product) continue;
+
+          let stockBefore = product.stockTotal;
+          let stockReservedBefore = product.stockReserved;
+
+          if (product.hasVariants && item.variantId) {
+            const v = product.variants.find((variant) => variant.variantId === item.variantId);
+            if (v) {
+              stockBefore = v.stockTotal;
+              stockReservedBefore = v.stockReserved;
+            }
+            await this.invRepo.restoreVariantStock(item.productId, item.variantId, item.quantity, ctx);
+          } else {
+            await this.invRepo.restoreProductStock(item.productId, item.quantity, ctx);
+          }
+
+          // Append transaction to inventory ledger
+          await this.transactionRepo.create(
+            {
+              productId: new Types.ObjectId(item.productId),
+              variantId: item.variantId ?? null,
+              type: 'ADJUSTMENT',
+              quantityDelta: item.quantity,
+              stockTotalBefore: stockBefore,
+              stockTotalAfter: stockBefore + item.quantity,
+              stockReservedBefore,
+              stockReservedAfter: stockReservedBefore,
+              sourceType: 'order',
+              sourceId,
+              actorId: actor.id ? new Types.ObjectId(actor.id) : null,
+              actorRole: actor.role,
+              reason: `Return restock for return ${sourceId}`,
+            },
+            ctx,
+          );
+        }
+      },
+      { existingSession: options?.session },
+    );
+  }
 }
 
 export const inventoryService = new InventoryService();

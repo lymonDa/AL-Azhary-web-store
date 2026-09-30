@@ -22,6 +22,12 @@ import { couponRouter, adminCouponRouter } from './modules/coupons';
 import { adminShippingRouter } from './modules/shipping';
 import { serviceRouter, serviceRequestRouter } from './modules/services';
 import { adminServiceRequestRouter } from './modules/quotations';
+import {
+  customerReturnRouter,
+  orderReturnsRouter,
+  adminReturnRouter,
+  adminRefundRouter,
+} from './modules/returns';
 
 export type CustomRoutesCallback = (apiRouter: Router, app: Express) => void;
 
@@ -147,12 +153,16 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   apiRouter.use('/checkout', couponRouter);   // Phase 10: POST /checkout/validate
   apiRouter.use('/orders', orderRouter);
   apiRouter.use('/orders', orderPaymentRouter);
+  apiRouter.use('/orders/:orderReference/returns', orderReturnsRouter); // Phase 12
 
   // Phase 11 Services & Quotations
   apiRouter.use('/services', serviceRouter);
   apiRouter.use('/service-requests', serviceRequestRouter);
 
-  // Phase 5, 7, 8, 9, 10, 11 Admin Endpoints
+  // Phase 12 Returns & Refunds (Customer)
+  apiRouter.use('/returns', customerReturnRouter);
+
+  // Phase 5, 7, 8, 9, 10, 11, 12 Admin Endpoints
   const adminRouter = express.Router();
   adminRouter.use('/categories', adminCategoryRouter);
   adminRouter.use('/products', adminProductRouter);
@@ -163,6 +173,8 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   adminRouter.use('/coupons', adminCouponRouter);   // Phase 10
   adminRouter.use('/shipping', adminShippingRouter); // Phase 10
   adminRouter.use('/service-requests', adminServiceRequestRouter); // Phase 11
+  adminRouter.use('/returns', adminReturnRouter); // Phase 12
+  adminRouter.use('/refunds', adminRefundRouter); // Phase 12
   apiRouter.use('/admin', adminRouter);
 
   // Hook for custom routes (e.g. testing error conditions or future feature routes)
