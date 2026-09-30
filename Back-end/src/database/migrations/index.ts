@@ -13,3 +13,4 @@ export * from './scripts/20260928_008_shipping_coupons.migration';
 export * from './scripts/20260928_009_services_quotations.migration';
 export * from './scripts/20260928_010_returns_refunds.migration';
 export * from './scripts/20260928_011_notifications.migration';
+export * from './scripts/20260928_012_outbox_jobs.migration';

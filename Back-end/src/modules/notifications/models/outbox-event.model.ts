@@ -15,6 +15,8 @@ export interface IOutboxEvent {
   availableAt: Date;
   processedAt?: Date | null;
   lastError?: string | null;
+  leaseUntil?: Date | null;
+  claimedBy?: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -79,6 +81,15 @@ export const outboxEventSchema = new Schema<IOutboxEventDocument>(
       type: String,
       default: null,
     },
+    leaseUntil: {
+      type: Date,
+      default: null,
+      index: true,
+    },
+    claimedBy: {
+      type: String,
+      default: null,
+    },
   },
   {
     ...defaultSchemaOptions,
@@ -87,5 +98,7 @@ export const outboxEventSchema = new Schema<IOutboxEventDocument>(
 );
 
 outboxEventSchema.index({ status: 1, availableAt: 1 });
+outboxEventSchema.index({ status: 1, leaseUntil: 1 });
+outboxEventSchema.index({ status: 1, createdAt: -1 });
 
 export const OutboxEventModel = model<IOutboxEventDocument>('OutboxEvent', outboxEventSchema);

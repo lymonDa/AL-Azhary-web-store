@@ -4,6 +4,7 @@ import { app } from './app';
 import { env, logger, corsOptions } from './config';
 import { connectDatabase, disconnectDatabase, getDatabaseState } from './database';
 import { initRealtime } from './realtime';
+import { startBackgroundWorkers, stopBackgroundWorkers } from './jobs';
 
 const server = http.createServer(app);
 
@@ -38,7 +39,12 @@ async function startServer(): Promise<void> {
       }
     }
 
-    // 2. Start HTTP & WebSocket server
+    // 2. Start background outbox workers and maintenance schedulers
+    if (env.NODE_ENV !== 'test') {
+      startBackgroundWorkers();
+    }
+
+    // 3. Start HTTP & WebSocket server
     server.listen(env.PORT, () => {
       logger.info(
         {
@@ -57,7 +63,7 @@ async function startServer(): Promise<void> {
 }
 
 // Graceful Shutdown Lifecycle:
-// Stop accepting new HTTP connections -> Stop Socket.IO -> Close MongoDB connection -> Exit process
+// Stop accepting new HTTP connections -> Stop Background Workers -> Stop Socket.IO -> Close MongoDB connection -> Exit process
 async function gracefulShutdown(signal: string): Promise<void> {
   if (isShuttingDown) return;
   isShuttingDown = true;
@@ -73,11 +79,14 @@ async function gracefulShutdown(signal: string): Promise<void> {
     }
 
     try {
-      // 2. Stop Socket.IO
+      // 2. Stop Background Workers (drain in-flight outbox deliveries)
+      await stopBackgroundWorkers();
+
+      // 3. Stop Socket.IO
       io.close();
       logger.info('Socket.IO server closed');
 
-      // 3. Close MongoDB connection
+      // 4. Close MongoDB connection
       await disconnectDatabase();
       logger.info('MongoDB connection closed gracefully');
 

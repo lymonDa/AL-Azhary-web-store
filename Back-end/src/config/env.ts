@@ -85,9 +85,19 @@ export const envSchema = z
     RATE_LIMIT_PUBLIC_PER_MINUTE: z.coerce.number().default(100),
     RATE_LIMIT_AUTH_PER_MINUTE: z.coerce.number().default(20),
 
-    // Background Outbox
+    // Background Outbox & Jobs (Phase 14)
     OUTBOX_POLL_INTERVAL_MS: z.coerce.number().default(5000),
     OUTBOX_MAX_ATTEMPTS: z.coerce.number().default(5),
+    OUTBOX_BATCH_SIZE: z.coerce.number().default(20),
+    OUTBOX_CONCURRENCY: z.coerce.number().default(5),
+    OUTBOX_LEASE_MS: z.coerce.number().default(60000),
+    OUTBOX_SHUTDOWN_TIMEOUT_MS: z.coerce.number().default(10000),
+    CRON_ENABLED: z
+      .preprocess(
+        (val) => (typeof val === 'string' ? val.toLowerCase() === 'true' || val === '1' : Boolean(val)),
+        z.boolean(),
+      )
+      .default(true),
   })
   .superRefine((data, ctx) => {
     if (data.NODE_ENV === 'production') {
