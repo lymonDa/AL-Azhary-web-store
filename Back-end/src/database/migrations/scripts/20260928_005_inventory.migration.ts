@@ -1,4 +1,5 @@
 import { Migration, MigrationContext } from '../types';
+import { registerMigration } from '../registry';
 
 export const inventoryMigration: Migration = {
   id: '20260928_005_inventory',
@@ -109,3 +110,5 @@ export const inventoryMigration: Migration = {
     await safeDrop('inventoryTransactions', 'idx_inventory_transactions_actor_created');
   },
 };
+
+registerMigration(inventoryMigration);

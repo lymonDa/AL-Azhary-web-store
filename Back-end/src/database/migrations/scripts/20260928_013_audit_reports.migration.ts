@@ -28,28 +28,35 @@ export const auditReportsMigration: Migration = {
       await db.createCollection('auditLogs');
     }
     const auditCol = db.collection('auditLogs');
+    const createIndexSafely = async (keys: Record<string, 1 | -1>, options: Record<string, unknown>) => {
+      try {
+        await auditCol.createIndex(keys, options);
+      } catch {
+        // Silently ignore if already created by earlier migration or Mongoose
+      }
+    };
 
-    await auditCol.createIndex(
+    await createIndexSafely(
       { entityType: 1, entityId: 1, createdAt: -1 },
       { name: 'idx_audit_logs_entity_created', background: true },
     );
 
-    await auditCol.createIndex(
+    await createIndexSafely(
       { actorId: 1, createdAt: -1 },
       { name: 'idx_audit_logs_actor_created', background: true },
     );
 
-    await auditCol.createIndex(
+    await createIndexSafely(
       { action: 1, createdAt: -1 },
       { name: 'idx_audit_logs_action_created', background: true },
     );
 
-    await auditCol.createIndex(
+    await createIndexSafely(
       { createdAt: -1 },
       { name: 'idx_audit_logs_created', background: true },
     );
 
-    await auditCol.createIndex(
+    await createIndexSafely(
       { dedupeKey: 1 },
       {
         name: 'idx_audit_logs_dedupe',

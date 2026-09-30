@@ -1,4 +1,5 @@
 import { Migration, MigrationContext } from '../types';
+import { registerMigration } from '../registry';
 
 /**
  * Phase 10 — Shipping & Coupons migration.
@@ -37,10 +38,14 @@ export const shippingCouponsMigration: Migration = {
     );
 
     // Geographic resolution index (area > city > governorate > default hierarchy)
-    await rulesCol.createIndex(
-      { governorate: 1, city: 1, area: 1 },
-      { name: 'idx_shipping_rules_geo', background: true },
-    );
+    try {
+      await rulesCol.createIndex(
+        { governorate: 1, city: 1, area: 1 },
+        { name: 'idx_shipping_rules_geo', background: true },
+      );
+    } catch {
+      // Ignore if already created with different name by earlier migration
+    }
 
     // Effective date range index
     await rulesCol.createIndex(
@@ -126,3 +131,5 @@ export const shippingCouponsMigration: Migration = {
     await safeDrop('couponRedemptions', 'idx_coupon_redemptions_coupon_created');
   },
 };
+
+registerMigration(shippingCouponsMigration);

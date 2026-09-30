@@ -1,4 +1,5 @@
 import { Migration, MigrationContext } from '../types';
+import { registerMigration } from '../registry';
 
 export const paymentsMigration: Migration = {
   id: '20260928_007_payments',
@@ -99,3 +100,5 @@ export const paymentsMigration: Migration = {
     await safeDrop('paymentProofs', 'idx_payment_proofs_owner_created');
   },
 };
+
+registerMigration(paymentsMigration);

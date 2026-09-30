@@ -1,4 +1,5 @@
 import { Migration, MigrationContext } from '../types';
+import { registerMigration } from '../registry';
 
 export const ordersMigration: Migration = {
   id: '20260928_006_orders',
@@ -120,3 +121,5 @@ export const ordersMigration: Migration = {
     await safeDrop('shippingRules', 'idx_shipping_rules_location_hierarchy');
   },
 };
+
+registerMigration(ordersMigration);

@@ -1,4 +1,5 @@
 import { Migration, MigrationContext } from '../types';
+import { registerMigration } from '../registry';
 
 export const catalogMigration: Migration = {
   id: '20260927_003_catalog',
@@ -80,14 +81,22 @@ export const catalogMigration: Migration = {
     }
     const auditCol = db.collection('auditLogs');
 
-    await auditCol.createIndex(
-      { entityType: 1, entityId: 1, createdAt: -1 },
-      { name: 'idx_audit_logs_entity', background: true },
-    );
-    await auditCol.createIndex(
-      { actorId: 1, createdAt: -1 },
-      { name: 'idx_audit_logs_actor', background: true },
-    );
+    try {
+      await auditCol.createIndex(
+        { entityType: 1, entityId: 1, createdAt: -1 },
+        { name: 'idx_audit_logs_entity', background: true },
+      );
+    } catch {
+      // Ignore if index already created by Mongoose with default name
+    }
+    try {
+      await auditCol.createIndex(
+        { actorId: 1, createdAt: -1 },
+        { name: 'idx_audit_logs_actor', background: true },
+      );
+    } catch {
+      // Ignore if index already created by Mongoose with default name
+    }
   },
   down: async (context: MigrationContext): Promise<void> => {
     const db = context.connection.db;
@@ -114,3 +123,5 @@ export const catalogMigration: Migration = {
     await safeDrop('auditLogs', 'idx_audit_logs_actor');
   },
 };
+
+registerMigration(catalogMigration);

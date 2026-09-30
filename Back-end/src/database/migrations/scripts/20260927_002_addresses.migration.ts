@@ -1,4 +1,5 @@
 import { Migration, MigrationContext } from '../types';
+import { registerMigration } from '../registry';
 
 export const addressesMigration: Migration = {
   id: '20260927_002_addresses',
@@ -52,3 +53,5 @@ export const addressesMigration: Migration = {
     }
   },
 };
+
+registerMigration(addressesMigration);

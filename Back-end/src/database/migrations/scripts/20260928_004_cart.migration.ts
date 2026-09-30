@@ -1,4 +1,5 @@
 import { Migration, MigrationContext } from '../types';
+import { registerMigration } from '../registry';
 
 export const cartMigration: Migration = {
   id: '20260928_004_cart',
@@ -64,3 +65,5 @@ export const cartMigration: Migration = {
     await safeDrop('carts', 'idx_carts_expires_ttl');
   },
 };
+
+registerMigration(cartMigration);
