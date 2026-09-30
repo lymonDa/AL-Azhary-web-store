@@ -47,11 +47,10 @@ export const outboxEventSchema = new Schema<IOutboxEventDocument>(
     },
     dedupeKey: {
       type: String,
-      default: null,
       trim: true,
       index: {
         unique: true,
-        sparse: true,
+        partialFilterExpression: { dedupeKey: { $type: 'string' } },
       },
     },
     status: {

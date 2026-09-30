@@ -3,6 +3,7 @@ import { Server as SocketIOServer } from 'socket.io';
 import { app } from './app';
 import { env, logger, corsOptions } from './config';
 import { connectDatabase, disconnectDatabase, getDatabaseState } from './database';
+import { initRealtime } from './realtime';
 
 const server = http.createServer(app);
 
@@ -11,6 +12,9 @@ const io = new SocketIOServer(server, {
   path: env.SOCKET_PATH,
   cors: corsOptions,
 });
+
+// Phase 13 Socket.IO Realtime attachment with auth and rooms
+initRealtime(io);
 
 let isShuttingDown = false;
 

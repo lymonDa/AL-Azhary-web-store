@@ -28,6 +28,7 @@ import {
   adminReturnRouter,
   adminRefundRouter,
 } from './modules/returns';
+import { notificationRouter } from './modules/notifications';
 
 export type CustomRoutesCallback = (apiRouter: Router, app: Express) => void;
 
@@ -161,6 +162,9 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
 
   // Phase 12 Returns & Refunds (Customer)
   apiRouter.use('/returns', customerReturnRouter);
+
+  // Phase 13 Notifications (Customer)
+  apiRouter.use('/notifications', notificationRouter);
 
   // Phase 5, 7, 8, 9, 10, 11, 12 Admin Endpoints
   const adminRouter = express.Router();

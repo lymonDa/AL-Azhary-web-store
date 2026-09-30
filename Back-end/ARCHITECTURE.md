@@ -5,6 +5,7 @@ This document describes the production backend architecture established for **AL
 ---
 
 ## 1. Backend Architecture
+
 The backend follows a strict **Modular Monolith** pattern:
 
 ```text
@@ -26,6 +27,7 @@ MongoDB Atlas
 ```
 
 ### Core Architectural Principles
+
 1. **Controllers must NOT directly access MongoDB**: All data operations pass through application services and repositories.
 2. **Controllers must NOT contain business logic**: Controllers only handle HTTP parsing, DTO validation, and response delivery.
 3. **Repositories must NOT decide authorization**: Authorization logic resides in route middleware and domain services.
@@ -44,6 +46,7 @@ MongoDB Atlas
 ---
 
 ## 2. Folder Structure
+
 The repository structure is organized as follows:
 
 ```text
@@ -149,33 +152,35 @@ Back-end/
 ---
 
 ## 3. Module Boundaries
+
 The backend consists of 21 bounded modules:
 
-| Module | Core Responsibility |
-|---|---|
-| `auth` | User credentials, sessions, refresh tokens, email verification, password reset tokens. |
-| `users` | Customer, Admin, and Owner profile state, account status, role management. |
-| `addresses` | Saved customer addresses (governorate, city, area, street, notes). |
-| `products` | Books-first catalog, multi-attribute variants, inventory linkage, search texts, publication state. |
-| `categories` | Books-first taxonomy, hierarchical categories, display ordering. |
-| `carts` | Persisted guest and authenticated customer carts; rejects service items. |
-| `orders` | Product order aggregate, lifecycle transitions, address and item snapshots. |
-| `payments` | Payment tracking for orders and accepted service quotes; manual proof workflow. |
-| `inventory` | Stock reservation tracking and immutable ledger (`inventoryTransactions`). |
-| `services` | Student service categories and requests (quotation-based, never carted). |
-| `quotations` | Versioned service quotations, customer decisions (accept/reject). |
-| `preorders` | Customer pre-orders for out-of-stock items, admin availability review. |
-| `returns` | Item-level return requests and admin review. |
-| `refunds` | Manually processed refund records linked to orders or returns. |
-| `notifications` | In-app persisted notifications, delivery status. |
-| `coupons` | Promo codes, discount rules, immutable redemptions. |
-| `content` | Merchandising banners, home seasonal collections, date-windowed modules. |
-| `shipping` | Governorate/city shipping estimate rules, provider tracking. |
-| `reports` | Read-only business aggregations and management reports. |
-| `audit` | Immutable audit log of critical mutations and administrative actions. |
-| `settings` | Configurable store policies, contact details, payment instructions. |
+| Module            | Core Responsibility                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------- |
+| `auth`          | User credentials, sessions, refresh tokens, email verification, password reset tokens.             |
+| `users`         | Customer, Admin, and Owner profile state, account status, role management.                         |
+| `addresses`     | Saved customer addresses (governorate, city, area, street, notes).                                 |
+| `products`      | Books-first catalog, multi-attribute variants, inventory linkage, search texts, publication state. |
+| `categories`    | Books-first taxonomy, hierarchical categories, display ordering.                                   |
+| `carts`         | Persisted guest and authenticated customer carts; rejects service items.                           |
+| `orders`        | Product order aggregate, lifecycle transitions, address and item snapshots.                        |
+| `payments`      | Payment tracking for orders and accepted service quotes; manual proof workflow.                    |
+| `inventory`     | Stock reservation tracking and immutable ledger (`inventoryTransactions`).                       |
+| `services`      | Student service categories and requests (quotation-based, never carted).                           |
+| `quotations`    | Versioned service quotations, customer decisions (accept/reject).                                  |
+| `preorders`     | Customer pre-orders for out-of-stock items, admin availability review.                             |
+| `returns`       | Item-level return requests and admin review.                                                       |
+| `refunds`       | Manually processed refund records linked to orders or returns.                                     |
+| `notifications` | In-app persisted notifications, delivery status.                                                   |
+| `coupons`       | Promo codes, discount rules, immutable redemptions.                                                |
+| `content`       | Merchandising banners, home seasonal collections, date-windowed modules.                           |
+| `shipping`      | Governorate/city shipping estimate rules, provider tracking.                                       |
+| `reports`       | Read-only business aggregations and management reports.                                            |
+| `audit`         | Immutable audit log of critical mutations and administrative actions.                              |
+| `settings`      | Configurable store policies, contact details, payment instructions.                                |
 
 Each module maintains a standard structure:
+
 ```text
 module/
 ├── controllers/
@@ -191,7 +196,9 @@ module/
 ---
 
 ## 4. Dependency List
+
 Production Dependencies:
+
 - `express`: Core web application framework.
 - `mongoose`: MongoDB ODM.
 - `dotenv`: Environment variable loader.
@@ -209,6 +216,7 @@ Production Dependencies:
 - `nodemailer`: SMTP email transport adapter.
 
 Development Dependencies:
+
 - `typescript`: Strict type system compiler.
 - `tsx`: Fast TypeScript execution and file watching in development.
 - `jest`, `ts-jest`, `@types/jest`: Automated testing framework.
@@ -220,50 +228,52 @@ Development Dependencies:
 ---
 
 ## 5. Environment Variables
+
 Managed through `.env` and typed/validated via Zod in `src/config/env.ts`:
 
-| Variable | Description | Default / Example |
-|---|---|---|
-| `NODE_ENV` | Runtime environment (`development`, `test`, `production`) | `development` |
-| `PORT` | HTTP port | `3000` |
-| `API_BASE_PATH` | Versioned API base prefix | `/api/v1` |
-| `PUBLIC_APP_ORIGIN` | Angular frontend client URL | `http://localhost:4200` |
-| `ALLOWED_ORIGINS` | Permitted CORS origins | `http://localhost:4200` |
-| `MONGODB_URI` | MongoDB Atlas connection string | `mongodb://localhost:27017/al_azhari_library` |
-| `MONGODB_DB_NAME` | Database name | `al_azhari_library` |
-| `JWT_ACCESS_SECRET` | Secret for access tokens (min 32 chars) | Safe placeholder |
-| `JWT_ACCESS_TTL` | Access token lifespan | `15m` |
-| `JWT_REFRESH_SECRET` | Secret for refresh tokens (min 32 chars) | Safe placeholder |
-| `JWT_REFRESH_TTL` | Refresh token lifespan | `7d` |
-| `JWT_ISSUER` | JWT Issuer claim | `al-azhari-library` |
-| `JWT_AUDIENCE` | JWT Audience claim | `al-azhari-web` |
-| `REFRESH_COOKIE_NAME` | Name of refresh cookie | `al_azhari_refresh` |
-| `REFRESH_COOKIE_SECURE` | Secure cookie flag (true in prod) | `false` |
-| `REFRESH_COOKIE_SAME_SITE` | Cookie SameSite policy | `lax` |
-| `ARGON2_MEMORY_COST` | Argon2 memory cost | `65536` |
-| `ARGON2_TIME_COST` | Argon2 iterations | `3` |
-| `ARGON2_PARALLELISM` | Argon2 parallelism | `4` |
-| `CLOUDINARY_CLOUD_NAME` | Cloudinary account name | (configured per env) |
-| `CLOUDINARY_API_KEY` | Cloudinary API key | (configured per env) |
-| `CLOUDINARY_API_SECRET` | Cloudinary secret | (configured per env) |
-| `CLOUDINARY_PAYMENT_PROOF_FOLDER` | Folder for payment proof screenshots | `al-azhari/payment-proofs` |
-| `CLOUDINARY_PRODUCT_FOLDER` | Folder for product images | `al-azhari/products` |
-| `SMTP_HOST` | SMTP server host | `smtp.example.com` |
-| `SMTP_PORT` | SMTP port | `587` |
-| `SMTP_SECURE` | SMTP SSL flag | `false` |
-| `SMTP_USER` | SMTP username | (configured per env) |
-| `SMTP_PASSWORD` | SMTP password | (configured per env) |
-| `EMAIL_FROM` | Sender address | `no-reply@al-azhari.com` |
-| `WHATSAPP_PHONE` | Customer service WhatsApp contact | (configured per env) |
-| `SOCKET_PATH` | Socket.IO endpoint path | `/socket.io` |
-| `RATE_LIMIT_PUBLIC_PER_MINUTE` | Public rate limit window | `100` |
-| `RATE_LIMIT_AUTH_PER_MINUTE` | Auth route rate limit window | `20` |
-| `OUTBOX_POLL_INTERVAL_MS` | Outbox polling frequency | `5000` |
-| `OUTBOX_MAX_ATTEMPTS` | Maximum retry attempts for outbox | `5` |
+| Variable                            | Description                                                     | Default / Example                               |
+| ----------------------------------- | --------------------------------------------------------------- | ----------------------------------------------- |
+| `NODE_ENV`                        | Runtime environment (`development`, `test`, `production`) | `development`                                 |
+| `PORT`                            | HTTP port                                                       | `3000`                                        |
+| `API_BASE_PATH`                   | Versioned API base prefix                                       | `/api/v1`                                     |
+| `PUBLIC_APP_ORIGIN`               | Angular frontend client URL                                     | `http://localhost:4200`                       |
+| `ALLOWED_ORIGINS`                 | Permitted CORS origins                                          | `http://localhost:4200`                       |
+| `MONGODB_URI`                     | MongoDB Atlas connection string                                 | `mongodb://localhost:27017/al_azhari_library` |
+| `MONGODB_DB_NAME`                 | Database name                                                   | `al_azhari_library`                           |
+| `JWT_ACCESS_SECRET`               | Secret for access tokens (min 32 chars)                         | Safe placeholder                                |
+| `JWT_ACCESS_TTL`                  | Access token lifespan                                           | `15m`                                         |
+| `JWT_REFRESH_SECRET`              | Secret for refresh tokens (min 32 chars)                        | Safe placeholder                                |
+| `JWT_REFRESH_TTL`                 | Refresh token lifespan                                          | `7d`                                          |
+| `JWT_ISSUER`                      | JWT Issuer claim                                                | `al-azhari-library`                           |
+| `JWT_AUDIENCE`                    | JWT Audience claim                                              | `al-azhari-web`                               |
+| `REFRESH_COOKIE_NAME`             | Name of refresh cookie                                          | `al_azhari_refresh`                           |
+| `REFRESH_COOKIE_SECURE`           | Secure cookie flag (true in prod)                               | `false`                                       |
+| `REFRESH_COOKIE_SAME_SITE`        | Cookie SameSite policy                                          | `lax`                                         |
+| `ARGON2_MEMORY_COST`              | Argon2 memory cost                                              | `65536`                                       |
+| `ARGON2_TIME_COST`                | Argon2 iterations                                               | `3`                                           |
+| `ARGON2_PARALLELISM`              | Argon2 parallelism                                              | `4`                                           |
+| `CLOUDINARY_CLOUD_NAME`           | Cloudinary account name                                         | (configured per env)                            |
+| `CLOUDINARY_API_KEY`              | Cloudinary API key                                              | (configured per env)                            |
+| `CLOUDINARY_API_SECRET`           | Cloudinary secret                                               | (configured per env)                            |
+| `CLOUDINARY_PAYMENT_PROOF_FOLDER` | Folder for payment proof screenshots                            | `al-azhari/payment-proofs`                    |
+| `CLOUDINARY_PRODUCT_FOLDER`       | Folder for product images                                       | `al-azhari/products`                          |
+| `SMTP_HOST`                       | SMTP server host                                                | `smtp.example.com`                            |
+| `SMTP_PORT`                       | SMTP port                                                       | `587`                                         |
+| `SMTP_SECURE`                     | SMTP SSL flag                                                   | `false`                                       |
+| `SMTP_USER`                       | SMTP username                                                   | (configured per env)                            |
+| `SMTP_PASSWORD`                   | SMTP password                                                   | (configured per env)                            |
+| `EMAIL_FROM`                      | Sender address                                                  | `no-reply@al-azhari.com`                      |
+| `WHATSAPP_PHONE`                  | Customer service WhatsApp contact                               | (configured per env)                            |
+| `SOCKET_PATH`                     | Socket.IO endpoint path                                         | `/socket.io`                                  |
+| `RATE_LIMIT_PUBLIC_PER_MINUTE`    | Public rate limit window                                        | `100`                                         |
+| `RATE_LIMIT_AUTH_PER_MINUTE`      | Auth route rate limit window                                    | `20`                                          |
+| `OUTBOX_POLL_INTERVAL_MS`         | Outbox polling frequency                                        | `5000`                                        |
+| `OUTBOX_MAX_ATTEMPTS`             | Maximum retry attempts for outbox                               | `5`                                           |
 
 ---
 
 ## 6. Database Connection Architecture
+
 - Implemented in `src/database/mongoose.ts` and configured via `src/config/database.ts`.
 - Manages connection lifecycle with event hooks (`connected`, `error`, `disconnected`).
 - Supports graceful disconnection upon process termination (`SIGINT`, `SIGTERM`).
@@ -273,6 +283,7 @@ Managed through `.env` and typed/validated via Zod in `src/config/env.ts`:
 ---
 
 ## 7. Authentication Architecture
+
 - **Dual-Token System**:
   - Short-lived Access Token (JWT, 15m lifetime) passed in the `Authorization: Bearer <token>` header.
   - Long-lived Refresh Token (7d lifetime) delivered exclusively via `HttpOnly`, `SameSite=lax` cookie.
@@ -286,6 +297,7 @@ Managed through `.env` and typed/validated via Zod in `src/config/env.ts`:
 ---
 
 ## 8. Authorization / RBAC Architecture
+
 - Core roles: `customer`, `admin`, `owner`.
 - Roles map to granular `permissionKeys` in the `roles` collection.
 - Route authorization verifies:
@@ -296,6 +308,7 @@ Managed through `.env` and typed/validated via Zod in `src/config/env.ts`:
 ---
 
 ## 9. Error Handling Architecture
+
 - Implemented in `src/common/errors/app-error.ts` and `src/common/middleware/error.middleware.ts`.
 - Error classes extend `AppError` with stable error codes and HTTP status codes:
   - `VALIDATION_ERROR` (400)
@@ -319,6 +332,7 @@ Managed through `.env` and typed/validated via Zod in `src/config/env.ts`:
 ---
 
 ## 10. Validation Architecture
+
 - All inputs are validated at route boundaries using Zod schemas (`src/modules/*/schemas/*.schema.ts`).
 - Environment variables validated at application startup using Zod in `src/config/env.ts`.
 - Mongoose schemas enforce domain types, `strict: "throw"`, and custom validators (e.g., non-negative integer money).
@@ -326,6 +340,7 @@ Managed through `.env` and typed/validated via Zod in `src/config/env.ts`:
 ---
 
 ## 11. Logging Architecture
+
 - High-performance asynchronous structured JSON logging with `pino` (`src/config/logger.ts`).
 - Integrated HTTP request logging via `pino-http` in `src/app.ts`.
 - Sensitive fields automatically redacted:
@@ -339,6 +354,7 @@ Managed through `.env` and typed/validated via Zod in `src/config/env.ts`:
 ---
 
 ## 12. Security Architecture
+
 - **Helmet**: Secures HTTP response headers.
 - **CORS**: Strict allowlist based on `ALLOWED_ORIGINS`, credentials enabled, no wildcard origins in production.
 - **Rate Limiting**: Layered rate limiters:
@@ -350,7 +366,9 @@ Managed through `.env` and typed/validated via Zod in `src/config/env.ts`:
 ---
 
 ## 13. Integration Architecture
+
 Infrastructure prepared under `src/integrations/`:
+
 - `cloudinary/`: Media upload signing and asset management.
 - `email/`: Nodemailer SMTP transport adapter for asynchronous notifications.
 - `whatsapp/`: Deep-link generation and communication helpers (no direct automated gateway).
@@ -358,6 +376,7 @@ Infrastructure prepared under `src/integrations/`:
 ---
 
 ## 14. Realtime Architecture
+
 - Prepared in `src/realtime/socket/` and attached to HTTP server in `src/server.ts`.
 - Operates under `SOCKET_PATH` (default `/socket.io`).
 - Authenticated via JWT access tokens.
@@ -366,6 +385,7 @@ Infrastructure prepared under `src/integrations/`:
 ---
 
 ## 15. Background Jobs Architecture
+
 - Prepared under `src/jobs/`:
   - `cron.ts`: Scheduled tasks powered by `node-cron`.
   - `outbox-worker.ts`: Polling and dispatching committed `outboxEvents`.
@@ -375,6 +395,7 @@ Infrastructure prepared under `src/integrations/`:
 ---
 
 ## 16. Testing Architecture
+
 - Unit and integration testing setup in `jest.config.js` and `tests/`.
 - Supertest for end-to-end HTTP endpoint validation.
 - MongoDB Memory Server configured for isolated database testing without external dependencies.
@@ -383,6 +404,7 @@ Infrastructure prepared under `src/integrations/`:
 ---
 
 ## 17. API Versioning
+
 - All public endpoints are mounted under `/api/v1` via `env.API_BASE_PATH`.
 - Responses follow uniform envelopes:
   - Success Envelope: `{ success: true, data: T, meta: { requestId, pagination, timestamp } }`
@@ -391,6 +413,7 @@ Infrastructure prepared under `src/integrations/`:
 ---
 
 ## 18. Transaction Strategy
+
 - Multi-document ACID transactions encapsulated in `src/database/transaction.ts`:
   ```ts
   await withTransaction(async (session) => {
@@ -403,6 +426,7 @@ Infrastructure prepared under `src/integrations/`:
 ---
 
 ## 19. Idempotency Strategy
+
 - Sensitive mutating operations (Order placement, payment proof submissions, refund processing) require client-provided `Idempotency-Key` headers or DTO fields.
 - Reusing an existing idempotency key with conflicting payload returns `IDEMPOTENCY_KEY_REUSED` (409).
 - Reusing an identical key returns the previous successful result without re-executing state transitions.
@@ -410,6 +434,7 @@ Infrastructure prepared under `src/integrations/`:
 ---
 
 ## 20. Outbox Architecture
+
 - Relies on the `outboxEvents` collection to ensure reliable at-least-once message delivery.
 - Events are committed within the same database transaction as the business operation.
 - Asynchronous outbox worker picks up pending events, delivers via Email/Socket.IO, updates status (`sent` or `failed`), and tracks retry attempts up to `OUTBOX_MAX_ATTEMPTS`.
