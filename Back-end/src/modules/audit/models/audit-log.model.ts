@@ -37,6 +37,11 @@ const auditLogSchema = new Schema<IAuditLogDocument>(
       type: Schema.Types.Mixed,
       default: null,
     },
+    reason: {
+      type: String,
+      default: null,
+      trim: true,
+    },
     metadata: {
       type: Schema.Types.Mixed,
       default: null,
@@ -48,6 +53,11 @@ const auditLogSchema = new Schema<IAuditLogDocument>(
     ipHash: {
       type: String,
       default: null,
+    },
+    dedupeKey: {
+      type: String,
+      default: null,
+      trim: true,
     },
     createdAt: {
       type: Date,
@@ -62,7 +72,27 @@ const auditLogSchema = new Schema<IAuditLogDocument>(
   },
 );
 
+// Indexes justified by operational query patterns
 auditLogSchema.index({ entityType: 1, entityId: 1, createdAt: -1 });
 auditLogSchema.index({ actorId: 1, createdAt: -1 });
+auditLogSchema.index({ action: 1, createdAt: -1 });
+auditLogSchema.index({ createdAt: -1 });
+auditLogSchema.index(
+  { dedupeKey: 1 },
+  {
+    unique: true,
+    sparse: true,
+    partialFilterExpression: { dedupeKey: { $type: 'string' } },
+  },
+);
+
+// Immutability enforcement: audit records are strictly append-only
+auditLogSchema.pre(['updateOne', 'updateMany', 'findOneAndUpdate', 'replaceOne'], function () {
+  throw new Error('Audit logs are immutable and cannot be updated');
+});
+
+auditLogSchema.pre(['deleteOne', 'deleteMany', 'findOneAndDelete'], function () {
+  throw new Error('Audit logs are immutable and cannot be deleted');
+});
 
 export const AuditLogModel = model<IAuditLogDocument>('AuditLog', auditLogSchema);

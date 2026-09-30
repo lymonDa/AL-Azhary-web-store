@@ -29,6 +29,8 @@ import {
   adminRefundRouter,
 } from './modules/returns';
 import { notificationRouter } from './modules/notifications';
+import { adminAuditRouter } from './modules/audit';
+import { adminReportRouter } from './modules/reports';
 
 export type CustomRoutesCallback = (apiRouter: Router, app: Express) => void;
 
@@ -179,6 +181,8 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   adminRouter.use('/service-requests', adminServiceRequestRouter); // Phase 11
   adminRouter.use('/returns', adminReturnRouter); // Phase 12
   adminRouter.use('/refunds', adminRefundRouter); // Phase 12
+  adminRouter.use('/audit-logs', adminAuditRouter); // Phase 15
+  adminRouter.use('/reports', adminReportRouter); // Phase 15
   apiRouter.use('/admin', adminRouter);
 
   // Hook for custom routes (e.g. testing error conditions or future feature routes)

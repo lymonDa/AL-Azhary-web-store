@@ -295,5 +295,71 @@ export const openApiConfig = {
         },
       },
     },
+    '/admin/audit-logs': {
+      get: {
+        summary: 'Query immutable operational audit logs',
+        description:
+          'Retrieves append-only operational audit records with server-side filtering, safe pagination, and sensitive data redaction. Requires audit.read permission.',
+        tags: ['Admin Audit'],
+        security: [{ BearerAuth: [] }],
+        parameters: [
+          { name: 'entityType', in: 'query', required: false, schema: { type: 'string' } },
+          { name: 'entityId', in: 'query', required: false, schema: { type: 'string' } },
+          { name: 'action', in: 'query', required: false, schema: { type: 'string' } },
+          { name: 'actorId', in: 'query', required: false, schema: { type: 'string' } },
+          { name: 'actorRole', in: 'query', required: false, schema: { type: 'string' } },
+          { name: 'dateFrom', in: 'query', required: false, schema: { type: 'string', format: 'date-time' } },
+          { name: 'dateTo', in: 'query', required: false, schema: { type: 'string', format: 'date-time' } },
+          { name: 'page', in: 'query', required: false, schema: { type: 'integer', default: 1 } },
+          { name: 'limit', in: 'query', required: false, schema: { type: 'integer', default: 20, maximum: 100 } },
+          { name: 'sort', in: 'query', required: false, schema: { type: 'string', enum: ['createdAt', '-createdAt', 'action', '-action'] } },
+        ],
+        responses: {
+          200: { description: 'Paginated list of immutable, redacted audit logs' },
+          400: { description: 'Validation error (malformed dates, parameters, or operator injection)' },
+          401: { description: 'Unauthorized — valid JWT Bearer token required' },
+          403: { description: 'Forbidden — requires audit.read permission' },
+        },
+      },
+    },
+    '/admin/reports/{report}': {
+      get: {
+        summary: 'Generate operational analytics report',
+        description:
+          'Aggregates authoritative operational data using MongoDB aggregation pipelines without mutating business state. Requires reports.read permission.',
+        tags: ['Admin Reports'],
+        security: [{ BearerAuth: [] }],
+        parameters: [
+          {
+            name: 'report',
+            in: 'path',
+            required: true,
+            schema: {
+              type: 'string',
+              enum: [
+                'orders',
+                'revenue',
+                'outside-qena',
+                'payment-methods',
+                'service-conversion',
+                'product-demand',
+                'preorder-demand',
+                'coupon-usage',
+              ],
+            },
+          },
+          { name: 'dateFrom', in: 'query', required: false, schema: { type: 'string', format: 'date-time' } },
+          { name: 'dateTo', in: 'query', required: false, schema: { type: 'string', format: 'date-time' } },
+          { name: 'status', in: 'query', required: false, schema: { type: 'string' } },
+          { name: 'geography', in: 'query', required: false, schema: { type: 'string' } },
+        ],
+        responses: {
+          200: { description: 'Authoritative report aggregation results' },
+          400: { description: 'Invalid report identifier or parameter validation failure' },
+          401: { description: 'Unauthorized — valid JWT Bearer token required' },
+          403: { description: 'Forbidden — requires reports.read permission' },
+        },
+      },
+    },
   },
 };
