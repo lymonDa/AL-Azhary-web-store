@@ -1,4 +1,5 @@
 import { Seeder, SeedContext } from '../types';
+import { registerSeeder } from '../registry';
 import { rolesService } from '../../../modules/users/services/roles.service';
 
 export const rolesSeeder: Seeder = {
@@ -8,3 +9,5 @@ export const rolesSeeder: Seeder = {
     await rolesService.ensureSystemRoles();
   },
 };
+
+registerSeeder(rolesSeeder);
