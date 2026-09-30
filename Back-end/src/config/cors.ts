@@ -25,11 +25,12 @@ export function isOriginAllowed(origin: string | undefined): boolean {
   }
 
   const origins = getAllowedOrigins();
-  if (origins.includes('*') || origins.includes(origin)) {
+  // In production, wildcard '*' is strictly forbidden
+  if (env.NODE_ENV !== 'production' && origins.includes('*')) {
     return true;
   }
 
-  return false;
+  return origins.includes(origin);
 }
 
 export const corsOptions: CorsOptions = {

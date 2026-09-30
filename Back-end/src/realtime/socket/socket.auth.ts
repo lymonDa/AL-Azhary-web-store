@@ -4,21 +4,47 @@ import { usersRepository } from '../../modules/users/repositories/users.reposito
 import { AuthenticatedPrincipal } from '../../modules/auth/types/auth.types';
 import { logger } from '../../config/logger';
 
+import { env } from '../../config/env';
+
 export interface AuthenticatedSocket extends Socket {
   data: {
     user: AuthenticatedPrincipal;
   };
 }
 
+// In-memory sliding window rate limiter for socket connection attempts by IP
+const socketHandshakeTracker = new Map<string, { count: number; resetAt: number }>();
+
+export function resetSocketHandshakeRateLimits(): void {
+  socketHandshakeTracker.clear();
+}
+
 /**
  * Socket.IO Handshake Authentication Middleware.
- * Validates JWT access token, checks user active status, and verifies session version.
+ * Validates JWT access token, checks user active status, verifies session version, and enforces handshake rate limits.
  */
 export async function socketAuthMiddleware(
   socket: Socket,
   next: (err?: Error) => void,
 ): Promise<void> {
   try {
+    const clientIp = socket.handshake.address || 'ip_unknown';
+    const now = Date.now();
+    const windowMs = env.RATE_LIMIT_WINDOW_MS;
+    const maxAttempts = env.RATE_LIMIT_SOCKET_PER_MINUTE;
+
+    let record = socketHandshakeTracker.get(clientIp);
+    if (!record || record.resetAt <= now) {
+      record = { count: 1, resetAt: now + windowMs };
+      socketHandshakeTracker.set(clientIp, record);
+    } else {
+      record.count += 1;
+    }
+
+    if (record.count > maxAttempts) {
+      return next(new Error('RATE_LIMITED'));
+    }
+
     const authHeader = socket.handshake.headers.authorization;
     const tokenFromAuth = socket.handshake.auth?.token;
 

@@ -18,7 +18,7 @@ import {
 } from '../schemas/auth.schema';
 import { validateRequest } from '../../../common/validators/common.validators';
 import { requireAuthentication } from '../middleware/auth.middleware';
-import { authRateLimiter } from '../../../config/security';
+import { authRateLimiter, accountRateLimiter } from '../../../config/security';
 import { env } from '../../../config/env';
 
 export const authRouter = Router();
@@ -26,6 +26,8 @@ export const authRouter = Router();
 // Apply auth rate limiter in non-test environments
 if (env.NODE_ENV !== 'test') {
   authRouter.use(authRateLimiter);
+  authRouter.post('/login', accountRateLimiter);
+  authRouter.post('/forgot-password', accountRateLimiter);
 }
 
 authRouter.post('/register', validateRequest({ body: registerSchema }), registerController);

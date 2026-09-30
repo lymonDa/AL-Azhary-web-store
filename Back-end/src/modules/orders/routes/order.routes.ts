@@ -5,9 +5,15 @@ import {
   requireAuthentication,
 } from '../../auth/middleware/auth.middleware';
 import { requirePermission } from '../../auth/middleware/rbac.middleware';
+import { guestOrderRateLimiter } from '../../../config/security';
+import { env } from '../../../config/env';
 
 // 1. Customer / Public Checkout & Order routes
 export const orderRouter = Router();
+
+if (env.NODE_ENV !== 'test') {
+  orderRouter.use(guestOrderRateLimiter);
+}
 
 // POST /orders (guest or registered)
 orderRouter.post('/', optionalAuthentication(), orderController.createOrder);

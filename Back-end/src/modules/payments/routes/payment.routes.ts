@@ -5,10 +5,17 @@ import {
   requireAuthentication,
 } from '../../auth/middleware/auth.middleware';
 import { requirePermission } from '../../auth/middleware/rbac.middleware';
+import { proofUploadRateLimiter } from '../../../config/security';
+import { env } from '../../../config/env';
 
 // 1. Order-scoped Customer / Guest Payment Routes
 // Mounted under /orders in app.ts, or directly
 export const orderPaymentRouter = Router({ mergeParams: true });
+
+if (env.NODE_ENV !== 'test') {
+  orderPaymentRouter.use('/:reference/payment-proof', proofUploadRateLimiter);
+  orderPaymentRouter.use('/:reference/payment-proofs', proofUploadRateLimiter);
+}
 
 orderPaymentRouter.get(
   '/:reference/payment',

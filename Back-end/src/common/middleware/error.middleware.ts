@@ -155,7 +155,11 @@ export function errorHandlerMiddleware(
   }
 
   // 6. Malformed URI Sequence (URIError)
-  if (err instanceof URIError) {
+  if (
+    err instanceof URIError ||
+    err.name === 'URIError' ||
+    (err.message && (err.message.includes('URI malformed') || err.message.includes('Failed to decode')))
+  ) {
     logger.warn(
       {
         requestId,

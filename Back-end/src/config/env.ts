@@ -80,10 +80,15 @@ export const envSchema = z
       }, z.union([z.boolean(), z.number(), z.string()]))
       .default(1),
 
-    // Rate Limiting
+    // Layered Rate Limiting Buckets
     RATE_LIMIT_WINDOW_MS: z.coerce.number().default(60000),
     RATE_LIMIT_PUBLIC_PER_MINUTE: z.coerce.number().default(100),
     RATE_LIMIT_AUTH_PER_MINUTE: z.coerce.number().default(20),
+    RATE_LIMIT_ACCOUNT_PER_MINUTE: z.coerce.number().default(10),
+    RATE_LIMIT_GUEST_ORDER_PER_MINUTE: z.coerce.number().default(20),
+    RATE_LIMIT_PROOF_UPLOAD_PER_MINUTE: z.coerce.number().default(15),
+    RATE_LIMIT_ADMIN_MUTATION_PER_MINUTE: z.coerce.number().default(60),
+    RATE_LIMIT_SOCKET_PER_MINUTE: z.coerce.number().default(30),
 
     // Background Outbox & Jobs (Phase 14)
     OUTBOX_POLL_INTERVAL_MS: z.coerce.number().default(5000),
@@ -133,6 +138,13 @@ export const envSchema = z
           code: z.ZodIssueCode.custom,
           path: ['REFRESH_COOKIE_SECURE'],
           message: 'Production requires REFRESH_COOKIE_SECURE=true for HTTPS cookies',
+        });
+      }
+      if (data.ALLOWED_ORIGINS.includes('*') || data.PUBLIC_APP_ORIGIN === '*') {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['ALLOWED_ORIGINS'],
+          message: 'Production refuses wildcard (*) CORS origin with credentials',
         });
       }
     }
