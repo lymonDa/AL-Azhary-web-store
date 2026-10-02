@@ -47,6 +47,10 @@ import {
   customerPreorderRouter,
   adminPreorderRouter,
 } from './modules/preorders';
+import {
+  customerWhatsappRouter,
+  adminWhatsappRouter,
+} from './integrations/whatsapp';
 
 export type CustomRoutesCallback = (apiRouter: Router, app: Express) => void;
 
@@ -191,6 +195,9 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   // Pre-orders (Customer)
   apiRouter.use('/pre-orders', customerPreorderRouter);
 
+  // WhatsApp Integration (Customer Support Link - WA-001)
+  apiRouter.use('/whatsapp', customerWhatsappRouter);
+
   // Phase 5, 7, 8, 9, 10, 11, 12 Admin Endpoints
   const adminRouter = express.Router();
   if (env.NODE_ENV !== 'test') {
@@ -208,6 +215,7 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   adminRouter.use('/returns', adminReturnRouter); // Phase 12
   adminRouter.use('/refunds', adminRefundRouter); // Phase 12
   adminRouter.use('/pre-orders', adminPreorderRouter);
+  adminRouter.use('/whatsapp', adminWhatsappRouter); // WA-002
   adminRouter.use('/audit-logs', adminAuditRouter); // Phase 15
   adminRouter.use('/reports', adminReportRouter); // Phase 15
   apiRouter.use('/admin', adminRouter);

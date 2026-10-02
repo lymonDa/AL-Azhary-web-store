@@ -112,6 +112,33 @@ export const openApiConfig = {
           adminNotes: { type: 'string', nullable: true, maxLength: 1000 },
         },
       },
+      WhatsAppLinkResult: {
+        type: 'object',
+        required: ['url', 'disclaimer', 'disclaimerEn', 'context'],
+        properties: {
+          url: { type: 'string', example: 'https://wa.me/201012345678?text=...' },
+          disclaimer: { type: 'string' },
+          disclaimerEn: { type: 'string' },
+          context: {
+            type: 'object',
+            properties: {
+              product: { type: 'string', nullable: true },
+              orderReference: { type: 'string', nullable: true },
+              serviceReference: { type: 'string', nullable: true },
+            },
+          },
+        },
+      },
+      CustomerWhatsAppLinkInput: {
+        type: 'object',
+        required: ['customerPhone'],
+        properties: {
+          customerPhone: { type: 'string', example: '+201012345678' },
+          product: { type: 'string', nullable: true },
+          orderReference: { type: 'string', nullable: true },
+          serviceReference: { type: 'string', nullable: true },
+        },
+      },
     },
   },
   paths: {
@@ -470,6 +497,61 @@ export const openApiConfig = {
           403: { description: 'Forbidden — requires preorders.write permission' },
           404: { description: 'Pre-order not found' },
           409: { description: 'State or version conflict' },
+        },
+      },
+    },
+    '/whatsapp/support': {
+      get: {
+        summary: 'Generate customer WhatsApp support deep-link',
+        description:
+          'Generates a safe, URL-encoded WhatsApp deep-link with optional contextual prefill (product, order, service). Includes disclaimer that WhatsApp does not mutate authoritative records.',
+        tags: ['WhatsApp'],
+        parameters: [
+          { name: 'product', in: 'query', required: false, schema: { type: 'string', maxLength: 200 } },
+          { name: 'orderReference', in: 'query', required: false, schema: { type: 'string', maxLength: 50 } },
+          { name: 'serviceReference', in: 'query', required: false, schema: { type: 'string', maxLength: 50 } },
+        ],
+        responses: {
+          200: {
+            description: 'Generated WhatsApp support link with disclaimer',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/WhatsAppLinkResult' },
+              },
+            },
+          },
+          400: { description: 'Invalid query parameters' },
+          422: { description: 'Support phone number is not configured (OD-01 open decision)' },
+        },
+      },
+    },
+    '/admin/whatsapp/customer-link': {
+      post: {
+        summary: 'Generate WhatsApp link for Admin to contact customer',
+        description:
+          'Generates a safe WhatsApp deep-link allowing an Admin to reach out to a specific customer phone number with context. Requires orders.read permission.',
+        tags: ['Admin WhatsApp'],
+        security: [{ BearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/CustomerWhatsAppLinkInput' },
+            },
+          },
+        },
+        responses: {
+          200: {
+            description: 'Generated customer WhatsApp link with disclaimer',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/WhatsAppLinkResult' },
+              },
+            },
+          },
+          400: { description: 'Invalid phone or input parameters' },
+          401: { description: 'Unauthorized' },
+          403: { description: 'Forbidden — requires orders.read permission' },
         },
       },
     },
