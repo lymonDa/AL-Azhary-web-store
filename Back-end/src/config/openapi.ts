@@ -87,6 +87,31 @@ export const openApiConfig = {
           expectedVersion: { type: 'integer', minimum: 1 },
         },
       },
+      CreatePreorderInput: {
+        type: 'object',
+        properties: {
+          variantId: { type: 'string', nullable: true },
+          quantity: { type: 'integer', minimum: 1, maximum: 100, default: 1 },
+          customer: {
+            type: 'object',
+            required: ['name', 'phone'],
+            properties: {
+              name: { type: 'string', minLength: 2, maxLength: 100 },
+              phone: { type: 'string', minLength: 7, maxLength: 25 },
+              email: { type: 'string', format: 'email', nullable: true },
+            },
+          },
+          notes: { type: 'string', nullable: true, maxLength: 500 },
+        },
+      },
+      AcceptPreorderInput: {
+        type: 'object',
+        properties: {
+          expectedVersion: { type: 'integer', minimum: 1 },
+          expectedAvailabilityAt: { type: 'string', format: 'date-time', nullable: true },
+          adminNotes: { type: 'string', nullable: true, maxLength: 1000 },
+        },
+      },
     },
   },
   paths: {
@@ -358,6 +383,93 @@ export const openApiConfig = {
           400: { description: 'Invalid report identifier or parameter validation failure' },
           401: { description: 'Unauthorized — valid JWT Bearer token required' },
           403: { description: 'Forbidden — requires reports.read permission' },
+        },
+      },
+    },
+    '/products/{slug}/pre-orders': {
+      post: {
+        summary: 'Submit pre-order request for out-of-stock eligible product',
+        description:
+          'Submits a pre-order request for an eligible unavailable product/variant. Captures price snapshot and creates an outbox event. Acceptance creates no stock reservation.',
+        tags: ['Pre-orders'],
+        security: [{ BearerAuth: [] }, {}],
+        parameters: [
+          { name: 'slug', in: 'path', required: true, schema: { type: 'string' }, description: 'Product slug' },
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/CreatePreorderInput' },
+            },
+          },
+        },
+        responses: {
+          201: { description: 'Pre-order request created successfully' },
+          400: { description: 'Product variant is in stock, quantity invalid, or variant missing' },
+          404: { description: 'Product not found' },
+          422: { description: 'Product/variant not eligible for pre-order' },
+        },
+      },
+    },
+    '/pre-orders': {
+      get: {
+        summary: 'List pre-orders',
+        description:
+          'Retrieves paginated pre-orders owned by the authenticated customer, or full list for administrators.',
+        tags: ['Pre-orders'],
+        security: [{ BearerAuth: [] }],
+        parameters: [
+          { name: 'page', in: 'query', required: false, schema: { type: 'integer', default: 1 } },
+          { name: 'limit', in: 'query', required: false, schema: { type: 'integer', default: 20, maximum: 100 } },
+          { name: 'status', in: 'query', required: false, schema: { type: 'string' } },
+        ],
+        responses: {
+          200: { description: 'Paginated pre-order records' },
+          401: { description: 'Unauthorized' },
+        },
+      },
+    },
+    '/pre-orders/{reference}': {
+      get: {
+        summary: 'Get pre-order by reference',
+        description: 'Retrieves a single pre-order by public reference with ownership checks.',
+        tags: ['Pre-orders'],
+        security: [{ BearerAuth: [] }],
+        parameters: [
+          { name: 'reference', in: 'path', required: true, schema: { type: 'string' }, description: 'Public pre-order reference (PO-YYYYMMDD-XXXXXX)' },
+        ],
+        responses: {
+          200: { description: 'Pre-order details' },
+          403: { description: 'Forbidden (not the owner)' },
+          404: { description: 'Pre-order not found' },
+        },
+      },
+    },
+    '/admin/pre-orders/{reference}/accept': {
+      post: {
+        summary: 'Admin accept pre-order request',
+        description:
+          'Accepts a pending pre-order request, sets expected availability if provided, triggers outbox notification, and allows customer to pay. Requires preorders.write permission.',
+        tags: ['Admin Pre-orders'],
+        security: [{ BearerAuth: [] }],
+        parameters: [
+          { name: 'reference', in: 'path', required: true, schema: { type: 'string' }, description: 'Public pre-order reference' },
+        ],
+        requestBody: {
+          required: false,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/AcceptPreorderInput' },
+            },
+          },
+        },
+        responses: {
+          200: { description: 'Pre-order accepted' },
+          401: { description: 'Unauthorized' },
+          403: { description: 'Forbidden — requires preorders.write permission' },
+          404: { description: 'Pre-order not found' },
+          409: { description: 'State or version conflict' },
         },
       },
     },

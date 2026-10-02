@@ -73,7 +73,30 @@ export const auditReportsMigration: Migration = {
     }
     const preordersCol = db.collection('preorders');
 
-    await preordersCol.createIndex(
+    const createPreorderIndexSafely = async (keys: Record<string, 1 | -1>, options: Record<string, unknown>) => {
+      try {
+        await preordersCol.createIndex(keys, options);
+      } catch {
+        // Silently ignore if already created by Mongoose
+      }
+    };
+
+    await createPreorderIndexSafely(
+      { reference: 1 },
+      { name: 'idx_preorders_reference', unique: true, background: true },
+    );
+
+    await createPreorderIndexSafely(
+      { customerId: 1, createdAt: -1 },
+      { name: 'idx_preorders_customer_created', background: true },
+    );
+
+    await createPreorderIndexSafely(
+      { productId: 1, variantId: 1, status: 1 },
+      { name: 'idx_preorders_product_variant_status', background: true },
+    );
+
+    await createPreorderIndexSafely(
       { status: 1, createdAt: -1 },
       { name: 'idx_preorders_status_created', background: true },
     );
@@ -105,6 +128,15 @@ export const auditReportsMigration: Migration = {
       const existing = await preordersCol.indexes();
       const indexNames = existing.map((i) => i.name);
 
+      if (indexNames.includes('idx_preorders_reference')) {
+        await preordersCol.dropIndex('idx_preorders_reference');
+      }
+      if (indexNames.includes('idx_preorders_customer_created')) {
+        await preordersCol.dropIndex('idx_preorders_customer_created');
+      }
+      if (indexNames.includes('idx_preorders_product_variant_status')) {
+        await preordersCol.dropIndex('idx_preorders_product_variant_status');
+      }
       if (indexNames.includes('idx_preorders_status_created')) {
         await preordersCol.dropIndex('idx_preorders_status_created');
       }

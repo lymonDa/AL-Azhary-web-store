@@ -42,6 +42,11 @@ import {
 import { notificationRouter } from './modules/notifications';
 import { adminAuditRouter } from './modules/audit';
 import { adminReportRouter } from './modules/reports';
+import {
+  productPreorderRouter,
+  customerPreorderRouter,
+  adminPreorderRouter,
+} from './modules/preorders';
 
 export type CustomRoutesCallback = (apiRouter: Router, app: Express) => void;
 
@@ -159,6 +164,7 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   // Phase 5 Catalog: Categories, Products, Search & Content
   apiRouter.use('/categories', categoryRouter);
   apiRouter.use('/products', productRouter);
+  apiRouter.use('/products', productPreorderRouter);
   apiRouter.use('/search', searchRouter);
   apiRouter.use('/content', contentRouter);
 
@@ -182,6 +188,9 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   // Phase 13 Notifications (Customer)
   apiRouter.use('/notifications', notificationRouter);
 
+  // Pre-orders (Customer)
+  apiRouter.use('/pre-orders', customerPreorderRouter);
+
   // Phase 5, 7, 8, 9, 10, 11, 12 Admin Endpoints
   const adminRouter = express.Router();
   if (env.NODE_ENV !== 'test') {
@@ -198,6 +207,7 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   adminRouter.use('/service-requests', adminServiceRequestRouter); // Phase 11
   adminRouter.use('/returns', adminReturnRouter); // Phase 12
   adminRouter.use('/refunds', adminRefundRouter); // Phase 12
+  adminRouter.use('/pre-orders', adminPreorderRouter);
   adminRouter.use('/audit-logs', adminAuditRouter); // Phase 15
   adminRouter.use('/reports', adminReportRouter); // Phase 15
   apiRouter.use('/admin', adminRouter);
