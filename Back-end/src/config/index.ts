@@ -6,3 +6,4 @@ export * from './cors';
 export * from './security';
 export * from './logger';
 export * from './openapi';
+export * from './docs.routes';

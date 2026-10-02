@@ -11,6 +11,7 @@ import {
   publicRateLimiter,
   adminMutationRateLimiter,
   logger,
+  docsRouter,
 } from './config';
 import {
   requestIdMiddleware,
@@ -219,6 +220,10 @@ export function createApp(mountCustomRoutes?: CustomRoutesCallback): Express {
   adminRouter.use('/audit-logs', adminAuditRouter); // Phase 15
   adminRouter.use('/reports', adminReportRouter); // Phase 15
   apiRouter.use('/admin', adminRouter);
+
+  // Phase 19/Compliance: OpenAPI Documentation & Interactive Swagger UI
+  apiRouter.use('/', docsRouter);
+  app.use('/docs', docsRouter);
 
   // Hook for custom routes (e.g. testing error conditions or future feature routes)
   if (mountCustomRoutes) {
