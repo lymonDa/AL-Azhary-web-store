@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 import mongoose from 'mongoose';
 import { startTestDb, stopTestDb, clearTestDb } from '../helpers/test-db';
 import { auditReportsMigration } from '../../src/database/migrations/scripts/20260928_013_audit_reports.migration';
