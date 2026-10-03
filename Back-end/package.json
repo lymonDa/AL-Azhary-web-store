@@ -18,7 +18,10 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
-    "check:openapi": "tsx scripts/check-openapi.ts"
+    "check:openapi": "tsx scripts/check-openapi.ts",
+    "check:postman": "tsx scripts/check-postman.ts",
+    "api:postman:check": "tsx scripts/check-postman.ts",
+    "generate:postman": "tsx scripts/generate-postman.ts"
   },
   "keywords": [
     "express",
