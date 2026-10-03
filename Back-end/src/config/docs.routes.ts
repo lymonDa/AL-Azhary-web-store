@@ -1,7 +1,8 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { env } from './env';
 import { openApiConfig } from './openapi';
-import { requireAuthentication, requireRole } from '../modules/auth/middleware/auth.middleware';
+import { requireAuthentication } from '../modules/auth/middleware/auth.middleware';
+import { requireRole } from '../modules/auth/middleware/rbac.middleware';
 import { UserRoles } from '../common/constants/roles';
 
 export const docsRouter = Router();
