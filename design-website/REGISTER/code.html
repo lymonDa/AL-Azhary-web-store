@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-[#FCFBF8]" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إنشاء حساب باحث جديد — مكتبة الأزهري بقنا</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Noto+Serif+Arabic:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              950: '#062019',
+              900: '#083328',
+              800: '#0F4C3A', // Deep Forest Green Primary
+              700: '#15614b',
+              600: '#1b785d',
+              100: '#e5f2ed',
+              50: '#f0f7f4'
+            },
+            gold: {
+              700: '#7a5a1b',
+              600: '#A47925', // Refined Warm Gold Accent
+              500: '#bf9033',
+              400: '#d9a94e',
+              100: '#f7f1e1',
+              50: '#fbf8f0'
+            },
+            surface: {
+              canvas: '#FCFBF8', // Warm ivory canvas
+              white: '#FFFFFF',
+              card: '#FFFFFF',
+              subtle: '#F4F2EB',
+              dim: '#ECE8DF',
+              border: '#E8E4DA'
+            },
+            charcoal: {
+              DEFAULT: '#1F2A26', // Charcoal text
+              secondary: '#495852',
+              muted: '#707E78'
+            },
+            error: {
+              DEFAULT: '#BA1A1A',
+              container: '#FFDAD6',
+              onContainer: '#410002'
+            }
+          },
+          fontFamily: {
+            amiri: ['Amiri', 'serif'],
+            serif: ['"Noto Serif Arabic"', 'serif'],
+            sans: ['"IBM Plex Sans Arabic"', 'sans-serif']
+          },
+          boxShadow: {
+            'scholarly': '0 8px 30px -4px rgba(15, 76, 58, 0.08), 0 2px 10px -1px rgba(15, 76, 58, 0.04)',
+            'input-focus': '0 0 0 3px rgba(15, 76, 58, 0.15)'
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background-color: #FCFBF8;
+      color: #1F2A26;
+    }
+    .font-heritage {
+      font-family: 'Noto Serif Arabic', 'Amiri', serif;
+    }
+    /* Subtle geometric heritage motif background pattern */
+    .bg-islamic-pattern {
+      background-color: #FCFBF8;
+      background-image: 
+        radial-gradient(#0F4C3A 0.75px, transparent 0.75px), 
+        radial-gradient(#A47925 0.75px, #FCFBF8 0.75px);
+      background-size: 36px 36px;
+      background-position: 0 0, 18px 18px;
+    }
+    /* Gilded hairline separator */
+    .gold-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(164, 121, 37, 0.4), transparent);
+    }
+  </style>
+<meta content="web_dashboard" name="shell-type"/>
+</head>
+<body class="min-h-full flex flex-col justify-between selection:bg-brand-100 selection:text-brand-900 bg-islamic-pattern">
+<!-- Interactive States Simulation Controller (PRD AUTH-002 / AUTH-006 QA Review) -->
+<aside aria-label="شريط محاكاة الحالات التشغيلية" class="bg-[#18231F] text-white py-2.5 px-4 text-xs font-sans border-b border-[#0F4C3A]/50 relative z-50">
+<div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="font-semibold text-emerald-300">محاكي اختبار التسجيل (PRD AUTH-002 إلى 006):</span>
+<span class="text-zinc-400 hidden md:inline">تبديل حالات نموذج التسجيل الفورية للمراجعة</span>
+</div>
+<div class="flex flex-wrap items-center gap-1.5" role="toolbar">
+<button class="px-3 py-1 rounded bg-brand-800 text-white font-medium hover:bg-brand-700 transition-all border border-brand-700 shadow-sm" id="btn-state-reg-default" onclick="setRegState('default')" type="button">
+          الافتراضية
+        </button>
+<button class="px-2.5 py-1 rounded bg-zinc-800/90 text-zinc-300 hover:bg-zinc-700 hover:text-white transition-all" id="btn-state-reg-loading" onclick="setRegState('loading')" type="button">
+          جارٍ الإرسال (Submitting)
+        </button>
+<button class="px-2.5 py-1 rounded bg-zinc-800/90 text-zinc-300 hover:bg-zinc-700 hover:text-white transition-all" id="btn-state-reg-duplicate" onclick="setRegState('duplicate')" type="button">
+          بيانات مكررة (Duplicate)
+        </button>
+<button class="px-2.5 py-1 rounded bg-zinc-800/90 text-zinc-300 hover:bg-zinc-700 hover:text-white transition-all" id="btn-state-reg-validation" onclick="setRegState('validation')" type="button">
+          أخطاء الإدخال (Validation)
+        </button>
+<button class="px-2.5 py-1 rounded bg-zinc-800/90 text-zinc-300 hover:bg-zinc-700 hover:text-white transition-all" id="btn-state-reg-success" onclick="setRegState('success')" type="button">
+          نجاح وتفعيل (Success)
+        </button>
+</div>
+</div>
+</aside>
+<!-- Top Minimal Brand Navigation Bar -->
+<header class="w-full border-b border-surface-border bg-white/90 backdrop-blur-md sticky top-0 z-40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<a class="inline-flex items-center gap-2 text-charcoal-secondary hover:text-brand-800 text-sm font-medium transition-colors group" href="/shop">
+<span class="material-symbols-outlined text-lg transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<span>العودة للمتجر وكتالوج الكتب</span>
+</a>
+<!-- Quick Trust Indicator -->
+<div class="hidden sm:flex items-center gap-2 text-xs text-charcoal-muted">
+<span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-50 text-brand-800">
+<span class="material-symbols-outlined text-xs">verified</span>
+</span>
+<span>بيئة تسجيل مشفرة ومحمية أكاديمياً</span>
+</div>
+<!-- Quick WhatsApp Support Contact -->
+<a class="inline-flex items-center gap-1.5 text-xs text-brand-800 hover:text-brand-900 bg-brand-50 hover:bg-brand-100/80 px-3 py-1.5 rounded-full transition-colors font-medium border border-brand-100" href="https://wa.me/201094589231?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%86%D8%B4%D8%A7%D8%A1%20%D8%AD%D8%B3%D8%A7%D8%A8%20%D8%AC%D8%AF%D9%8A%D8%AF%20%D9%84%D9%85%D9%83%D8%AA%D8%A8%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B2%D9%87%D8%B1%D9%8A" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-sm text-[#25D366]">chat</span>
+<span>مساعدة؟ واتساب مباشر</span>
+</a>
+</div>
+</header>
+<!-- Main Focus Container -->
+<main class="flex-grow flex items-center justify-center px-4 py-8 sm:py-12">
+<div class="flex flex-col w-full items-center justify-center">
+<!-- Main Registration Card Container (~520px) -->
+<div class="w-full max-w-[520px] bg-white rounded-2xl shadow-scholarly border border-surface-border p-6 sm:p-9 flex flex-col relative overflow-hidden">
+<!-- Top Gilded Architectural Accent Band -->
+<div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-gold-600 via-brand-800 to-gold-600"></div>
+<!-- 1. Al-Azhari Emblem Logo Lockup & Heritage Subtitle -->
+<div class="flex flex-col items-center text-center mt-2 mb-5">
+<div class="w-16 h-16 rounded-full bg-brand-800 flex items-center justify-center p-2 mb-3 shadow-md relative group border border-gold-600/40">
+<div class="absolute inset-1 rounded-full border border-dashed border-gold-400/50"></div>
+<!-- Traditional Azhari Lantern Finial & Open Codex Manuscript SVG -->
+<svg class="w-8 h-8 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 48 48">
+<!-- Lantern Finial / Crescent Crown -->
+<circle cx="24" cy="8" fill="currentColor" r="2.5"></circle>
+<path d="M21 16L24 10.5L27 16H21Z" fill="currentColor"></path>
+<!-- Open Manuscript Codex -->
+<path d="M8 35C14 32 21 33 24 36C27 33 34 32 40 35V18C34 15 27 16 24 19C21 16 14 15 8 18V35Z" fill="#FCFBF8" stroke="#A47925" stroke-linejoin="round" stroke-width="1.75"></path>
+<line stroke="#0F4C3A" stroke-width="2" x1="24" x2="24" y1="19" y2="36"></line>
+</svg>
+</div>
+<h1 class="text-2xl font-bold font-heritage text-brand-900 tracking-tight">مكتبة الأزهري</h1>
+<p class="text-xs font-semibold text-gold-700 tracking-wide mt-1">
+            الصرح العلمي والتراثي بقنا · تأسست 2023
+          </p>
+<div class="w-36 gold-divider my-4"></div>
+<!-- 2. Documented Page Title & Instructional Subtitle -->
+<h2 class="text-xl sm:text-[22px] font-bold font-heritage text-brand-800 tracking-tight">
+            إنشاء حساب طالب / باحث جديد
+          </h2>
+<p class="text-xs sm:text-sm text-charcoal-secondary mt-1.5 leading-relaxed max-w-sm">
+            سجل بياناتك للانضمام إلى منصة مكتبة الأزهري، وتصفح أمهات الكتب والمناهج الأزهرية، ومتابعة حجوزات المصنفات والخدمات الأكاديمية.
+          </p>
+</div>
+<!-- Feedback Banner: Duplicate Error State (AUTH-006) -->
+<div class="hidden mb-4 p-3.5 rounded-xl bg-error-container/80 border border-error/30 text-error-onContainer text-xs leading-relaxed items-start gap-2.5 transition-all" id="duplicate-error-banner">
+<span class="material-symbols-outlined text-error text-xl shrink-0 mt-0.5">error</span>
+<div>
+<strong class="font-bold text-sm block text-error">تعذر إتمام التسجيل</strong>
+<p class="mt-0.5">البريد الإلكتروني أو رقم الهاتف المدخل مسجل بالفعل لدينا في سجلات المكتبة. يرجى تسجيل الدخول أو استخدام بيانات مختلفة.</p>
+</div>
+</div>
+<!-- Success Feedback State Card (AUTH-005/006) -->
+<div class="hidden text-center py-7 px-4 bg-brand-50/70 border border-brand-100 rounded-xl mb-3" id="registration-success-card">
+<div class="w-14 h-14 mx-auto rounded-full bg-brand-800 text-gold-400 flex items-center justify-center mb-3 shadow-inner">
+<span class="material-symbols-outlined text-3xl">mark_email_read</span>
+</div>
+<h3 class="text-lg font-bold font-heritage text-brand-900">تم تسجيل الحساب بنجاح!</h3>
+<p class="text-xs sm:text-sm text-charcoal-secondary mt-2 leading-relaxed max-w-sm mx-auto">
+            أرسلنا رابط التفعيل الرسمي إلى بريدك الإلكتروني. يرجى الضغط على الرابط لتأكيد حسابك والبدء في طلب الكتب وحجز المصنفات.
+          </p>
+<a class="mt-5 inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-brand-800 text-white font-semibold text-sm hover:bg-brand-900 transition-colors shadow-sm" href="/login">
+<span>الانتقال إلى صفحة تسجيل الدخول</span>
+<span class="material-symbols-outlined text-base">arrow_back</span>
+</a>
+</div>
+<!-- Documented Form (PRD AUTH-002 through AUTH-006) -->
+<form class="flex flex-col gap-3.5 text-right" id="registration-form" novalidate="" onsubmit="handleRegistrationSubmit(event)">
+<!-- Field 1: Full Name (الاسم بالكامل *) -->
+<div class="flex flex-col gap-1">
+<label class="text-xs sm:text-sm font-semibold text-brand-900 flex items-center justify-between" for="reg-fullname">
+<span>الاسم بالكامل <span class="text-error font-bold">*</span></span>
+<span class="text-[11px] text-charcoal-muted font-normal">كما هو مدون بالهوية أو الكارنيه الجامعي</span>
+</label>
+<input class="w-full rounded-lg bg-surface-subtle border border-surface-border text-charcoal placeholder:text-charcoal-muted/60 px-3.5 py-2.5 text-sm focus:outline-none focus:bg-white focus:border-brand-800 focus:ring-2 focus:ring-brand-800/15 transition-all" dir="rtl" id="reg-fullname" name="fullname" placeholder="مثال: أحمد عبد الله القنائي" required="" type="text"/>
+<span class="hidden text-xs text-error mt-0.5 flex items-center gap-1 font-medium" id="fullname-error">
+<span class="material-symbols-outlined text-sm">error</span> يرجى إدخال الاسم الثلاثي أو الرباعي الصحيح.
+            </span>
+</div>
+<!-- Field 2: Mobile Phone (رقم الهاتف المحمول *) with Egyptian Network (+20) -->
+<div class="flex flex-col gap-1">
+<label class="text-xs sm:text-sm font-semibold text-brand-900 flex items-center justify-between" for="reg-phone">
+<span>رقم الهاتف المحمول <span class="text-error font-bold">*</span></span>
+<span class="text-[11px] text-gold-700 font-medium">شبكات جمهورية مصر العربية</span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full text-right rounded-lg bg-surface-subtle border border-surface-border text-charcoal placeholder:text-charcoal-muted/60 px-3.5 py-2.5 pl-14 text-sm font-mono tracking-wide focus:outline-none focus:bg-white focus:border-brand-800 focus:ring-2 focus:ring-brand-800/15 transition-all" dir="ltr" id="reg-phone" name="phone" placeholder="010 1234 5678" required="" type="tel"/>
+<span class="absolute left-3 text-xs font-semibold text-charcoal-muted select-none pointer-events-none bg-surface-dim/70 px-1.5 py-0.5 rounded border border-surface-border font-mono">
+                +20
+              </span>
+</div>
+<p class="text-[11px] text-charcoal-muted">يُستخدم لتنسيق تسليم الشحنات والتواصل مع مندوب التوصيل داخل قنا والمحافظات.</p>
+<span class="hidden text-xs text-error flex items-center gap-1 font-medium" id="phone-error">
+<span class="material-symbols-outlined text-sm">error</span> أدخل رقم محمول مصري صحيح يبدأ بـ (010 أو 011 أو 012 أو 015) مكون من 11 رقماً.
+            </span>
+</div>
+<!-- Field 3: Email Address (البريد الإلكتروني المسجل *) -->
+<div class="flex flex-col gap-1">
+<label class="text-xs sm:text-sm font-semibold text-brand-900 flex items-center justify-between" for="reg-email">
+<span>البريد الإلكتروني المسجل <span class="text-error font-bold">*</span></span>
+<span class="text-[11px] text-charcoal-muted font-normal">معتمد للإشعارات والتفعيل</span>
+</label>
+<input class="w-full text-right rounded-lg bg-surface-subtle border border-surface-border text-charcoal placeholder:text-charcoal-muted/60 px-3.5 py-2.5 text-sm focus:outline-none focus:bg-white focus:border-brand-800 focus:ring-2 focus:ring-brand-800/15 transition-all font-sans" dir="ltr" id="reg-email" name="email" placeholder="researcher@azhar.edu.eg" required="" type="email"/>
+<p class="text-[11px] text-charcoal-muted">ستتلقى رمز ورابط التفعيل الرسمي عبر هذا العنوان لإتمام تفعيل العضوية.</p>
+<span class="hidden text-xs text-error flex items-center gap-1 font-medium" id="email-error">
+<span class="material-symbols-outlined text-sm">error</span> يرجى كتابة عنوان بريد إلكتروني صالح ومعتمد.
+            </span>
+</div>
+<!-- Field 4 & 5: Password & Confirm Password (Grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<!-- Password -->
+<div class="flex flex-col gap-1">
+<label class="text-xs sm:text-sm font-semibold text-brand-900" for="reg-password">
+                كلمة المرور <span class="text-error font-bold">*</span>
+</label>
+<div class="relative">
+<input class="w-full text-right rounded-lg bg-surface-subtle border border-surface-border text-charcoal placeholder:text-charcoal-muted/60 px-3.5 py-2.5 pl-10 text-sm focus:outline-none focus:bg-white focus:border-brand-800 focus:ring-2 focus:ring-brand-800/15 transition-all font-mono" dir="ltr" id="reg-password" name="password" placeholder="••••••••••••" required="" type="password"/>
+<button aria-label="إظهار كلمة المرور" class="absolute left-2.5 top-1/2 -translate-y-1/2 text-charcoal-muted hover:text-brand-800 transition-colors p-1" onclick="toggleRegPassword('reg-password', 'eye-icon-pass')" type="button">
+<span class="material-symbols-outlined text-lg align-middle" id="eye-icon-pass">visibility</span>
+</button>
+</div>
+<span class="hidden text-xs text-error flex items-center gap-1 font-medium" id="password-error">
+<span class="material-symbols-outlined text-sm">error</span> لا تقل عن 8 خانات.
+              </span>
+</div>
+<!-- Confirm Password -->
+<div class="flex flex-col gap-1">
+<label class="text-xs sm:text-sm font-semibold text-brand-900" for="reg-password-confirm">
+                تأكيد كلمة المرور <span class="text-error font-bold">*</span>
+</label>
+<div class="relative">
+<input class="w-full text-right rounded-lg bg-surface-subtle border border-surface-border text-charcoal placeholder:text-charcoal-muted/60 px-3.5 py-2.5 pl-10 text-sm focus:outline-none focus:bg-white focus:border-brand-800 focus:ring-2 focus:ring-brand-800/15 transition-all font-mono" dir="ltr" id="reg-password-confirm" name="password_confirm" placeholder="••••••••••••" required="" type="password"/>
+<button aria-label="إظهار تأكيد كلمة المرور" class="absolute left-2.5 top-1/2 -translate-y-1/2 text-charcoal-muted hover:text-brand-800 transition-colors p-1" onclick="toggleRegPassword('reg-password-confirm', 'eye-icon-confirm')" type="button">
+<span class="material-symbols-outlined text-lg align-middle" id="eye-icon-confirm">visibility</span>
+</button>
+</div>
+<span class="hidden text-xs text-error flex items-center gap-1 font-medium" id="confirm-error">
+<span class="material-symbols-outlined text-sm">error</span> كلمتا المرور غير متطابقتين.
+              </span>
+</div>
+</div>
+<!-- Password Requirement Hint -->
+<div class="flex items-center gap-1.5 text-xs text-charcoal-muted bg-surface-subtle/80 px-2.5 py-1.5 rounded-md border border-surface-border/60">
+<span class="material-symbols-outlined text-sm text-gold-600">info</span>
+<span>يجب ألا تقل كلمة المرور عن 8 خانات وتشمل مزيجاً من الحروف والأرقام.</span>
+</div>
+<!-- 6. Email Verification Notice Badge (PRD AUTH-005 & AUTH-006) -->
+<div class="bg-brand-50 border border-brand-100 rounded-xl p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-brand-800 text-lg shrink-0 mt-0.5">verified_user</span>
+<div class="text-xs text-charcoal leading-relaxed">
+<span class="font-bold text-brand-800">إشعار التفعيل الأكاديمي:</span> 
+              يتم تفعيل الحساب فور النقر على الرابط المرسل إلى بريدك الإلكتروني المعتمد دون الحاجة إلى رمز تحقق (OTP) عبر الهاتف.
+            </div>
+</div>
+<!-- 7. Terms & Privacy Checkbox -->
+<div class="flex items-start gap-2.5 mt-0.5">
+<input class="w-4 h-4 mt-0.5 rounded border-surface-border text-brand-800 focus:ring-brand-800/20 cursor-pointer accent-brand-800" id="terms-consent" name="terms" required="" type="checkbox"/>
+<label class="text-xs sm:text-sm text-charcoal cursor-pointer select-none leading-relaxed" for="terms-consent">
+              أوافق على <a class="text-brand-800 font-semibold underline underline-offset-2 hover:text-gold-700" href="/terms">شروط الاستخدام</a> و<a class="text-brand-800 font-semibold underline underline-offset-2 hover:text-gold-700" href="/privacy">سياسة حماية البيانات وخصوصية الباحثين</a> بمكتبة الأزهري بقنا.
+            </label>
+</div>
+<span class="hidden text-xs text-error flex items-center gap-1 font-medium -mt-2" id="terms-error">
+<span class="material-symbols-outlined text-sm">error</span> يلزم الموافقة على الشروط والسياسات لمتابعة إنشاء الحساب.
+          </span>
+<!-- 8. Register CTA Button (إنشاء الحساب الأكاديمي ←) -->
+<button class="w-full mt-2 py-3 px-4 rounded-xl bg-brand-800 text-white font-semibold text-sm hover:bg-brand-900 active:scale-[0.99] transition-all shadow-md flex items-center justify-center gap-2 group border border-brand-700" id="reg-submit-btn" type="submit">
+<span class="flex items-center gap-2" id="reg-btn-text">
+<span>إنشاء الحساب الأكاديمي</span>
+<span class="material-symbols-outlined text-base group-hover:-translate-x-1 transition-transform">arrow_forward</span>
+</span>
+<span class="hidden items-center gap-2" id="reg-btn-spinner">
+<svg class="animate-spin h-5 w-5 text-white" fill="none" viewbox="0 0 24 24">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+<span>جارٍ تسجيل بيانات الباحث...</span>
+</span>
+</button>
+</form>
+<!-- 9. Existing User Link -->
+<div class="mt-6 pt-5 gold-divider"></div>
+<div class="mt-3 text-center">
+<p class="text-xs sm:text-sm text-charcoal-secondary">
+            لديك حساب مسجل بالفعل؟
+            <a class="text-brand-800 font-bold hover:text-gold-700 underline underline-offset-4 mr-1 transition-colors" href="/login">
+              تسجيل الدخول إلى حسابك
+            </a>
+</p>
+</div>
+</div>
+<!-- Physical Trust Footer & Local Scholarly Presence in Qena -->
+<footer class="w-full max-w-[520px] mt-6 mb-4 text-center flex flex-col items-center gap-2 text-xs text-charcoal-muted">
+<div class="flex items-center justify-center gap-2 flex-wrap">
+<span class="inline-flex items-center gap-1 text-charcoal-secondary">
+<span class="material-symbols-outlined text-sm text-gold-600">location_on</span>
+<span>قنا، منطقة عمر أفندي، بجوار منطقة قنا الأزهرية</span>
+</span>
+<span class="text-surface-dim font-bold">•</span>
+<a class="text-brand-800 hover:text-gold-700 inline-flex items-center gap-1 font-medium underline underline-offset-2" href="https://wa.me/201094589231?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D8%B3%D8%AC%D9%8A%D9%84" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-sm text-[#25D366]">chat</span>
+<span>الدعم الفني عبر واتساب</span>
+</a>
+</div>
+<p class="text-[11px] text-charcoal-muted/80">
+          جميع الحقوق محفوظة © 2026 مكتبة الأزهري للنشر والتوزيع والخدمات الأكاديمية
+        </p>
+</footer>
+</div>
+</main>
+<!-- Interactive JavaScript Controller for Realistic State Simulation -->
+<script>
+    // Toggle Password Visibility
+    function toggleRegPassword(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+      if (!input || !icon) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    }
+
+    // Set Simulator Modes
+    function setRegState(state) {
+      const buttons = [
+        'btn-state-reg-default',
+        'btn-state-reg-loading',
+        'btn-state-reg-duplicate',
+        'btn-state-reg-validation',
+        'btn-state-reg-success'
+      ];
+      
+      buttons.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.className = 'px-2.5 py-1 rounded bg-zinc-800/90 text-zinc-300 hover:bg-zinc-700 hover:text-white transition-all';
+      });
+
+      const activeBtn = document.getElementById('btn-state-reg-' + state);
+      if (activeBtn) {
+        activeBtn.className = 'px-3 py-1 rounded bg-brand-800 text-white font-medium hover:bg-brand-700 transition-all border border-brand-700 shadow-sm';
+      }
+
+      const form = document.getElementById('registration-form');
+      const duplicateBanner = document.getElementById('duplicate-error-banner');
+      const successCard = document.getElementById('registration-success-card');
+      const submitBtn = document.getElementById('reg-submit-btn');
+      const btnText = document.getElementById('reg-btn-text');
+      const btnSpinner = document.getElementById('reg-btn-spinner');
+
+      const fn = document.getElementById('reg-fullname');
+      const ph = document.getElementById('reg-phone');
+      const em = document.getElementById('reg-email');
+      const pw = document.getElementById('reg-password');
+      const pc = document.getElementById('reg-password-confirm');
+      const tc = document.getElementById('terms-consent');
+
+      const fnErr = document.getElementById('fullname-error');
+      const phErr = document.getElementById('phone-error');
+      const emErr = document.getElementById('email-error');
+      const pwErr = document.getElementById('password-error');
+      const cfErr = document.getElementById('confirm-error');
+      const tcErr = document.getElementById('terms-error');
+
+      // Reset base form visibility & styles
+      duplicateBanner.classList.add('hidden');
+      duplicateBanner.classList.remove('flex');
+      successCard.classList.add('hidden');
+      form.classList.remove('hidden');
+      [fnErr, phErr, emErr, pwErr, cfErr, tcErr].forEach(err => err.classList.add('hidden'));
+      [fn, ph, em, pw, pc].forEach(inp => inp.classList.remove('border-error', 'bg-error-container/20'));
+
+      submitBtn.disabled = false;
+      btnText.classList.remove('hidden');
+      btnSpinner.classList.add('hidden');
+      btnSpinner.classList.remove('flex');
+
+      if (state === 'default') {
+        fn.value = 'محمد عبد الله الشنقيطي';
+        ph.value = '01094589231';
+        em.value = 'm.shanqiti@azhar.edu.eg';
+        pw.value = 'Azhar2026Secure';
+        pc.value = 'Azhar2026Secure';
+        tc.checked = true;
+      } else if (state === 'loading') {
+        submitBtn.disabled = true;
+        btnText.classList.add('hidden');
+        btnSpinner.classList.remove('hidden');
+        btnSpinner.classList.add('flex');
+      } else if (state === 'duplicate') {
+        duplicateBanner.classList.remove('hidden');
+        duplicateBanner.classList.add('flex');
+        em.value = 'ahmed.alazhari@example.com';
+        ph.value = '01094589231';
+      } else if (state === 'validation') {
+        fn.value = '';
+        ph.value = '12345';
+        em.value = 'invalid-format';
+        pw.value = '123';
+        pc.value = '456';
+        tc.checked = false;
+        [fnErr, phErr, emErr, pwErr, cfErr, tcErr].forEach(err => err.classList.remove('hidden'));
+        [fn, ph, em, pw, pc].forEach(inp => inp.classList.add('border-error', 'bg-error-container/20'));
+      } else if (state === 'success') {
+        form.classList.add('hidden');
+        successCard.classList.remove('hidden');
+      }
+    }
+
+    // Client-side Validation Simulation
+    function handleRegistrationSubmit(event) {
+      event.preventDefault();
+      const fn = document.getElementById('reg-fullname');
+      const ph = document.getElementById('reg-phone');
+      const em = document.getElementById('reg-email');
+      const pw = document.getElementById('reg-password');
+      const pc = document.getElementById('reg-password-confirm');
+      const tc = document.getElementById('terms-consent');
+
+      const fnErr = document.getElementById('fullname-error');
+      const phErr = document.getElementById('phone-error');
+      const emErr = document.getElementById('email-error');
+      const pwErr = document.getElementById('password-error');
+      const cfErr = document.getElementById('confirm-error');
+      const tcErr = document.getElementById('terms-error');
+
+      let hasError = false;
+
+      // Clear previous error messages
+      [fnErr, phErr, emErr, pwErr, cfErr, tcErr].forEach(err => err.classList.add('hidden'));
+      [fn, ph, em, pw, pc].forEach(inp => inp.classList.remove('border-error', 'bg-error-container/20'));
+
+      if (!fn.value.trim() || fn.value.trim().length < 3) {
+        fnErr.classList.remove('hidden');
+        fn.classList.add('border-error', 'bg-error-container/20');
+        hasError = true;
+      }
+
+      if (!ph.value.trim() || !/^(010|011|012|015)[0-9]{8}$/.test(ph.value.replace(/\s+/g, ''))) {
+        phErr.classList.remove('hidden');
+        ph.classList.add('border-error', 'bg-error-container/20');
+        hasError = true;
+      }
+
+      if (!em.value.trim() || !em.value.includes('@') || !em.value.includes('.')) {
+        emErr.classList.remove('hidden');
+        em.classList.add('border-error', 'bg-error-container/20');
+        hasError = true;
+      }
+
+      if (!pw.value || pw.value.length < 8) {
+        pwErr.classList.remove('hidden');
+        pw.classList.add('border-error', 'bg-error-container/20');
+        hasError = true;
+      }
+
+      if (pw.value !== pc.value) {
+        cfErr.classList.remove('hidden');
+        pc.classList.add('border-error', 'bg-error-container/20');
+        hasError = true;
+      }
+
+      if (!tc.checked) {
+        tcErr.classList.remove('hidden');
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      // If user inputs specific duplicate trigger:
+      if (em.value.includes('duplicate') || em.value === 'ahmed.alazhari@example.com') {
+        setRegState('duplicate');
+        return;
+      }
+
+      // Transition to loading then success
+      const submitBtn = document.getElementById('reg-submit-btn');
+      const btnText = document.getElementById('reg-btn-text');
+      const btnSpinner = document.getElementById('reg-btn-spinner');
+
+      submitBtn.disabled = true;
+      btnText.classList.add('hidden');
+      btnSpinner.classList.remove('hidden');
+      btnSpinner.classList.add('flex');
+
+      setTimeout(() => {
+        setRegState('success');
+      }, 1000);
+    }
+
+    // Initialize Default State
+    document.addEventListener('DOMContentLoaded', () => {
+      setRegState('default');
+    });
+  </script>
+</body></html>

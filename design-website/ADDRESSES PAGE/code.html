@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-lowest":"#ffffff","secondary-container":"#fec96e","surface-container":"#efeeeb","surface-container-highest":"#e3e2e0","on-tertiary-container":"#8fb9a9","background":"#faf9f6","secondary-fixed-dim":"#f2be64","outline":"#707974","surface-dim":"#dbdad7","surface-bright":"#faf9f6","surface-variant":"#e3e2e0","tertiary-fixed":"#c1ecdb","on-primary-fixed-variant":"#15503e","primary-fixed":"#b4efd6","tertiary":"#083328","surface-container-low":"#f4f3f1","on-tertiary-fixed":"#002118","surface":"#faf9f6","on-error-container":"#93000a","error":"#ba1a1a","on-secondary-fixed":"#271900","on-primary":"#ffffff","on-surface":"#1a1c1a","tertiary-container":"#234a3e","inverse-primary":"#99d3ba","primary":"#003426","secondary":"#7d5700","surface-container-high":"#e9e8e5","surface-tint":"#306855","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#274e42","on-error":"#ffffff","on-background":"#1a1c1a","primary-container":"#0f4c3a","inverse-on-surface":"#f1f1ee","tertiary-fixed-dim":"#a5cfbf","on-tertiary":"#ffffff","outline-variant":"#bfc9c3","on-secondary-fixed-variant":"#5f4100","inverse-surface":"#2f312f","on-primary-container":"#82bba4","on-primary-fixed":"#002117","secondary-fixed":"#ffdeaa","error-container":"#ffdad6","on-secondary-container":"#775300","on-surface-variant":"#404944","primary-fixed-dim":"#99d3ba"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","space-xs":"0.25rem","margin-lg":"3rem","space-sm":"0.5rem","gutter-lg":"2rem","margin-sm":"1rem","space-xl":"2rem","gutter-sm":"1rem","space-md":"1rem","gutter":"1.5rem","margin":"1.5rem"},"fontFamily":{"headline-sm":["Noto Serif"],"body-lg":["Plus Jakarta Sans"],"display-lg":["Noto Serif"],"body-sm":["Plus Jakarta Sans"],"display-lg-mobile":["Noto Serif"],"label-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-md":["Noto Serif"],"headline-lg":["Noto Serif"],"title-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Noto Serif"],"body-md":["Plus Jakarta Sans"]},"fontSize":{"headline-sm":["1.25rem",{"lineHeight":"1.75rem","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.875rem","fontWeight":"400"}],"display-lg":["3rem",{"lineHeight":"3.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["0.875rem",{"lineHeight":"1.45rem","fontWeight":"400"}],"display-lg-mobile":["2.25rem",{"lineHeight":"2.875rem","letterSpacing":"-0.01em","fontWeight":"700"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0.02em","fontWeight":"600"}],"label-sm":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.03em","fontWeight":"500"}],"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.005em","fontWeight":"600"}],"headline-lg":["2.25rem",{"lineHeight":"2.875rem","letterSpacing":"-0.01em","fontWeight":"700"}],"title-md":["1.125rem",{"lineHeight":"1.625rem","fontWeight":"600"}],"headline-lg-mobile":["1.75rem",{"lineHeight":"2.25rem","letterSpacing":"0em","fontWeight":"700"}],"body-md":["1rem",{"lineHeight":"1.65rem","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 right-0 left-0 h-20 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(24,42,34,0.05)] z-40"><div class="w-full h-20 px-gutter-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="Emblem logo for Al-Azhari Library (مكتبة الأزهري) featuring an elegant open book with delicate quill/minaret aesthetic, stylized in rich deep forest green #0F4C3A and warm refined gold #A47925, clean vector icon style with refined Islamic editorial balance.. Brand logo. - Primary color: #0f4c3a
+- Font: notoSerif
+- Mode: light
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UKlbQCU1w8WBKJE6UKCQxgQlAM-oeRJPkM0I4LR_e4Q1i9lO0dX7pWyQplSIAA1ZmtBdhVgbaCxOMwK7N-tf4QKnOlgsrr_vANHO--HD5Lz4Eq69vMzWfqoGioxsSFpvTcMKSsNRPUPpqV6-G7P6tdPw8CIOjdYk66AtVZyAOxy56_vLhAP5YLk1AWK0X7TLSvWtUFCTndLJ7aFTFjpSOCyMaLaxe-bTBFnj9JybYXU-qXJxwqtQLtt38"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">مكتبة الأزهري</span><span class="font-label-sm text-label-sm text-secondary">الصرح العلمي والتراثي بقنا</span></div></div><nav class="hidden xl:flex items-center gap-space-md" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-space-sm py-space-xs transition-colors" data-path="storefront-home" href="#">الرئيسية</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-space-sm py-space-xs transition-colors" data-path="storefront-catalog" href="#">المتجر والكتب</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-space-sm py-space-xs transition-colors" data-path="student-services" href="#">الخدمات الطلابية</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-space-sm py-space-xs transition-colors" data-path="storefront-preorders" href="#">الحجز المسبق</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-space-sm py-space-xs transition-colors" data-path="contact-us" href="#">تواصل معنا</a></nav></div><div class="flex items-center gap-space-md flex-1 max-w-md mx-space-md"><div class="relative w-full"><span class="material-symbols-outlined absolute right-space-sm top-1/2 -translate-y-1/2 text-outline text-[20px] pointer-events-none">search</span><input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm pr-10 pl-space-md py-2.5 rounded-lg shadow-[0_1px_3px_rgba(24,42,34,0.06)] focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="ابحث في أمهات الكتب، الرسائل الجامعية، ومخطوطات الأزهري..." type="search"/></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><button aria-label="سلة التسوق" class="relative p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[22px]">local_mall</span><span class="absolute -top-1 -left-1 w-5 h-5 rounded-full bg-secondary text-surface-container-lowest font-label-sm text-[11px] flex items-center justify-center font-bold">3</span></button><button aria-label="التنبيهات" class="relative p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute -top-1 -left-1 w-5 h-5 rounded-full bg-primary-container text-on-primary-container font-label-sm text-[11px] flex items-center justify-center font-bold">2</span></button></div><div class="h-8 w-px bg-surface-container-highest hidden sm:block"></div><div class="flex items-center gap-space-sm"><div class="hidden sm:flex flex-col text-left"><span class="font-label-md text-label-md text-primary font-semibold">الشيخ أحمد القنائي</span><span class="font-label-sm text-label-sm text-on-surface-variant">باحث دراسات عليا</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><aside class="fixed right-0 top-20 bottom-0 w-72 bg-surface-container-low z-30 flex flex-col justify-between shadow-[0_4px_12px_rgba(24,42,34,0.04)] overflow-y-auto"><div class="p-space-md"><div class="px-space-md py-space-sm mb-space-md rounded-lg bg-surface-container-lowest shadow-[0_1px_3px_rgba(24,42,34,0.04)]"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">رقم العضوية الأكاديمية</span><span class="font-label-sm text-label-sm text-on-surface-variant">#AZ-8492</span></div><p class="font-title-md text-title-md text-primary mt-1 font-bold">قسم الشريعة والدراسات</p></div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="account-dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-md text-label-md">لوحة الحساب</span></a><a class="flex items-center gap-space-sm px-space-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="account-orders" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-label-md text-label-md">طلباتي</span></a><a class="flex items-center gap-space-sm px-space-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="account-services" href="#"><span class="material-symbols-outlined text-[20px]">school</span><span class="font-label-md text-label-md">طلبات الخدمات</span></a><a class="flex items-center gap-space-sm px-space-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="account-preorders" href="#"><span class="material-symbols-outlined text-[20px]">bookmark_added</span><span class="font-label-md text-label-md">الحجز المسبق</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-3 transition-all bg-primary-container text-on-primary-container font-bold rounded-lg shadow-sm" data-path="account-addresses" href="#"><span class="material-symbols-outlined text-[20px]">home_pin</span><span class="font-label-md text-label-md">عناويني المحفوظة</span></a><a class="flex items-center gap-space-sm px-space-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="account-payments" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="font-label-md text-label-md">سجل المدفوعات</span></a><a class="flex items-center gap-space-sm px-space-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="account-notifications" href="#"><span class="material-symbols-outlined text-[20px]">notifications_active</span><span class="font-label-md text-label-md">الإشعارات</span></a><a class="flex items-center gap-space-sm px-space-md py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="account-profile" href="#"><span class="material-symbols-outlined text-[20px]">manage_accounts</span><span class="font-label-md text-label-md">الملف الشخصي</span></a></nav></div><div class="p-space-md"><div class="p-space-sm mb-space-sm rounded-lg bg-surface-container-lowest shadow-[0_1px_3px_rgba(24,42,34,0.04)] text-center"><span class="material-symbols-outlined text-secondary text-[24px]">support_agent</span><h4 class="font-label-md text-label-md text-primary mt-1">خدمة المستفيدين</h4><p class="font-body-sm text-body-sm text-on-surface-variant">مكتب قنا: شارع عمر أفندي</p></div><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-all" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-label-md text-label-md font-semibold">تسجيل الخروج</span></a></div></aside><div class="pr-72"><main class="relative pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive State Engine Controller (Operational Simulation Toolbar) -->
+<section class="w-full bg-surface-container-low px-gutter-lg py-space-sm mb-space-lg shadow-sm">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px] text-secondary">tune</span>
+<span class="font-label-md text-label-md font-bold">محاكي الحالات التشغيلية لحساب المستفيد:</span>
+</div>
+<div aria-label="أنماط العرض التشغيلية" class="flex flex-wrap items-center gap-space-xs" role="tablist">
+<button aria-selected="true" class="state-tab-btn px-3 py-1.5 rounded text-label-sm font-semibold transition-all bg-primary text-on-primary shadow-sm" id="btn-state-active" onclick="setOperationalState('active')" type="button">
+          النموذج النشط (العناوين المحفوظة)
+        </button>
+<button aria-selected="false" class="state-tab-btn px-3 py-1.5 rounded text-label-sm font-semibold transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high" id="btn-state-modal" onclick="setOperationalState('modal')" type="button">
+          إضافة عنوان جديد (النافذة الإجرائية)
+        </button>
+<button aria-selected="false" class="state-tab-btn px-3 py-1.5 rounded text-label-sm font-semibold transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high" id="btn-state-delete" onclick="setOperationalState('delete')" type="button">
+          تأكيد الحذف (الحوار الوقائي)
+        </button>
+<button aria-selected="false" class="state-tab-btn px-3 py-1.5 rounded text-label-sm font-semibold transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high" id="btn-state-empty" onclick="setOperationalState('empty')" type="button">
+          حالة خلو العناوين (Empty State)
+        </button>
+<button aria-selected="false" class="state-tab-btn px-3 py-1.5 rounded text-label-sm font-semibold transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high" id="btn-state-skeleton" onclick="setOperationalState('skeleton')" type="button">
+          التحميل الشبكي (Skeleton)
+        </button>
+</div>
+</div>
+</section>
+<div class="w-full px-gutter-lg max-w-7xl mx-auto space-y-space-xl pb-space-xl">
+<!-- Top Breadcrumbs -->
+<nav aria-label="مسار التنقل" class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">home</span>
+        الرئيسية
+      </a>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_left</span>
+<a class="hover:text-primary transition-colors" href="#">حسابي الأكاديمي</a>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_left</span>
+<span class="text-primary font-bold">عناويني المحفوظة</span>
+</nav>
+<!-- Page Header & Main Title Action Bar -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-space-md bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative overflow-hidden">
+<div class="space-y-space-xs max-w-3xl relative z-10">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+          العنونة اللوجستية المصرية المعتمدة
+        </div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">عناويني المحفوظة</h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          إدارة عناوين التوصيل والاستلام المعتمدة لمقر إقامتك ومقر دراستك الجامعية. تضمن العناوين النصية المفصلة وصول طرود أمهات الكتب والمذكرات والرسائل العلمية بدقة وبدون الحاجة لخرائط أو إحداثيات.
+        </p>
+</div>
+<div class="relative z-10 flex-shrink-0">
+<button class="inline-flex items-center justify-center gap-space-sm px-space-lg py-3 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-all shadow-md active:scale-95" onclick="setOperationalState('modal')" type="button">
+<span class="material-symbols-outlined text-[20px]">add_location_alt</span>
+<span>إضافة عنوان جديد</span>
+</button>
+</div>
+<!-- Subtle Decorative Background Watermark Rule -->
+<svg aria-hidden="true" class="absolute left-0 bottom-0 text-primary opacity-[0.03] pointer-events-none transform -translate-x-12 translate-y-8" fill="currentColor" height="280" viewbox="0 0 100 100" width="280">
+<path d="M50 0 L61 35 L98 35 L68 57 L79 91 L50 70 L21 91 L32 57 L2 35 L39 35 Z"></path>
+</svg>
+</header>
+<!-- VIEW 1: ACTIVE DEFAULT (Cards Grid) -->
+<div class="space-y-space-lg" id="view-active">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg items-start">
+<!-- CARD 1: Default Address (سكن الإقامة والمنزل — قنا) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg space-y-space-md relative overflow-hidden flex flex-col justify-between">
+<!-- Primary Selection Indicator Strip -->
+<div class="absolute top-0 right-0 left-0 h-1.5 bg-primary"></div>
+<div class="space-y-space-md">
+<!-- Header Badges -->
+<div class="flex items-start justify-between gap-space-sm">
+<div class="space-y-1">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-bold shadow-sm">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                  العنوان الافتراضي للشحن
+                </span>
+<h2 class="font-headline-sm text-headline-sm text-primary pt-1">سكن الإقامة والمنزل — قنا</h2>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low text-primary" title="عنوان سكني شخصي">
+<span class="material-symbols-outlined text-[24px]">home</span>
+</div>
+</div>
+<!-- Recipient Information Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm bg-surface-container-low p-space-sm rounded-lg">
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-outline block">اسم المستلم المعتمد:</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold">الشيخ أحمد محمود القنائي</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-outline block">رقم هاتف المندوب:</span>
+<span class="font-title-md text-title-md text-primary font-semibold dir-ltr text-right inline-block">+20 109 458 9231</span>
+</div>
+</div>
+<!-- Egyptian Detailed Address Breakdown (Strictly Text-Based) -->
+<div class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary flex-shrink-0 mt-0.5">location_city</span>
+<div>
+<strong class="font-label-md text-label-md text-primary">المحافظة والمركز:</strong>
+<span>محافظة قنا — مركز قنا</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary flex-shrink-0 mt-0.5">signpost</span>
+<div>
+<strong class="font-label-md text-label-md text-primary">الحي والشارع:</strong>
+<span>منطقة عمر أفندي — وسط البلد، شارع عمر أفندي المتفرع من شارع الجمهورية</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary flex-shrink-0 mt-0.5">domain</span>
+<div>
+<strong class="font-label-md text-label-md text-primary">المبنى والوحدة:</strong>
+<span>عمارة الإيمان رقم 14 — الدور الثالث — شقة رقم 7</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs bg-secondary-fixed/30 p-2.5 rounded-lg text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary flex-shrink-0 mt-0.5">flag</span>
+<div>
+<strong class="font-label-md text-label-md text-secondary">علامة مميزة استدلالية:</strong>
+<span>أمام مدرسة الراهبات وبجوار منطقة قنا الأزهرية المركزية مباشرة.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs p-2.5 rounded-lg bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline flex-shrink-0 mt-0.5">schedule</span>
+<div class="text-[13px] leading-relaxed">
+<strong class="text-on-surface font-semibold">تعليمات مندوب التوصيل:</strong>
+<span>يرجى الاتصال هاتفياً قبل الوصول بربع ساعة، والتسليم متاح طوال أيام الأسبوع بعد الساعة ٢ ظهراً.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Actions Toolbar -->
+<div class="pt-space-md mt-space-sm flex items-center justify-between gap-space-sm bg-surface-container-lowest">
+<span class="inline-flex items-center gap-1 text-label-sm font-bold text-primary">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+              محدد كعنوان أساسي
+            </span>
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary font-label-md text-label-md transition-colors" onclick="editAddress('home')" title="تعديل هذا العنوان" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span>تعديل</span>
+</button>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container text-outline opacity-50 cursor-not-allowed font-label-sm text-label-sm" disabled="" title="لا يمكن حذف العنوان الافتراضي" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>حذف</span>
+</button>
+</div>
+</div>
+</article>
+<!-- CARD 2: Secondary Academic Address (الكلية والسكن الأزهري) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg space-y-space-md relative overflow-hidden flex flex-col justify-between">
+<!-- Non-default accent top bar -->
+<div class="absolute top-0 right-0 left-0 h-1.5 bg-outline-variant"></div>
+<div class="space-y-space-md">
+<!-- Header Badges -->
+<div class="flex items-start justify-between gap-space-sm">
+<div class="space-y-1">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">school</span>
+                  مقر أكاديمي / جامعي
+                </span>
+<h2 class="font-headline-sm text-headline-sm text-primary pt-1">الكلية والسكن الأزهري — دراسات إسلامية</h2>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low text-primary" title="عنوان جامعة">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+</div>
+<!-- Recipient Information Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm bg-surface-container-low p-space-sm rounded-lg">
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-outline block">اسم المستلم أو البديل:</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold line-clamp-1">أحمد محمود القنائي (أو د. عبد الرحمن)</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-outline block">أرقام التواصل:</span>
+<span class="font-body-sm text-body-sm text-primary font-semibold dir-ltr text-right inline-block">01094589231 / 01098765432</span>
+</div>
+</div>
+<!-- Egyptian Detailed Address Breakdown (Strictly Text-Based) -->
+<div class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary flex-shrink-0 mt-0.5">location_city</span>
+<div>
+<strong class="font-label-md text-label-md text-primary">المحافظة والمؤسسة:</strong>
+<span>محافظة قنا — جامعة الأزهر فرع قنا</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary flex-shrink-0 mt-0.5">signpost</span>
+<div>
+<strong class="font-label-md text-label-md text-primary">المجمع والشارع:</strong>
+<span>مجمع الكليات الأزهرية — الكيلو 6، طريق الجامعة الرئيسي</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary flex-shrink-0 mt-0.5">domain</span>
+<div>
+<strong class="font-label-md text-label-md text-primary">المبنى والقسم:</strong>
+<span>كلية الدراسات الإسلامية والعربية بنين — شعبة الفقه — الدور الثاني</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs bg-secondary-fixed/30 p-2.5 rounded-lg text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary flex-shrink-0 mt-0.5">flag</span>
+<div>
+<strong class="font-label-md text-label-md text-secondary">علامة مميزة استدلالية:</strong>
+<span>بجوار قاعة المؤتمرات الكبرى ومسجد الكلية الأزهري الجامع.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs p-2.5 rounded-lg bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline flex-shrink-0 mt-0.5">mark_email_read</span>
+<div class="text-[13px] leading-relaxed">
+<strong class="text-on-surface font-semibold">ملاحظات الاستلام الأكاديمي:</strong>
+<span>تسليم الأطروحات والمراجع في مظروف مختوم باسم الباحث لدى مكتب شؤون الطلاب.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Actions Toolbar -->
+<div class="pt-space-md mt-space-sm flex items-center justify-between gap-space-sm bg-surface-container-lowest">
+<button class="inline-flex items-center gap-1.5 text-label-sm text-secondary hover:text-primary transition-colors font-bold underline underline-offset-4" onclick="makeDefaultAddress()" type="button">
+<span class="material-symbols-outlined text-[18px]">radio_button_unchecked</span>
+              تعيين كعنوان افتراضي
+            </button>
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary font-label-md text-label-md transition-colors" onclick="editAddress('faculty')" title="تعديل هذا العنوان" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span>تعديل</span>
+</button>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error font-label-sm text-label-sm transition-colors" onclick="setOperationalState('delete')" title="حذف هذا العنوان" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>حذف</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- VIEW 2: MODAL / DRAWER FORM PREVIEW (إضافة وتعديل العنوان الأزهري) -->
+<div class="hidden" id="view-modal">
+<div class="bg-surface-container-lowest rounded-xl shadow-xl p-space-xl space-y-space-lg relative overflow-hidden">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm border-b border-surface-container-highest">
+<div class="space-y-1">
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[18px]">edit_location</span>
+              نظام الفهرسة الجغرافية المصرية
+            </div>
+<h2 class="font-headline-md text-headline-md text-primary" id="form-heading">إضافة عنوان شحن جديد</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">الرجاء إدخال البيانات المكتوبة بدقة لتفادي أي تأخير أثناء شحن طرود دار الأزهري.</p>
+</div>
+<button aria-label="إغلاق النموذج" class="self-end sm:self-auto p-2 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-colors" onclick="setOperationalState('active')" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="space-y-space-md" id="addressForm" onsubmit="event.preventDefault(); setOperationalState('active');">
+<!-- Row 1: Label and Recipient Name -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-label">
+                مسمى العنوان <span class="text-error">*</span>
+</label>
+<select class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="addr-label">
+<option value="home">سكن الإقامة والمنزل</option>
+<option value="faculty">السكن الجامعي / الكلية</option>
+<option value="institute">المعهد الأزهري النموذجي</option>
+<option value="office">مكتب العمل / المقر الإداري</option>
+<option value="other">عنوان آخر مخصص</option>
+</select>
+</div>
+<div class="md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-recipient">
+                اسم المستلم بالكامل <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="addr-recipient" placeholder="مثال: الشيخ أحمد محمود القنائي" required="" type="text"/>
+</div>
+</div>
+<!-- Row 2: Phones -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-phone1">
+                رقم هاتف المحمول للتواصل ومندوب الشحن <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 text-left dir-ltr" id="addr-phone1" placeholder="01094589231" required="" type="tel"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-phone2">
+                رقم هاتف بديل / هاتف السكن (اختياري)
+              </label>
+<input class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 text-left dir-ltr" id="addr-phone2" placeholder="01098765432" type="tel"/>
+</div>
+</div>
+<!-- Row 3: Governorate, City/Center, Area -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-gov">
+                المحافظة المصرية <span class="text-error">*</span>
+</label>
+<select class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="addr-gov">
+<option selected="" value="qena">قنا</option>
+<option value="luxor">الأقصر</option>
+<option value="aswan">أسوان</option>
+<option value="sohag">سوهاج</option>
+<option value="asyut">أسيوط</option>
+<option value="cairo">القاهرة</option>
+<option value="giza">الجيزة</option>
+<option value="alexandria">الإسكندرية</option>
+<option value="minya">المنيا</option>
+<option value="beni_suef">بني سويف</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-city">
+                المركز / المدينة <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="addr-city" placeholder="مثال: قنا، نجع حمادي، قوص، دشنا..." required="" type="text" value="مركز قنا"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-district">
+                الحي / المنطقة / القرية <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="addr-district" placeholder="مثال: الشؤون، الحصواية، النحال..." required="" type="text" value="منطقة عمر أفندي — وسط البلد"/>
+</div>
+</div>
+<!-- Row 4: Street and Building Breakdown -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-street">
+                اسم الشارع بالتفصيل <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="addr-street" placeholder="مثال: شارع عمر أفندي المتفرع من شارع الجمهورية الرئيسي" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-building">
+                رقم المبنى والعمارة <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="addr-building" placeholder="مثال: عمارة رقم 14" required="" type="text"/>
+</div>
+</div>
+<!-- Row 5: Floor and Landmark -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-floor">
+                الدور ورقم الشقة <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="addr-floor" placeholder="مثال: الدور الثالث، شقة 7" required="" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-landmark">
+                علامة مميزة إرشادية (نص وصفي دقيق لمندوب البريد والشحن) <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="addr-landmark" placeholder="مثال: أمام مدرسة الراهبات وبجوار مسجد سيدي عبد الرحيم القنائي" required="" type="text"/>
+</div>
+</div>
+<!-- Row 6: Delivery Courier Notes -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="addr-notes">
+              ملاحظات خاصة بمندوب الشحن والتسليم (اختياري)
+            </label>
+<textarea class="w-full bg-surface-container-lowest rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="addr-notes" placeholder="أوقات تفضيل الاتصال، ترك الطرد لدى الحارس أو إدارة الكلية، أو أي توجيه استلام..." rows="2"></textarea>
+</div>
+<!-- Default Selection Checkbox -->
+<div class="flex items-center gap-space-xs bg-surface-container-low p-space-sm rounded-lg">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary/20 accent-primary cursor-pointer" id="addr-is-default" type="checkbox"/>
+<label class="font-label-md text-label-md text-primary font-semibold cursor-pointer" for="addr-is-default">
+              تعيين هذا العنوان كعنوان رئيسي افتراضي لطلباتي القادمة تلقائياً
+            </label>
+</div>
+<!-- Form Buttons -->
+<div class="flex flex-col-reverse sm:flex-row items-center justify-end gap-space-sm pt-space-sm">
+<button class="w-full sm:w-auto px-space-lg py-2.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-label-md text-label-md transition-colors" onclick="setOperationalState('active')" type="button">
+              إلغاء واستعادة
+            </button>
+<button class="w-full sm:w-auto px-space-xl py-2.5 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md transition-all shadow-md active:scale-95" type="submit">
+              حفظ العنوان واعتماده
+            </button>
+</div>
+</form>
+</div>
+</div>
+<!-- VIEW 3: DELETE CONFIRMATION DIALOG (الحوار الوقائي لحذف العنوان) -->
+<div class="hidden" id="view-delete">
+<div class="max-w-xl mx-auto bg-surface-container-lowest rounded-xl shadow-xl p-space-xl space-y-space-md relative overflow-hidden">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]">warning</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-headline-sm text-primary">هل أنت متأكد من رغبتك في حذف هذا العنوان؟</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              سيتم إزالة عنوان: <strong class="text-primary font-bold">"الكلية والسكن الأزهري — دراسات إسلامية"</strong> من قائمة العناوين المسجلة لديك.
+            </p>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">info</span>
+<span>تنبيه أمان: لن يؤثر حذف هذا العنوان إطلاقاً على الطلبات الجاري تجهيزها أو شحنها حالياً عبر بوسطة أو المندوب.</span>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-sm">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-label-md text-label-md transition-colors" onclick="setOperationalState('active')" type="button">
+            تراجع وإلغاء
+          </button>
+<button class="inline-flex items-center gap-1.5 px-space-lg py-2.5 rounded-lg bg-error text-on-error hover:bg-red-800 font-label-md text-label-md transition-all shadow-md active:scale-95" onclick="confirmDeleteAddress()" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+<span>نعم، تأكيد الحذف نهائياً</span>
+</button>
+</div>
+</div>
+</div>
+<!-- VIEW 4: EMPTY STATE (حالة عدم وجود عناوين محفوظة) -->
+<div class="hidden" id="view-empty">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-xl text-center max-w-2xl mx-auto space-y-space-md py-16">
+<div class="w-20 h-20 mx-auto rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[42px]">wrong_location</span>
+</div>
+<div class="space-y-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary">لا توجد عناوين توصيل محفوظة حتى الآن</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto leading-relaxed">
+            أضف عنوانك المفضل في قنا أو أي محافظة أخرى لتسريع عملية إتمام الطلبات واستلام الكتب الدراسية والمذكرات مباشرة إلى باب بيتك أو كليتك بدون الحاجة لإعادة كتابة تفاصيل الشارع في كل مرة.
+          </p>
+</div>
+<div class="pt-space-xs">
+<button class="inline-flex items-center gap-2 px-space-xl py-3 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md transition-all shadow-md active:scale-95" onclick="setOperationalState('modal')" type="button">
+<span class="material-symbols-outlined text-[20px]">add_location_alt</span>
+<span>إضافة أول عنوان توصيل الآن</span>
+</button>
+</div>
+</div>
+</div>
+<!-- VIEW 5: SKELETON LOADING STATE (التحميل الشبكي) -->
+<div aria-hidden="true" class="hidden space-y-space-lg animate-pulse" id="view-skeleton">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Skeleton Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg space-y-space-md shadow-sm">
+<div class="flex justify-between items-center">
+<div class="h-6 w-36 bg-surface-container-highest rounded-full"></div>
+<div class="h-8 w-8 bg-surface-container-highest rounded-lg"></div>
+</div>
+<div class="h-7 w-48 bg-surface-container-highest rounded"></div>
+<div class="h-16 w-full bg-surface-container rounded-lg"></div>
+<div class="space-y-2">
+<div class="h-4 w-3/4 bg-surface-container-highest rounded"></div>
+<div class="h-4 w-5/6 bg-surface-container-highest rounded"></div>
+<div class="h-4 w-2/3 bg-surface-container-highest rounded"></div>
+</div>
+<div class="pt-space-md flex justify-between items-center">
+<div class="h-5 w-24 bg-surface-container-highest rounded"></div>
+<div class="h-8 w-20 bg-surface-container-highest rounded"></div>
+</div>
+</div>
+<!-- Skeleton Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg space-y-space-md shadow-sm">
+<div class="flex justify-between items-center">
+<div class="h-6 w-36 bg-surface-container-highest rounded-full"></div>
+<div class="h-8 w-8 bg-surface-container-highest rounded-lg"></div>
+</div>
+<div class="h-7 w-48 bg-surface-container-highest rounded"></div>
+<div class="h-16 w-full bg-surface-container rounded-lg"></div>
+<div class="space-y-2">
+<div class="h-4 w-3/4 bg-surface-container-highest rounded"></div>
+<div class="h-4 w-5/6 bg-surface-container-highest rounded"></div>
+<div class="h-4 w-2/3 bg-surface-container-highest rounded"></div>
+</div>
+<div class="pt-space-md flex justify-between items-center">
+<div class="h-5 w-24 bg-surface-container-highest rounded"></div>
+<div class="h-8 w-20 bg-surface-container-highest rounded"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust & Delivery Policy Notice (إرشادات الشحن والتوصيل المعتمدة بمكتبة الأزهري) -->
+<section aria-labelledby="delivery-notice-title" class="bg-surface-container-low rounded-xl p-space-lg shadow-sm relative overflow-hidden">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="p-3 rounded-lg bg-surface-container-lowest text-secondary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]">local_shipping</span>
+</div>
+<div class="space-y-1">
+<h2 class="font-title-md text-title-md text-primary font-bold" id="delivery-notice-title">
+              تنبيه هام حول شحن وتوصيل الطرود الأكاديمية
+            </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-4xl leading-relaxed">
+              نوفر الشحن المنتظم لكافة مراكز وقرى محافظة قنا ومحافظات الجمهورية بالتعاون مع شركائنا المعتمدين (<strong class="text-on-surface">بوسطة، هيئة البريد المصري، ومندوبي دار الأزهري الميدانيين</strong>). 
+              كما يمكنك دائماً اختيار <span class="text-secondary font-bold">"الاستلام الشخصي المجاني"</span> من مقر المكتبة الرئيسي بشارع عمر أفندي بمدينة قنا دون أي تكاليف شحن عند إتمام السلة.
+            </p>
+</div>
+</div>
+<div class="flex-shrink-0">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container-high font-label-md text-label-md transition-colors shadow-sm" href="#">
+<span>سياسة الشحن ومواعيد التسليم</span>
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+<script>
+  function setOperationalState(state) {
+    const views = ['active', 'modal', 'delete', 'empty', 'skeleton'];
+    views.forEach(v => {
+      const el = document.getElementById('view-' + v);
+      if (el) el.classList.add('hidden');
+    });
+
+    const activeView = document.getElementById('view-' + state);
+    if (activeView) activeView.classList.remove('hidden');
+
+    // Update simulation tab buttons
+    document.querySelectorAll('.state-tab-btn').forEach(btn => {
+      btn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+      btn.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+      btn.setAttribute('aria-selected', 'false');
+    });
+
+    const activeBtn = document.getElementById('btn-state-' + state);
+    if (activeBtn) {
+      activeBtn.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+      activeBtn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+      activeBtn.setAttribute('aria-selected', 'true');
+    }
+  }
+
+  function editAddress(type) {
+    const heading = document.getElementById('form-heading');
+    const recipient = document.getElementById('addr-recipient');
+    const street = document.getElementById('addr-street');
+    const building = document.getElementById('addr-building');
+    const floor = document.getElementById('addr-floor');
+    const landmark = document.getElementById('addr-landmark');
+    const labelSelect = document.getElementById('addr-label');
+
+    if (type === 'home') {
+      heading.textContent = 'تعديل العنوان: سكن الإقامة والمنزل — قنا';
+      labelSelect.value = 'home';
+      recipient.value = 'الشيخ أحمد محمود القنائي';
+      street.value = 'شارع عمر أفندي المتفرع من شارع الجمهورية';
+      building.value = 'عمارة الإيمان رقم 14';
+      floor.value = 'الدور الثالث — شقة 7';
+      landmark.value = 'أمام مدرسة الراهبات وبجوار منطقة قنا الأزهرية المركزية';
+    } else {
+      heading.textContent = 'تعديل العنوان: الكلية والسكن الأزهري';
+      labelSelect.value = 'faculty';
+      recipient.value = 'أحمد محمود القنائي (شخصياً أو د. عبد الرحمن بمسجد الكلية)';
+      street.value = 'طريق الجامعة — مبنى كلية الدراسات الإسلامية والعربية بنين';
+      building.value = 'مبنى شعبة الفقه وأصول الدين';
+      floor.value = 'الدور الثاني — قسم الدراسات العليا';
+      landmark.value = 'بجوار قاعة المؤتمرات الكبرى ومسجد الكلية الأزهري';
+    }
+
+    setOperationalState('modal');
+  }
+
+  function makeDefaultAddress() {
+    alert('تم تعيين عنوان "الكلية والسكن الأزهري" كعنوان شحن افتراضي بنجاح.');
+  }
+
+  function confirmDeleteAddress() {
+    alert('تم حذف العنوان بنجاح.');
+    setOperationalState('active');
+  }
+</script></main><footer class="w-full bg-surface-container-low py-space-xl shadow-[0_-1px_6px_rgba(24,42,34,0.03)]"><div class="w-full px-gutter-lg"><div class="grid grid-cols-1 md:grid-cols-4 gap-gutter-lg pb-space-lg"><div class="flex flex-col gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary">مكتبة الأزهري بقنا</span><p class="font-body-sm text-body-sm text-on-surface-variant">الفرع الرئيسي: محافظة قنا، شارع عمر أفندي، متفرع من ميدان المحطة، أمام مجمع المعاهد الأزهرية.</p><div class="flex items-center gap-space-xs mt-space-xs text-secondary font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px]">schedule</span><span>أوقات العمل: يومياً ٨:٣٠ ص - ١٠:٠٠ م</span></div></div><div class="flex flex-col gap-space-xs"><span class="font-title-md text-title-md text-primary">الخدمات الأكاديمية</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="#">طباعة وتجليد الرسائل العلمية</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="#">توثيق وتدقيق المخطوطات</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="#">شحن المراجع والمؤلفات الصعيدية</a></div><div class="flex flex-col gap-space-xs"><span class="font-title-md text-title-md text-primary">روابط سريعة</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="#">دليل العناوين والإصدارات</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="#">بطاقة الباحث المميز</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="#">سياسة التوصيل لصعيد مصر</a></div><div class="flex flex-col gap-space-xs"><span class="font-title-md text-title-md text-primary">الضمانات والسياسات</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="#">سياسة الخصوصية وحماية بيانات الباحثين</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="#">الشروط والأحكام الخاصة بالحجز المسبق</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="#">إرجاع واستبدال الكتب والمطبوعات</a></div></div><div class="pt-space-md text-center text-on-surface-variant font-body-sm text-body-sm flex flex-col sm:flex-row items-center justify-between gap-space-sm"><p>© 2024 مكتبة الأزهري بقنا - جميع الحقوق محفوظة لخدمة التراث الإسلامي والأكاديمي.</p><p class="text-secondary font-label-sm text-label-sm font-semibold">صرح قرطاسي وعلمي أصيل منذ عام ١٩٩٦</p></div></div></footer></div></body></html>

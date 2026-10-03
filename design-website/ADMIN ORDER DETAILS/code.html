@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-secondary":"#ffffff","surface-bright":"#faf9f6","surface-variant":"#e3e2e0","inverse-on-surface":"#f1f1ee","primary-container":"#0f4c3a","inverse-primary":"#99d3ba","primary-fixed-dim":"#99d3ba","on-error":"#ffffff","surface-container":"#efeeeb","on-tertiary":"#ffffff","tertiary-fixed":"#c1ecdb","on-error-container":"#93000a","on-tertiary-fixed":"#002118","secondary-container":"#fec96e","outline":"#707974","outline-variant":"#bfc9c3","secondary":"#7d5700","tertiary-container":"#234a3e","surface":"#faf9f6","on-tertiary-fixed-variant":"#274e42","tertiary":"#083328","primary-fixed":"#b4efd6","on-tertiary-container":"#8fb9a9","on-surface":"#1a1c1a","secondary-fixed-dim":"#f2be64","tertiary-fixed-dim":"#a5cfbf","on-surface-variant":"#404944","primary":"#003426","background":"#faf9f6","surface-container-highest":"#e3e2e0","surface-tint":"#306855","on-secondary-fixed":"#271900","surface-container-high":"#e9e8e5","on-primary-container":"#82bba4","on-primary-fixed-variant":"#15503e","on-primary-fixed":"#002117","on-background":"#1a1c1a","on-secondary-fixed-variant":"#5f4100","secondary-fixed":"#ffdeaa","on-primary":"#ffffff","error":"#ba1a1a","surface-dim":"#dbdad7","surface-container-lowest":"#ffffff","error-container":"#ffdad6","surface-container-low":"#f4f3f1","on-secondary-container":"#775300","inverse-surface":"#2f312f"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-md":"1rem",margin:"1.5rem","space-lg":"1.5rem","space-xs":"0.25rem","gutter-lg":"2rem","space-xl":"2rem",gutter:"1.5rem","gutter-sm":"1rem","margin-lg":"3rem","margin-sm":"1rem","space-sm":"0.5rem"},fontFamily:{"label-sm":["Plus Jakarta Sans"],"display-lg-mobile":["Noto Serif"],"headline-md":["Noto Serif"],"display-lg":["Noto Serif"],"title-md":["Plus Jakarta Sans"],"headline-sm":["Noto Serif"],"headline-lg-mobile":["Noto Serif"],"headline-lg":["Noto Serif"],"body-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"]},fontSize:{"label-sm":["0.75rem",{lineHeight:"1rem",letterSpacing:"0.03em",fontWeight:"500"}],"display-lg-mobile":["2.25rem",{lineHeight:"2.875rem",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-md":["1.5rem",{lineHeight:"2rem",letterSpacing:"-0.005em",fontWeight:"600"}],"display-lg":["3rem",{lineHeight:"3.75rem",letterSpacing:"-0.02em",fontWeight:"700"}],"title-md":["1.125rem",{lineHeight:"1.625rem",fontWeight:"600"}],"headline-sm":["1.25rem",{lineHeight:"1.75rem",fontWeight:"600"}],"headline-lg-mobile":["1.75rem",{lineHeight:"2.25rem",letterSpacing:"0em",fontWeight:"700"}],"headline-lg":["2.25rem",{lineHeight:"2.875rem",letterSpacing:"-0.01em",fontWeight:"700"}],"body-lg":["1.125rem",{lineHeight:"1.875rem",fontWeight:"400"}],"body-sm":["0.875rem",{lineHeight:"1.45rem",fontWeight:"400"}],"body-md":["1rem",{lineHeight:"1.65rem",fontWeight:"400"}],"label-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0.02em",fontWeight:"600"}]}}}};</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed right-0 top-0 h-full w-[260px] bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center justify-between bg-surface-container-low"><div class="flex items-center gap-space-sm"><img alt="Emblem logo for Al-Azhari Library (مكتبة الأزهري) featuring an elegant open book with delicate quill/minaret aesthetic, stylized in rich deep forest green #0F4C3A and warm refined gold #A47925, clean vector icon style with refined Islamic editorial balance.. Brand logo. - Primary color: #0f4c3a
+- Font: notoSerif
+- Mode: light
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UKlbQCU1w8WBKJE6UKCQxgQlAM-oeRJPkM0I4LR_e4Q1i9lO0dX7pWyQplSIAA1ZmtBdhVgbaCxOMwK7N-tf4QKnOlgsrr_vANHO--HD5Lz4Eq69vMzWfqoGioxsSFpvTcMKSsNRPUPpqV6-G7P6tdPw8CIOjdYk66AtVZyAOxy56_vLhAP5YLk1AWK0X7TLSvWtUFCTndLJ7aFTFjpSOCyMaLaxe-bTBFnj9JybYXU-qXJxwqtQLtt38"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight">مكتبة الأزهري</span><span class="font-label-sm text-label-sm text-secondary">فرع قنا الأكاديمي</span></div></div></div><div class="p-space-sm"><span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm w-full justify-center"><span class="material-symbols-outlined text-[14px]">verified</span>بوابة الإدارة والتشغيل — مباشر</span></div><nav class="flex flex-col gap-space-xs px-space-sm pb-space-lg" data-active-classes="bg-primary-container text-on-primary font-bold rounded-lg shadow-sm"><div class="pt-space-sm pb-1 px-space-sm font-label-sm text-label-sm text-on-surface-variant font-bold">قسم العمليات التشغيلية</div><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="control-operations" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">dashboard</span><span>لوحة التحكم والعمليات</span></div></a><a aria-current="page" class="flex items-center justify-between px-space-sm py-2 transition-all bg-primary-container text-on-primary font-bold rounded-lg shadow-sm" data-path="order-management" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">receipt_long</span><span>إدارة الطلبات</span></div><span class="px-1.5 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm">14</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="payment-verification" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">payments</span><span>التحقق من المدفوعات</span></div><span class="px-1.5 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm">6</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="shipping-logistics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">local_shipping</span><span>الشحن والتوصيل</span></div></a><div class="pt-space-md pb-1 px-space-sm font-label-sm text-label-sm text-on-surface-variant font-bold">الكتالوج والمخزن</div><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="books-catalog" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">menu_book</span><span>إدارة المنتجات والكتب</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="categories-structure" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">account_tree</span><span>التصنيفات والهيكلية</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="inventory-stock" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">inventory_2</span><span>الجرد والمستودع</span></div></a><div class="pt-space-md pb-1 px-space-sm font-label-sm text-label-sm text-on-surface-variant font-bold">الخدمات والحجوزات</div><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="student-services" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">school</span><span>طلبات الخدمات الطلابية</span></div><span class="px-1.5 py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm">8</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="pre-orders" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">bookmark_added</span><span>الحجز والطلب المسبق</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="returns-refunds" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">assignment_return</span><span>المرتجعات والاسترداد</span></div><span class="px-1.5 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">2</span></a><div class="pt-space-md pb-1 px-space-sm font-label-sm text-label-sm text-on-surface-variant font-bold">النظام والعملاء</div><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="customer-directory" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">group</span><span>دليل العملاء</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="discount-coupons" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">sell</span><span>كوبونات الخصم</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="content-management" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">article</span><span>إدارة المحتوى</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="reports-analytics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">insights</span><span>التقارير والإحصائيات</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="audit-log" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">history_edu</span><span>سجل التدقيق</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="system-settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">settings</span><span>الإعدادات والصلاحيات</span></div></a></nav></div><div class="p-space-sm bg-surface-container-low"><div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-lowest shadow-[0_1px_3px_rgba(24,42,34,0.06)]"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-on-surface truncate">الشيخ عبد الرحمن السيوطي</span><span class="font-label-sm text-label-sm text-secondary truncate">مدير العمليات والفرع</span></div></div></div></aside><div class="pr-[260px]"><header class="fixed top-0 right-[260px] left-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-margin"><div class="flex items-center gap-space-md"><div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span>النظام متصل · مزامنة فورية</span></div><a class="inline-flex items-center gap-1 px-space-sm py-1 rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#"><span class="material-symbols-outlined text-[16px]">storefront</span><span>معاينة المتجر العام</span></a></div><div class="flex items-center gap-space-md"><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-label-sm flex items-center justify-center text-[10px]">3</span></button><div class="h-6 w-px bg-outline-variant"></div><div class="flex items-center gap-space-sm"><div class="flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface">الشيخ عبد الرحمن</span><span class="font-label-sm text-label-sm text-on-surface-variant">مسؤول عام</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Simulation Scenario Bar (PRD §8.1 / Admin Console Testing Tool) -->
+<aside aria-label="شريط محاكاة واختبار سيناريوهات النظام" class="w-full bg-surface-container-high px-space-md py-space-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">tune</span>
+<span class="font-bold text-on-surface">محاكي سيناريوهات حالات الطلب:</span>
+<span class="text-outline">بدّل العرض لاختبار استجابة واجهة الإدارة والتحقق الفوري</span>
+</div>
+<div class="flex flex-wrap items-center gap-1.5" id="scenario-selector">
+<button class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-primary text-on-primary font-bold shadow-sm transition-all" id="btn-sc-pending" onclick="switchScenario('pending')" type="button">
+        قيد المراجعة وتدقيق الإثبات (الافتراضي)
+      </button>
+<button class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-on-surface hover:bg-surface transition-all" id="btn-sc-verified" onclick="switchScenario('verified')" type="button">
+        تم التحقق وجاري التجهيز
+      </button>
+<button class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-on-surface hover:bg-surface transition-all" id="btn-sc-shipped" onclick="switchScenario('shipped')" type="button">
+        شحن وتسليم المحافظات
+      </button>
+<button class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-on-surface hover:bg-surface transition-all" id="btn-sc-completed" onclick="switchScenario('completed')" type="button">
+        مكتمل ومغلق
+      </button>
+<button class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-error hover:bg-error-container transition-all" id="btn-sc-notfound" onclick="switchScenario('notfound')" type="button">
+        حالة 404 غير موجود
+      </button>
+<button class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-error hover:bg-error-container transition-all" id="btn-sc-apierror" onclick="switchScenario('apierror')" type="button">
+        خطأ اتصال بالخادم
+      </button>
+</div>
+</aside>
+<!-- Error / 404 Container (Hidden by default, activated via scenario switcher) -->
+<div class="hidden w-full p-margin-lg flex flex-col items-center justify-center text-center" id="state-error-view">
+<div class="w-16 h-16 rounded-full bg-error-container text-on-error-container flex items-center justify-center mb-space-md shadow-md">
+<span class="material-symbols-outlined text-[32px]">error</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-space-xs" id="error-title">تعذر تحميل بيانات الطلب</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-lg" id="error-desc">لم يتم العثور على الطلب رقم AZ-20260924-0012 في سجلات النظام أو حدث انقطاع في الاتصال بقاعدة البيانات المركزية.</p>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5" onclick="switchScenario('pending')" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+<span>إعادة تحميل الطلب</span>
+</button>
+<a class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md" data-path="order-management" href="#">
+        العودة لقائمة الطلبات
+      </a>
+</div>
+</div>
+<!-- Primary Order Content Flow -->
+<div class="flex flex-col w-full p-margin gap-space-lg" id="order-main-container">
+<!-- Breadcrumb & Navigation Anchor -->
+<nav aria-label="مسار التنقل" class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" data-path="control-operations" href="#">الرئيسية والعمليات</a>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<a class="hover:text-primary transition-colors" data-path="order-management" href="#">إدارة الطلبات</a>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<span class="text-on-surface font-bold">ملف الطلب #AZ-20260924-0012</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">مرجع المعاملة المصرفية:</span>
+<code class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-mono font-bold text-label-sm">INSTA-8849203-QNA</code>
+</div>
+</nav>
+<!-- Top Administrative Header Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<!-- Subtle Decorative Islamic Geometric Accent (Faint 4%) -->
+<svg class="absolute -left-12 -top-12 w-64 h-64 text-primary opacity-[0.03] pointer-events-none" fill="currentColor" viewbox="0 0 100 100">
+<polygon points="50 0, 61.2 38.8, 100 50, 61.2 61.2, 50 100, 38.8 61.2, 0 50, 38.8 38.8"></polygon>
+<polygon points="50 15, 57.9 42.1, 85 50, 57.9 57.9, 50 85, 42.1 57.9, 15 50, 42.1 42.1"></polygon>
+</svg>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Title & Identifiers -->
+<div class="flex flex-col gap-1.5">
+<div class="flex flex-wrap items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-primary flex items-center gap-space-xs">
+<span>طلب رقم: AZ-20260924-0012</span>
+<button class="p-1 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" onclick="navigator.clipboard.writeText('AZ-20260924-0012'); alert('تم نسخ رقم الطلب بنجاح');" title="نسخ المعرف" type="button">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</h1>
+<!-- Status Badges -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-bold" id="badge-order-status">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+<span>قيد المراجعة والاعتماد</span>
+</span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full font-label-sm text-label-sm bg-primary-container text-on-primary-container font-medium" id="badge-payment-status">
+<span class="material-symbols-outlined text-[14px]">account_balance_wallet</span>
+<span>إثبات التحويل قيد الفحص (إنستاباي)</span>
+</span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+<span>شحن للمحافظات (محافظة قنا - نجع حمادي)</span>
+</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">schedule</span>
+<span>تاريخ التقديم: 24 سبتمبر 2026 — 10:15 ص (منذ 25 دقيقة)</span>
+</span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">person</span>
+<span>العميل: محمد عبد الله الشنقيطي</span>
+</span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+<span>مستودع الصرف: فرع مكتبة الأزهري بقنا (الرئيسي)</span>
+</span>
+</div>
+</div>
+<!-- Quick Summary Amount Pill -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center gap-space-md shrink-0">
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-on-surface-variant">إجمالي المطالبة المالية</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">220.00 <span class="font-body-sm text-body-sm font-normal">ج.م</span></span>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[22px]">receipt</span>
+</div>
+</div>
+</div>
+<!-- Action Toolbar (PRD §10 Admin Workflows & §8.1) -->
+<div class="pt-space-sm flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex flex-wrap items-center gap-space-xs">
+<!-- Primary Approve CTA -->
+<button class="px-space-md py-2.5 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md flex items-center gap-2 shadow-sm transition-all transform active:scale-95" onclick="executeApproveOrder()" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>قبول واعتماد الطلب (حجز المخزون آلياً)</span>
+</button>
+<!-- Confirm InstaPay -->
+<button class="px-space-md py-2.5 rounded-lg bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed font-label-md text-label-md flex items-center gap-1.5 transition-colors" onclick="confirmPaymentInstant()" type="button">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>تأكيد صحة سداد إنستاباي (220.00 ج.م)</span>
+</button>
+<!-- Request New Proof -->
+<button class="px-space-sm py-2.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md flex items-center gap-1.5 transition-colors" onclick="openRequestProofModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">image_search</span>
+<span>طلب إثبات تحويل جديد</span>
+</button>
+<!-- Edit Shipping Cost -->
+<button class="px-space-sm py-2.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md flex items-center gap-1.5 transition-colors" onclick="openShippingEditDialog()" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span>تعديل مصاريف الشحن</span>
+</button>
+</div>
+<div class="flex items-center gap-space-xs">
+<!-- WhatsApp Contact Directly -->
+<a class="px-space-sm py-2.5 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed hover:bg-tertiary-fixed-dim font-label-md text-label-md flex items-center gap-1.5 transition-colors" href="https://wa.me/201094589231?text=مرحباً%20السيد%20محمد%20الشنقيطي،%20بخصوص%20طلبكم%20من%20مكتبة%20الأزهري%20رقم%20AZ-20260924-0012" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>واتساب العميل</span>
+</a>
+<!-- Danger Rejection -->
+<button class="px-space-sm py-2.5 rounded-lg bg-surface-container-highest text-error hover:bg-error-container hover:text-on-error-container font-label-md text-label-md flex items-center gap-1.5 transition-colors" onclick="openRejectOrderModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+<span>رفض الطلب</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 3-Column Administrative Grid (2 Cols Main Content + 1 Col Inspector) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Right & Main Column (8 Cols): Order Items, Shipping Details, Timeline -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Section A: Order Items Snapshot Table (PRD §6.8 & ORD-001) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">auto_stories</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">عناصر ومصنفات الطلب المعتمدة (3 بنود)</h2>
+</div>
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">inventory_2</span>
+<span>تم التحقق من الوفرة المخزنية بنسبة 100%</span>
+</div>
+</div>
+<!-- Items Table -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-right">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md">
+<th class="p-space-sm rounded-r-lg">المصنف / الكتاب الأكاديمي</th>
+<th class="p-space-sm text-center">الكمية</th>
+<th class="p-space-sm text-center">سعر الوحدة</th>
+<th class="p-space-sm text-center">الإجمالي</th>
+<th class="p-space-sm rounded-l-lg text-center">حالة المخزون (قنا)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-sm text-body-sm">
+<!-- Book Item 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-16 h-24 rounded shadow-sm overflow-hidden shrink-0 bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Cover of Islamic jurisprudence book Taysir al-Taqrib fi al-Fiqh al-Shafi'i, featuring ornate gold classical kufic script and delicate arabesque borders over rich forest green leather texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAltuF5YEX8VkGjyV-0OAesLlDeEP-ay7gYa5BnbJIU8SiQKjpL1zbGRPdylnzG1E4PUErtSAinWlPOy-d-WYLzCpiKD0wfphV2QtSYvqgsLjiHdc1W1zJtB6QNKB43phL7ElJgSf0vsVf7tA4KdqNX7NfkP5yeRQoqrb0hkBDfHw82K80aUNhngq-gHYf-PrRZ7bC4qBwa_JngIqS-ixnxkID4YjA3rYrXTidt3-qpGYqWYBgrumk"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-title-md text-title-md text-on-surface font-semibold">تيسير التقريب في الفقه الشافعي</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">المرحلة الثانوية الأزهرية — الصف الثالث · غلاف كرتوناج فني</span>
+<div class="flex items-center gap-2 mt-0.5">
+<code class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-[11px] text-on-surface-variant">AZH-2026-F01</code>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-bold">مقرر وزاري معتمد</span>
+</div>
+</div>
+</div>
+</td>
+<td class="p-space-sm text-center font-bold text-on-surface">1</td>
+<td class="p-space-sm text-center font-medium text-on-surface">145.00 ج.م</td>
+<td class="p-space-sm text-center font-bold text-primary">145.00 ج.م</td>
+<td class="p-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>متاح (45 نسخة)</span>
+</span>
+</td>
+</tr>
+<!-- Book Item 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-16 h-24 rounded shadow-sm overflow-hidden shrink-0 bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Cover of classical Arabic linguistics text Sharh Ibn Aqil on Alfiyyat Ibn Malik, gold gilded calligraphy and vintage scholarly leather binding with green spine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuGGt1GPZTpTIe9uY4UDqeWXE2mnd-87aasB6MuK11Fwn6SS0UhaVmYCz3L9DrdgkEgrtXFM8A9Ev8CzIvaJsUDXkvuxl-c2owJ6B1sZOBdMhL3YJ16bd3Ou-43ZQ81ledXLgzFuY_FePd9Dtp1AzcFOJlYCjJwHU_-53zHfu6z9uhWa5NAkCVyoXlAF6gxuhgMlX7Pc2Mr0X1mUBnEOQSAwU1lLuWRFXzMsAww1lai-RNqCALPIPe"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-title-md text-title-md text-on-surface font-semibold">شرح ابن عقيل على ألفية ابن مالك</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">كلية اللغة العربية · تحقيق محمد محيي الدين عبد الحميد</span>
+<div class="flex items-center gap-2 mt-0.5">
+<code class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-[11px] text-on-surface-variant">AZH-ARB-AQ02</code>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[11px]">مجلد دراسي فاخر</span>
+</div>
+</div>
+</div>
+</td>
+<td class="p-space-sm text-center font-bold text-on-surface">1</td>
+<td class="p-space-sm text-center font-medium text-on-surface">40.00 ج.م</td>
+<td class="p-space-sm text-center font-bold text-primary">40.00 ج.م</td>
+<td class="p-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>متاح (18 نسخة)</span>
+</span>
+</td>
+</tr>
+<!-- Stationery Item 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-16 h-24 rounded shadow-sm overflow-hidden shrink-0 bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px] text-secondary">stylus_note</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-title-md text-title-md text-on-surface font-semibold">طقم كشاكيل وأدوات أزهرية مسطرة 60 ورقة</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">مستلزمات طالب الأزهر · ورق أبيض مصقول 80 جرام</span>
+<div class="flex items-center gap-2 mt-0.5">
+<code class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-[11px] text-on-surface-variant">ST-NB-60QNA</code>
+</div>
+</div>
+</div>
+</td>
+<td class="p-space-sm text-center font-bold text-on-surface">1</td>
+<td class="p-space-sm text-center font-medium text-on-surface">35.00 ج.م</td>
+<td class="p-space-sm text-center font-bold text-primary">35.00 ج.م</td>
+<td class="p-space-sm text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>متوفر بكمية كبيرة</span>
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Financial Calculation Breakdown -->
+<div class="mt-space-sm p-space-md bg-surface-container-low rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>المجموع الفرعي للكتب والمطبوعات:</span>
+<span class="font-medium text-on-surface">185.00 ج.م</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1">
+<span>مصاريف الشحن والتوصيل (شحن الصعيد - قنا):</span>
+<span class="material-symbols-outlined text-[16px] text-secondary" title="تسعيرة موحدة للمراكز">info</span>
+</span>
+<div class="flex items-center gap-space-sm">
+<span class="font-medium text-on-surface" id="shipping-display-val">35.00 ج.م</span>
+<button class="text-secondary hover:underline font-label-sm text-label-sm" onclick="openShippingEditDialog()" type="button">تعديل القيمة</button>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>الخصومات والعروض الترويجية:</span>
+<span class="text-on-surface-variant">0.00 ج.م (لا يوجد كود خصم)</span>
+</div>
+<div class="h-px bg-outline-variant my-1"></div>
+<div class="flex items-center justify-between font-title-md text-title-md text-primary font-bold">
+<span>الإجمالي المستحق والمطابق للإثبات:</span>
+<span class="text-headline-sm font-headline-sm" id="grand-total-val">220.00 ج.م</span>
+</div>
+</div>
+</section>
+<!-- Section B: Fulfillment & Address Snapshot (بيانات الشحن والتسليم الموثقة) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">local_shipping</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">بيانات الشحن ومعلومات التسليم الموثقة</h2>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium">البريد المصري السريع</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Delivery Destination Card -->
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">عنوان التوصيل (Snapshot)</span>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed">
+                محافظة قنا، مدينة نجع حمادي، حي الساحل، شارع المحطة، عمارة الأوقاف رقم 4، الدور الثالث، شقة 6.
+              </p>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm mt-1">
+<span class="material-symbols-outlined text-[16px] text-primary">pin_drop</span>
+<span>علامة مميزة: بجوار معهد نجع حمادي الديني بنين</span>
+</div>
+</div>
+<!-- Recipient Contact Info -->
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">بيانات الاتصال بالمستلم</span>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">الاسم:</span>
+<span class="font-body-md text-body-md font-bold text-on-surface">محمد عبد الله الشنقيطي</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">رقم الهاتف الأساسي:</span>
+<div class="flex items-center gap-1">
+<a class="font-body-md text-body-md font-mono text-primary font-bold dir-ltr" href="tel:01094589231">01094589231</a>
+<a class="text-secondary hover:text-primary transition-colors p-1" href="https://wa.me/201094589231" target="_blank" title="محادثة واتساب">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">رقم هاتف بديل (للطوارئ):</span>
+<span class="font-body-md text-body-md font-mono text-on-surface dir-ltr">01123456789</span>
+</div>
+</div>
+</div>
+<!-- Customer Delivery Instructions -->
+<div class="p-space-sm rounded-lg bg-surface-container-highest text-on-surface flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">sticky_note_2</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-bold">ملاحظات وتعليمات العميل للتسليم:</span>
+<p class="font-body-sm text-body-sm text-on-surface mt-0.5">"يرجى تغليف الكتب جيداً لحمايتها من أتربة النقل، والتسليم بعد الساعة 1 ظهراً لانتظامي في حصص المعهد الصباحية."</p>
+</div>
+</div>
+</section>
+<!-- Section C: Order Lifecycle Timeline (الخط الزمني المعتمد للطلب طبقاً لآلة الحالات §8.1) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">route</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">مسار ومحطات الطلب (Order State Machine)</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">محدث آلياً عبر خادم المهام</span>
+</div>
+<div class="relative flex flex-col gap-space-md pr-6 before:content-[''] before:absolute before:right-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-container-highest">
+<!-- Step 1: Placed -->
+<div class="relative flex items-start gap-space-md">
+<div class="absolute -right-6 top-1 w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center text-[12px] shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm">
+<span class="font-title-md text-title-md text-on-surface font-semibold">استلام الطلب وحجز السلة إلكترونياً</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">10:15 ص</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">سجل العميل الطلب بنجاح عبر بوابة فرع قنا، وأُنشئ معرف الفاتورة الأولية.</p>
+</div>
+</div>
+<!-- Step 2: Proof Uploaded -->
+<div class="relative flex items-start gap-space-md">
+<div class="absolute -right-6 top-1 w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center text-[12px] shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm">
+<span class="font-title-md text-title-md text-on-surface font-semibold">رفع إثبات تحويل إنستاباي</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">10:17 ص</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">رفع العميل ملف صورة الإشعار البنكي (220.00 ج.م) بنجاح إلى خادم التخزين الآمن.</p>
+</div>
+</div>
+<!-- Step 3: Current State (Reviewing) -->
+<div class="relative flex items-start gap-space-md" id="timeline-step-current">
+<div class="absolute -right-6 top-1 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[12px] shadow-sm animate-pulse">
+<span class="material-symbols-outlined text-[14px]">hourglass_top</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm">
+<span class="font-title-md text-title-md text-secondary font-bold" id="step-review-title">مراجعة الإدارة وتدقيق التحويل المالي (المرحلة الحالية)</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed">نشط الآن</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5" id="step-review-desc">بانتظار مطابقة مسؤول الحسابات لقيمة الحوالة مع كشف حساب إنستاباي واعتماد أمر الحجز.</p>
+</div>
+</div>
+<!-- Step 4: Next: Packing -->
+<div class="relative flex items-start gap-space-md opacity-60" id="timeline-step-packing">
+<div class="absolute -right-6 top-1 w-5 h-5 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center text-[12px]">
+<span class="material-symbols-outlined text-[14px]">package_2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-medium">بدء التجهيز والتغليف الأكاديمي</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">تجميع الكتب من رفوف مستودع قنا، طباعة فاتورة الطلب، والتغليف المقوى.</p>
+</div>
+</div>
+<!-- Step 5: Next: Shipping -->
+<div class="relative flex items-start gap-space-md opacity-60" id="timeline-step-dispatch">
+<div class="absolute -right-6 top-1 w-5 h-5 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center text-[12px]">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-medium">تسليم الشحنة لمندوب البريد المصري وإصدار بوليصة التتبع</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">إشعار العميل برسالة نصية ورقم التتبع اللوجستي للتسليم في نجع حمادي.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Left Inspector Column (4 Cols): Payment Proof Inspector & Patron Dossier -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Section A: Payment Proof Inspector (فاحص إثبات التحويل البنكي PRD §15) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm relative">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">payments</span>
+<h2 class="font-title-md text-title-md text-on-surface font-bold">فاحص إشعار إنستاباي (InstaPay)</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-label-sm font-label-sm">تحويل مؤكد إلكترونياً</span>
+</div>
+<!-- Proof Preview Canvas / Image Box with Zoom Trigger -->
+<div class="relative w-full rounded-lg overflow-hidden bg-surface-container-low group cursor-pointer" onclick="openProofLightbox()">
+<!-- Emulated Real Mobile Screenshot of InstaPay Receipt -->
+<div class="w-full p-space-md bg-gradient-to-b from-surface to-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[16px]">account_balance</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">إشعار تحويل لحظي</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold">سداد ناجح</span>
+</div>
+<!-- Amount Block -->
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm text-center flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">المبلغ المحوّل</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">220.00 ج.م</span>
+<span class="text-[11px] text-on-surface-variant font-mono">24 سبتمبر 2026 — 10:16:42 ص</span>
+</div>
+<!-- Metadata Table -->
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex flex-col gap-1.5 font-label-sm text-label-sm">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">المرسل:</span>
+<span class="font-semibold text-on-surface">محمد عبد الله الشنقيطي</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">حساب المحول:</span>
+<span class="font-mono text-on-surface">m.shanqiti@instapay</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">الجهة المستلمة:</span>
+<span class="font-semibold text-primary">مكتبة الأزهري بقنا</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">عنوان الدفع:</span>
+<span class="font-mono text-primary">alazhari.library@instapay</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">رقم العملية (Ref):</span>
+<span class="font-mono font-bold text-on-surface">88492039201</span>
+</div>
+</div>
+</div>
+<!-- Hover Backdrop / Zoom Badge -->
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md shadow-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">zoom_in</span>
+<span>تكبير وفحص الإشعار بالكامل</span>
+</span>
+</div>
+</div>
+<!-- File Technical Metadata -->
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm p-1">
+<span>ملف: IMG-PROOF-0012.jpg (342 KB)</span>
+<span class="text-primary font-medium">سحابي مشفر ✓</span>
+</div>
+<!-- Quick Action Decision Buttons for the Admin -->
+<div class="flex flex-col gap-1.5 pt-1">
+<button class="w-full py-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors shadow-sm" onclick="confirmPaymentInstant()" type="button">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>تأكيد ومطابقة السداد الآن ✓</span>
+</button>
+<div class="grid grid-cols-2 gap-1.5">
+<button class="py-2 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-fixed-dim font-label-sm text-label-sm flex items-center justify-center gap-1 transition-colors" onclick="openRequestProofModal()" type="button">
+<span class="material-symbols-outlined text-[16px]">help_center</span>
+<span>طلب صورة أوضح</span>
+</button>
+<button class="py-2 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error font-label-sm text-label-sm flex items-center justify-center gap-1 transition-colors" onclick="rejectProofOnly()" type="button">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>رفض الإشعار</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section B: Customer Operational Profile (الملف التشغيلي للعميل) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">account_box</span>
+<h2 class="font-title-md text-title-md text-on-surface font-bold">الملف الأكاديمي للعميل</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold">عميل منتظم</span>
+</div>
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-low">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary text-title-md font-bold shrink-0">
+              ش
+            </div>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-title-md text-title-md text-on-surface font-bold truncate">محمد عبد الله الشنقيطي</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">طالب بالثانوية الأزهرية — معهد قنا النموذجي</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant pt-1">
+<div class="flex items-center justify-between">
+<span>البريد الإلكتروني:</span>
+<span class="font-mono text-on-surface font-medium">m.shanqiti@azhar.edu.eg</span>
+</div>
+<div class="flex items-center justify-between">
+<span>عضو منذ:</span>
+<span class="text-on-surface">أغسطس 2026 (سنة أولى)</span>
+</div>
+<div class="flex items-center justify-between">
+<span>الطلبات السابقة المكتملة:</span>
+<span class="font-bold text-primary">4 طلبات (1,420 ج.م)</span>
+</div>
+<div class="flex items-center justify-between">
+<span>نسبة الالتزام بالاستلام:</span>
+<span class="font-bold text-primary">100% (سجل موثوق)</span>
+</div>
+</div>
+<!-- Quick Communications Action -->
+<div class="pt-space-xs flex gap-space-xs">
+<a class="flex-1 py-2 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm flex items-center justify-center gap-1.5 transition-colors" href="https://wa.me/201094589231" target="_blank">
+<span class="material-symbols-outlined text-[16px] text-tertiary">chat</span>
+<span>محادثة واتساب</span>
+</a>
+<a class="py-2 px-space-sm rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm flex items-center justify-center transition-colors" href="mailto:m.shanqiti@azhar.edu.eg" title="إرسال بريد رسمي">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+</a>
+</div>
+</section>
+<!-- Section C: System Audit Trail (سجل التدقيق والتتبع الإداري غير القابل للتعديل) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">history_edu</span>
+<h2 class="font-title-md text-title-md text-on-surface font-bold">سجل التدقيق الإداري (Audit Log)</h2>
+</div>
+<span class="font-label-sm text-label-sm text-outline">غير قابل للتعديل</span>
+</div>
+<div class="flex flex-col gap-space-sm text-label-sm font-label-sm divide-y divide-surface-container-high">
+<div class="pt-2 flex flex-col gap-0.5">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-bold">إنشاء الطلب وحجز الحصة</span>
+<span class="text-on-surface-variant font-mono">10:15 ص</span>
+</div>
+<span class="text-on-surface-variant">الفاعل: العميل (ويب الفرع) · IP: 197.38.**.**</span>
+</div>
+<div class="pt-2 flex flex-col gap-0.5">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-bold">رفع مستند التحويل البنكي</span>
+<span class="text-on-surface-variant font-mono">10:17 ص</span>
+</div>
+<span class="text-on-surface-variant">الملف: IMG-PROOF-0012.jpg (342KB)</span>
+</div>
+<div class="pt-2 flex flex-col gap-0.5">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-bold">فتح السجل للمعاينة الفنية</span>
+<span class="text-on-surface-variant font-mono">10:35 ص</span>
+</div>
+<span class="text-primary font-medium">الفاعل: الشيخ عبد الرحمن السيوطي (مدير العمليات)</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Rejection Modal Backdrop / Dialog (Hidden initially) -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-space-md" id="modal-reject-order">
+<div class="bg-surface-container-lowest rounded-xl max-w-lg w-full p-space-lg shadow-xl flex flex-col gap-space-md animate-fade-in">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-error">
+<span class="material-symbols-outlined text-[24px]">cancel</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">توثيق سبب رفض الطلب #AZ-20260924-0012</h3>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1" onclick="closeRejectOrderModal()" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        وفقاً للائحة العمليات، سيتم إرسال إشعار فوري للعميل بالسبب الموثق وإلغاء حجز المخزون تلقائياً في مستودع قنا.
+      </p>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold">اختر سبب الرفض المعتمد:</label>
+<select class="w-full p-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container" id="reject-reason-select">
+<option value="proof_fake">إثبات التحويل البنكي غير صحيح أو لم يصل للحساب</option>
+<option value="amount_mismatch">المبلغ المحول أقل من إجمالي قيمة الطلب والشحن</option>
+<option value="out_of_stock">نفاد الطبعة الأزهرية المعتمدة حالياً من المستودع</option>
+<option value="address_unreachable">العنوان خارج نطاق توصيل مراكز قنا المعتمدة</option>
+<option value="customer_requested">بناءً على طلب العميل المباشر هاتفياً</option>
+</select>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold">ملاحظات توضيحية للعميل والإدارة:</label>
+<textarea class="w-full p-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container" placeholder="أدخل تفاصيل توضيحية تُرسل للعميل عبر الرسائل القصيرة والواتساب..." rows="3"></textarea>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md" onclick="closeRejectOrderModal()" type="button">
+          إلغاء التراجع
+        </button>
+<button class="px-space-md py-2 rounded-lg bg-error text-on-error font-label-md text-label-md flex items-center gap-1.5" onclick="confirmOrderRejection()" type="button">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+<span>تأكيد تسجيل الرفض</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Shipping Modification Modal -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-space-md" id="modal-shipping-edit">
+<div class="bg-surface-container-lowest rounded-xl max-w-md w-full p-space-lg shadow-xl flex flex-col gap-space-md animate-fade-in">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[24px]">local_shipping</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">تعديل مصاريف الشحن والتوصيل</h3>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1" onclick="closeShippingEditDialog()" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        تعديل تسعيرة شحن الصعيد (نجع حمادي). يجب توثيق أي زيادة أو تخفيض في سجل المراجعة.
+      </p>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold">قيمة الشحن الجديدة (ج.م):</label>
+<input class="w-full p-2.5 rounded-lg bg-surface-container-low text-on-surface font-title-md font-bold focus:outline-none focus:bg-surface-container" id="input-shipping-cost" step="5" type="number" value="35.00"/>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold">سبب التعديل اللوجستي:</label>
+<select class="w-full p-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container">
+<option>تسعيرة خاصة لقرى ومراكز نجع حمادي البعيدة (+15 ج.م)</option>
+<option>خصم شحن تشجيعي لطلاب الثانوية الأزهرية (-15 ج.م)</option>
+<option>تعديل وزن الطرد الأكاديمي وتغليف إضافي (+10 ج.م)</option>
+</select>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md" onclick="closeShippingEditDialog()" type="button">
+          إلغاء
+        </button>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md" onclick="applyShippingAdjustment()" type="button">
+          حفظ واعتماد التعديل
+        </button>
+</div>
+</div>
+</div>
+<!-- InstaPay Proof Lightbox (Enlarged Full Inspector) -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/80 backdrop-blur-md flex items-center justify-center p-space-md" id="modal-proof-lightbox" onclick="closeProofLightbox()">
+<div class="bg-surface-container-lowest rounded-xl max-w-xl w-full p-space-lg shadow-2xl flex flex-col gap-space-md" onclick="event.stopPropagation()">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">verified</span>
+<h3 class="font-title-md text-title-md font-bold text-on-surface">معاينة إشعار التحويل البنكي الفوري المكبر</h3>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1" onclick="closeProofLightbox()" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- High-res Mock of receipt -->
+<div class="p-space-lg bg-surface-container-low rounded-xl flex flex-col items-center text-center gap-space-md">
+<div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[32px]">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary font-bold">220.00 جنيه مصري</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">تم التحويل بنجاح لحساب: مكتبة الأزهري</span>
+</div>
+<div class="w-full bg-surface-container-lowest p-space-md rounded-lg shadow-sm text-right flex flex-col gap-2 font-body-sm text-body-sm">
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">المرسل:</span>
+<span class="font-bold text-on-surface">محمد عبد الله الشنقيطي</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">رقم مرجع الحوالة (RRN):</span>
+<span class="font-mono font-bold text-primary">88492039201</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">توقيت المعاملة:</span>
+<span class="font-mono text-on-surface">2026-09-24 10:16:42 AM</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">حساب الاستقبال:</span>
+<span class="font-mono font-medium text-on-surface">alazhari.library@instapay</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الحالة: متطابق كلياً مع كشف العمليات المركزي</span>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5" onclick="confirmPaymentInstant(); closeProofLightbox();" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>اعتماد السداد فحصاً ومطابقة</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Vanilla Interactive Orchestration Script for Admin Console -->
+<script>
+  function switchScenario(scenario) {
+    // Reset scenarios buttons
+    const buttons = ['pending', 'verified', 'shipped', 'completed', 'notfound', 'apierror'];
+    buttons.forEach(b => {
+      const btn = document.getElementById('btn-sc-' + b);
+      if (btn) {
+        btn.className = "px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-on-surface hover:bg-surface transition-all";
+      }
+    });
+    const activeBtn = document.getElementById('btn-sc-' + scenario);
+    if (activeBtn) {
+      if (scenario === 'notfound' || scenario === 'apierror') {
+        activeBtn.className = "px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-error text-on-error font-bold shadow-sm transition-all";
+      } else {
+        activeBtn.className = "px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-primary text-on-primary font-bold shadow-sm transition-all";
+      }
+    }
+
+    const mainContainer = document.getElementById('order-main-container');
+    const errorView = document.getElementById('state-error-view');
+    const orderBadge = document.getElementById('badge-order-status');
+    const payBadge = document.getElementById('badge-payment-status');
+    const stepReviewTitle = document.getElementById('step-review-title');
+    const stepReviewDesc = document.getElementById('step-review-desc');
+    const stepPacking = document.getElementById('timeline-step-packing');
+    const stepDispatch = document.getElementById('timeline-step-dispatch');
+
+    if (scenario === 'notfound') {
+      mainContainer.classList.add('hidden');
+      errorView.classList.remove('hidden');
+      document.getElementById('error-title').textContent = "الطلب غير موجود (404 Not Found)";
+      document.getElementById('error-desc').textContent = "لم يتم العثور على أي بيانات مسجلة تحت رقم الطلب AZ-20260924-0012 في مستودعات ومنافذ الأزهري.";
+      return;
+    } else if (scenario === 'apierror') {
+      mainContainer.classList.add('hidden');
+      errorView.classList.remove('hidden');
+      document.getElementById('error-title').textContent = "خطأ في الاتصال بالخادم المركزي (API Error)";
+      document.getElementById('error-desc').textContent = "تعذر مزامنة بيانات الطلب والمخزون بسبب مهلة الاتصال بخادم مكتبة الأزهري الرئيسي (قنا). يرجى التحقق من الشبكة.";
+      return;
+    }
+
+    // Default flow visible
+    mainContainer.classList.remove('hidden');
+    errorView.classList.add('hidden');
+
+    if (scenario === 'pending') {
+      orderBadge.innerHTML = '<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span><span>قيد المراجعة والاعتماد</span>';
+      orderBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-bold';
+      payBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">account_balance_wallet</span><span>إثبات التحويل قيد الفحص (إنستاباي)</span>';
+      payBadge.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full font-label-sm text-label-sm bg-primary-container text-on-primary-container font-medium';
+      stepReviewTitle.textContent = "مراجعة الإدارة وتدقيق التحويل المالي (المرحلة الحالية)";
+      stepReviewDesc.textContent = "بانتظار مطابقة مسؤول الحسابات لقيمة الحوالة مع كشف حساب إنستاباي واعتماد أمر الحجز.";
+      stepPacking.classList.add('opacity-60');
+      stepDispatch.classList.add('opacity-60');
+    } else if (scenario === 'verified') {
+      orderBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">inventory_2</span><span>تم الاعتماد — جاري التجهيز بالمستودع</span>';
+      orderBadge.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full font-label-sm text-label-sm bg-primary text-on-primary font-bold';
+      payBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">verified</span><span>مدفوع بالكامل (220.00 ج.م)</span>';
+      payBadge.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed font-bold';
+      stepPacking.classList.remove('opacity-60');
+      stepPacking.classList.add('text-primary', 'font-bold');
+      stepDispatch.classList.add('opacity-60');
+    } else if (scenario === 'shipped') {
+      orderBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">local_shipping</span><span>تم الشحن — برقم بوليصة EG-9938210-QN</span>';
+      orderBadge.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full font-label-sm text-label-sm bg-tertiary text-on-tertiary font-bold';
+      stepPacking.classList.remove('opacity-60');
+      stepDispatch.classList.remove('opacity-60');
+      stepDispatch.classList.add('text-primary', 'font-bold');
+    } else if (scenario === 'completed') {
+      orderBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">done_all</span><span>طلب مكتمل ومسلم للمستلم</span>';
+      orderBadge.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-highest text-on-surface font-bold';
+      stepPacking.classList.remove('opacity-60');
+      stepDispatch.classList.remove('opacity-60');
+    }
+  }
+
+  function executeApproveOrder() {
+    if (confirm("هل تؤكد قبول واعتماد الطلب #AZ-20260924-0012 وحجز النسخ من مخزن قنا؟")) {
+      switchScenario('verified');
+      alert("تم اعتماد الطلب وحجز المخزون آلياً بنجاح (PRD INV-003). تم تحويله لقسم التجهيز والتغليف.");
+    }
+  }
+
+  function confirmPaymentInstant() {
+    alert("تم تأكيد ومطابقة سداد 220.00 ج.م عبر إنستاباي بنجاح وإرفاق الختم الإلكتروني في السجل.");
+    const payBadge = document.getElementById('badge-payment-status');
+    payBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">verified</span><span>مدفوع بالكامل ومطابق (220.00 ج.م)</span>';
+    payBadge.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed font-bold';
+  }
+
+  function openRejectOrderModal() {
+    document.getElementById('modal-reject-order').classList.remove('hidden');
+  }
+
+  function closeRejectOrderModal() {
+    document.getElementById('modal-reject-order').classList.add('hidden');
+  }
+
+  function confirmOrderRejection() {
+    const reason = document.getElementById('reject-reason-select').value;
+    closeRejectOrderModal();
+    alert("تم رفض الطلب رسمياً وتوثيق السبب في سجل الرقابة وتنبيه العميل.");
+    const orderBadge = document.getElementById('badge-order-status');
+    orderBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">cancel</span><span>تم رفض الطلب وإلغاء الحجز</span>';
+    orderBadge.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container font-bold';
+  }
+
+  function openShippingEditDialog() {
+    document.getElementById('modal-shipping-edit').classList.remove('hidden');
+  }
+
+  function closeShippingEditDialog() {
+    document.getElementById('modal-shipping-edit').classList.add('hidden');
+  }
+
+  function applyShippingAdjustment() {
+    const newShipping = parseFloat(document.getElementById('input-shipping-cost').value) || 35.00;
+    document.getElementById('shipping-display-val').textContent = newShipping.toFixed(2) + " ج.م";
+    const subtotal = 185.00;
+    const newGrandTotal = subtotal + newShipping;
+    document.getElementById('grand-total-val').textContent = newGrandTotal.toFixed(2) + " ج.م";
+    closeShippingEditDialog();
+    alert("تم تحديث مصاريف الشحن إلى " + newShipping.toFixed(2) + " ج.م وإعادة احتساب الإجمالي.");
+  }
+
+  function openProofLightbox() {
+    document.getElementById('modal-proof-lightbox').classList.remove('hidden');
+  }
+
+  function closeProofLightbox() {
+    document.getElementById('modal-proof-lightbox').classList.add('hidden');
+  }
+
+  function openRequestProofModal() {
+    const note = prompt("اكتب رسالة للعميل لطلب إثبات دفع جديد:", "نرجو إعادة رفع لقطة شاشة واضحة من تطبيق إنستاباي تُظهر رقم المعاملة والمبلغ بالكامل.");
+    if (note) {
+      alert("تم إرسال إشعار للعميل عبر الرسائل والواتساب لرفع مستند بديل.");
+    }
+  }
+
+  function rejectProofOnly() {
+    if (confirm("هل تريد رفض إشعار التحويل الحالي ومطالبة العميل بالسداد مجدداً؟")) {
+      alert("تم وضع علامة 'إثبات غير صالح' وتنبيه العميل.");
+      const payBadge = document.getElementById('badge-payment-status');
+      payBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">error</span><span>إثبات التحويل مرفوض (غير مطابق)</span>';
+      payBadge.className = 'inline-flex items-center gap-1 px-3 py-1 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container font-bold';
+    }
+  }
+</script></main></div></body></html>
