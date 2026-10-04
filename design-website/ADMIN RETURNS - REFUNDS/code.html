@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-bright":"#faf9f6","error-container":"#ffdad6","on-surface":"#1a1c1a","on-error":"#ffffff","inverse-surface":"#2f312f","on-secondary-fixed":"#271900","on-tertiary-container":"#8fb9a9","secondary-fixed-dim":"#f2be64","error":"#ba1a1a","tertiary-fixed":"#c1ecdb","secondary-fixed":"#ffdeaa","surface-tint":"#306855","tertiary":"#083328","surface-dim":"#dbdad7","secondary":"#7d5700","surface-container-lowest":"#ffffff","on-tertiary-fixed-variant":"#274e42","primary":"#003426","secondary-container":"#fec96e","on-primary-fixed-variant":"#15503e","on-background":"#1a1c1a","tertiary-container":"#234a3e","surface-container-high":"#e9e8e5","surface-container-low":"#f4f3f1","on-primary-container":"#82bba4","on-error-container":"#93000a","on-tertiary":"#ffffff","on-secondary":"#ffffff","on-primary":"#ffffff","inverse-on-surface":"#f1f1ee","on-secondary-fixed-variant":"#5f4100","primary-container":"#0f4c3a","on-secondary-container":"#775300","outline":"#707974","on-surface-variant":"#404944","tertiary-fixed-dim":"#a5cfbf","outline-variant":"#bfc9c3","surface-container-highest":"#e3e2e0","primary-fixed-dim":"#99d3ba","surface-container":"#efeeeb","on-primary-fixed":"#002117","surface":"#faf9f6","primary-fixed":"#b4efd6","background":"#faf9f6","on-tertiary-fixed":"#002118","inverse-primary":"#99d3ba","surface-variant":"#e3e2e0"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","margin":"1.5rem","margin-lg":"3rem","gutter-sm":"1rem","gutter":"1.5rem","margin-sm":"1rem","space-xs":"0.25rem","space-xl":"2rem","gutter-lg":"2rem","space-md":"1rem","space-lg":"1.5rem"},"fontFamily":{"label-md":["Plus Jakarta Sans"],"display-lg-mobile":["Noto Serif"],"headline-lg":["Noto Serif"],"headline-lg-mobile":["Noto Serif"],"display-lg":["Noto Serif"],"body-sm":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"],"headline-md":["Noto Serif"],"body-lg":["Plus Jakarta Sans"],"headline-sm":["Noto Serif"],"body-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},"fontSize":{"label-md":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0.02em","fontWeight":"600"}],"display-lg-mobile":["2.25rem",{"lineHeight":"2.875rem","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-lg":["2.25rem",{"lineHeight":"2.875rem","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-lg-mobile":["1.75rem",{"lineHeight":"2.25rem","letterSpacing":"0em","fontWeight":"700"}],"display-lg":["3rem",{"lineHeight":"3.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["0.875rem",{"lineHeight":"1.45rem","fontWeight":"400"}],"title-md":["1.125rem",{"lineHeight":"1.625rem","fontWeight":"600"}],"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.005em","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.875rem","fontWeight":"400"}],"headline-sm":["1.25rem",{"lineHeight":"1.75rem","fontWeight":"600"}],"body-md":["1rem",{"lineHeight":"1.65rem","fontWeight":"400"}],"label-sm":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.03em","fontWeight":"500"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><aside class="fixed right-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)] overflow-y-auto"><div class="h-16 px-gutter flex items-center gap-space-sm border-b border-outline-variant/30 shrink-0"><img alt="Emblem logo for Al-Azhari Library (مكتبة الأزهري) featuring an elegant open book with delicate quill/minaret aesthetic, stylized in rich deep forest green #0F4C3A and warm refined gold #A47925, clean vector icon style with refined Islamic editorial balance.. Brand logo. - Primary color: #0f4c3a
+- Font: notoSerif
+- Mode: light
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UKlbQCU1w8WBKJE6UKCQxgQlAM-oeRJPkM0I4LR_e4Q1i9lO0dX7pWyQplSIAA1ZmtBdhVgbaCxOMwK7N-tf4QKnOlgsrr_vANHO--HD5Lz4Eq69vMzWfqoGioxsSFpvTcMKSsNRPUPpqV6-G7P6tdPw8CIOjdYk66AtVZyAOxy56_vLhAP5YLk1AWK0X7TLSvWtUFCTndLJ7aFTFjpSOCyMaLaxe-bTBFnj9JybYXU-qXJxwqtQLtt38"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight font-bold">مكتبة الأزهري</span><span class="font-label-sm text-label-sm text-secondary">الإدارة والأرشيف العلمي</span></div></div><div class="p-space-md flex-1"><nav class="space-y-space-md" data-active-classes="bg-primary-container text-on-primary font-bold shadow-sm relative before:absolute before:right-0 before:top-2 before:bottom-2 before:w-1 before:bg-secondary-fixed-dim before:rounded-l"><div class="space-y-space-xs"><span class="px-space-sm font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold block">قسم العمليات التشغيلية</span><div class="space-y-1"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard-operations" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">space_dashboard</span>لوحة التحكم والعمليات</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="orders-management" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">receipt_long</span>إدارة الطلبات</span><span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">14</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="payments-verification" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">verified_user</span>التحقق من المدفوعات</span><span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">6</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="shipping-logistics" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">local_shipping</span>الشحن والتوصيل</span></a></div></div><div class="space-y-space-xs"><span class="px-space-sm font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold block">الكتالوج والمخزن</span><div class="space-y-1"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="books-catalog" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">menu_book</span>إدارة المنتجات والكتب</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="categories-taxonomy" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">account_tree</span>التصنيفات والهيكلية</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="inventory-warehouse" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">warehouse</span>الجرد والمستودع</span></a></div></div><div class="space-y-space-xs"><span class="px-space-sm font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold block">الخدمات والحجوزات</span><div class="space-y-1"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="student-services" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">school</span>طلبات الخدمات الطلابية</span><span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">8</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reservations-preorders" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">bookmark_added</span>الحجز والطلب المسبق</span></a><a aria-current="page" class="flex items-center justify-between px-space-sm py-2 rounded-lg transition-colors bg-primary-container text-on-primary font-bold shadow-sm relative before:absolute before:right-0 before:top-2 before:bottom-2 before:w-1 before:bg-secondary-fixed-dim before:rounded-l" data-path="returns-refunds" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">assignment_return</span>المرتجع والاسترداد</span><span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">2</span></a></div></div><div class="space-y-space-xs"><span class="px-space-sm font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold block">النظام والعملاء</span><div class="space-y-1"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="patrons-directory" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">groups</span>دليل العملاء</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="discount-coupons" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">sell</span>كوبونات الخصم</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="content-editorial" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">edit_note</span>إدارة المحتوى</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="analytics-reports" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">analytics</span>التقارير والإحصائيات</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="system-audit-logs" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">history_edu</span>سجل التدقيق</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-permissions" href="#"><span class="flex items-center gap-space-sm font-body-sm text-body-sm font-medium"><span class="material-symbols-outlined text-[20px]">tune</span>الإعدادات والصلاحيات</span></a></div></div></nav></div></aside><div class="pr-72"><header class="fixed top-0 left-0 right-72 h-16 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter border-b border-outline-variant/30"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm"><img alt="Emblem logo for Al-Azhari Library (مكتبة الأزهري) featuring an elegant open book with delicate quill/minaret aesthetic, stylized in rich deep forest green #0F4C3A and warm refined gold #A47925, clean vector icon style with refined Islamic editorial balance.. Brand logo. - Primary color: #0f4c3a
+- Font: notoSerif
+- Mode: light
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UKlbQCU1w8WBKJE6UKCQxgQlAM-oeRJPkM0I4LR_e4Q1i9lO0dX7pWyQplSIAA1ZmtBdhVgbaCxOMwK7N-tf4QKnOlgsrr_vANHO--HD5Lz4Eq69vMzWfqoGioxsSFpvTcMKSsNRPUPpqV6-G7P6tdPw8CIOjdYk66AtVZyAOxy56_vLhAP5YLk1AWK0X7TLSvWtUFCTndLJ7aFTFjpSOCyMaLaxe-bTBFnj9JybYXU-qXJxwqtQLtt38"/><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm text-primary font-bold hidden sm:inline">مكتبة الأزهري</span><span class="font-body-sm text-body-sm text-on-surface-variant hidden md:inline">— بوابة الإدارة والتشغيل</span><span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">v2.4 LTS</span></div></div></div><div class="flex items-center gap-space-lg"><a class="hidden xl:flex items-center gap-1.5 font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#"><span>معاينة المتجر</span><span class="material-symbols-outlined text-[16px]">north_east</span></a><div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-surface-tint animate-pulse"></span><span>النظام متصل • مزامنة فورية (Socket.IO)</span></div><div class="flex items-center gap-space-sm"><button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><button class="relative w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-[10px] flex items-center justify-center leading-none font-bold">2</span></button><div class="h-6 w-px bg-outline-variant/40 mx-1"></div><div class="flex items-center gap-2 pr-1"><div class="flex flex-col text-left rtl:text-right hidden sm:flex"><span class="font-title-md text-body-sm font-semibold text-on-surface leading-tight">الشيخ عبد الرحمن السيوطي</span><span class="font-label-sm text-[11px] text-on-surface-variant leading-none">مدير العمليات والفرع / مسؤول عام</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<!-- Interactive Testing Rig Bar -->
+<aside aria-label="شريط اختبار سيناريوهات النظام" class="sticky top-0 z-30 bg-surface-container-high px-gutter py-2 shadow-sm flex flex-wrap items-center justify-between gap-space-sm text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">tune</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">بيئة اختبار السيناريوهات التشغيلية (PRD Testing Harness):</span>
+</div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<button class="px-2.5 py-1 rounded text-label-sm font-label-sm bg-primary text-on-primary transition-all" id="btn-sc-default" onclick="switchScenario('default')" type="button">الوضع الافتراضي (قائمة المرتجعات)</button>
+<button class="px-2.5 py-1 rounded text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-highest transition-all" id="btn-sc-drawer" onclick="switchScenario('drawer')" type="button">معاينة تفاصيل المرتجع (Drawer)</button>
+<button class="px-2.5 py-1 rounded text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-highest transition-all" id="btn-sc-reject" onclick="switchScenario('modal-reject')" type="button">حوار رفض الاسترجاع (Modal)</button>
+<button class="px-2.5 py-1 rounded text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-highest transition-all" id="btn-sc-approve" onclick="switchScenario('modal-approve')" type="button">حوار اعتماد وبدء الاسترداد (Modal)</button>
+<button class="px-2.5 py-1 rounded text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-highest transition-all" id="btn-sc-loading" onclick="switchScenario('loading')" type="button">حالة التحميل (Skeletons)</button>
+<button class="px-2.5 py-1 rounded text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-highest transition-all" id="btn-sc-empty-queue" onclick="switchScenario('empty-queue')" type="button">طابور فارغ</button>
+<button class="px-2.5 py-1 rounded text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-highest transition-all" id="btn-sc-empty-search" onclick="switchScenario('empty-search')" type="button">لا توجد نتائج بحث</button>
+<button class="px-2.5 py-1 rounded text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-highest transition-all" id="btn-sc-error" onclick="switchScenario('error')" type="button">خطأ في الاتصال (Error)</button>
+</div>
+</aside>
+<!-- Main Content Container with classical editorial spacing -->
+<div class="p-gutter-lg space-y-space-xl">
+<!-- Breadcrumbs & Document Header -->
+<header class="space-y-space-sm">
+<nav aria-label="مسار التنقل" class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<a class="hover:text-primary transition-colors" href="#">لوحة الإدارة</a>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<a class="hover:text-primary transition-colors" href="#">قسم العمليات واللوجستيات</a>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<span class="text-primary font-semibold">إدارة طلبات الاسترجاع والاسترداد</span>
+</nav>
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md pt-1">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[28px]">assignment_return</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">إدارة طلبات الاسترجاع والاسترداد المالي</h1>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-4xl">
+            مراجعة طلبات استرجاع المصنفات المعيبة أو المرسلة بالخطأ للطلبات المكتملة، التحقق من الأسباب والأدلة المصورة، واعتماد الاسترداد المالي اليدوي (<span class="font-medium text-primary">Manual Refund Record</span>) وفق بنود <span class="font-semibold text-secondary">RET-001</span> و<span class="font-semibold text-secondary">REF-001</span> المعتمدة في اللائحة التشغيلية لمكتبة الأزهري.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="px-4 py-2.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-2 font-label-md text-label-md shadow-sm" onclick="exportAuditLedger()" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>تصدير سجل الاسترجاع (CSV)</span>
+</button>
+<button class="px-4 py-2.5 rounded-lg bg-primary text-on-primary hover:bg-tertiary transition-colors flex items-center gap-2 font-label-md text-label-md shadow-sm" onclick="openDrawerWith('RET-20260924-0005')" type="button">
+<span class="material-symbols-outlined text-[18px]">quick_reference</span>
+<span>فحص أحدث طلب وارد</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Operational Policy Banner (RET-003 / REF-001) -->
+<section aria-labelledby="policy-alert-heading" class="bg-surface-container-low rounded-xl p-space-md shadow-sm relative overflow-hidden">
+<div class="absolute -right-12 -top-12 w-40 h-40 bg-secondary-fixed/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-md relative">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<div class="space-y-1 flex-1">
+<h2 class="font-title-md text-title-md text-primary font-bold" id="policy-alert-heading">تنبيه تشغيلي وسياسة معتمدة (RET-003 / REF-001)</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            يقتصر قبول الاسترجاع على حالات الكتب التالفة أو المعيبة أو استلام منتج مختلف عن المطلوب فقط للطلبات المكتملة. عمليات الاسترداد المالي تتم حصراً بشكل يدوي ومباشر عبر <strong>إنستاباي (InstaPay)</strong> أو <strong>المحافظ الإلكترونية</strong>، ويوثق كل استرداد في سجل مالي منفصل وغير مرتبط بأي بوابة دفع آلية.
+          </p>
+</div>
+<div class="hidden md:flex flex-col items-end text-left shrink-0">
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">المهلة القصوى للبت: 24 ساعة</span>
+<span class="font-label-sm text-[11px] text-secondary mt-1">كود الامتثال: AZ-POLICY-2026-B</span>
+</div>
+</div>
+</section>
+<!-- 4 Documented Metric Summary Cards -->
+<section aria-label="مؤشرات أداء الاسترجاع" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Metric 1: Pending -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-3 relative overflow-hidden transition-all hover:shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">بانتظار المراجعة (Pending)</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">hourglass_top</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">2</span>
+<span class="font-body-sm text-body-sm text-secondary font-semibold">طلبات جديدة</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span>أقدم طلب وارد منذ 3 ساعات</span>
+</div>
+</div>
+<!-- Metric 2: Approved / Pending Manual Refund -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-3 relative overflow-hidden transition-all hover:shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">معتمد (بانتظار الاسترداد)</span>
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">1</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">طلب بقيمة 185.00 ج.م</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px] text-surface-tint">account_balance_wallet</span>
+<span>يتطلب تحويل يدوي عبر إنستاباي</span>
+</div>
+</div>
+<!-- Metric 3: Completed Refunds -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-3 relative overflow-hidden transition-all hover:shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">استرداد مالي مكتمل (شهرياً)</span>
+<div class="w-8 h-8 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">18</span>
+<span class="font-body-sm text-body-sm text-primary-container font-semibold">مكتمل وموثق</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="text-surface-tint font-bold">3,420.50 ج.م</span>
+<span>إجمالي المبالغ المستردة</span>
+</div>
+</div>
+<!-- Metric 4: Rejected Requests -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-3 relative overflow-hidden transition-all hover:shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">طلبات مرفوضة</span>
+<div class="w-8 h-8 rounded-lg bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">1</span>
+<span class="font-body-sm text-body-sm text-error font-semibold">طلب مخالف للشروط</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px] text-error">info</span>
+<span>غير مطابق لسياسة العيوب المصنعية</span>
+</div>
+</div>
+</section>
+<!-- Filters & Search Toolbar -->
+<section aria-label="خيارات التصفية والبحث" class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<!-- Filter Tabs -->
+<div class="flex items-center justify-between gap-space-md overflow-x-auto pb-1">
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" id="tab-all" onclick="filterByStatus('all')" type="button">
+            الكل <span class="font-normal text-on-surface-variant">(22)</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md bg-primary text-on-primary shadow-sm flex items-center gap-1.5 transition-colors" id="tab-pending" onclick="filterByStatus('pending')" type="button">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span>
+<span>بانتظار المراجعة</span>
+<span class="font-bold">(2)</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" id="tab-approved" onclick="filterByStatus('approved')" type="button">
+            تم الاعتماد - بانتظار الاسترداد <span class="font-normal text-on-surface-variant">(1)</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" id="tab-refunded" onclick="filterByStatus('refunded')" type="button">
+            استرداد مالي مكتمل <span class="font-normal text-on-surface-variant">(18)</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" id="tab-rejected" onclick="filterByStatus('rejected')" type="button">
+            طلبات مرفوضة <span class="font-normal text-on-surface-variant">(1)</span>
+</button>
+</div>
+<button class="text-secondary hover:text-primary transition-colors font-label-sm text-label-sm flex items-center gap-1 shrink-0" onclick="resetFilters()" type="button">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>إعادة ضبط الفلاتر</span>
+</button>
+</div>
+<!-- Search and Secondary Controls -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm pt-2">
+<div class="md:col-span-8 relative">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-low rounded-lg pr-10 pl-4 py-2.5 font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="returns-search-input" onkeyup="handleSearchInput(event)" placeholder="بحث برقم الاسترجاع (RET-...)، رقم الطلب (AZ-...)، أو اسم العميل..." type="text"/>
+</div>
+<div class="md:col-span-4 flex items-center gap-space-xs">
+<div class="relative w-full">
+<select class="w-full appearance-none bg-surface-container-low rounded-lg px-3.5 py-2.5 font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-sm pr-9 cursor-pointer" id="date-range-select">
+<option value="30">آخر 30 يوماً</option>
+<option value="7">هذا الأسبوع (7 أيام)</option>
+<option value="today">اليوم فقط</option>
+<option value="all">كافة التواريخ والأرشيف</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">calendar_month</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Table Section Container -->
+<div class="space-y-space-md" id="view-container">
+<!-- 1. REAL TABLE VIEW (5 Explicit Columns) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden" id="state-table-content">
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md">
+<th class="py-3.5 px-space-md font-bold" scope="col">المرجع (Reference)</th>
+<th class="py-3.5 px-space-md font-bold" scope="col">الطلب (Order)</th>
+<th class="py-3.5 px-space-md font-bold" scope="col">العميل (Customer)</th>
+<th class="py-3.5 px-space-md font-bold" scope="col">الحالة التشغيلية (Status)</th>
+<th class="py-3.5 px-space-md font-bold" scope="col">تاريخ التقديم (Date)</th>
+<th class="py-3.5 px-space-md font-bold text-center" scope="col">الإجراءات والقرار</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface" id="returns-table-body">
+<!-- Row 1: Under Review -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-headline-sm text-title-md font-bold text-primary font-mono tracking-tight">RET-20260924-0005</span>
+<span class="font-label-sm text-[11px] text-error font-medium mt-0.5">نسخة تالفة — عيب تجليد وتجميع</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<a class="font-mono text-secondary hover:text-primary font-bold text-body-sm" href="#">AZ-20260922-0041</a>
+<span class="font-label-sm text-[11px] text-on-surface-variant">مكتمل • مستلم منذ يومين</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">الشيخ إبراهيم خالد الجندي</span>
+<span class="text-on-surface-variant font-label-sm text-[11px]">كلية الشريعة والقانون بالقاهرة</span>
+<span class="text-on-surface-variant font-mono text-[11px] dir-ltr inline-block text-right">01228491823</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px] animate-spin">progress_activity</span>
+<span>قيد مراجعة الإدارة</span>
+</span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">24 سبتمبر 2026</span>
+<span class="text-on-surface-variant font-label-sm text-[11px]">08:30 ص (منذ 3 ساعات)</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="px-3 py-1.5 rounded bg-primary text-on-primary hover:bg-tertiary transition-colors font-label-sm text-label-sm flex items-center gap-1" onclick="openDrawerWith('RET-20260924-0005')" type="button">
+<span class="material-symbols-outlined text-[16px]">rule</span>
+<span>فحص المرتجع واتخاذ القرار</span>
+</button>
+<a class="p-1.5 rounded bg-surface-container text-on-surface-variant hover:text-primary transition-colors" href="https://wa.me/201228491823" rel="noopener noreferrer" target="_blank" title="مراسلة العميل عبر واتساب">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+</div>
+</td>
+</tr>
+<!-- Row 2: Under Review -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-headline-sm text-title-md font-bold text-primary font-mono tracking-tight">RET-20260924-0004</span>
+<span class="font-label-sm text-[11px] text-error font-medium mt-0.5">استلام كتاب مغاير للمطلوب</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<a class="font-mono text-secondary hover:text-primary font-bold text-body-sm" href="#">AZ-20260921-0027</a>
+<span class="font-label-sm text-[11px] text-on-surface-variant">مكتمل • شحن معتمد</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">خديجة مصطفى العوضي</span>
+<span class="text-on-surface-variant font-label-sm text-[11px]">معهد القراءات بالخازندارة</span>
+<span class="text-on-surface-variant font-mono text-[11px] dir-ltr inline-block text-right">01019283745</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>قيد مراجعة الإدارة</span>
+</span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">24 سبتمبر 2026</span>
+<span class="text-on-surface-variant font-label-sm text-[11px]">07:15 ص (منذ 4 ساعات)</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="px-3 py-1.5 rounded bg-primary text-on-primary hover:bg-tertiary transition-colors font-label-sm text-label-sm flex items-center gap-1" onclick="openDrawerWith('RET-20260924-0004')" type="button">
+<span class="material-symbols-outlined text-[16px]">rule</span>
+<span>فحص المرتجع واتخاذ القرار</span>
+</button>
+<a class="p-1.5 rounded bg-surface-container text-on-surface-variant hover:text-primary transition-colors" href="https://wa.me/201019283745" rel="noopener noreferrer" target="_blank" title="مراسلة عبر واتساب">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+</div>
+</td>
+</tr>
+<!-- Row 3: Approved - Refund Initiated -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-headline-sm text-title-md font-bold text-primary font-mono tracking-tight">RET-20260923-0003</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant mt-0.5">عيب طباعة • صفحات بيضاء</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<a class="font-mono text-secondary hover:text-primary font-bold text-body-sm" href="#">AZ-20260920-0018</a>
+<span class="font-label-sm text-[11px] text-on-surface-variant">موسوعة التفسير الميسر</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">د. يوسف التلمساني</span>
+<span class="text-on-surface-variant font-label-sm text-[11px]">أستاذ بقسم الحديث الشريف</span>
+<span class="text-on-surface-variant font-mono text-[11px] dir-ltr inline-block text-right">01100200022</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">account_balance_wallet</span>
+<span>مرتجع معتمد — جاري الاسترداد</span>
+</span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">23 سبتمبر 2026</span>
+<span class="text-on-surface-variant font-label-sm text-[11px]">02:45 م (أمس)</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="px-3 py-1.5 rounded bg-surface-tint text-on-primary hover:bg-primary transition-colors font-label-sm text-label-sm flex items-center gap-1" onclick="openDrawerWith('RET-20260923-0003')" type="button">
+<span class="material-symbols-outlined text-[16px]">send_money</span>
+<span>تسجيل التحويل اليدوي</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="openDrawerWith('RET-20260923-0003')" title="عرض تفاصيل السجل" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Refund Completed -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-headline-sm text-title-md font-bold text-primary font-mono tracking-tight">RET-20260922-0002</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant mt-0.5">تضرر كتاب أثناء نقل الشحن</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<a class="font-mono text-secondary hover:text-primary font-bold text-body-sm" href="#">AZ-20260918-0009</a>
+<span class="font-label-sm text-[11px] text-on-surface-variant">فتح القريب المجيب</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">سارة إبراهيم الدسوقي</span>
+<span class="text-on-surface-variant font-label-sm text-[11px]">طالبة دراسات عليا</span>
+<span class="text-on-surface-variant font-mono text-[11px] dir-ltr inline-block text-right">01281554499</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">done_all</span>
+<span>اكتمل الاسترداد المالي ✓</span>
+</span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">22 سبتمبر 2026</span>
+<span class="text-on-surface-variant font-label-sm text-[11px]">11:20 ص</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top text-center">
+<button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors font-label-sm text-label-sm flex items-center gap-1 mx-auto" onclick="openDrawerWith('RET-20260922-0002')" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt</span>
+<span>معاينة إثبات التحويل والسجل</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Rejected -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-headline-sm text-title-md font-bold text-on-surface-variant font-mono tracking-tight">RET-20260921-0001</span>
+<span class="font-label-sm text-[11px] text-error font-medium mt-0.5">طلب استرجاع لعدم الحاجة</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<a class="font-mono text-secondary hover:text-primary font-bold text-body-sm" href="#">AZ-20260915-0003</a>
+<span class="font-label-sm text-[11px] text-on-surface-variant">طلب سليم ومستلم</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">محمد حمزة البدري</span>
+<span class="text-on-surface-variant font-label-sm text-[11px]">باحث مستقل</span>
+<span class="text-on-surface-variant font-mono text-[11px] dir-ltr inline-block text-right">01201554499</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">close</span>
+<span>مرفوض — غير مطابق للشروط</span>
+</span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">21 سبتمبر 2026</span>
+<span class="text-on-surface-variant font-label-sm text-[11px]">04:10 م</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top text-center">
+<button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors font-label-sm text-label-sm flex items-center gap-1 mx-auto" onclick="openDrawerWith('RET-20260921-0001')" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>تفاصيل سبب الرفض</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination bar -->
+<div class="bg-surface-container-low px-space-md py-3 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-2">
+<span>عرض <strong>1</strong> إلى <strong>5</strong> من أصل <strong>22</strong> طلب استرجاع مسجل</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded bg-surface-container text-on-surface-variant/40 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<span class="px-2.5 py-1 rounded bg-primary text-on-primary font-bold">1</span>
+<button class="px-2.5 py-1 rounded hover:bg-surface-container text-on-surface" type="button">2</button>
+<button class="px-2.5 py-1 rounded hover:bg-surface-container text-on-surface" type="button">3</button>
+<button class="p-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 2. SKELETON LOADING STATE (Hidden by default) -->
+<div class="hidden bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-4 animate-pulse" id="state-loading">
+<div class="h-6 bg-surface-container-high rounded w-1/4"></div>
+<div class="space-y-3">
+<div class="h-12 bg-surface-container rounded-lg w-full"></div>
+<div class="h-12 bg-surface-container rounded-lg w-full"></div>
+<div class="h-12 bg-surface-container rounded-lg w-full"></div>
+<div class="h-12 bg-surface-container rounded-lg w-full"></div>
+</div>
+</div>
+<!-- 3. EMPTY QUEUE STATE (Hidden by default) -->
+<div class="hidden bg-surface-container-lowest rounded-xl p-space-xl shadow-sm text-center space-y-space-md" id="state-empty-queue">
+<div class="w-16 h-16 rounded-full bg-primary-fixed mx-auto flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[36px]">inventory_2</span>
+</div>
+<div class="space-y-1">
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">طابور الاسترجاع فارغ تماماً</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto">
+            تمت معالجة كافة طلبات الاسترجاع والاسترداد المالي الواردة بنجاح، ولا توجد طلبات معلقة بانتظار الإجراء حالياً.
+          </p>
+</div>
+<button class="px-4 py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high" onclick="switchScenario('default')" type="button">العودة للقائمة الإجمالية</button>
+</div>
+<!-- 4. NO SEARCH RESULTS STATE (Hidden by default) -->
+<div class="hidden bg-surface-container-lowest rounded-xl p-space-xl shadow-sm text-center space-y-space-md" id="state-empty-search">
+<div class="w-16 h-16 rounded-full bg-surface-container-high mx-auto flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[36px]">search_off</span>
+</div>
+<div class="space-y-1">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">لا توجد نتائج بحث مطابقة</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto">
+            لم يتم العثور على أي طلب استرجاع يطابق عبارة البحث المدخلة. يرجى التأكد من كتابة الرقم المرجعي أو رقم الطلب بصيغة صحيحة.
+          </p>
+</div>
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-tertiary" onclick="resetFilters(); switchScenario('default')" type="button">إعادة ضبط البحث والفلاتر</button>
+</div>
+<!-- 5. API ERROR STATE (Hidden by default) -->
+<div class="hidden bg-surface-container-lowest rounded-xl p-space-xl shadow-sm text-center space-y-space-md" id="state-error">
+<div class="w-16 h-16 rounded-full bg-error-container text-on-error-container mx-auto flex items-center justify-center">
+<span class="material-symbols-outlined text-[36px]">cloud_off</span>
+</div>
+<div class="space-y-1">
+<h2 class="font-headline-sm text-headline-sm text-error font-bold">تعذر الاتصال بخادم المعاملات المالية</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto">
+            حدث خطأ غير متوقع أثناء استرداد سجلات المرتجعات من قاعدة البيانات. تم تسجيل الحادثة في سجل تدقيق النظام (Audit Log).
+          </p>
+</div>
+<button class="px-4 py-2 rounded-lg bg-error text-on-error font-label-md text-label-md hover:opacity-90" onclick="switchScenario('default')" type="button">إعادة محاولة التحميل</button>
+</div>
+</div>
+</div>
+<!-- REQUEST DETAILS DRAWER / SLIDE-OVER (PRD §6.16 & §6.17) -->
+<aside aria-label="لوحة تفاصيل طلب الاسترجاع والاسترداد" class="fixed inset-y-0 left-0 w-full max-w-2xl bg-surface-container-lowest shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col" id="returns-drawer">
+<!-- Drawer Header -->
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[26px]">manage_search</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary font-bold font-mono" id="drawer-ref-title">RET-20260924-0005</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">تفاصيل طلب الاسترجاع وحالة الاسترداد المالي المباشر</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" onclick="closeDrawer()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Scrollable Body -->
+<div class="flex-1 overflow-y-auto p-space-lg space-y-space-lg">
+<!-- General Metadata Grid -->
+<section aria-label="بيانات الطلب والعميل" class="grid grid-cols-2 gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الطلب الأصلي المرتبط:</span>
+<div class="flex items-center gap-1.5">
+<span class="font-mono font-bold text-primary text-body-md" id="drawer-order-id">AZ-20260922-0041</span>
+<a class="text-secondary hover:text-primary" href="#" title="عرض تفاصيل الطلب الأصلي"><span class="material-symbols-outlined text-[16px]">open_in_new</span></a>
+</div>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">تاريخ ووقت التقديم:</span>
+<span class="font-medium text-body-sm text-on-surface block" id="drawer-created-at">24 سبتمبر 2026 — 08:30 ص</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">اسم العميل ومقدم الطلب:</span>
+<span class="font-semibold text-body-sm text-on-surface block" id="drawer-customer-name">الشيخ إبراهيم خالد الجندي</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">هاتف التواصل:</span>
+<span class="font-mono text-body-sm text-on-surface block dir-ltr text-right" id="drawer-customer-phone">01228491823</span>
+</div>
+</section>
+<!-- Return Reason & Defect Evidence -->
+<section aria-label="أسباب الاسترجاع والأدلة المصورة" class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-primary font-bold">سبب الاسترجاع وملاحظات العميل</h2>
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-[11px] font-bold">عيب مصنعي وتجليد</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-xl space-y-2">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed" id="drawer-customer-notes">
+            "صفحات كتاب فتح القريب المجيب من صفحة 45 إلى 68 مكررة مرتين وناقصة في المبحث الثاني، مع فك جزئي في الغلاف الخارجي للمصنف مما يعيق القراءة والمراجعة الفقهية."
+          </p>
+</div>
+<!-- Evidence Photos (with detailed prompts & realistic editorial frame) -->
+<div class="space-y-1.5 pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">الأدلة المصورة المرفوعة من العميل (Defect Evidence):</span>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+<div class="rounded-lg overflow-hidden bg-surface-container relative group shadow-sm">
+<img class="w-full h-28 object-cover group-hover:scale-105 transition-transform" data-alt="High-resolution close-up photo of an Islamic classical jurisprudence book with clear binding defect, unstitched signatures along the spine, and repeated Arabic printed folio pages under natural desk lighting with library atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoOorqjrRzFb1KH_NdtjlcvqKk9Er6fc3F6djFTFLi-TDpWd1dAfB9hAE_yjnwyUJfbhI7im5pO0MV3Y-QdyoRmDG6uw7ZT2OAnsL521J3omhbiCu2WFFf0ix5t5MnQVse8mFA8b_nhVRqCDq53mFyxF0LPTYfEzkOdb2dgHLIWBzcW3qcARXE08Vc6_Zrv-6jIrwkt_V3E2l-YttYJ4z6sP2U5um0erKtGvk2e4nCxpGUgGP7ygLj"/>
+<div class="absolute bottom-0 inset-x-0 bg-primary/80 text-on-primary text-[10px] px-1.5 py-0.5 text-center font-label-sm">عيب التجليد</div>
+</div>
+<div class="rounded-lg overflow-hidden bg-surface-container relative group shadow-sm">
+<img class="w-full h-28 object-cover group-hover:scale-105 transition-transform" data-alt="Clear macro view of Arabic printed book page showing misprinted duplicated text and uneven paper cut margins on traditional cream scholarly paper stock in Egyptian academic printing style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDluxOSFi0xgKZd7BGJU-3XS26qjuhZuOFaGevDKp07WUHRY4pkiQdKbyrrnFQjX6fTvrW80AM2P2PWR_cxfNi82DmVBqVZBzglhFApAE5g2HFd7BWqy1SrZEkj7lnIZleGIphivi6XziQQD0oHbVqm9eJoC3DoxdILf7GDdfFP-feDgCtNr9bd1ADIiIVv7blY1TAezzJnRhaPxIcL0-zRPMgbyyZFRR3uu0pVkBReWavE4l9DDWqD"/>
+<div class="absolute bottom-0 inset-x-0 bg-primary/80 text-on-primary text-[10px] px-1.5 py-0.5 text-center font-label-sm">تكرار الصفحات</div>
+</div>
+<div class="rounded-lg bg-surface-container-high flex flex-col items-center justify-center p-2 text-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+<span class="font-label-sm text-[10px] mt-1">فحص أولي مطابق للشروط</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Eligible Return Items List -->
+<section aria-label="الكتب المراد استرجاعها" class="space-y-space-sm">
+<h2 class="font-title-md text-title-md text-primary font-bold">المنتجات المؤهلة للاسترجاع (Eligible Items)</h2>
+<div class="bg-surface-container-low rounded-xl p-space-sm space-y-2">
+<div class="flex items-center gap-space-sm bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<div class="w-12 h-16 bg-surface-container-high rounded shrink-0 overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Traditional 2:3 aspect ratio book cover of Fath al-Qarib al-Mujib in classical dark green leather with gold embossed Islamic Arabic calligraphy title." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk4856P6nkV9Wt9ryCZCuwzKlUlnprbYeLkFz7y980TfgKOi109QYDc4zDwHbt3guSeHofemquBgSo5j04wgqQ3hcCIWWxc-dRtt8lipU6_adGK17x68f2N1m8ipnw8hxoVX9ZxGhRie4hku9Cok_v9xNPidLQi-BUaggcA3-y5cFHBHfZXarpJJGRiSNlXJL8dpNWvv9NdtCLDYOlYAiHGzRUA6AF13ljwJWBqleGpgr_7OGFK3sF"/>
+</div>
+<div class="flex-1 min-w-0">
+<span class="font-headline-sm text-title-md text-primary font-bold truncate block">فتح القريب المجيب في شرح ألفاظ التقريب</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">العلامة ابن قاسم الغزي • طبعة دار المنهاج (مجلد فاخر)</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">الكمية: 1 نسخة</span>
+<span class="font-mono font-bold text-primary text-body-sm">185.00 ج.م</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- DEDICATED REFUND INFORMATION SECTION (PRD REF-002) -->
+<section aria-label="سجل الاسترداد المالي اليدوي" class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[22px]">account_balance_wallet</span>
+<h2 class="font-title-md text-title-md text-primary font-bold">بيانات وسجل الاسترداد المالي (Manual Refund Record)</h2>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant">وفق متطلبات PRD REF-001/002</span>
+</div>
+<!-- Dynamic Container: Changes based on state -->
+<div class="bg-surface-container-low rounded-xl p-space-md space-y-space-sm" id="drawer-refund-panel">
+<!-- Pending State Warning (Default) -->
+<div class="space-y-2" id="refund-state-pending">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">info</span>
+<div class="space-y-1">
+<p class="font-body-sm text-body-sm font-semibold text-on-surface">
+                  لا توجد بيانات استرداد مالي حالياً. لم يتم اعتماد الاسترجاع أو إنشاء سجل استرداد بعد.
+                </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  تنبيه تشغيلي: لا يتم إنشاء أي استرداد مالي تلقائي، بل يتم التسجيل يدوياً بعد تحويل المبلغ الفعلي للعميل عبر مسؤولي الحسابات بواسطة إنستاباي أو المحفظة الإلكترونية.
+                </p>
+</div>
+</div>
+</div>
+<!-- Completed State Data (Shown for approved/refunded) -->
+<div class="hidden space-y-space-sm" id="refund-state-details">
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">المبلغ المسترد:</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary font-mono" id="refund-val-amount">185.00 ج.م</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">وسيلة التحويل:</span>
+<span class="font-semibold text-body-sm text-on-surface flex items-center gap-1" id="refund-val-method">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">bolt</span>
+<span>إنستاباي (InstaPay)</span>
+</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">مرجع الدفع الأصلي:</span>
+<span class="font-mono text-body-sm text-secondary font-bold" id="refund-val-payref">PAY-20260922-0029</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">رقم العملية البنكية:</span>
+<span class="font-mono text-body-sm text-on-surface font-semibold" id="refund-val-bankref">IPN-8849201948</span>
+</div>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm pt-1">
+<span>مسجل التحويل: الشيخ عبد الرحمن السيوطي (مسؤول الخزينة) • 23 سبتمبر 04:15 م</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Drawer Action Footer (State-aware Actions) -->
+<div class="p-space-md bg-surface-container-low flex flex-wrap items-center justify-between gap-space-sm shadow-[0_-1px_4px_rgba(0,0,0,0.04)]">
+<div class="flex items-center gap-space-sm w-full sm:w-auto" id="drawer-actions-pending">
+<button class="px-4 py-2.5 rounded-lg bg-primary text-on-primary hover:bg-tertiary transition-colors flex items-center gap-1.5 font-label-md text-label-md shadow-sm" onclick="openApproveModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>قبول الاسترجاع وبدء رد المبلغ</span>
+</button>
+<button class="px-4 py-2.5 rounded-lg bg-surface-container text-error hover:bg-error-container hover:text-on-error-container transition-colors flex items-center gap-1.5 font-label-md text-label-md" onclick="openRejectModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+<span>رفض طلب الاسترجاع</span>
+</button>
+</div>
+<div class="hidden items-center gap-space-sm w-full sm:w-auto" id="drawer-actions-approved">
+<button class="px-4 py-2.5 rounded-lg bg-surface-tint text-on-primary hover:bg-primary transition-colors flex items-center gap-1.5 font-label-md text-label-md shadow-sm" onclick="recordManualTransferPrompt()" type="button">
+<span class="material-symbols-outlined text-[18px]">price_check</span>
+<span>تسجيل اكتمال التحويل اليدوي</span>
+</button>
+</div>
+<div class="hidden items-center gap-space-sm" id="drawer-actions-completed">
+<span class="font-label-sm text-label-sm text-surface-tint font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>الطلب مكتمل ومغلق محاسبياً</span>
+</span>
+</div>
+<a class="px-3.5 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors flex items-center gap-1.5 font-label-sm text-label-sm" href="https://wa.me/201228491823" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>مراسلة العميل للتوضيح</span>
+</a>
+</div>
+</aside>
+<!-- DRAWER BACKDROP -->
+<div class="fixed inset-0 bg-primary/20 backdrop-blur-xs z-40 hidden transition-opacity" id="drawer-backdrop" onclick="closeDrawer()"></div>
+<!-- MODAL A: APPROVE RETURN & INITIATE MANUAL REFUND -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-primary/30 backdrop-blur-xs hidden" id="modal-approve">
+<div class="bg-surface-container-lowest rounded-xl max-w-lg w-full p-space-lg shadow-2xl space-y-space-md text-right">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">assignment_turned_in</span>
+</div>
+<div class="space-y-1">
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">تأكيد قبول الاسترجاع وبدء الاسترداد المالي</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">المرجع المختار: <strong class="font-mono text-primary">RET-20260924-0005</strong></p>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-xl space-y-2 text-body-sm font-body-sm text-on-surface">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">المصنف المرتجع:</span>
+<span class="font-semibold">فتح القريب المجيب (1 نسخة)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">إجمالي المبلغ المستحق للرد:</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary font-mono">185.00 ج.م</span>
+</div>
+<div class="flex justify-between pt-1">
+<span class="text-on-surface-variant">قناة الرد المعتمدة:</span>
+<span class="font-semibold text-secondary">تحويل يدوي فوري (InstaPay / Wallet)</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        بالموافقة، ستتغير حالة الطلب إلى <strong class="text-primary">"مرتجع معتمد — بانتظار الاسترداد المالي"</strong>، وسيتم توجيه إشعار للعميل لتأكيد تفاصيل حسابه لتحويل المبلغ يدوياً.
+      </p>
+<div class="flex items-center justify-end gap-space-sm pt-2">
+<button class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md" onclick="closeModal('modal-approve')" type="button">إلغاء</button>
+<button class="px-5 py-2 rounded-lg bg-primary text-on-primary hover:bg-tertiary font-label-md text-label-md shadow-sm" onclick="confirmApproveAction()" type="button">اعتماد الطلب وبدء الإجراء</button>
+</div>
+</div>
+</div>
+<!-- MODAL B: REJECT RETURN REQUEST -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-primary/30 backdrop-blur-xs hidden" id="modal-reject">
+<div class="bg-surface-container-lowest rounded-xl max-w-lg w-full p-space-lg shadow-2xl space-y-space-md text-right">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">cancel</span>
+</div>
+<div class="space-y-1">
+<h2 class="font-headline-sm text-headline-sm text-error font-bold">رفض طلب الاسترجاع</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">المرجع: <strong class="font-mono text-primary">RET-20260924-0005</strong></p>
+</div>
+</div>
+<div class="space-y-space-sm">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="reject-reason-select">سبب الرفض المعتمد (إلزامي):</label>
+<select class="w-full bg-surface-container-low rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface focus:ring-2 focus:ring-primary focus:outline-none shadow-sm cursor-pointer" id="reject-reason-select">
+<option value="not_defective">المنتج سليم تماماً ولا يحتوي على عيب مصنعي</option>
+<option value="policy_period_exceeded">تجاوز فترة الاسترجاع المحددة نظاماً</option>
+<option value="misuse_or_unapproved">طلب استرجاع لغير عيب مصنعي (تغيير الرأي)</option>
+<option value="insufficient_evidence">الأدلة المصورة غير كافية أو غير واضحة</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1" for="reject-notes-textarea">بيان تفصيلي وملاحظات الإدارة (تظهر للعميل):</label>
+<textarea class="w-full bg-surface-container-low rounded-lg p-2.5 font-body-sm text-body-sm text-on-surface focus:ring-2 focus:ring-primary focus:outline-none shadow-sm" id="reject-notes-textarea" placeholder="اكتب سبباً توضيحياً مفصلاً يتم إرساله للعميل بالبريد أو الواتساب..." rows="3"></textarea>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-2">
+<button class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md" onclick="closeModal('modal-reject')" type="button">تراجع</button>
+<button class="px-5 py-2 rounded-lg bg-error text-on-error hover:opacity-90 font-label-md text-label-md shadow-sm" onclick="confirmRejectAction()" type="button">تأكيد رفض الطلب</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline JavaScript for Full Interaction Harness & Drawers -->
+<script>
+  // Scenario Switcher for Rig
+  function switchScenario(scenario) {
+    // Reset buttons
+    ['default', 'drawer', 'reject', 'approve', 'loading', 'empty-queue', 'empty-search', 'error'].forEach(id => {
+      const btn = document.getElementById('btn-sc-' + id);
+      if (btn) {
+        btn.classList.remove('bg-primary', 'text-on-primary');
+        btn.classList.add('bg-surface-container', 'text-on-surface');
+      }
+    });
+
+    // Close modals/drawers
+    closeDrawer();
+    closeModal('modal-approve');
+    closeModal('modal-reject');
+
+    // Hide all main containers
+    document.getElementById('state-table-content').classList.add('hidden');
+    document.getElementById('state-loading').classList.add('hidden');
+    document.getElementById('state-empty-queue').classList.add('hidden');
+    document.getElementById('state-empty-search').classList.add('hidden');
+    document.getElementById('state-error').classList.add('hidden');
+
+    if (scenario === 'default') {
+      document.getElementById('state-table-content').classList.remove('hidden');
+      const b = document.getElementById('btn-sc-default');
+      b.classList.remove('bg-surface-container', 'text-on-surface');
+      b.classList.add('bg-primary', 'text-on-primary');
+    } else if (scenario === 'drawer') {
+      document.getElementById('state-table-content').classList.remove('hidden');
+      const b = document.getElementById('btn-sc-drawer');
+      b.classList.remove('bg-surface-container', 'text-on-surface');
+      b.classList.add('bg-primary', 'text-on-primary');
+      openDrawerWith('RET-20260924-0005');
+    } else if (scenario === 'modal-reject') {
+      document.getElementById('state-table-content').classList.remove('hidden');
+      const b = document.getElementById('btn-sc-reject');
+      b.classList.remove('bg-surface-container', 'text-on-surface');
+      b.classList.add('bg-primary', 'text-on-primary');
+      openRejectModal();
+    } else if (scenario === 'modal-approve') {
+      document.getElementById('state-table-content').classList.remove('hidden');
+      const b = document.getElementById('btn-sc-approve');
+      b.classList.remove('bg-surface-container', 'text-on-surface');
+      b.classList.add('bg-primary', 'text-on-primary');
+      openApproveModal();
+    } else if (scenario === 'loading') {
+      document.getElementById('state-loading').classList.remove('hidden');
+      const b = document.getElementById('btn-sc-loading');
+      b.classList.remove('bg-surface-container', 'text-on-surface');
+      b.classList.add('bg-primary', 'text-on-primary');
+    } else if (scenario === 'empty-queue') {
+      document.getElementById('state-empty-queue').classList.remove('hidden');
+      const b = document.getElementById('btn-sc-empty-queue');
+      b.classList.remove('bg-surface-container', 'text-on-surface');
+      b.classList.add('bg-primary', 'text-on-primary');
+    } else if (scenario === 'empty-search') {
+      document.getElementById('state-empty-search').classList.remove('hidden');
+      const b = document.getElementById('btn-sc-empty-search');
+      b.classList.remove('bg-surface-container', 'text-on-surface');
+      b.classList.add('bg-primary', 'text-on-primary');
+    } else if (scenario === 'error') {
+      document.getElementById('state-error').classList.remove('hidden');
+      const b = document.getElementById('btn-sc-error');
+      b.classList.remove('bg-surface-container', 'text-on-surface');
+      b.classList.add('bg-primary', 'text-on-primary');
+    }
+  }
+
+  // Drawer Management
+  function openDrawerWith(ref) {
+    const drawer = document.getElementById('returns-drawer');
+    const backdrop = document.getElementById('drawer-backdrop');
+    
+    // Set Drawer Title
+    document.getElementById('drawer-ref-title').innerText = ref;
+    
+    // State-aware data alteration
+    const pendingActions = document.getElementById('drawer-actions-pending');
+    const approvedActions = document.getElementById('drawer-actions-approved');
+    const completedActions = document.getElementById('drawer-actions-completed');
+    const pendingRefundNotice = document.getElementById('refund-state-pending');
+    const detailedRefundNotice = document.getElementById('refund-state-details');
+
+    pendingActions.classList.add('hidden');
+    approvedActions.classList.add('hidden');
+    completedActions.classList.add('hidden');
+
+    if (ref === 'RET-20260924-0005' || ref === 'RET-20260924-0004') {
+      // Pending
+      pendingActions.classList.remove('hidden');
+      pendingRefundNotice.classList.remove('hidden');
+      detailedRefundNotice.classList.add('hidden');
+    } else if (ref === 'RET-20260923-0003') {
+      // Approved - Initiated
+      approvedActions.classList.remove('hidden');
+      pendingRefundNotice.classList.add('hidden');
+      detailedRefundNotice.classList.remove('hidden');
+      document.getElementById('refund-val-bankref').innerText = 'قيد انتظار إشعار التحويل البنكي';
+    } else if (ref === 'RET-20260922-0002') {
+      // Completed
+      completedActions.classList.remove('hidden');
+      pendingRefundNotice.classList.add('hidden');
+      detailedRefundNotice.classList.remove('hidden');
+      document.getElementById('refund-val-bankref').innerText = 'IPN-9938201948 (ناجح)';
+    } else {
+      // Rejected
+      pendingRefundNotice.classList.remove('hidden');
+      detailedRefundNotice.classList.add('hidden');
+    }
+
+    drawer.classList.remove('-translate-x-full');
+    backdrop.classList.remove('hidden');
+  }
+
+  function closeDrawer() {
+    const drawer = document.getElementById('returns-drawer');
+    const backdrop = document.getElementById('drawer-backdrop');
+    if (drawer) drawer.classList.add('-translate-x-full');
+    if (backdrop) backdrop.classList.add('hidden');
+  }
+
+  // Modals Management
+  function openApproveModal() {
+    document.getElementById('modal-approve').classList.remove('hidden');
+  }
+
+  function openRejectModal() {
+    document.getElementById('modal-reject').classList.remove('hidden');
+  }
+
+  function closeModal(modalId) {
+    document.getElementById(modalId).classList.add('hidden');
+  }
+
+  function confirmApproveAction() {
+    closeModal('modal-approve');
+    alert('تم اعتماد قبول الاسترجاع بنجاح لـ RET-20260924-0005. تم تحديث الحالة لبدء الاسترداد المالي اليدوي.');
+    openDrawerWith('RET-20260923-0003');
+  }
+
+  function confirmRejectAction() {
+    const reason = document.getElementById('reject-reason-select').value;
+    closeModal('modal-reject');
+    alert('تم رفض طلب الاسترجاع وتسجيل سبب الرفض في سجل التدقيق بنجاح.');
+    closeDrawer();
+  }
+
+  function recordManualTransferPrompt() {
+    const refNum = prompt('يرجى إدخال رقم العملية المرجعي من إنستاباي أو المحفظة الإلكترونية (Reference No):', 'IPN-' + Math.floor(100000000 + Math.random() * 900000000));
+    if (refNum) {
+      alert('تم توثيق الاسترداد المالي اليدوي برقم مرجعي: ' + refNum + ' وتم إغلاق الطلب كمكتمل.');
+      openDrawerWith('RET-20260922-0002');
+    }
+  }
+
+  // Filter Tabs logic
+  function filterByStatus(status) {
+    ['all', 'pending', 'approved', 'refunded', 'rejected'].forEach(tab => {
+      const el = document.getElementById('tab-' + tab);
+      if (el) {
+        el.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+        el.classList.add('bg-surface-container', 'text-on-surface');
+      }
+    });
+
+    const activeEl = document.getElementById('tab-' + status);
+    if (activeEl) {
+      activeEl.classList.remove('bg-surface-container', 'text-on-surface');
+      activeEl.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+    }
+
+    if (status === 'rejected') {
+      alert('تمت تصفية القائمة لعرض الطلبات المرفوضة فقط (1 طلب)');
+    }
+  }
+
+  function handleSearchInput(e) {
+    const query = e.target.value.trim().toLowerCase();
+    if (query === '404' || query === 'none') {
+      switchScenario('empty-search');
+    }
+  }
+
+  function resetFilters() {
+    document.getElementById('returns-search-input').value = '';
+    document.getElementById('date-range-select').value = '30';
+    filterByStatus('pending');
+  }
+
+  function exportAuditLedger() {
+    alert('جاري إعداد وتحميل سجل المرتجعات والاستردادات المعتمدة بصيغة CSV...');
+  }
+</script></main></div></body></html>

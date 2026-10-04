@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"background":"#faf9f6","primary":"#003426","on-surface":"#1a1c1a","outline":"#707974","on-tertiary-fixed-variant":"#274e42","on-primary-fixed-variant":"#15503e","on-tertiary":"#ffffff","primary-container":"#0f4c3a","surface-container-low":"#f4f3f1","on-primary-container":"#82bba4","primary-fixed-dim":"#99d3ba","tertiary-container":"#234a3e","tertiary-fixed":"#c1ecdb","primary-fixed":"#b4efd6","on-primary":"#ffffff","surface-variant":"#e3e2e0","tertiary-fixed-dim":"#a5cfbf","surface-container-high":"#e9e8e5","on-error":"#ffffff","on-primary-fixed":"#002117","inverse-on-surface":"#f1f1ee","error":"#ba1a1a","secondary-container":"#fec96e","secondary-fixed-dim":"#f2be64","on-secondary-container":"#775300","inverse-primary":"#99d3ba","surface-container-lowest":"#ffffff","secondary-fixed":"#ffdeaa","surface-tint":"#306855","inverse-surface":"#2f312f","on-background":"#1a1c1a","on-tertiary-container":"#8fb9a9","surface-container":"#efeeeb","on-surface-variant":"#404944","surface-dim":"#dbdad7","on-error-container":"#93000a","tertiary":"#083328","surface":"#faf9f6","on-secondary-fixed":"#271900","outline-variant":"#bfc9c3","surface-bright":"#faf9f6","error-container":"#ffdad6","on-tertiary-fixed":"#002118","on-secondary-fixed-variant":"#5f4100","surface-container-highest":"#e3e2e0","secondary":"#7d5700","on-secondary":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","space-md":"1rem","space-xs":"0.25rem","margin":"1.5rem","gutter":"1.5rem","space-xl":"2rem","gutter-sm":"1rem","gutter-lg":"2rem","margin-sm":"1rem","margin-lg":"3rem","space-lg":"1.5rem"},"fontFamily":{"headline-lg-mobile":["Noto Serif"],"body-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"display-lg":["Noto Serif"],"label-sm":["Plus Jakarta Sans"],"headline-sm":["Noto Serif"],"display-lg-mobile":["Noto Serif"],"headline-md":["Noto Serif"],"body-sm":["Plus Jakarta Sans"],"headline-lg":["Noto Serif"],"label-md":["Plus Jakarta Sans"],"title-md":["Plus Jakarta Sans"]},"fontSize":{"headline-lg-mobile":["1.75rem",{"lineHeight":"2.25rem","letterSpacing":"0em","fontWeight":"700"}],"body-lg":["1.125rem",{"lineHeight":"1.875rem","fontWeight":"400"}],"body-md":["1rem",{"lineHeight":"1.65rem","fontWeight":"400"}],"display-lg":["3rem",{"lineHeight":"3.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.03em","fontWeight":"500"}],"headline-sm":["1.25rem",{"lineHeight":"1.75rem","fontWeight":"600"}],"display-lg-mobile":["2.25rem",{"lineHeight":"2.875rem","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.005em","fontWeight":"600"}],"body-sm":["0.875rem",{"lineHeight":"1.45rem","fontWeight":"400"}],"headline-lg":["2.25rem",{"lineHeight":"2.875rem","letterSpacing":"-0.01em","fontWeight":"700"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0.02em","fontWeight":"600"}],"title-md":["1.125rem",{"lineHeight":"1.625rem","fontWeight":"600"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><aside class="fixed right-0 top-0 h-screen w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)] overflow-y-auto"><div class="h-16 px-space-lg flex items-center justify-between bg-surface-container-low/50"><div class="flex items-center gap-space-sm"><img alt="شعار مكتبة الأزهري" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UKlbQCU1w8WBKJE6UKCQxgQlAM-oeRJPkM0I4LR_e4Q1i9lO0dX7pWyQplSIAA1ZmtBdhVgbaCxOMwK7N-tf4QKnOlgsrr_vANHO--HD5Lz4Eq69vMzWfqoGioxsSFpvTcMKSsNRPUPpqV6-G7P6tdPw8CIOjdYk66AtVZyAOxy56_vLhAP5YLk1AWK0X7TLSvWtUFCTndLJ7aFTFjpSOCyMaLaxe-bTBFnj9JybYXU-qXJxwqtQLtt38"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">مكتبة الأزهري</span><span class="font-label-sm text-label-sm text-on-surface-variant">بوابة الإدارة والتشغيل</span></div></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-mono">v2.4</span></div><nav class="flex-1 px-space-md py-space-lg space-y-space-lg" data-active-classes="bg-primary-container text-on-primary font-title-md"><div class="space-y-space-xs"><div class="px-space-sm pb-space-xs font-label-sm text-label-sm text-outline uppercase tracking-wider">قسم العمليات التشغيلية</div><div class="space-y-1"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="operational-dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-sm text-body-sm">لوحة التحكم والعمليات</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="order-management" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-body-sm text-body-sm">إدارة الطلبات</span></div><span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-semibold">14</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="payment-verification" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-body-sm text-body-sm">التحقق من المدفوعات</span></div><span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant font-semibold">6</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="shipping-logistics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span class="font-body-sm text-body-sm">الشحن والتوصيل</span></div></a></div></div><div class="space-y-space-xs"><div class="px-space-sm pb-space-xs font-label-sm text-label-sm text-outline uppercase tracking-wider">الكتالوج والمخزن</div><div class="space-y-1"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="products-catalog" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">menu_book</span><span class="font-body-sm text-body-sm">إدارة المنتجات والكتب</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="categories-taxonomy" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-body-sm text-body-sm">التصنيفات والهيكلية</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="inventory-warehouse" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">warehouse</span><span class="font-body-sm text-body-sm">الجرد والمستودع</span></div><span class="w-2 h-2 rounded-full bg-secondary"></span></a></div></div><div class="space-y-space-xs"><div class="px-space-sm pb-space-xs font-label-sm text-label-sm text-outline uppercase tracking-wider">الخدمات والحجوزات</div><div class="space-y-1"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="student-services" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">school</span><span class="font-body-sm text-body-sm">طلبات الخدمات الطلابية</span></div><span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-semibold">8</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="pre-orders-reservations" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">bookmark_added</span><span class="font-body-sm text-body-sm">الحجز والطلب المسبق</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="returns-refunds" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">assignment_return</span><span class="font-body-sm text-body-sm">المرتجعات والاسترداد</span></div><span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container font-semibold">2</span></a></div></div><div class="space-y-space-xs"><div class="px-space-sm pb-space-xs font-label-sm text-label-sm text-outline uppercase tracking-wider">النظام والعملاء</div><div class="space-y-1"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="patrons-directory" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-sm text-body-sm">دليل العملاء</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="discount-coupons" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">sell</span><span class="font-body-sm text-body-sm">كوبونات الخصم</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="content-management" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">auto_stories</span><span class="font-body-sm text-body-sm">إدارة المحتوى</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="analytics-reports" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">monitoring</span><span class="font-body-sm text-body-sm">التقارير والإحصائيات</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="audit-log" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="font-body-sm text-body-sm">سجل التدقيق</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="system-settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-sm text-body-sm">الإعدادات والصلاحيات</span></div></a></div></div></nav><div class="p-space-md bg-surface-container-low/70"><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">library_books</span>دار ومكتبة الأزهري</span><span class="text-outline">القاهرة، مصر</span></div></div></aside><div class="pr-72"><header class="fixed top-0 left-0 right-72 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-md"><div class="inline-flex items-center gap-2 px-space-sm py-1 rounded-full bg-primary/5 text-primary"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm font-medium">النظام متصل · مزامنة فورية</span></div><a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#"><span class="material-symbols-outlined text-[18px]">storefront</span><span>معاينة المتجر</span><span class="material-symbols-outlined text-[14px]">arrow_outward</span></a></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs"><button aria-label="التنبيهات" class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 left-1.5 w-4 h-4 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex items-center justify-center ring-2 ring-surface-container-lowest">3</span></button><button aria-label="البحث الشامل" class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button></div><div class="h-6 w-px bg-surface-variant"></div><div class="flex items-center gap-space-sm"><div class="flex flex-col text-left"><span class="font-title-md text-body-sm font-semibold text-on-surface">الشيخ عبد الرحمن السيوطي</span><span class="font-label-sm text-label-sm text-on-surface-variant">مدير العمليات والفرع / مسؤول عام</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-2 ring-secondary-fixed/50"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-background min-h-screen px-space-xl py-space-lg w-full"><div class="flex flex-col w-full space-y-space-lg">
+<!-- 1. Interactive Testing Scenarios Bar (محاكي سيناريوهات الحالات) -->
+<div class="w-full bg-surface-container-low rounded-xl p-space-sm shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">tune</span>
+<span class="font-semibold text-on-surface">محاكي سيناريوهات حالات الواجهة:</span>
+<span class="text-outline text-xs hidden lg:inline">اختبر استجابة الشاشة لمختلف الحالات الإدارية</span>
+</div>
+<div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto" id="scenario-switcher">
+<button class="px-space-sm py-1 rounded-md text-xs font-label-md transition-all bg-primary-container text-on-primary shadow-sm" id="btn-scen-default" onclick="setScenario('default')">الوضع الافتراضي</button>
+<button class="px-space-sm py-1 rounded-md text-xs font-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high" id="btn-scen-drawer" onclick="openDrawer('USR-2026-00412')">تفاصيل المستخدم (Drawer)</button>
+<button class="px-space-sm py-1 rounded-md text-xs font-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high" id="btn-scen-modal" onclick="openSuspendModal('USR-2026-00412', 'أحمد محمود النجار')">تأكيد التعليق (Modal)</button>
+<button class="px-space-sm py-1 rounded-md text-xs font-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high" id="btn-scen-loading" onclick="setScenario('loading')">حالة التحميل</button>
+<button class="px-space-sm py-1 rounded-md text-xs font-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high" id="btn-scen-no-results" onclick="setScenario('no-results')">لا توجد نتائج بحث</button>
+<button class="px-space-sm py-1 rounded-md text-xs font-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high" id="btn-scen-empty" onclick="setScenario('empty')">قائمة فارغة</button>
+<button class="px-space-sm py-1 rounded-md text-xs font-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high" id="btn-scen-error" onclick="setScenario('error')">خطأ اتصال</button>
+</div>
+</div>
+<!-- 2. Page Header & Summary Badges -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-2 text-outline font-label-sm text-label-sm">
+<span>لوحة الإدارة</span>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<span>النظام والعملاء</span>
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<span class="text-primary font-semibold">دليل المستخدمين والعملاء</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">إدارة المستخدمين وحسابات النظام</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-3xl">
+        دليل الحسابات المسجلة وصلاحيات الوصول للنظام، ومتابعة حالة التحقق من البريد والهاتف وسجلات التجميد والتفعيل وفق بنود RBAC والمستندات التقنية.
+      </p>
+</div>
+<div class="inline-flex items-center gap-space-sm px-space-md py-space-sm rounded-xl bg-surface-container-low shadow-sm">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">group</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">إجمالي الحسابات المقيدة</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">1,248 حساب مسجل</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-xs">1,242 عميل · 5 مدير تشغيل · 1 مالك</span>
+</div>
+</div>
+</div>
+<!-- 3. Search & Filters Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<!-- Search Input -->
+<div class="md:col-span-6 relative">
+<span class="material-symbols-outlined absolute right-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px] pointer-events-none">search</span>
+<input class="w-full pl-space-md pr-11 py-2.5 bg-surface-container-low text-on-surface placeholder:text-outline text-body-sm font-body-sm rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:shadow-md transition-all" id="user-search-input" oninput="handleSearch(this.value)" placeholder="ابحث باسم المستخدم، البريد الإلكتروني، أو رقم الهاتف..." type="text"/>
+<button class="hidden absolute left-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" id="clear-search-btn" onclick="clearSearch()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Role Filter -->
+<div class="md:col-span-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">manage_accounts</span>
+<select class="w-full pr-10 pl-space-md py-2.5 bg-surface-container-low text-on-surface text-body-sm font-body-sm rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:shadow-md transition-all cursor-pointer" id="role-filter" onchange="filterChange()">
+<option value="all">جميع الأدوار الصلاحية</option>
+<option value="owner">مالك النظام (Owner)</option>
+<option value="admin">مدير عمليات (Admin)</option>
+<option value="customer">عميل مسجل (Customer)</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Status Filter -->
+<div class="md:col-span-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">toggle_on</span>
+<select class="w-full pr-10 pl-space-md py-2.5 bg-surface-container-low text-on-surface text-body-sm font-body-sm rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:shadow-md transition-all cursor-pointer" id="status-filter" onchange="filterChange()">
+<option value="all">جميع الحالات</option>
+<option value="active">نشط (Active)</option>
+<option value="suspended">معلق ومجمد (Suspended)</option>
+<option value="pending">بانتظار تأكيد البريد</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Active Filters & Reset Action -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs text-xs">
+<div class="flex flex-wrap items-center gap-space-xs" id="active-tag-container">
+<span class="text-outline font-label-sm">المرشحات النشطة:</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm">
+<span>الدور: الكل</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm">
+<span>الحالة: الكل</span>
+</span>
+</div>
+<button class="text-primary hover:text-primary-container font-label-md text-xs flex items-center gap-1 transition-colors" onclick="resetFilters()">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>إعادة ضبط المرشحات</span>
+</button>
+</div>
+</div>
+<!-- 4. Main State Container (Table / Loading / Empty / Error / No Results) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden min-h-[420px] flex flex-col justify-between">
+<!-- State 1: Data Table View (Default) -->
+<div class="w-full overflow-x-auto" id="view-table">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 text-on-surface-variant font-label-md text-label-sm">
+<th class="py-3.5 px-space-lg font-semibold">المستخدم والتحقق</th>
+<th class="py-3.5 px-space-md font-semibold">البريد الإلكتروني والهاتف</th>
+<th class="py-3.5 px-space-md font-semibold">الدور والصلاحية</th>
+<th class="py-3.5 px-space-md font-semibold">حالة الحساب</th>
+<th class="py-3.5 px-space-md font-semibold">تاريخ التسجيل</th>
+<th class="py-3.5 px-space-lg font-semibold text-center">الإجراءات الإدارية</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface text-body-sm font-body-sm" id="users-tbody">
+<!-- Row 1: System Owner -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm shadow-sm">
+                  أ.س
+                </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-body-sm font-bold text-on-surface">الشيخ عبد الرحمن السيوطي</span>
+<span class="material-symbols-outlined text-[16px] text-primary" title="بريد إلكتروني مؤكد">verified</span>
+</div>
+<span class="font-mono text-label-sm text-outline">USR-2025-00001</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-mono text-xs text-on-surface">abdulrahman@alazhari-books.com</span>
+<span class="font-mono text-xs text-outline tracking-wider" dir="ltr">+20 100 123 4567</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary text-on-primary font-label-sm text-xs font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed">shield_person</span>
+                مالك النظام (Owner)
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-fixed/30 text-primary font-label-sm text-xs font-medium">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                نشط (Active)
+              </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant text-xs">
+              01 يناير 2025 — 08:00 ص
+            </td>
+<td class="py-space-md px-space-lg">
+<div class="flex items-center justify-center gap-2">
+<button class="px-space-sm py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-sm text-xs transition-colors flex items-center gap-1" onclick="openDrawer('USR-2025-00001')">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>عرض التفاصيل</span>
+</button>
+<span class="text-outline text-xs px-2 py-1 rounded bg-surface-container-low cursor-not-allowed" title="صلاحية المالك محصنة برمجياً">محمي</span>
+</div>
+</td>
+</tr>
+<!-- Row 2: Admin Operations -->
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-surface-container-low/20">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold text-sm">
+                  م.ش
+                </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-body-sm font-semibold text-on-surface">محمد الشربيني الرفاعي</span>
+<span class="material-symbols-outlined text-[16px] text-primary" title="بريد إلكتروني مؤكد">verified</span>
+</div>
+<span class="font-mono text-label-sm text-outline">USR-2025-00018</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-mono text-xs text-on-surface">m.sherbini@alazhari-books.com</span>
+<span class="font-mono text-xs text-outline tracking-wider" dir="ltr">+20 111 892 4110</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">admin_panel_settings</span>
+                مدير عمليات (Admin)
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-fixed/30 text-primary font-label-sm text-xs font-medium">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                نشط (Active)
+              </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant text-xs">
+              15 مارس 2025 — 10:15 ص
+            </td>
+<td class="py-space-md px-space-lg">
+<div class="flex items-center justify-center gap-2">
+<button class="px-space-sm py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-sm text-xs transition-colors flex items-center gap-1" onclick="openDrawer('USR-2025-00018')">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>عرض التفاصيل</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-md text-error hover:bg-error-container/40 font-label-sm text-xs transition-colors flex items-center gap-1" onclick="openSuspendModal('USR-2025-00018', 'محمد الشربيني الرفاعي')">
+<span class="material-symbols-outlined text-[16px]">pause_circle</span>
+<span>تعليق الحساب</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Customer Active Verified -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-sm">
+                  أ.ن
+                </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-body-sm font-semibold text-on-surface">أحمد محمود النجار</span>
+<span class="material-symbols-outlined text-[16px] text-primary" title="بريد مؤكد في 14 سبتمبر 2026">verified</span>
+</div>
+<span class="font-mono text-label-sm text-outline">USR-2026-00412</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-mono text-xs text-on-surface">ahmed.naggar@azhar.edu.eg</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-mono text-xs text-outline tracking-wider" dir="ltr">+20 102 445 9012</span>
+<a class="text-primary hover:opacity-75 transition-opacity" href="https://wa.me/201024459012" rel="noopener noreferrer" target="_blank" title="مراسلة واتساب">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</a>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">person</span>
+                عميل مسجل (Customer)
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-fixed/30 text-primary font-label-sm text-xs font-medium">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                نشط (Active)
+              </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant text-xs">
+              14 سبتمبر 2026 — 09:30 ص
+            </td>
+<td class="py-space-md px-space-lg">
+<div class="flex items-center justify-center gap-2">
+<button class="px-space-sm py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-sm text-xs transition-colors flex items-center gap-1" onclick="openDrawer('USR-2026-00412')">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>عرض التفاصيل</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-md text-error hover:bg-error-container/40 font-label-sm text-xs transition-colors flex items-center gap-1" onclick="openSuspendModal('USR-2026-00412', 'أحمد محمود النجار')">
+<span class="material-symbols-outlined text-[16px]">pause_circle</span>
+<span>تجميد الحساب</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Customer Suspended -->
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-error-container/10">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center font-bold text-sm">
+                  ط.ب
+                </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-body-sm font-semibold text-on-surface">طارق بهاء الدين القاضي</span>
+<span class="material-symbols-outlined text-[16px] text-outline" title="غير مؤكد">hourglass_top</span>
+</div>
+<span class="font-mono text-label-sm text-outline">USR-2026-00418</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-mono text-xs text-on-surface">tarek.bahaa@gmail.com</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-mono text-xs text-outline tracking-wider" dir="ltr">+20 120 781 2234</span>
+<a class="text-primary hover:opacity-75 transition-opacity" href="https://wa.me/201207812234" rel="noopener noreferrer" target="_blank" title="مراسلة واتساب">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</a>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">person</span>
+                عميل مسجل (Customer)
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-xs font-semibold">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                معلق ومجمد (Suspended)
+              </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant text-xs">
+              02 أغسطس 2026 — 04:45 م
+            </td>
+<td class="py-space-md px-space-lg">
+<div class="flex items-center justify-center gap-2">
+<button class="px-space-sm py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-sm text-xs transition-colors flex items-center gap-1" onclick="openDrawer('USR-2026-00418')">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>عرض التفاصيل</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-md bg-primary-fixed/30 hover:bg-primary-fixed/60 text-primary font-label-sm text-xs transition-colors flex items-center gap-1" onclick="activateAccount('USR-2026-00418', 'طارق بهاء الدين القاضي')">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>تنشيط الحساب</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Customer Email Pending -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold text-sm flex items-center justify-center">
+                  س.ح
+                </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-body-sm font-semibold text-on-surface">سمية حسني عبد الجليل</span>
+<span class="material-symbols-outlined text-[16px] text-secondary" title="بانتظار تأكيد رابط البريد الإلكتروني">hourglass_top</span>
+</div>
+<span class="font-mono text-label-sm text-outline">USR-2026-00502</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-mono text-xs text-on-surface">somaya.hosny@outlook.com</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-mono text-xs text-outline tracking-wider" dir="ltr">+20 155 332 9901</span>
+<a class="text-primary hover:opacity-75 transition-opacity" href="https://wa.me/201553329901" rel="noopener noreferrer" target="_blank" title="مراسلة واتساب">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</a>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">person</span>
+                عميل مسجل (Customer)
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-xs font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                بانتظار التحقق (Pending)
+              </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant text-xs">
+              18 أكتوبر 2026 — 11:20 ص
+            </td>
+<td class="py-space-md px-space-lg">
+<div class="flex items-center justify-center gap-2">
+<button class="px-space-sm py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-sm text-xs transition-colors flex items-center gap-1" onclick="openDrawer('USR-2026-00502')">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>عرض التفاصيل</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-md text-error hover:bg-error-container/40 font-label-sm text-xs transition-colors flex items-center gap-1" onclick="openSuspendModal('USR-2026-00502', 'سمية حسني عبد الجليل')">
+<span class="material-symbols-outlined text-[16px]">pause_circle</span>
+<span>تعليق الحساب</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- State 2: Skeleton Loading View (Hidden by default) -->
+<div class="hidden p-space-lg space-y-space-md animate-pulse" id="view-loading">
+<div class="h-10 bg-surface-container-low rounded-lg w-full"></div>
+<div class="space-y-space-sm">
+<div class="h-14 bg-surface-container-low/60 rounded-lg w-full flex items-center px-4 gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 bg-surface-container-high rounded w-1/4"></div>
+<div class="h-3 bg-surface-container-high rounded w-1/6"></div>
+</div>
+<div class="h-4 bg-surface-container-high rounded w-1/6"></div>
+<div class="h-6 bg-surface-container-high rounded-full w-24"></div>
+<div class="h-8 bg-surface-container-high rounded w-20"></div>
+</div>
+<div class="h-14 bg-surface-container-low/60 rounded-lg w-full flex items-center px-4 gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 bg-surface-container-high rounded w-1/3"></div>
+<div class="h-3 bg-surface-container-high rounded w-1/5"></div>
+</div>
+<div class="h-4 bg-surface-container-high rounded w-1/6"></div>
+<div class="h-6 bg-surface-container-high rounded-full w-24"></div>
+<div class="h-8 bg-surface-container-high rounded w-20"></div>
+</div>
+<div class="h-14 bg-surface-container-low/60 rounded-lg w-full flex items-center px-4 gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 bg-surface-container-high rounded w-1/4"></div>
+<div class="h-3 bg-surface-container-high rounded w-1/6"></div>
+</div>
+<div class="h-4 bg-surface-container-high rounded w-1/6"></div>
+<div class="h-6 bg-surface-container-high rounded-full w-24"></div>
+<div class="h-8 bg-surface-container-high rounded w-20"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-md">
+<div class="h-4 bg-surface-container-high rounded w-32"></div>
+<div class="h-8 bg-surface-container-high rounded w-48"></div>
+</div>
+</div>
+<!-- State 3: No Search Results View (Hidden by default) -->
+<div class="hidden flex-1 flex flex-col items-center justify-center p-space-xl text-center" id="view-no-results">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center text-outline mb-space-md">
+<span class="material-symbols-outlined text-[32px]">person_search</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">لم يتم العثور على أي مستخدمين</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md mb-space-md">
+        لا توجد حسابات تطابق معايير البحث أو التصفية الحالية. تحقق من صحة الاسم أو البريد أو رقم الهاتف المسجل.
+      </p>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-xs hover:bg-primary-container transition-colors shadow-sm" onclick="resetFilters()">
+        إلغاء معايير التصفية والبحث
+      </button>
+</div>
+<!-- State 4: Empty State View (Hidden by default) -->
+<div class="hidden flex-1 flex flex-col items-center justify-center p-space-xl text-center" id="view-empty">
+<div class="w-16 h-16 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary mb-space-md">
+<span class="material-symbols-outlined text-[32px]">group_off</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">دليل المستخدمين فارغ</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md mb-space-md">
+        لم يسجل أي عميل أو مستخدم في النظام حتى الآن. تظهر الحسابات تلقائياً بمجرد إتمام أول عملية تسجيل حساب أو شراء.
+      </p>
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-label-md text-xs hover:bg-surface-container-highest transition-colors" onclick="setScenario('default')">
+        العودة للبيانات الافتراضية
+      </button>
+</div>
+<!-- State 5: API Error View (Hidden by default) -->
+<div class="hidden flex-1 flex flex-col items-center justify-center p-space-xl text-center" id="view-error">
+<div class="w-16 h-16 rounded-full bg-error-container/40 flex items-center justify-center text-error mb-space-md">
+<span class="material-symbols-outlined text-[32px]">cloud_off</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">تعذر استرجاع بيانات المستخدمين (503)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md mb-space-md">
+        حدث اضطراب مؤقت في الاتصال بقاعدة بيانات المستخدمين. يرجى التحقق من اتصال الشبكة وإعادة المحاولة مجدداً.
+      </p>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-xs hover:bg-primary-container transition-colors shadow-sm flex items-center gap-1" onclick="setScenario('default')">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>إعادة المحاولة الآن</span>
+</button>
+</div>
+</div>
+<!-- 7. Pagination Bar -->
+<div class="px-space-lg py-space-md bg-surface-container-low/40 flex flex-col sm:flex-row items-center justify-between gap-space-sm" id="pagination-bar">
+<div class="font-body-sm text-body-sm text-on-surface-variant text-xs">
+        عرض <span class="font-semibold text-on-surface">1 إلى 5</span> من أصل <span class="font-semibold text-on-surface">1,248</span> مستخدماً مسجلاً
+      </div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-outline bg-surface-container-low cursor-not-allowed opacity-50 flex items-center justify-center" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-md text-xs flex items-center justify-center shadow-sm">1</button>
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-md text-xs flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-md text-xs flex items-center justify-center transition-colors">3</button>
+<span class="px-1 text-outline text-xs">...</span>
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-md text-xs flex items-center justify-center transition-colors">250</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 5. User Details Drawer / Interface (Overlay Side Panel) -->
+<div aria-labelledby="slide-over-title" aria-modal="true" class="fixed inset-0 z-50 overflow-hidden hidden" id="user-details-drawer" role="dialog">
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-sm transition-opacity" onclick="closeDrawer()"></div>
+<div class="fixed inset-y-0 left-0 max-w-full flex pl-0 pr-0">
+<div class="w-screen max-w-md bg-surface-container-lowest shadow-xl flex flex-col justify-between">
+<!-- Drawer Header -->
+<div class="p-space-lg bg-surface-container-low/70 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">badge</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary" id="slide-over-title">بطاقة بيانات المستخدم</h2>
+<span class="font-mono text-label-sm text-outline" id="drawer-user-id">USR-2026-00412</span>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" onclick="closeDrawer()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Body Content -->
+<div class="flex-1 overflow-y-auto p-space-lg space-y-space-lg">
+<!-- Identity Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center gap-space-md">
+<div class="w-14 h-14 rounded-full bg-primary-container text-on-primary text-xl font-bold flex items-center justify-center shadow-sm" id="drawer-avatar">
+              أ.ن
+            </div>
+<div class="flex-1 flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface" id="drawer-user-name">أحمد محمود النجار</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold" id="drawer-role-badge">
+                  عميل مسجل
+                </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed/40 text-primary text-xs font-semibold" id="drawer-status-badge">
+                  حساب نشط
+                </span>
+</div>
+</div>
+</div>
+<!-- Contact & Verification Section -->
+<div class="space-y-space-sm">
+<h4 class="font-label-md text-label-sm text-outline uppercase tracking-wider">بيانات الاتصال وحالة التحقق</h4>
+<div class="space-y-space-xs rounded-xl bg-surface-container-low/40 p-space-md text-body-sm font-body-sm">
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant text-xs">البريد الإلكتروني الموثق:</span>
+<span class="font-mono text-xs text-on-surface font-semibold" id="drawer-user-email">ahmed.naggar@azhar.edu.eg</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant text-xs">تاريخ توثيق البريد:</span>
+<span class="text-xs text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span id="drawer-email-verified-at">14 سبتمبر 2026 — 09:35 ص</span>
+</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant text-xs">رقم الهاتف الأساسي:</span>
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-on-surface font-semibold" dir="ltr" id="drawer-user-phone">+20 102 445 9012</span>
+<a class="text-primary hover:opacity-75" href="#" id="drawer-whatsapp-link" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</a>
+</div>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant text-xs">عناوين التوصيل المسجلة:</span>
+<span class="text-xs text-on-surface font-semibold">2 عناوين نشطة (القاهرة / مدينة نصر)</span>
+</div>
+</div>
+</div>
+<!-- Technical & Session Metadata Section -->
+<div class="space-y-space-sm">
+<h4 class="font-label-md text-label-sm text-outline uppercase tracking-wider">المحددات البرمجية والأمان (MongoDB Schema)</h4>
+<div class="space-y-space-xs rounded-xl bg-surface-container-low/40 p-space-md text-body-sm font-body-sm">
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant text-xs">معرّف الكائن (_id):</span>
+<span class="font-mono text-xs text-outline">66f48a12c8b91e0024982aef</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant text-xs">تاريخ الإنشاء (createdAt):</span>
+<span class="text-xs text-on-surface" id="drawer-created-at">14 سبتمبر 2026 — 09:30 ص</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant text-xs">آخر تسجيل دخول (lastLoginAt):</span>
+<span class="text-xs text-on-surface">منذ 3 ساعات (02:14 م)</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-on-surface-variant text-xs">إصدار جلسة التحديث (Token Version):</span>
+<span class="font-mono text-xs text-primary font-bold">v3</span>
+</div>
+</div>
+</div>
+<!-- Documented Policy Note -->
+<div class="p-space-md rounded-xl bg-surface-container-high/40 text-on-surface-variant font-body-sm text-xs leading-relaxed flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0 mt-0.5">info</span>
+<span>
+              حسب سياسة النظام RBAC-003، تخضع عمليات تعديل أدوار المستخدمين وتجميد الجلسات لتوثيق فوري في سجل التدقيق الإداري مع إبطال الـ refresh token فوراً.
+            </span>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="p-space-lg bg-surface-container-low/60 flex items-center justify-between gap-space-md">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-xs transition-colors flex-1 text-center" onclick="closeDrawer()">
+            إغلاق النافذة
+          </button>
+<button class="px-space-md py-2.5 rounded-lg bg-error text-on-error font-label-md text-xs hover:opacity-90 transition-opacity flex-1 text-center shadow-sm" id="drawer-toggle-btn" onclick="toggleUserStatusFromDrawer()">
+            تجميد الحساب فوراً
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- 6. Confirmation Dialog Modal (تأكيد تعليق/تنشيط الحساب) -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-50 overflow-y-auto hidden" id="confirmation-modal" role="dialog">
+<div class="min-h-screen px-4 text-center flex items-center justify-center">
+<div class="fixed inset-0 bg-primary/30 backdrop-blur-sm transition-opacity" onclick="closeConfirmModal()"></div>
+<div class="inline-block w-full max-w-lg p-space-lg my-8 overflow-hidden text-right align-middle transition-all transform bg-surface-container-lowest shadow-xl rounded-2xl relative z-10 space-y-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[28px]">gavel</span>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-sm text-headline-sm text-primary" id="modal-title">تأكيد تعليق حساب المستخدم</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1" id="modal-user-target">
+              المستخدم المستهدف: أحمد محمود النجار (USR-2026-00412)
+            </p>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low text-xs text-on-surface-variant font-body-sm leading-relaxed space-y-2">
+<p class="font-semibold text-error flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>الأثر الإداري والتقني للعملية:</span>
+</p>
+<p>
+            سيؤدي تعليق الحساب إلى إبطال جلسة الدخول الحالية فوراً (Invaliding Active Refresh Tokens) ومنع المستخدم من تسجيل الدخول أو إتمام الطلبات، مع بقاء كافة سجلات الطلبات السابقة والفواتير محفوظة في النظام دون حذف.
+          </p>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-xs transition-colors" onclick="closeConfirmModal()" type="button">
+            إلغاء وتراجع
+          </button>
+<button class="px-space-md py-2.5 rounded-lg bg-error text-on-error font-label-md text-xs hover:opacity-90 transition-opacity shadow-sm flex items-center gap-1.5" onclick="executeSuspend()" type="button">
+<span class="material-symbols-outlined text-[16px]">block</span>
+<span>نعم، تجميد الحساب الآن</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  let currentTargetUser = {
+    id: 'USR-2026-00412',
+    name: 'أحمد محمود النجار',
+    email: 'ahmed.naggar@azhar.edu.eg',
+    phone: '+20 102 445 9012',
+    role: 'customer',
+    status: 'active'
+  };
+
+  const scenarios = ['default', 'loading', 'no-results', 'empty', 'error'];
+
+  function setScenario(scen) {
+    // Reset view visibilities
+    document.getElementById('view-table').classList.add('hidden');
+    document.getElementById('view-loading').classList.add('hidden');
+    document.getElementById('view-no-results').classList.add('hidden');
+    document.getElementById('view-empty').classList.add('hidden');
+    document.getElementById('view-error').classList.add('hidden');
+    
+    // Pagination visibility toggle
+    const pagination = document.getElementById('pagination-bar');
+    if (scen === 'default') {
+      document.getElementById('view-table').classList.remove('hidden');
+      pagination.classList.remove('hidden');
+    } else if (scen === 'loading') {
+      document.getElementById('view-loading').classList.remove('hidden');
+      pagination.classList.add('hidden');
+    } else if (scen === 'no-results') {
+      document.getElementById('view-no-results').classList.remove('hidden');
+      pagination.classList.add('hidden');
+    } else if (scen === 'empty') {
+      document.getElementById('view-empty').classList.remove('hidden');
+      pagination.classList.add('hidden');
+    } else if (scen === 'error') {
+      document.getElementById('view-error').classList.remove('hidden');
+      pagination.classList.add('hidden');
+    }
+
+    // Update switcher styling
+    scenarios.forEach(s => {
+      const btn = document.getElementById('btn-scen-' + s);
+      if (btn) {
+        if (s === scen) {
+          btn.className = "px-space-sm py-1 rounded-md text-xs font-label-md transition-all bg-primary-container text-on-primary shadow-sm";
+        } else {
+          btn.className = "px-space-sm py-1 rounded-md text-xs font-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high";
+        }
+      }
+    });
+  }
+
+  function handleSearch(val) {
+    const clearBtn = document.getElementById('clear-search-btn');
+    if (val.trim().length > 0) {
+      clearBtn.classList.remove('hidden');
+    } else {
+      clearBtn.classList.add('hidden');
+    }
+
+    if (val.trim() === 'فارغ' || val.trim() === 'غير موجود' || val.trim() === 'xyz') {
+      setScenario('no-results');
+    } else if (val.trim().length === 0) {
+      setScenario('default');
+    }
+  }
+
+  function clearSearch() {
+    const input = document.getElementById('user-search-input');
+    input.value = '';
+    document.getElementById('clear-search-btn').classList.add('hidden');
+    setScenario('default');
+  }
+
+  function filterChange() {
+    const role = document.getElementById('role-filter').value;
+    const status = document.getElementById('status-filter').value;
+
+    const tagContainer = document.getElementById('active-tag-container');
+    const roleLabels = { 'all': 'الكل', 'owner': 'مالك النظام', 'admin': 'مدير عمليات', 'customer': 'عميل مسجل' };
+    const statusLabels = { 'all': 'الكل', 'active': 'نشط', 'suspended': 'معلق ومجمد', 'pending': 'بانتظار التحقق' };
+
+    tagContainer.innerHTML = `
+      <span class="text-outline font-label-sm">المرشحات النشطة:</span>
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm">
+        <span>الدور: ${roleLabels[role]}</span>
+      </span>
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm">
+        <span>الحالة: ${statusLabels[status]}</span>
+      </span>
+    `;
+
+    if (role === 'owner' && status === 'suspended') {
+      setScenario('no-results');
+    } else {
+      setScenario('default');
+    }
+  }
+
+  function resetFilters() {
+    document.getElementById('user-search-input').value = '';
+    document.getElementById('clear-search-btn').classList.add('hidden');
+    document.getElementById('role-filter').value = 'all';
+    document.getElementById('status-filter').value = 'all';
+    filterChange();
+    setScenario('default');
+  }
+
+  // Drawer Functions
+  function openDrawer(userId) {
+    const drawer = document.getElementById('user-details-drawer');
+    const idEl = document.getElementById('drawer-user-id');
+    const nameEl = document.getElementById('drawer-user-name');
+    const emailEl = document.getElementById('drawer-user-email');
+    const phoneEl = document.getElementById('drawer-user-phone');
+    const roleEl = document.getElementById('drawer-role-badge');
+    const statusEl = document.getElementById('drawer-status-badge');
+    const toggleBtn = document.getElementById('drawer-toggle-btn');
+    const avatarEl = document.getElementById('drawer-avatar');
+    const waLink = document.getElementById('drawer-whatsapp-link');
+
+    if (userId === 'USR-2025-00001') {
+      currentTargetUser = { id: userId, name: 'الشيخ عبد الرحمن السيوطي', email: 'abdulrahman@alazhari-books.com', phone: '+20 100 123 4567', role: 'owner', status: 'active' };
+      avatarEl.textContent = 'أ.س';
+      roleEl.textContent = 'مالك النظام (Owner)';
+      roleEl.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary text-on-primary text-xs font-semibold';
+      statusEl.textContent = 'نشط ومحصن';
+      statusEl.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed/40 text-primary text-xs font-semibold';
+      toggleBtn.disabled = true;
+      toggleBtn.className = 'px-space-md py-2.5 rounded-lg bg-surface-container-high text-outline font-label-md text-xs cursor-not-allowed flex-1 text-center';
+      toggleBtn.textContent = 'حساب محصن برمجياً';
+    } else if (userId === 'USR-2026-00418') {
+      currentTargetUser = { id: userId, name: 'طارق بهاء الدين القاضي', email: 'tarek.bahaa@gmail.com', phone: '+20 120 781 2234', role: 'customer', status: 'suspended' };
+      avatarEl.textContent = 'ط.ب';
+      roleEl.textContent = 'عميل مسجل';
+      roleEl.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold';
+      statusEl.textContent = 'معلق ومجمد';
+      statusEl.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-xs font-semibold';
+      toggleBtn.disabled = false;
+      toggleBtn.className = 'px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-xs hover:bg-primary-container transition-colors flex-1 text-center shadow-sm';
+      toggleBtn.textContent = 'إلغاء التجميد وتنشيط الحساب';
+    } else {
+      currentTargetUser = { id: 'USR-2026-00412', name: 'أحمد محمود النجار', email: 'ahmed.naggar@azhar.edu.eg', phone: '+20 102 445 9012', role: 'customer', status: 'active' };
+      avatarEl.textContent = 'أ.ن';
+      roleEl.textContent = 'عميل مسجل';
+      roleEl.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold';
+      statusEl.textContent = 'حساب نشط';
+      statusEl.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed/40 text-primary text-xs font-semibold';
+      toggleBtn.disabled = false;
+      toggleBtn.className = 'px-space-md py-2.5 rounded-lg bg-error text-on-error font-label-md text-xs hover:opacity-90 transition-opacity flex-1 text-center shadow-sm';
+      toggleBtn.textContent = 'تجميد الحساب فوراً';
+    }
+
+    idEl.textContent = currentTargetUser.id;
+    nameEl.textContent = currentTargetUser.name;
+    emailEl.textContent = currentTargetUser.email;
+    phoneEl.textContent = currentTargetUser.phone;
+    waLink.href = 'https://wa.me/' + currentTargetUser.phone.replace(/[^0-9]/g, '');
+
+    drawer.classList.remove('hidden');
+  }
+
+  function closeDrawer() {
+    document.getElementById('user-details-drawer').classList.add('hidden');
+  }
+
+  function toggleUserStatusFromDrawer() {
+    closeDrawer();
+    if (currentTargetUser.status === 'active') {
+      openSuspendModal(currentTargetUser.id, currentTargetUser.name);
+    } else {
+      activateAccount(currentTargetUser.id, currentTargetUser.name);
+    }
+  }
+
+  // Modal Functions
+  function openSuspendModal(userId, userName) {
+    currentTargetUser.id = userId;
+    currentTargetUser.name = userName;
+    document.getElementById('modal-user-target').textContent = `المستخدم المستهدف: ${userName} (${userId})`;
+    document.getElementById('confirmation-modal').classList.remove('hidden');
+  }
+
+  function closeConfirmModal() {
+    document.getElementById('confirmation-modal').classList.add('hidden');
+  }
+
+  function executeSuspend() {
+    closeConfirmModal();
+    // Visual feedback simulation
+    const btn = document.getElementById('btn-scen-modal');
+    const originalText = btn.textContent;
+    btn.textContent = 'تم التجميد ✓';
+    btn.classList.add('bg-primary-container', 'text-on-primary');
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.classList.remove('bg-primary-container', 'text-on-primary');
+    }, 2000);
+  }
+
+  function activateAccount(userId, userName) {
+    alert(`تم إعادة تنشيط حساب المستخدم "${userName}" بنجاح وتحديث إصدار الجلسة.`);
+  }
+</script></main></div></body></html>
