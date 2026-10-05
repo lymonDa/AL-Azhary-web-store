@@ -1,0 +1,66 @@
+/* Responsive Breakpoints */
+$breakpoint-xs: 479px;
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1440px;
+$breakpoint-3xl: 1920px;
+
+:root {
+  --breakpoint-xs: 479px;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+  --breakpoint-3xl: 1920px;
+}
+
+@mixin bp-up($bp) {
+  @if $bp == sm {
+    @media (min-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media (min-width: #{$breakpoint-md}) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media (min-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  } @else if $bp == xl {
+    @media (min-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  } @else if $bp == 2xl {
+    @media (min-width: #{$breakpoint-2xl}) {
+      @content;
+    }
+  } @else if $bp == 3xl {
+    @media (min-width: #{$breakpoint-3xl}) {
+      @content;
+    }
+  }
+}
+
+@mixin bp-down($bp) {
+  @if $bp == xs {
+    @media (max-width: #{$breakpoint-xs}) {
+      @content;
+    }
+  } @else if $bp == sm {
+    @media (max-width: #{$breakpoint-md - 1px}) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media (max-width: #{$breakpoint-lg - 1px}) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media (max-width: #{$breakpoint-xl - 1px}) {
+      @content;
+    }
+  }
+}

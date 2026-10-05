@@ -1,0 +1,18 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-use-logical-spec"],
+  "rules": {
+    "liberty/use-logical-spec": "always",
+    "scss/at-rule-no-unknown": true,
+    "no-empty-source": null,
+    "selector-class-pattern": null,
+    "custom-property-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "value-keyword-case": [
+      "lower",
+      {
+        "ignoreProperties": ["font", "font-family", "/^--font/"]
+      }
+    ]
+  }
+}

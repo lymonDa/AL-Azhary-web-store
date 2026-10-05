@@ -1,0 +1,26 @@
+:root:dir(rtl),
+[dir='rtl'] {
+  --font-family-base: var(--font-family-arabic);
+  direction: rtl;
+  text-align: start;
+}
+
+:root:dir(ltr),
+[dir='ltr'] {
+  --font-family-base: var(--font-family-latin);
+  direction: ltr;
+  text-align: start;
+}
+
+/* LTR islands inside Arabic context */
+bdi,
+[dir='ltr'] bdi,
+.ltr-island {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* Direction-aware icon flipping */
+.flip-in-rtl:dir(rtl) {
+  transform: scaleX(-1);
+}

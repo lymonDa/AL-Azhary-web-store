@@ -1,0 +1,4 @@
+/* Global Styles Architecture: tokens -> base -> themes */
+@use 'styles/tokens';
+@use 'styles/base';
+@use 'styles/themes/light';

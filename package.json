@@ -1,0 +1,13 @@
+{
+  "name": "al-azhari-web-store",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix frontend run build",
+    "test": "npm --prefix frontend run test",
+    "lint": "npm --prefix frontend run lint",
+    "typecheck": "npm --prefix frontend run typecheck",
+    "format:check": "npm --prefix frontend run format:check",
+    "start": "npm --prefix frontend run start"
+  }
+}

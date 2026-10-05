@@ -1,0 +1,43 @@
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding-block: 0;
+  padding-inline: 0;
+  margin-block: -1px;
+  margin-inline: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-block-width: 0;
+  border-inline-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  inset-block-start: -9999px;
+  inset-inline-start: -9999px;
+  z-index: var(--z-toast);
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  background-color: var(--color-brand-green-700);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-semibold);
+
+  &:focus {
+    inset-block-start: 1rem;
+    inset-inline-start: 1rem;
+  }
+}
+
+.container {
+  inline-size: 100%;
+  max-inline-size: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter-desktop);
+
+  @media (width <= 767px) {
+    padding-inline: var(--gutter-mobile);
+  }
+}
