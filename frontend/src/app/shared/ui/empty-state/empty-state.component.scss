@@ -1,0 +1,41 @@
+.az-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-block: var(--space-12, 3rem);
+  padding-inline: var(--space-4, 1rem);
+  background-color: var(--color-bg-surface, #fff);
+  border-radius: var(--radius-lg, 0.5rem);
+}
+
+.az-empty-state__icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-block-end: var(--space-4, 1rem);
+}
+
+.az-empty-state__title {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-xl, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+}
+
+.az-empty-state__description {
+  margin-block: var(--space-2, 0.5rem) var(--space-6, 1.5rem);
+  margin-inline: 0;
+  max-inline-size: 480px;
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-muted, #64748b);
+  line-height: 1.6;
+}
+
+.az-empty-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3, 0.75rem);
+  justify-content: center;
+}

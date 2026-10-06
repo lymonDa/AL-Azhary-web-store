@@ -1,0 +1,40 @@
+.az-error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-block: var(--space-8, 2rem);
+  padding-inline: var(--space-4, 1rem);
+  background-color: var(--color-danger-50, #fef2f2);
+  border: 1px solid var(--color-danger-200, #fecaca);
+  border-radius: var(--radius-lg, 0.5rem);
+}
+
+.az-error-state__icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-block-end: var(--space-3, 0.75rem);
+}
+
+.az-error-state__title {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-lg, 1.125rem);
+  font-weight: 700;
+  color: var(--color-danger-800, #991b1b);
+}
+
+.az-error-state__message {
+  margin-block: var(--space-2, 0.5rem) var(--space-4, 1rem);
+  margin-inline: 0;
+  max-inline-size: 480px;
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-danger-700, #b91c1c);
+  line-height: 1.6;
+}
+
+.az-error-state__actions {
+  display: flex;
+  justify-content: center;
+}

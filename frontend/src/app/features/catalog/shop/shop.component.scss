@@ -1,0 +1,231 @@
+.az-shop {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 2rem);
+  padding-block-end: var(--space-16, 4rem);
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4, 1rem);
+    padding-block-end: var(--space-6, 1.5rem);
+    border-block-end: 1px solid var(--color-border-subtle, #e2e8f0);
+  }
+
+  &__title {
+    margin-block: 0 var(--space-2, 0.5rem);
+    font-size: var(--font-size-2xl, 1.5rem);
+    font-weight: 800;
+    color: var(--color-text-main, #0f172a);
+
+    @media (width >= 768px) {
+      font-size: var(--font-size-3xl, 1.875rem);
+    }
+  }
+
+  &__subtitle {
+    margin-block: 0;
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-text-muted, #64748b);
+  }
+
+  &__mobile-filter-btn {
+    display: block;
+
+    @media (width >= 1024px) {
+      display: none;
+    }
+  }
+
+  &__filter-dot {
+    color: var(--color-primary-600, #0284c7);
+    font-size: 1.25rem;
+    line-height: 0;
+  }
+}
+
+.az-active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  padding-block: var(--space-3, 0.75rem);
+  padding-inline: var(--space-4, 1rem);
+  background-color: var(--color-bg-subtle, #f8fafc);
+  border-radius: var(--radius-md, 0.375rem);
+
+  &__label {
+    font-size: var(--font-size-xs, 0.75rem);
+    font-weight: 600;
+    color: var(--color-text-muted, #64748b);
+  }
+
+  &__clear-all {
+    margin-inline-start: auto;
+    background: none;
+    border: none;
+    color: var(--color-primary-600, #0284c7);
+    font-size: var(--font-size-xs, 0.75rem);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--color-primary-800, #075985);
+    }
+  }
+}
+
+.az-filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  background-color: var(--color-primary-100, #e0f2fe);
+  color: var(--color-primary-800, #075985);
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 600;
+  padding-block: var(--space-1, 0.25rem);
+  padding-inline: var(--space-2, 0.5rem);
+  border-radius: var(--radius-sm, 0.25rem);
+
+  &__remove {
+    background: none;
+    border: none;
+    color: var(--color-primary-700, #0369a1);
+    font-size: var(--font-size-xs, 0.75rem);
+    cursor: pointer;
+    padding-block: 0;
+    padding-inline: 0;
+
+    &:hover {
+      color: var(--color-primary-950, #082f49);
+    }
+  }
+}
+
+.az-shop__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8, 2rem);
+
+  @media (width >= 1024px) {
+    grid-template-columns: 260px 1fr;
+  }
+}
+
+.az-shop__sidebar {
+  display: none;
+
+  @media (width >= 1024px) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6, 1.5rem);
+  }
+}
+
+.az-filter-box {
+  background-color: var(--color-bg-surface, #fff);
+  border: 1px solid var(--color-border-subtle, #e2e8f0);
+  border-radius: var(--radius-lg, 0.5rem);
+  padding-block: var(--space-4, 1rem);
+  padding-inline: var(--space-4, 1rem);
+
+  &__title {
+    margin-block: 0 var(--space-3, 0.75rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    font-weight: 700;
+    color: var(--color-text-main, #0f172a);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.az-filter-list {
+  list-style: none;
+  padding-block: 0;
+  padding-inline: 0;
+  margin-block: 0;
+  margin-inline: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 0.25rem);
+
+  &__item {
+    inline-size: 100%;
+    text-align: start;
+    background: none;
+    border: none;
+    padding-block: var(--space-2, 0.5rem);
+    padding-inline: var(--space-3, 0.75rem);
+    border-radius: var(--radius-md, 0.375rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-text-muted, #64748b);
+    cursor: pointer;
+    transition: background-color var(--motion-fast, 150ms) ease, color var(--motion-fast, 150ms) ease;
+
+    &:hover {
+      background-color: var(--color-bg-subtle, #f8fafc);
+      color: var(--color-text-main, #0f172a);
+    }
+
+    &--active {
+      background-color: var(--color-primary-50, #f0f9ff);
+      color: var(--color-primary-700, #0369a1);
+      font-weight: 700;
+    }
+  }
+}
+
+.az-shop__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 1.5rem);
+}
+
+.az-shop__results-meta {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-muted, #64748b);
+}
+
+.az-shop__loading-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4, 1rem);
+
+  @media (width >= 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (width >= 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.az-shop__skeleton-card {
+  background-color: var(--color-bg-surface, #fff);
+  border: 1px solid var(--color-border-subtle, #e2e8f0);
+  border-radius: var(--radius-lg, 0.5rem);
+  overflow: hidden;
+}
+
+.az-shop__skeleton-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 0.5rem);
+  padding-block: var(--space-4, 1rem);
+  padding-inline: var(--space-4, 1rem);
+}
+
+.az-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4, 1rem);
+  padding-block: var(--space-6, 1.5rem);
+
+  &__info {
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-text-muted, #64748b);
+  }
+}

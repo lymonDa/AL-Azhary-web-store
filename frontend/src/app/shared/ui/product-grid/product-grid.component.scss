@@ -1,0 +1,33 @@
+.az-product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4, 1rem);
+
+  @media (width >= 640px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5, 1.25rem);
+  }
+
+  @media (width >= 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6, 1.5rem);
+  }
+}
+
+.az-product-grid__skeleton-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-surface, #fff);
+  border: 1px solid var(--color-border-subtle, #e2e8f0);
+  border-radius: var(--radius-lg, 0.5rem);
+  overflow: hidden;
+  padding-block: var(--space-3, 0.75rem);
+  padding-inline: var(--space-3, 0.75rem);
+}
+
+.az-product-grid__skeleton-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 0.5rem);
+  margin-block-start: var(--space-3, 0.75rem);
+}

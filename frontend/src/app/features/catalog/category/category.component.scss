@@ -1,0 +1,117 @@
+.az-category-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 1.5rem);
+  padding-block-end: var(--space-16, 4rem);
+
+  &__header {
+    padding-block-end: var(--space-4, 1rem);
+    border-block-end: 1px solid var(--color-border-subtle, #e2e8f0);
+  }
+
+  &__title {
+    margin-block: 0 var(--space-2, 0.5rem);
+    font-size: var(--font-size-2xl, 1.5rem);
+    font-weight: 800;
+    color: var(--color-text-main, #0f172a);
+
+    @media (width >= 768px) {
+      font-size: var(--font-size-3xl, 1.875rem);
+    }
+  }
+
+  &__subtitle {
+    margin-block: 0;
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-text-muted, #64748b);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6, 1.5rem);
+  }
+
+  &__results-meta {
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-text-muted, #64748b);
+  }
+
+  &__loading-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4, 1rem);
+
+    @media (width >= 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (width >= 1280px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__skeleton-card {
+    background-color: var(--color-bg-surface, #fff);
+    border: 1px solid var(--color-border-subtle, #e2e8f0);
+    border-radius: var(--radius-lg, 0.5rem);
+    overflow: hidden;
+  }
+
+  &__skeleton-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2, 0.5rem);
+    padding-block: var(--space-4, 1rem);
+    padding-inline: var(--space-4, 1rem);
+  }
+}
+
+.az-breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2, 0.5rem);
+    list-style: none;
+    padding-block: 0;
+    padding-inline: 0;
+    margin-block: 0;
+    margin-inline: 0;
+    font-size: var(--font-size-xs, 0.75rem);
+  }
+
+  &__item {
+    color: var(--color-text-muted, #64748b);
+
+    &--active {
+      color: var(--color-text-main, #0f172a);
+      font-weight: 600;
+    }
+  }
+
+  &__link {
+    color: var(--color-primary-600, #0284c7);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__separator {
+    color: var(--color-text-subtle, #94a3b8);
+  }
+}
+
+.az-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4, 1rem);
+  padding-block: var(--space-6, 1.5rem);
+
+  &__info {
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-text-muted, #64748b);
+  }
+}

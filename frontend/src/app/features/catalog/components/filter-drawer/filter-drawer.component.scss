@@ -1,0 +1,106 @@
+.az-filter-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 50%);
+  z-index: 200;
+}
+
+.az-filter-drawer {
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline: 0;
+  max-block-size: 85vh;
+  background-color: #fff;
+  border-start-start-radius: var(--radius-xl, 0.75rem);
+  border-start-end-radius: var(--radius-xl, 0.75rem);
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xl, 0 20px 25px -5px rgb(0 0 0 / 10%));
+
+  @media (width >= 640px) {
+    inset-block: 0;
+    inset-inline: auto 0;
+    inline-size: 360px;
+    max-block-size: 100vh;
+    border-radius: 0;
+  }
+}
+
+.az-filter-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-4, 1rem);
+  padding-inline: var(--space-4, 1rem);
+  border-block-end: 1px solid var(--color-border-subtle, #e2e8f0);
+}
+
+.az-filter-drawer__title {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-base, 1rem);
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+}
+
+.az-filter-drawer__close {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.az-filter-drawer__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding-block: var(--space-4, 1rem);
+  padding-inline: var(--space-4, 1rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 1.5rem);
+}
+
+.az-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 0.5rem);
+}
+
+.az-filter-group__title {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--color-text-main, #0f172a);
+}
+
+.az-filter-group__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 0.5rem);
+}
+
+.az-filter-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  font-size: var(--font-size-sm, 0.875rem);
+  cursor: pointer;
+  color: var(--color-text-main, #334155);
+
+  input[type='radio'] {
+    accent-color: var(--color-primary-600, #0284c7);
+  }
+}
+
+.az-filter-drawer__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3, 0.75rem);
+  padding-block: var(--space-4, 1rem);
+  padding-inline: var(--space-4, 1rem);
+  border-block-start: 1px solid var(--color-border-subtle, #e2e8f0);
+}
