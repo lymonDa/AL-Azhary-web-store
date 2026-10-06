@@ -1,0 +1,125 @@
+import { z } from 'zod';
+export declare const createAddressSchema: z.ZodObject<{
+    label: z.ZodNullable<z.ZodType<string | undefined, z.ZodTypeDef, string | undefined>>;
+    recipientName: z.ZodString;
+    recipientPhone: z.ZodEffects<z.ZodString, string, string>;
+    governorate: z.ZodString;
+    city: z.ZodString;
+    area: z.ZodString;
+    street: z.ZodString;
+    buildingNumber: z.ZodString;
+    floor: z.ZodNullable<z.ZodType<string | undefined, z.ZodTypeDef, string | undefined>>;
+    apartment: z.ZodNullable<z.ZodType<string | undefined, z.ZodTypeDef, string | undefined>>;
+    landmark: z.ZodNullable<z.ZodType<string | undefined, z.ZodTypeDef, string | undefined>>;
+    notes: z.ZodNullable<z.ZodType<string | undefined, z.ZodTypeDef, string | undefined>>;
+    isDefault: z.ZodDefault<z.ZodOptional<z.ZodBoolean>>;
+}, "strict", z.ZodTypeAny, {
+    city: string;
+    governorate: string;
+    isDefault: boolean;
+    area: string;
+    recipientName: string;
+    recipientPhone: string;
+    street: string;
+    buildingNumber: string;
+    notes?: string | null | undefined;
+    label?: string | null | undefined;
+    floor?: string | null | undefined;
+    apartment?: string | null | undefined;
+    landmark?: string | null | undefined;
+}, {
+    city: string;
+    governorate: string;
+    area: string;
+    recipientName: string;
+    recipientPhone: string;
+    street: string;
+    buildingNumber: string;
+    notes?: string | null | undefined;
+    isDefault?: boolean | undefined;
+    label?: string | null | undefined;
+    floor?: string | null | undefined;
+    apartment?: string | null | undefined;
+    landmark?: string | null | undefined;
+}>;
+export declare const updateAddressSchema: z.ZodEffects<z.ZodObject<{
+    label: z.ZodNullable<z.ZodType<string | undefined, z.ZodTypeDef, string | undefined>>;
+    recipientName: z.ZodOptional<z.ZodString>;
+    recipientPhone: z.ZodOptional<z.ZodEffects<z.ZodString, string, string>>;
+    governorate: z.ZodOptional<z.ZodString>;
+    city: z.ZodOptional<z.ZodString>;
+    area: z.ZodOptional<z.ZodString>;
+    street: z.ZodOptional<z.ZodString>;
+    buildingNumber: z.ZodOptional<z.ZodString>;
+    floor: z.ZodNullable<z.ZodType<string | undefined, z.ZodTypeDef, string | undefined>>;
+    apartment: z.ZodNullable<z.ZodType<string | undefined, z.ZodTypeDef, string | undefined>>;
+    landmark: z.ZodNullable<z.ZodType<string | undefined, z.ZodTypeDef, string | undefined>>;
+    notes: z.ZodNullable<z.ZodType<string | undefined, z.ZodTypeDef, string | undefined>>;
+    isDefault: z.ZodOptional<z.ZodBoolean>;
+}, "strict", z.ZodTypeAny, {
+    notes?: string | null | undefined;
+    city?: string | undefined;
+    governorate?: string | undefined;
+    isDefault?: boolean | undefined;
+    area?: string | undefined;
+    label?: string | null | undefined;
+    recipientName?: string | undefined;
+    recipientPhone?: string | undefined;
+    street?: string | undefined;
+    buildingNumber?: string | undefined;
+    floor?: string | null | undefined;
+    apartment?: string | null | undefined;
+    landmark?: string | null | undefined;
+}, {
+    notes?: string | null | undefined;
+    city?: string | undefined;
+    governorate?: string | undefined;
+    isDefault?: boolean | undefined;
+    area?: string | undefined;
+    label?: string | null | undefined;
+    recipientName?: string | undefined;
+    recipientPhone?: string | undefined;
+    street?: string | undefined;
+    buildingNumber?: string | undefined;
+    floor?: string | null | undefined;
+    apartment?: string | null | undefined;
+    landmark?: string | null | undefined;
+}>, {
+    notes?: string | null | undefined;
+    city?: string | undefined;
+    governorate?: string | undefined;
+    isDefault?: boolean | undefined;
+    area?: string | undefined;
+    label?: string | null | undefined;
+    recipientName?: string | undefined;
+    recipientPhone?: string | undefined;
+    street?: string | undefined;
+    buildingNumber?: string | undefined;
+    floor?: string | null | undefined;
+    apartment?: string | null | undefined;
+    landmark?: string | null | undefined;
+}, {
+    notes?: string | null | undefined;
+    city?: string | undefined;
+    governorate?: string | undefined;
+    isDefault?: boolean | undefined;
+    area?: string | undefined;
+    label?: string | null | undefined;
+    recipientName?: string | undefined;
+    recipientPhone?: string | undefined;
+    street?: string | undefined;
+    buildingNumber?: string | undefined;
+    floor?: string | null | undefined;
+    apartment?: string | null | undefined;
+    landmark?: string | null | undefined;
+}>;
+export declare const addressIdParamSchema: z.ZodObject<{
+    id: z.ZodString;
+}, "strict", z.ZodTypeAny, {
+    id: string;
+}, {
+    id: string;
+}>;
+export type CreateAddressDto = z.infer<typeof createAddressSchema>;
+export type UpdateAddressDto = z.infer<typeof updateAddressSchema>;
+export type AddressIdParamDto = z.infer<typeof addressIdParamSchema>;

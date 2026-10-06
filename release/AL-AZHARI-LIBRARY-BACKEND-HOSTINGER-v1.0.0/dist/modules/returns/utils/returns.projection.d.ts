@@ -1,0 +1,42 @@
+import { IReturnRequestDocument, IRefundDocument } from '../types/returns.types';
+export declare function toSafeReturnRequest(doc: IReturnRequestDocument): {
+    reference: string;
+    orderReference: string;
+    status: import("../types/returns.types").ReturnRequestStatus;
+    items: {
+        orderItemId: string;
+        quantity: number;
+        reason: string;
+        eligible: boolean;
+        unitPriceMinor: number;
+        lineTotalMinor: number;
+        evidenceMetadata: import("../types/returns.types").IReturnItemEvidenceMetadata[];
+    }[];
+    customerNote: string | null | undefined;
+    adminNote: string | null | undefined;
+    reviewedAt: Date | null | undefined;
+    refundId: string | null;
+    totalRefundAmountMinor: number;
+    currency: "EGP";
+    version: number;
+    createdAt: Date;
+    updatedAt: Date;
+};
+export declare function toSafeRefund(doc: IRefundDocument): {
+    id: string;
+    orderReference: string;
+    returnReference: string;
+    amountMinor: number;
+    currency: "EGP";
+    methodKey: string;
+    status: import("../types/returns.types").RefundStatus;
+    recordedAt: Date;
+    completedAt: Date | null | undefined;
+    failedAt: Date | null | undefined;
+    failureReason: string | null | undefined;
+    note: string | null | undefined;
+    attemptReference: string | null | undefined;
+    version: number;
+    createdAt: Date;
+    updatedAt: Date;
+};
