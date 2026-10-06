@@ -1,0 +1,115 @@
+:host {
+  display: block;
+  inline-size: 100%;
+}
+
+.az-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: var(--input-height-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+
+  &--focused {
+    border-color: var(--color-focus-ring);
+    box-shadow: 0 0 0 var(--focus-ring-width) rgb(23 98 76 / 20%);
+  }
+
+  &--invalid {
+    border-color: var(--color-error-700);
+
+    &.az-input-wrapper--focused {
+      box-shadow: 0 0 0 var(--focus-ring-width) rgb(180 35 24 / 20%);
+    }
+  }
+
+  &--disabled {
+    background-color: var(--color-ivory-100);
+    border-color: var(--color-border);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &--readonly {
+    background-color: var(--color-ivory-50);
+  }
+}
+
+.az-input {
+  flex: 1;
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: var(--input-height-md);
+  padding-block: var(--space-2);
+  padding-inline: var(--space-3);
+  border: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.az-input__affordance {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+
+  &--prefix {
+    padding-inline-start: var(--space-3);
+  }
+
+  &--suffix {
+    padding-inline-end: var(--space-3);
+  }
+}
+
+.az-input__action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-1);
+  padding-inline: var(--space-2);
+  margin-inline-end: var(--space-2);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-standard);
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .az-input-wrapper,
+  .az-input__action-btn {
+    transition: none;
+  }
+}

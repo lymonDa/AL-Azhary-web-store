@@ -1,0 +1,460 @@
+<div class="stylebook-container" [attr.dir]="currentDirection()">
+  <!-- Header & Toolbar -->
+  <header class="stylebook-header">
+    <div class="stylebook-header__info">
+      <h1 class="stylebook-header__title">دليل الأنماط الحي — مكتبة الأزهري</h1>
+      <p class="stylebook-header__subtitle">
+        مكونات الواجهة المشتركة ونظام التصميم (المرحلة 1) · Phase 1 Living Stylebook
+      </p>
+    </div>
+    <div class="stylebook-header__actions">
+      <app-button
+        variant="secondary"
+        size="md"
+        icon="refresh-cw"
+        (buttonClick)="toggleDirection()"
+      >
+        {{ currentDirection() === 'rtl' ? 'التحويل إلى LTR (English)' : 'Switch to RTL (العربية)' }}
+      </app-button>
+    </div>
+  </header>
+
+  <!-- Navigation anchors -->
+  <nav class="stylebook-nav" aria-label="أقسام دليل الأنماط">
+    <a href="#typography" class="stylebook-nav__link">الخطوط والطباعة</a>
+    <a href="#colors" class="stylebook-nav__link">الألوان والرموز</a>
+    <a href="#buttons" class="stylebook-nav__link">الأزرار</a>
+    <a href="#forms" class="stylebook-nav__link">نماذج الإدخال</a>
+    <a href="#cards" class="stylebook-nav__link">البطاقات</a>
+    <a href="#badges" class="stylebook-nav__link">الشارات</a>
+    <a href="#statuses" class="stylebook-nav__link">حالات النظام</a>
+    <a href="#modals" class="stylebook-nav__link">النوافذ المنبثقة</a>
+    <a href="#toasts" class="stylebook-nav__link">التنبيهات (Toasts)</a>
+  </nav>
+
+  <!-- 1. Typography Section -->
+  <section id="typography" class="stylebook-section">
+    <h2 class="stylebook-section__title">1. مقياس الخطوط والطباعة (Typography)</h2>
+    <div class="stylebook-grid">
+      <app-card variant="card" padding="md">
+        <app-card-header>
+          <app-card-title>عناوين الصفحة والتسلسل الهرمي</app-card-title>
+        </app-card-header>
+        <app-card-content>
+          <div class="typography-demo">
+            <h1 style="margin: 0;">عنوان H1 رئيسي (32px / 28px)</h1>
+            <h2 style="margin: 0;">عنوان H2 فرعي (26px / 22px)</h2>
+            <h3 style="margin: 0;">عنوان H3 للأقسام (22px / 20px)</h3>
+            <h4 style="margin: 0;">عنوان H4 للبطاقات (18px / 17px)</h4>
+            <p style="margin: 0;">
+              النص العادي الأساسي (Body 16px) — مكتبة الأزهري توفر الكتب الدراسية والخدمات الطلابية لجامعة الأزهر مع دعم كامل للغة العربية واتجاه اليمين لليسار.
+            </p>
+            <p class="typography-tabular" style="margin: 0;">
+              الأرقام الجدولية للأسعار والمراجع: 1,450.00 ج.م · REF-2026-9812 · 24/09/2026
+            </p>
+            <small style="margin: 0; color: var(--color-text-muted);">
+              نص توضيحي صغير (Caption 12px) · جميع الحقوق محفوظة
+            </small>
+          </div>
+        </app-card-content>
+      </app-card>
+    </div>
+  </section>
+
+  <!-- 2. Colors & Tokens Section -->
+  <section id="colors" class="stylebook-section">
+    <h2 class="stylebook-section__title">2. لوحة الألوان ورموز التصميم (Color Tokens)</h2>
+    <div class="color-palette-grid">
+      <div class="color-swatch" style="background-color: var(--color-brand-green-900); color: #fff;">Green 900<br>#083328</div>
+      <div class="color-swatch" style="background-color: var(--color-brand-green-800); color: #fff;">Green 800<br>#0B3F31</div>
+      <div class="color-swatch" style="background-color: var(--color-brand-green-700); color: #fff;">Green 700 (Primary)<br>#0F4C3A</div>
+      <div class="color-swatch" style="background-color: var(--color-brand-green-600); color: #fff;">Green 600<br>#17624C</div>
+      <div class="color-swatch" style="background-color: var(--color-brand-green-100); color: var(--color-brand-green-900);">Green 100<br>#E6F0EC</div>
+      <div class="color-swatch" style="background-color: var(--color-gold-700); color: #fff;">Gold 700<br>#80601D</div>
+      <div class="color-swatch" style="background-color: var(--color-gold-600); color: #fff;">Gold 600<br>#A47925</div>
+      <div class="color-swatch" style="background-color: var(--color-gold-100); color: var(--color-text-primary);">Gold 100<br>#F5EDD9</div>
+      <div class="color-swatch" style="background-color: var(--color-success-700); color: #fff;">Success<br>#176B4D</div>
+      <div class="color-swatch" style="background-color: var(--color-warning-700); color: #fff;">Warning<br>#8A5A00</div>
+      <div class="color-swatch" style="background-color: var(--color-error-700); color: #fff;">Error<br>#B42318</div>
+      <div class="color-swatch" style="background-color: var(--color-info-700); color: #fff;">Info<br>#155E75</div>
+    </div>
+  </section>
+
+  <!-- 3. Buttons Section -->
+  <section id="buttons" class="stylebook-section">
+    <h2 class="stylebook-section__title">3. الأزرار (Buttons)</h2>
+    <app-card variant="card" padding="md">
+      <app-card-header>
+        <app-card-title>المتغيرات والأحجام وحالات التفاعل</app-card-title>
+      </app-card-header>
+      <app-card-content>
+        <div class="stylebook-demo-row">
+          <app-button variant="primary" size="md">زر أساسي (Primary)</app-button>
+          <app-button variant="secondary" size="md">زر ثانوي (Secondary)</app-button>
+          <app-button variant="tertiary" size="md">زر شفاف (Tertiary)</app-button>
+          <app-button variant="destructive" size="md">زر تحذيري (Destructive)</app-button>
+        </div>
+
+        <h4 class="stylebook-subheading">الأحجام (Sizes - SM: 36px, MD: 44px min touch target, LG: 52px)</h4>
+        <div class="stylebook-demo-row">
+          <app-button variant="primary" size="sm">حجم صغير (SM)</app-button>
+          <app-button variant="primary" size="md">حجم قياسي (MD)</app-button>
+          <app-button variant="primary" size="lg">حجم كبير (LG)</app-button>
+        </div>
+
+        <h4 class="stylebook-subheading">الحالات: التعطيل والتحميل (States: Disabled & Loading)</h4>
+        <div class="stylebook-demo-row">
+          <app-button variant="primary" [disabled]="true">معطل (Disabled)</app-button>
+          <app-button variant="primary" [loading]="true">جارٍ التحميل...</app-button>
+          <app-button variant="secondary" [loading]="true">تحميل ثانوي</app-button>
+        </div>
+
+        <h4 class="stylebook-subheading">الأيقونات ومواضعها (Icons: Start, End, Icon-Only)</h4>
+        <div class="stylebook-demo-row">
+          <app-button variant="primary" icon="check" iconPosition="start">حفظ التغييرات</app-button>
+          <app-button variant="secondary" icon="chevron-left" iconPosition="end">المتابعة</app-button>
+          <app-button
+            variant="secondary"
+            [isIconButton]="true"
+            icon="search"
+            ariaLabel="بحث"
+          />
+          <app-button
+            variant="destructive"
+            [isIconButton]="true"
+            icon="x"
+            ariaLabel="حذف"
+          />
+        </div>
+      </app-card-content>
+    </app-card>
+  </section>
+
+  <!-- 4. Forms & Inputs Section -->
+  <section id="forms" class="stylebook-section">
+    <h2 class="stylebook-section__title">4. نماذج وعناصر الإدخال (Forms & Inputs)</h2>
+    <div class="stylebook-grid">
+      <app-card variant="card" padding="md">
+        <app-card-header>
+          <app-card-title>حقول الإدخال النصية والتحقق</app-card-title>
+        </app-card-header>
+        <app-card-content>
+          <app-form-field
+            label="اسم المستخدم"
+            [required]="true"
+            hint="أدخل اسم المستخدم المسجل"
+          >
+            <app-text-input
+              placeholder="مثال: أحمد محمود"
+              [(ngModel)]="demoText"
+              prefixIcon="search"
+              [clearable]="true"
+            />
+          </app-form-field>
+
+          <app-form-field
+            label="كلمة المرور"
+            [required]="true"
+            hint="يجب ألا تقل عن 8 أحرف"
+          >
+            <app-text-input
+              type="password"
+              placeholder="••••••••"
+              [(ngModel)]="demoPassword"
+            />
+          </app-form-field>
+
+          <app-form-field
+            label="حقل يحتوي على خطأ تحقق"
+            [required]="true"
+            error="البريد الإلكتروني المدخل غير صالح"
+          >
+            <app-text-input
+              type="email"
+              [invalid]="true"
+              value="invalid-email@"
+            />
+          </app-form-field>
+
+          <app-form-field label="حقل معطل (Disabled)">
+            <app-text-input
+              [disabled]="true"
+              value="قيمة غير قابلة للتعديل"
+            />
+          </app-form-field>
+
+          <app-form-field label="ملاحظات إضافية (Textarea)" hint="حد أقصى 500 حرف">
+            <app-textarea
+              placeholder="اكتب ملاحظاتك هنا..."
+              [(ngModel)]="demoNotes"
+            />
+          </app-form-field>
+        </app-card-content>
+      </app-card>
+
+      <app-card variant="card" padding="md">
+        <app-card-header>
+          <app-card-title>خيارات الاختيار والتبديل والكميات</app-card-title>
+        </app-card-header>
+        <app-card-content>
+          <app-form-field label="اختر الكلية أو القسم">
+            <app-select
+              [options]="demoSelectOptions"
+              placeholder="اختر من القائمة..."
+              [(ngModel)]="demoSelectedOption"
+            />
+          </app-form-field>
+
+          <div class="stylebook-control-group">
+            <h4 class="stylebook-subheading">مربعات الاختيار (Checkbox)</h4>
+            <div class="stylebook-demo-column">
+              <app-checkbox [(checked)]="demoCheckbox1">
+                الموافقة على الشروط والأحكام
+              </app-checkbox>
+              <app-checkbox [checked]="true" [disabled]="true">
+                خيار محدد ومعطل
+              </app-checkbox>
+              <app-checkbox [indeterminate]="true">
+                حالة غير محددة جزئياً (Indeterminate)
+              </app-checkbox>
+            </div>
+          </div>
+
+          <div class="stylebook-control-group">
+            <h4 class="stylebook-subheading">مجموعات الراديو (Radio Group)</h4>
+            <app-radio-group [(ngModel)]="demoRadioVal">
+              <app-radio value="delivery" label="التوصيل إلى العنوان" />
+              <app-radio value="pickup" label="الاستلام من المكتبة (مجاناً)" />
+            </app-radio-group>
+          </div>
+
+          <div class="stylebook-control-group">
+            <h4 class="stylebook-subheading">مفتاح التبديل (Switch)</h4>
+            <app-switch [(checked)]="demoSwitchVal" label="تفعيل الإشعارات الفورية" />
+          </div>
+
+          <div class="stylebook-control-group">
+            <h4 class="stylebook-subheading">محدد الكمية (Quantity Stepper)</h4>
+            <app-quantity-stepper
+              [min]="1"
+              [max]="10"
+              [(ngModel)]="demoQuantity"
+            />
+            <small style="margin-inline-start: var(--space-2); color: var(--color-text-secondary);">
+              الكمية المحددة: {{ demoQuantity }}
+            </small>
+          </div>
+        </app-card-content>
+      </app-card>
+    </div>
+  </section>
+
+  <!-- 5. Cards Section -->
+  <section id="cards" class="stylebook-section">
+    <h2 class="stylebook-section__title">5. البطاقات والأسطح (Cards & Surfaces)</h2>
+    <div class="cards-demo-grid">
+      <app-card variant="flat" padding="md">
+        <app-card-header>
+          <app-card-title>بطاقة مسطحة (Flat)</app-card-title>
+        </app-card-header>
+        <app-card-content>
+          تعتمد على الحدود فقط بدون ظل خارجي، مناسبة للملخصات الداخلية.
+        </app-card-content>
+      </app-card>
+
+      <app-card variant="card" padding="md">
+        <app-card-header>
+          <app-card-title>بطاقة قياسية (Card)</app-card-title>
+        </app-card-header>
+        <app-card-content>
+          البطاقة الأساسية مع ظل ناعم وحدود أنيقة متوافقة مع الأسلوب الإسلامي الحديث.
+        </app-card-content>
+        <app-card-footer>
+          <app-button variant="tertiary" size="sm">تفاصيل</app-button>
+        </app-card-footer>
+      </app-card>
+
+      <app-card variant="raised" padding="md" [interactive]="true">
+        <app-card-header>
+          <app-card-title>بطاقة بارزة تفاعلية (Raised)</app-card-title>
+        </app-card-header>
+        <app-card-content>
+          تتميز بظل أوضح وتأثير حركي سلس عند مرور المؤشر.
+        </app-card-content>
+      </app-card>
+    </div>
+  </section>
+
+  <!-- 6. Badges Section -->
+  <section id="badges" class="stylebook-section">
+    <h2 class="stylebook-section__title">6. الشارات (Badges)</h2>
+    <app-card variant="card" padding="md">
+      <app-card-content>
+        <div class="stylebook-demo-row">
+          <app-badge tone="neutral" variant="subtle">افتراضي / Neutral</app-badge>
+          <app-badge tone="primary" variant="subtle">أساسي / Primary</app-badge>
+          <app-badge tone="success" variant="subtle" [dot]="true">نجاح / Success</app-badge>
+          <app-badge tone="warning" variant="subtle" icon="clock-3">تحذير / Warning</app-badge>
+          <app-badge tone="error" variant="subtle" icon="x-circle">خطأ / Error</app-badge>
+          <app-badge tone="info" variant="subtle" icon="info">معلومات / Info</app-badge>
+        </div>
+
+        <h4 class="stylebook-subheading">أنماط الشارات (Variants: Subtle, Outline, Solid)</h4>
+        <div class="stylebook-demo-row">
+          <app-badge tone="primary" variant="subtle">خلفية خفيفة (Subtle)</app-badge>
+          <app-badge tone="primary" variant="outline">حدود فقط (Outline)</app-badge>
+          <app-badge tone="primary" variant="solid">ممتلئ (Solid)</app-badge>
+        </div>
+      </app-card-content>
+    </app-card>
+  </section>
+
+  <!-- 7. Status Badges & Presentation Section -->
+  <section id="statuses" class="stylebook-section">
+    <h2 class="stylebook-section__title">7. حالات النظام المشتركة (Status Presentation §27)</h2>
+    <app-card variant="card" padding="md">
+      <app-card-header>
+        <app-card-title>حالات الطلبات (Order Statuses)</app-card-title>
+      </app-card-header>
+      <app-card-content>
+        <div class="stylebook-demo-row">
+          <app-status-badge kind="order" status="pending_review" />
+          <app-status-badge kind="order" status="accepted" />
+          <app-status-badge kind="order" status="awaiting_payment" />
+          <app-status-badge kind="order" status="payment_verification" />
+          <app-status-badge kind="order" status="confirmed" />
+          <app-status-badge kind="order" status="preparing" />
+          <app-status-badge kind="order" status="ready_for_pickup" />
+          <app-status-badge kind="order" status="shipped" />
+          <app-status-badge kind="order" status="delivered" />
+          <app-status-badge kind="order" status="completed" />
+          <app-status-badge kind="order" status="cancelled" />
+          <app-status-badge kind="order" status="rejected" />
+        </div>
+
+        <h4 class="stylebook-subheading">حالات الدفع والمخزون (Payment & Inventory Statuses)</h4>
+        <div class="stylebook-demo-row">
+          <app-status-badge kind="payment" status="proof_uploaded" />
+          <app-status-badge kind="payment" status="under_review" />
+          <app-status-badge kind="payment" status="confirmed" />
+          <app-status-badge kind="payment" status="refund_initiated" />
+          <app-status-badge kind="inventory" status="in_stock" />
+          <app-status-badge kind="inventory" status="out_of_stock" />
+          <app-status-badge kind="inventory" status="preorder_eligible" />
+        </div>
+      </app-card-content>
+    </app-card>
+  </section>
+
+  <!-- 8. Modals & Dialogs Section -->
+  <section id="modals" class="stylebook-section">
+    <h2 class="stylebook-section__title">8. النوافذ المنبثقة والتأكيدات (Modals & Dialogs)</h2>
+    <app-card variant="card" padding="md">
+      <app-card-content>
+        <div class="stylebook-demo-row">
+          <app-button
+            variant="primary"
+            size="md"
+            icon="package-open"
+            (buttonClick)="isModalOpen = true"
+          >
+            فتح نافذة تجريبية (Modal)
+          </app-button>
+
+          <app-button
+            variant="destructive"
+            size="md"
+            icon="x-circle"
+            (buttonClick)="isConfirmOpen = true"
+          >
+            فتح نافذة تأكيد الإلغاء (Confirm Dialog)
+          </app-button>
+        </div>
+      </app-card-content>
+    </app-card>
+
+    <!-- Demo Modal Instance -->
+    <app-modal
+      [isOpen]="isModalOpen"
+      title="نافذة تجريبية لنظام التصميم"
+      size="md"
+      [hasFooter]="true"
+      (modalClosed)="isModalOpen = false"
+    >
+      <p>
+        توضح هذه النافذة سلوك المكون المشترك:
+        حجز التركيز داخل النافذة (Focus Trap)، إغلاق النافذة بزر الهروب (Escape) أو بالنقر خارجها،
+        واستعادة التركيز للعنصر المفعل عند الإغلاق.
+      </p>
+
+      <div modal-footer>
+        <app-button variant="secondary" (buttonClick)="isModalOpen = false">
+          إلغاء
+        </app-button>
+        <app-button variant="primary" (buttonClick)="isModalOpen = false">
+          موافق
+        </app-button>
+      </div>
+    </app-modal>
+
+    <!-- Demo Confirm Dialog Instance -->
+    <app-confirm-dialog
+      [isOpen]="isConfirmOpen"
+      title="تأكيد إلغاء الطلب"
+      message="هل أنت متأكد من رغبتك في إلغاء هذا الطلب؟ لا يمكن التراجع عن هذا الإجراء بعد تنفيذه."
+      confirmLabel="تأكيد الإلغاء"
+      cancelLabel="العودة"
+      tone="destructive"
+      (confirmed)="onConfirmAction()"
+      (cancelled)="isConfirmOpen = false"
+    />
+  </section>
+
+  <!-- 9. Toasts Section -->
+  <section id="toasts" class="stylebook-section">
+    <h2 class="stylebook-section__title">9. التنبيهات المؤقتة (Toasts & Notifications)</h2>
+    <app-card variant="card" padding="md">
+      <app-card-content>
+        <p style="margin-block-end: var(--space-3); color: var(--color-text-secondary);">
+          تنبيهات خفيفة للتأكيدات السريعة غير الحرجة، تدعم القراءة الشاشية (aria-live) مع إغلاق تلقائي أو يدوي.
+        </p>
+        <div class="stylebook-demo-row">
+          <app-button
+            variant="secondary"
+            icon="check-circle-2"
+            (buttonClick)="triggerToast('success')"
+          >
+            تنبيه نجاح (Success)
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            icon="info"
+            (buttonClick)="triggerToast('info')"
+          >
+            تنبيه معلومات (Info)
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            icon="alert-triangle"
+            (buttonClick)="triggerToast('warning')"
+          >
+            تنبيه تحذير (Warning)
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            icon="x-circle"
+            (buttonClick)="triggerToast('error')"
+          >
+            تنبيه خطأ (Error)
+          </app-button>
+        </div>
+      </app-card-content>
+    </app-card>
+  </section>
+
+  <!-- Global Toast Container inside Stylebook -->
+  <app-toast-container />
+</div>

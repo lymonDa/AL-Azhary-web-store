@@ -1,0 +1,59 @@
+/* CDK Overlay & Backdrop System - Logical Properties & Brand Styling */
+.cdk-overlay-container,
+.cdk-global-overlay-wrapper {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
+}
+
+.cdk-overlay-container {
+  z-index: var(--z-modal);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.cdk-global-overlay-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: var(--z-modal);
+  align-items: center;
+  justify-content: center;
+}
+
+.cdk-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  display: flex;
+  max-inline-size: 100%;
+  max-block-size: 100%;
+  z-index: var(--z-modal);
+}
+
+.cdk-overlay-backdrop {
+  position: fixed;
+  inset-block: 0;
+  inset-inline: 0;
+  pointer-events: auto;
+  opacity: 0;
+  touch-action: manipulation;
+  z-index: var(--z-modal);
+  background: rgb(8 51 40 / 45%);
+  backdrop-filter: blur(4px);
+  transition: opacity var(--duration-normal) var(--ease-standard);
+
+  &.cdk-overlay-backdrop-showing {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdk-overlay-backdrop {
+    transition: none;
+  }
+}
