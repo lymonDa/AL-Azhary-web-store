@@ -4,7 +4,7 @@
  */
 export interface LocalizedText {
   readonly ar: string;
-  readonly en?: string;
+  readonly en?: string | undefined;
 }
 
 export function pickLocalizedText(
