@@ -1,0 +1,67 @@
+.az-auth-card {
+  display: block;
+  padding: var(--space-6, 1.5rem);
+}
+
+.az-auth-header {
+  margin-block-end: var(--space-6, 1.5rem);
+  text-align: center;
+}
+
+.az-auth-header__title {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-2xl, 1.5rem);
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+}
+
+.az-verify-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-block: var(--space-6, 1.5rem);
+}
+
+.az-verify-status__icon {
+  font-size: 3rem;
+  margin-block-end: var(--space-3, 0.75rem);
+}
+
+.az-verify-status__title {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: var(--font-size-xl, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+}
+
+.az-verify-status__text {
+  margin-block: var(--space-2, 0.5rem) var(--space-6, 1.5rem);
+  margin-inline: 0;
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-muted, #64748b);
+  line-height: 1.6;
+}
+
+.az-verify-status__action {
+  display: flex;
+  justify-content: center;
+}
+
+.az-verify-spinner {
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border: 3px solid var(--color-border-subtle, #e2e8f0);
+  border-block-start-color: var(--color-primary-600, #0284c7);
+  border-radius: 50%;
+  animation: az-spin 0.8s linear infinite;
+  margin-block-end: var(--space-4, 1rem);
+}
+
+@keyframes az-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

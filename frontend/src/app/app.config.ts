@@ -1,6 +1,7 @@
-import { ApplicationConfig, ErrorHandler, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, ErrorHandler, inject, provideAppInitializer, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 
 import { routes } from './app.routes';
 import { requestIdInterceptor } from './core/http/request-id.interceptor';
@@ -9,6 +10,7 @@ import { authInterceptor } from './core/http/auth.interceptor';
 import { idempotencyInterceptor } from './core/http/idempotency.interceptor';
 import { errorInterceptor } from './core/http/error.interceptor';
 import { GlobalErrorHandler } from './core/errors/global-error-handler';
+import { AuthStore } from './core/auth/auth.store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +25,10 @@ export const appConfig: ApplicationConfig = {
         errorInterceptor,
       ]),
     ),
+    provideAppInitializer(() => {
+      const authStore = inject(AuthStore);
+      return firstValueFrom(authStore.restore());
+    }),
     {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler,
