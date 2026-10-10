@@ -21,6 +21,7 @@ describe('LocaleService', () => {
 
   afterEach(() => {
     storage.clear();
+    service.setLocale('ar');
   });
 
   it('should default to Arabic locale with RTL direction', () => {

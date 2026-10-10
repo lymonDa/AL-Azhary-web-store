@@ -1,10 +1,13 @@
-import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LocaleService } from '../../core/i18n/locale.service';
 import { AuthStore } from '../../core/auth/auth.store';
 import { AppConfigStore } from '../../core/config/app-config.store';
+import { CartStore } from '../../core/cart/cart.store';
+import { IconComponent } from '../../shared/ui/icon/icon.component';
+import { MoneyPipe } from '../../shared/pipes/money.pipe';
 
 @Component({
   selector: 'app-storefront-shell',
@@ -15,6 +18,8 @@ import { AppConfigStore } from '../../core/config/app-config.store';
     RouterLink,
     RouterLinkActive,
     FormsModule,
+    IconComponent,
+    MoneyPipe,
   ],
   template: `
     <a href="#main-content" class="az-skip-link">
@@ -136,6 +141,67 @@ import { AppConfigStore } from '../../core/config/app-config.store';
                   <span class="az-header__whatsapp-label">{{ isArabic() ? 'واتساب' : 'WhatsApp' }}</span>
                 </a>
               }
+              <!-- Cart Indicator & Mini-Cart Preview -->
+              <div
+                class="az-header__cart-wrapper"
+                (mouseenter)="showMiniCart.set(true)"
+                (mouseleave)="showMiniCart.set(false)"
+              >
+                <a
+                  routerLink="/cart"
+                  class="az-header__cart-btn"
+                  [attr.aria-label]="
+                    isArabic()
+                      ? 'سلة المشتريات: ' + cartStore.itemCount() + ' عناصر'
+                      : 'Shopping cart: ' + cartStore.itemCount() + ' items'
+                  "
+                >
+                  <app-icon name="shopping-cart" [size]="20" />
+                  <span class="az-header__cart-label">{{ isArabic() ? 'السلة' : 'Cart' }}</span>
+                  @if (cartStore.itemCount() > 0) {
+                    <span class="az-header__cart-badge" aria-hidden="true">
+                      {{ cartStore.itemCount() }}
+                    </span>
+                  }
+                </a>
+
+                @if (showMiniCart() && cartStore.itemCount() > 0) {
+                  <div
+                    class="az-header__mini-cart"
+                    role="region"
+                    [attr.aria-label]="isArabic() ? 'معاينة السلة' : 'Cart preview'"
+                  >
+                    <div class="az-header__mini-cart-header">
+                      <span>{{ isArabic() ? 'عناصر السلة' : 'Cart Items' }} ({{ cartStore.itemCount() }})</span>
+                    </div>
+                    <div class="az-header__mini-cart-items">
+                      @for (item of previewItems(); track item.id) {
+                        <div class="az-header__mini-cart-item">
+                          <span class="az-header__mini-cart-item-title">
+                            {{ isArabic() ? item.productName.ar : (item.productName.en || item.productName.ar) }}
+                          </span>
+                          <span class="az-header__mini-cart-item-meta">
+                            {{ item.quantity }} × {{ item.unitPrice.amount | money }}
+                          </span>
+                        </div>
+                      }
+                    </div>
+                    <div class="az-header__mini-cart-footer">
+                      <div class="az-header__mini-cart-total">
+                        <span>{{ isArabic() ? 'الإجمالي:' : 'Subtotal:' }}</span>
+                        <strong>{{ cartStore.subtotal().amount | money }}</strong>
+                      </div>
+                      <a
+                        routerLink="/cart"
+                        (click)="showMiniCart.set(false)"
+                        class="az-header__mini-cart-cta"
+                      >
+                        {{ isArabic() ? 'عرض السلة وإتمام الطلب' : 'View Cart & Checkout' }}
+                      </a>
+                    </div>
+                  </div>
+                }
+              </div>
 
               <!-- Auth State -->
               @if (authStore.isAuthenticated()) {
@@ -201,6 +267,12 @@ import { AppConfigStore } from '../../core/config/app-config.store';
             </a>
             <a routerLink="/search" (click)="closeMobileMenu()" class="az-mobile-drawer__link">
               {{ isArabic() ? 'البحث' : 'Search' }}
+            </a>
+            <a routerLink="/cart" (click)="closeMobileMenu()" class="az-mobile-drawer__link az-mobile-drawer__link--cart">
+              <span>🛒 {{ isArabic() ? 'سلة المشتريات' : 'Cart' }}</span>
+              @if (cartStore.itemCount() > 0) {
+                <span class="az-mobile-drawer__cart-badge">{{ cartStore.itemCount() }}</span>
+              }
             </a>
             <a routerLink="/contact" (click)="closeMobileMenu()" class="az-mobile-drawer__link">
               {{ isArabic() ? 'تواصل معنا' : 'Contact' }}
@@ -345,9 +417,22 @@ export class StorefrontShellComponent {
   protected readonly localeService = inject(LocaleService);
   protected readonly authStore = inject(AuthStore);
   protected readonly configStore = inject(AppConfigStore);
+  protected readonly cartStore = inject(CartStore);
 
   protected searchQuery = '';
   protected readonly mobileMenuOpen = signal(false);
+  protected readonly showMiniCart = signal(false);
+  protected readonly previewItems = computed(() =>
+    this.cartStore.items().slice(0, 3),
+  );
+
+  constructor() {
+    this.cartStore.loadCart().subscribe({
+      error: (err: unknown) => {
+        void err;
+      },
+    });
+  }
 
   protected isArabic(): boolean {
     return this.localeService.isArabic();

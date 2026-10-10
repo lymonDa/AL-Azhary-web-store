@@ -16,6 +16,10 @@ describe('MoneyPipe', () => {
     localeService = TestBed.inject(LocaleService);
   });
 
+  afterEach(() => {
+    localeService.setLocale('ar');
+  });
+
   it('formats integer minor units in Arabic locale with ج.م symbol', () => {
     localeService.setLocale('ar');
     // 15050 minor units = 150.50 major units

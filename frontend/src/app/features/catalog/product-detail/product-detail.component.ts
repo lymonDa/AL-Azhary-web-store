@@ -21,6 +21,9 @@ import { ErrorStateComponent } from '../../../shared/ui/error-state/error-state.
 import { EmptyStateComponent } from '../../../shared/ui/empty-state/empty-state.component';
 import { ProductGalleryComponent } from '../components/product-gallery/product-gallery.component';
 import { VariantSelectorComponent } from '../components/variant-selector/variant-selector.component';
+import { QuantityStepperComponent } from '../../../shared/forms/quantity-stepper/quantity-stepper.component';
+import { CartStore } from '../../../core/cart/cart.store';
+import { ToastService } from '../../../shared/overlay/toast/toast.service';
 import type { ProductVariant } from '../../../domain/models/catalog.model';
 
 @Component({
@@ -37,6 +40,7 @@ import type { ProductVariant } from '../../../domain/models/catalog.model';
     EmptyStateComponent,
     ProductGalleryComponent,
     VariantSelectorComponent,
+    QuantityStepperComponent,
   ],
   template: `
     <div class="az-product-detail">
@@ -202,29 +206,29 @@ import type { ProductVariant } from '../../../domain/models/catalog.model';
               </div>
             }
 
-            <!-- Actions / Ordering Placeholder -->
+            <!-- Actions / Add to Cart & WhatsApp Inquiry -->
             <div class="az-product-detail__actions">
-              <!-- Cart Placeholder (Disabled - Phase 5) -->
               <div class="az-cart-placeholder">
+                <div class="az-product-detail__quantity-group">
+                  <span class="az-product-detail__quantity-label">
+                    {{ isArabic() ? 'الكمية:' : 'Quantity:' }}
+                  </span>
+                  <app-quantity-stepper
+                    [min]="1"
+                    [max]="10"
+                    [disabled]="currentAvailability() === 'out_of_stock'"
+                    (valueChange)="quantity.set($event)"
+                  />
+                </div>
                 <app-button
                   variant="primary"
                   size="lg"
-                  [disabled]="true"
-                  [attr.title]="
-                    isArabic()
-                      ? 'الشراء المباشر عبر السلة سيتوفر في المرحلة القادمة'
-                      : 'Cart and checkout will be available in Phase 5'
-                  "
+                  [disabled]="currentAvailability() === 'out_of_stock' || cartStore.isMutating()"
+                  [loading]="cartStore.isMutating()"
+                  (buttonClick)="onAddToCart()"
                 >
-                  🛒 {{ isArabic() ? 'إضافة إلى السلة (المرحلة 5)' : 'Add to Cart (Phase 5)' }}
+                  🛒 {{ isArabic() ? 'إضافة إلى السلة' : 'Add to Cart' }}
                 </app-button>
-                <span class="az-cart-placeholder__notice">
-                  {{
-                    isArabic()
-                      ? 'ميزة الطلب المباشر عبر الموقع قيد التجهيز للمرحلة القادمة.'
-                      : 'Direct website purchasing is arriving in Phase 5.'
-                  }}
-                </span>
               </div>
 
               <!-- WhatsApp Direct Inquiry -->
@@ -251,11 +255,14 @@ export class ProductDetailComponent implements OnInit {
   protected readonly catalogStore = inject(CatalogStore);
   protected readonly configStore = inject(AppConfigStore);
   protected readonly localeService = inject(LocaleService);
+  protected readonly cartStore = inject(CartStore);
+  protected readonly toastService = inject(ToastService);
   private readonly route = inject(ActivatedRoute);
   private readonly destroyRef = inject(DestroyRef);
 
   private currentSlug = '';
   protected readonly selectedVariant = signal<ProductVariant | null>(null);
+  protected readonly quantity = signal(1);
 
   protected readonly product = computed(() => this.catalogStore.selectedProduct());
 
@@ -345,10 +352,24 @@ export class ProductDetailComponent implements OnInit {
     const text = encodeURIComponent(
       this.isArabic()
         ? `السلام عليكم، أرغب في الاستفسار عن توفر كتاب: ${title}`
-        : `Hello, I would like to inquire about: ${title}`,
+        : `Hello, I would like to inquire about book: ${title}`,
     );
-
     return `https://wa.me/${sanitized}?text=${text}`;
+  }
+
+  protected onAddToCart(): void {
+    const p = this.product();
+    if (!p) return;
+    const variantId = this.selectedVariant()?.variantId || null;
+    this.cartStore.addItem(p.id, variantId, this.quantity()).subscribe({
+      next: () => {
+        const title = this.productTitle();
+        const msg = this.isArabic()
+          ? `تمت إضافة "${title}" إلى سلة المشتريات`
+          : `Added "${title}" to your cart`;
+        this.toastService.success(msg);
+      },
+    });
   }
 
   protected navigateToShop(): void {

@@ -36,9 +36,15 @@ import {
   ChevronRight,
   ChevronLeft,
   Loader2,
+  ShoppingCart,
+  ShoppingBag,
+  Trash2,
 } from 'lucide-angular';
 
 export const ICON_REGISTRY: Record<string, LucideIconData> = {
+  'shopping-cart': ShoppingCart,
+  'shopping-bag': ShoppingBag,
+  'trash-2': Trash2,
   check: Check,
   x: X,
   'clock-3': Clock3,

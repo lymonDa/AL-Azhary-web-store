@@ -5,6 +5,7 @@ import { StorefrontShellComponent } from './storefront-shell.component';
 import { LocaleService } from '../../core/i18n/locale.service';
 import { AuthStore } from '../../core/auth/auth.store';
 import { AppConfigStore } from '../../core/config/app-config.store';
+import { CartStore } from '../../core/cart/cart.store';
 
 describe('StorefrontShellComponent', () => {
   let component: StorefrontShellComponent;
@@ -36,6 +37,18 @@ describe('StorefrontShellComponent', () => {
               whatsappNumber: '+201000000000',
               address: { ar: 'قنا، مصر' },
             }),
+          },
+        },
+        {
+          provide: CartStore,
+          useValue: {
+            loadCart: () => of({ items: [], itemsCount: 0, totalQuantity: 0 }),
+            totalQuantity: () => 0,
+            itemCount: () => 0,
+            subtotal: () => ({ amount: 0, currency: 'EGP' }),
+            items: () => [],
+            isEmpty: () => true,
+            isMutating: () => false,
           },
         },
       ],

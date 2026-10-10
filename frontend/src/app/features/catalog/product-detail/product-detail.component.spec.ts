@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import { ProductDetailComponent } from './product-detail.component';
 import { CatalogStore } from '../../../core/catalog/catalog.store';
 import { AppConfigStore } from '../../../core/config/app-config.store';
+import { CartStore } from '../../../core/cart/cart.store';
 import { LocaleService } from '../../../core/i18n/locale.service';
 import type { Product } from '../../../domain/models/catalog.model';
 
@@ -58,6 +59,13 @@ describe('ProductDetailComponent', () => {
           provide: ActivatedRoute,
           useValue: {
             paramMap: of(convertToParamMap({ slug: 'nahw-book' })),
+          },
+        },
+        {
+          provide: CartStore,
+          useValue: {
+            addItem: () => of({}),
+            isMutating: () => false,
           },
         },
       ],
