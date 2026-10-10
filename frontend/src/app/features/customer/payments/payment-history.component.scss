@@ -1,0 +1,91 @@
+.az-payments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 1.5rem);
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1, 0.25rem);
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary, #0f4c3a);
+    margin: 0;
+  }
+
+  &__desc {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary, #53615b);
+    margin: 0;
+  }
+
+  &__table-card {
+    background-color: var(--color-surface-pure, #fff);
+    border: 1px solid var(--color-border-subtle, #e3e2e0);
+    border-radius: var(--radius-lg, 0.75rem);
+    padding: var(--space-4, 1rem);
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 4%);
+  }
+
+  &__table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+
+    th {
+      text-align: start;
+      padding-block: var(--space-2-5, 0.625rem);
+      padding-inline: var(--space-3, 0.75rem);
+      color: var(--color-text-muted, #718078);
+      font-weight: 600;
+      border-block-end: 1px solid var(--color-border-subtle, #e3e2e0);
+      white-space: nowrap;
+    }
+
+    td {
+      padding-block: var(--space-3-5, 0.875rem);
+      padding-inline: var(--space-3, 0.75rem);
+      border-block-end: 1px solid var(--color-border-subtle, #e3e2e0);
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-block-end: none;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-primary, #0f4c3a);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__skeleton-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3, 0.75rem);
+  }
+
+  &__card-skeleton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4, 1rem);
+    background-color: var(--color-surface-pure, #fff);
+    border: 1px solid var(--color-border-subtle, #e3e2e0);
+    border-radius: var(--radius-md, 0.5rem);
+  }
+}

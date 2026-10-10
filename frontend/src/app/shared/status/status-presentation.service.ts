@@ -257,6 +257,165 @@ const INVENTORY_STATUS_MAP: Record<string, StatusPresentationMeta> = {
   },
 };
 
+const SHIPPING_STATUS_MAP: Record<string, StatusPresentationMeta> = {
+  pending: {
+    labelAr: 'قيد الانتظار',
+    labelEn: 'Pending',
+    tone: 'warning',
+    icon: 'clock-3',
+  },
+  preparing: {
+    labelAr: 'قيد التجهيز',
+    labelEn: 'Preparing',
+    tone: 'info',
+    icon: 'package-open',
+  },
+  ready_for_pickup: {
+    labelAr: 'جاهز للاستلام',
+    labelEn: 'Ready for Pickup',
+    tone: 'success',
+    icon: 'store',
+  },
+  picked_up: {
+    labelAr: 'تم الاستلام',
+    labelEn: 'Picked Up',
+    tone: 'success',
+    icon: 'hand-coins',
+  },
+  shipped: {
+    labelAr: 'تم الشحن',
+    labelEn: 'Shipped',
+    tone: 'info',
+    icon: 'truck',
+  },
+  out_for_delivery: {
+    labelAr: 'جاري التوصيل',
+    labelEn: 'Out for Delivery',
+    tone: 'info',
+    icon: 'route',
+  },
+  delivered: {
+    labelAr: 'تم التوصيل',
+    labelEn: 'Delivered',
+    tone: 'success',
+    icon: 'package-check',
+  },
+  completed: {
+    labelAr: 'مكتمل',
+    labelEn: 'Completed',
+    tone: 'success',
+    icon: 'check-circle-2',
+  },
+};
+
+const PREORDER_STATUS_MAP: Record<string, StatusPresentationMeta> = {
+  requested: {
+    labelAr: 'طلب حجز',
+    labelEn: 'Requested',
+    tone: 'warning',
+    icon: 'clock-3',
+  },
+  admin_review: {
+    labelAr: 'قيد المراجعة',
+    labelEn: 'Under Review',
+    tone: 'info',
+    icon: 'clock-3',
+  },
+  accepted: {
+    labelAr: 'مقبول',
+    labelEn: 'Accepted',
+    tone: 'success',
+    icon: 'clipboard-check',
+  },
+  rejected: {
+    labelAr: 'مرفوض',
+    labelEn: 'Rejected',
+    tone: 'error',
+    icon: 'x-circle',
+  },
+  payment_pending: {
+    labelAr: 'بانتظار الدفع',
+    labelEn: 'Payment Pending',
+    tone: 'warning',
+    icon: 'wallet-cards',
+  },
+  payment_verification: {
+    labelAr: 'التحقق من الدفع',
+    labelEn: 'Payment Verification',
+    tone: 'info',
+    icon: 'search-check',
+  },
+  confirmed: {
+    labelAr: 'مؤكد',
+    labelEn: 'Confirmed',
+    tone: 'success',
+    icon: 'check-circle-2',
+  },
+  available: {
+    labelAr: 'متوفر للاستلام',
+    labelEn: 'Available',
+    tone: 'success',
+    icon: 'badge-check',
+  },
+  fulfilled: {
+    labelAr: 'تم التسليم',
+    labelEn: 'Fulfilled',
+    tone: 'success',
+    icon: 'package-check',
+  },
+  cancelled: {
+    labelAr: 'ملغي',
+    labelEn: 'Cancelled',
+    tone: 'neutral',
+    icon: 'ban',
+  },
+  pending: {
+    labelAr: 'قيد الانتظار',
+    labelEn: 'Pending',
+    tone: 'warning',
+    icon: 'clock-3',
+  },
+};
+
+const RETURN_STATUS_MAP: Record<string, StatusPresentationMeta> = {
+  return_requested: {
+    labelAr: 'طلب إرجاع',
+    labelEn: 'Return Requested',
+    tone: 'warning',
+    icon: 'clock-3',
+  },
+  return_review: {
+    labelAr: 'قيد المراجعة',
+    labelEn: 'Under Review',
+    tone: 'info',
+    icon: 'clock-3',
+  },
+  return_approved: {
+    labelAr: 'تمت الموافقة',
+    labelEn: 'Return Approved',
+    tone: 'success',
+    icon: 'badge-check',
+  },
+  refund_initiated: {
+    labelAr: 'جاري الاسترداد',
+    labelEn: 'Refund Initiated',
+    tone: 'warning',
+    icon: 'arrow-down-to-line',
+  },
+  refund_completed: {
+    labelAr: 'تم الاسترداد',
+    labelEn: 'Refund Completed',
+    tone: 'success',
+    icon: 'check-circle-2',
+  },
+  return_rejected: {
+    labelAr: 'مرفوض',
+    labelEn: 'Return Rejected',
+    tone: 'error',
+    icon: 'x-circle',
+  },
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -279,6 +438,15 @@ export class StatusPresentationService {
         break;
       case 'inventory':
         map = INVENTORY_STATUS_MAP;
+        break;
+      case 'shipping':
+        map = SHIPPING_STATUS_MAP;
+        break;
+      case 'preorder':
+        map = PREORDER_STATUS_MAP;
+        break;
+      case 'return':
+        map = RETURN_STATUS_MAP;
         break;
       case 'custom':
       default:
